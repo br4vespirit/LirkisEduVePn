@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=safa
+      - POSTGRES_DB=lirkis
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
@@ -18,10 +18,9 @@ services:
     build: ./LirkisEduVePn-service
     container_name: lirkis-service
     environment:
-      - DB_SERVER=db-postgres
-      - POSTGRES_DB=safa
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/lirkis
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
     ports:
       - "8080:8080"
     links:
