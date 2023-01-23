@@ -1,8 +1,8 @@
-package com.tuke.lirkiseduvepnservice.auth;
+package com.tuke.lirkiseduvepnservice.controller;
 
 import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationRequest;
-import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationResponse;
 import com.tuke.lirkiseduvepnservice.model.dto.RegisterRequest;
+import com.tuke.lirkiseduvepnservice.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,9 +19,11 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authenticationService.register(request));
+    //    @CrossOrigin("http://localhost:4200")
+    @PostMapping("/registration")
+    public ResponseEntity<Void> register(@RequestBody RegisterRequest request) {
+        return authenticationService.register(request) ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/authenticate")

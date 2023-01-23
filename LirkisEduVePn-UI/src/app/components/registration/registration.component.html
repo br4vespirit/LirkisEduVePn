@@ -1,1 +1,56 @@
-<p>registration works!</p>
+<div class="container">
+  <div class="mainContent">
+    <div class="card center">
+      <form (ngSubmit)="register()" [formGroup]="form" class="center-form">
+        <p class="boldText heading">Registration</p>
+        <div class="flex-col">
+
+          <div class="input">
+            <input formControlName="username" placeholder="username*" type="text">
+          </div>
+          <div *ngIf="username && username.invalid && username.touched" class="error-content">
+            <div *ngIf="username.hasError('required')">Username is required</div>
+          </div>
+
+          <div class="input">
+            <input formControlName="email" placeholder="email*" type="email">
+          </div>
+          <div *ngIf="email && email.invalid && email.touched" class="error-content">
+            <div *ngIf="email.hasError('required')">Email is required</div>
+            <div *ngIf="email.hasError('email')">Invalid email address</div>
+          </div>
+
+          <div class="input">
+            <input (focus)="passwordsMatch = true" formControlName="password" placeholder="password*" type="password">
+          </div>
+          <div *ngIf="password && password.invalid && password.touched" class="error-content">
+            <div *ngIf="password.hasError('required')">Password is required</div>
+          </div>
+
+          <div class="input">
+            <input (focus)="passwordsMatch = true" formControlName="confirmPassword" placeholder="password*"
+                   type="password">
+          </div>
+          <div *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched" class="error-content">
+            <div *ngIf="confirmPassword.hasError('required')">You have to confirm your password</div>
+          </div>
+          <div *ngIf="confirmPassword && confirmPassword.touched" class="error-content">
+            <div *ngIf="!passwordsMatch">Passwords do not match</div>
+          </div>
+
+        </div>
+        <button [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Register</button>
+        <!--      maybe remove from form-->
+      </form>
+
+      <!--      <div *ngIf="emailExists" class="error-content">-->
+      <!--        <span>User with this email is already exists</span>-->
+      <!--      </div>-->
+
+      <div style="text-align: center;">
+        <p class="secondaryText">Already have an account ?</p>
+        <a routerLink="/login">login</a>
+      </div>
+    </div>
+  </div>
+</div>

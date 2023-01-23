@@ -1,12 +1,10 @@
-package com.tuke.lirkiseduvepnservice.auth;
+package com.tuke.lirkiseduvepnservice.service;
 
 import com.tuke.lirkiseduvepnservice.model.Role;
 import com.tuke.lirkiseduvepnservice.model.dao.User;
 import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationRequest;
-import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationResponse;
 import com.tuke.lirkiseduvepnservice.model.dto.RegisterRequest;
 import com.tuke.lirkiseduvepnservice.repository.UserRepository;
-import com.tuke.lirkiseduvepnservice.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,7 +20,9 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public String register(RegisterRequest request) {
+    public boolean register(RegisterRequest request) {
+        if (userRepository.existsByEmail(request.getEmail()))
+            return false;
         User user = User.builder()
                 .nickname(request.getNickname())
                 .email(request.getEmail())
@@ -30,7 +30,7 @@ public class AuthenticationService {
                 .role(Role.STUDENT)
                 .build();
         userRepository.save(user);
-        return "A";
+        return true;
     }
 
     public String authenticate(AuthenticationRequest request) {
