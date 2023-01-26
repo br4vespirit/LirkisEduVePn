@@ -1,37 +1,33 @@
+<app-navbar></app-navbar>
 <div class="container">
-    <div class="mainContent">
-      <div class="card center">
-        <form (ngSubmit)="login()" [formGroup]="form" class="center-form">
-          <p class="boldText heading">Login</p>
-          <div class="flex-col">
-            <div class="input">
-              <input formControlName="email" placeholder="email*" type="email">
-            </div>
-            <div *ngIf="email && email.invalid && email.touched" class="error-content">
-              <div *ngIf="email.hasError('required')">Email is required</div>
-              <div *ngIf="email.hasError('email')">Invalid email address</div>
-            </div>
-  
-            <div class="input">
-              <input formControlName="password" placeholder="password*" type="password">
-            </div>
-            <div *ngIf="password && password.invalid && password.touched" class="error-content">
-              <div *ngIf="password.hasError('required')">Password is required</div>
-            </div>
-  
-            <!-- <div *ngIf="confirmPassword && confirmPassword.touched" class="error-content">
-              <div *ngIf="!passwordsMatch">Passwords do not match</div>
-            </div> -->
-  
+  <div class="mainContent">
+    <div class="card center">
+      <form (ngSubmit)="login()" [formGroup]="form" class="center-form">
+        <p class="boldText heading">Login</p>
+        <div class="flex-col">
+
+          <div class="input">
+            <input formControlName="email" placeholder="email*" type="email">
           </div>
-          <button [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Login</button>
-          <!--      maybe remove from form-->
-        </form>
-  
-        <div style="text-align: center;">
-          <p class="secondaryText">Don’t have an account ?</p>
-          <a routerLink="/register">register</a>
+          <div *ngIf="email && email.invalid && email.touched" class="error-content">
+            <div *ngIf="email.hasError('required')">Email is required</div>
+            <div *ngIf="email.hasError('email')">Invalid email address</div>
+          </div>
+
+          <div class="input">
+            <input formControlName="password" placeholder="password*" type="password">
+          </div>
+          <div *ngIf="password && password.invalid && password.touched" class="error-content">
+            <div *ngIf="password.hasError('required')">Password is required</div>
+          </div>
         </div>
+        <button [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Login</button>
+      </form>
+
+      <div style="text-align: center;">
+        <p class="secondaryText">Don't have an account ?</p>
+        <a routerLink="/register">Register</a>
       </div>
     </div>
   </div>
+</div>

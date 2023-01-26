@@ -23,7 +23,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   constructor(private _client: BackendService, private _snackBar: MatSnackBar,
               private _router: Router) {
-
   }
 
   get username() {
@@ -73,7 +72,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       this.email?.value,
       this.password?.value);
 
-    this.registrationUserSubscription = this._client.registerUser(request).subscribe({
+    this.registrationUserSubscription = this._client.register(request).subscribe({
       complete: () => {
         this.form.reset({});
         this.openSuccessfulSnackbar();

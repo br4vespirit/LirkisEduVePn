@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {RegistrationRequest} from "../models/registration-request.model";
 import {Observable} from "rxjs";
-import { LoginRequest } from '../models/login-request.model';
+import {LoginRequest} from "../models/login-request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class BackendService {
   constructor(private _client: HttpClient) {
   }
 
-  public registerUser(request: RegistrationRequest): Observable<any> {
+  public register(request: RegistrationRequest): Observable<any> {
     return this._client.post<any>(
       this.API_URL + "/auth/registration",
       request,
@@ -26,12 +26,11 @@ export class BackendService {
     )
   }
 
-  public loginUser(request: LoginRequest): Observable<any> {
+  public login(request: LoginRequest): Observable<any> {
     return this._client.post<any>(
       this.API_URL + "/auth/authenticate",
       request,
-      {headers: this.headers}
+      {headers: this.headers, observe: "response"}
     )
   }
-
 }

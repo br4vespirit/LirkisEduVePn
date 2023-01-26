@@ -1,22 +1,27 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {BackendService} from "../../services/backend.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import { LoginRequest } from 'src/app/models/login-request.model';
+import {LoginRequest} from "../../models/login-request.model";
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../registration/registration.component.css']
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy{
-  form!: FormGroup;
+export class LoginComponent {
 
-  loginUserSubscription: Subscription = new Subscription();
+  // @ts-ignore
+  form: FormGroup;
+  loginUnsuccessful: boolean = false;
+  loginSubscription: Subscription = new Subscription();
 
-  constructor(private _client: BackendService, private _snackBar: MatSnackBar, private _router: Router) {}
+  constructor(private _client: BackendService, private _snackBar: MatSnackBar,
+              private _router: Router, private _utils: UtilsService) {
+  }
 
   get email() {
     if (this.form)
@@ -33,46 +38,51 @@ export class LoginComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.form = new FormGroup<any>({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
   ngOnDestroy(): void {
-    this.loginUserSubscription.unsubscribe();
+    this.loginSubscription.unsubscribe();
   }
 
   login() {
-    let request: LoginRequest = new LoginRequest(
-      this.email?.value,
+    let request: LoginRequest = new LoginRequest(this.email?.value,
       this.password?.value);
 
-    this.loginUserSubscription = this._client.loginUser(request).subscribe({
-      complete: () => {
-        this.form.reset({});
-        this.openSuccessfulSnackbar();
+    this.loginSubscription = this._client.login(request).subscribe({
+      next: (response) => {
+        this._utils.saveToken(response.headers.get("Authorization"));
+
+        let link: string = localStorage.getItem("redirect-url") as string;
+        if (link === null)
+          link = '/user/profile'; // TODO change redirect
+        localStorage.removeItem("redirect-url");
+
+        this._router.navigateByUrl(link).then(r => r);
       },
       error: (response) => {
-        // this.emailExists = true;
-        this.form.reset({});
-        this.openUnsuccessfulSnackbar();
+        if (response.status === 401)
+          this.loginUnsuccessful = true;
       }
     })
+
 
   }
 
   openSuccessfulSnackbar() {
-    const snackbarRef = this._snackBar.open('Login successful', 'Go to home', {
+    const snackbarRef = this._snackBar.open('Registration successful', 'Go to login', {
       duration: 5000,
     });
 
     snackbarRef.onAction().subscribe(() => {
-      this._router.navigate(["/home"]).then(r => r);
+      this._router.navigate(["/login"]).then(r => r);
       this._snackBar.dismiss();
     });
   }
 
   openUnsuccessfulSnackbar() {
-    const snackbarRef = this._snackBar.open('User with those credentials doesnt exist', '', {
+    const snackbarRef = this._snackBar.open('User with this email is already registered', '', {
       duration: 5000,
     });
   }
