@@ -1,0 +1,14 @@
+.footer{
+    background-color: var(--footer-color);
+    width: 100%;
+    padding:2rem 0;
+    text-align: center;
+    color: var(--purple-color);
+    font-size: 0.7rem;
+}
+
+.footer p{
+    max-width: 80%;
+    opacity: 0.6;
+    margin: 0 auto !important;
+}
