@@ -39,3 +39,78 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+:root {
+  --purple-color: #9156DD;
+  --footer-color: #F6F6F6
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+a{
+  text-decoration: none !important;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+h2{
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+h3{
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+h4{
+  font-size: 1.5rem;
+}
+
+h5{
+  color: var(--purple-color);
+  font-size: 0.9rem;
+}
+
+.secondaryText{
+  opacity: 0.6;
+  font-size: 0.7rem;
+}
+
+.boldText{
+  font-weight: 700;
+}
+
+.container{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+.card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem !important;
+  padding: 1.5rem !important;
+  background-color: white !important;
+  border: none !important;
+  min-width: 25vw !important;
+}

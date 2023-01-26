@@ -2,19 +2,21 @@
   width: 80%;
   display: flex;
   flex-direction: column;
-  margin: 5rem auto 0;
+  margin: 0rem auto 0;
 }
 
-.card {
+/* .card {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
   padding: 1.5rem;
   background-color: white;
-}
+  border: none;
+  min-width: 25vw;
+} */
 
 .center {
   max-width: max-content;
-  padding: 1rem 3rem !important;
+  padding: 3rem 3rem !important;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -22,7 +24,7 @@
   align-items: center;
   width: 100%;
   align-self: center;
-  margin: 7rem auto 0;
+  margin: 0rem auto 0;
 }
 
 .boldText {
@@ -103,4 +105,13 @@ input {
   top: 0;
   cursor: pointer;
   font-size: 18px;
+}
+
+a{
+  color: var(--purple-color);
+  padding: 0;
+}
+
+p{
+  margin: 0;
 }

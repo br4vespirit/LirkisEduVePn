@@ -1,19 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" style="margin-left: 5%;" routerLink="/home">LirkisEduVePn</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-end" style="margin-right: 5%;" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Sign in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register">Sign up</a>
-      </li>
-    </ul>
+<div class="navbar">
+  <div class="testik">
+        <div class="logo">
+          <a routerLink="/home"><img src="/assets/logo.svg"></a>
+          <a routerLink="/home"><h3>LirkisEduVePn</h3></a>
+        </div>
+      <mat-icon (click)="showMenu()" *ngIf="canColapse()">menu</mat-icon>
   </div>
-</nav>
+</div>
+
+<div class="sidebar" *ngIf="colapse">
+  <div class="flexCol">
+      <mat-icon (click)="showMenu()">close</mat-icon>
+      <div class="secondCol">
+          <!-- <img src="assets/profile.svg" alt=""> -->
+          <p class="boldTest">Lukas Pisarcik</p>
+          <p class="secondaryText">student</p>
+      </div>
+      <div class="secondCol">
+          <a class="boldTest" routerLink="/about">About</a>
+          <!-- <a class="boldTest" id="joinBtn">Join Quiz</a>
+          <a class="boldTest" id="createBtn">Create Quiz</a>
+          <a class="boldTest" id="historyBtn">Quiz History</a>
+          <a class="boldTest" id="profileBtn">Profile settings</a> -->
+      </div>
+      <a href="login.html">
+          <!-- <img src="assets/logoutWhite.svg" alt="" width="30px"> -->
+      </a>
+      </div>
+</div>
