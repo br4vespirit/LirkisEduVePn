@@ -31,6 +31,18 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     return null;
   }
 
+  get firstname() {
+    if (this.form)
+      return this.form.controls['firstname'];
+    return null;
+  }
+
+  get lastname() {
+    if (this.form)
+      return this.form.controls['lastname'];
+    return null;
+  }
+
   get email() {
     if (this.form)
       return this.form.controls['email'];
@@ -52,6 +64,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = new FormGroup<any>({
       username: new FormControl('', [Validators.required]),
+      firstname: new FormControl('', [Validators.required]),
+      lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', [Validators.required])
@@ -68,9 +82,13 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       this.passwordsMatch = false;
       return;
     }
-    let request: RegistrationRequest = new RegistrationRequest(this.username?.value,
+    let request: RegistrationRequest = new RegistrationRequest(
+      this.username?.value,
       this.email?.value,
-      this.password?.value);
+      this.password?.value,
+      this.firstname?.value,
+      this.lastname?.value
+    );
 
     this.registrationUserSubscription = this._client.register(request).subscribe({
       complete: () => {
