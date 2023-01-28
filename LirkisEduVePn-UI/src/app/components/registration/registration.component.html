@@ -13,6 +13,20 @@
           </div>
 
           <div class="input">
+            <input formControlName="firstname" placeholder="firstname*" type="text">
+          </div>
+          <div *ngIf="firstname && firstname.invalid && firstname.touched" class="error-content">
+            <div *ngIf="firstname.hasError('required')">Firstname is required</div>
+          </div>
+
+          <div class="input">
+            <input formControlName="lastname" placeholder="lastname*" type="text">
+          </div>
+          <div *ngIf="lastname && lastname.invalid && lastname.touched" class="error-content">
+            <div *ngIf="lastname.hasError('required')">Lastname is required</div>
+          </div>
+
+          <div class="input">
             <input formControlName="email" placeholder="email*" type="email">
           </div>
           <div *ngIf="email && email.invalid && email.touched" class="error-content">
