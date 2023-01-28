@@ -2,15 +2,15 @@
     <div class="mainContent">
         <div class="welcomeAndProfile">
             <div class="welcome">
-                <h2>Hi Lukas Pisarcik,</h2>
+                <h2>Hi {{profile.firstname}} {{profile.lastname}},</h2>
                 <h1>Welcome Back 👋</h1>
             </div>
             <div class="profile">
                 <div>
-                    <p class="secondaryText">student</p>
-                    <p class="boldText">Lukas Pisarcik</p>
+                    <p class="secondaryText">{{profile.role}}</p>
+                    <p class="boldText">{{profile.firstname}} {{profile.lastname}}</p>
                     <div class="settings" id="profileArrow">
-                        <!-- <img src="assets/settings.svg" alt=""> -->
+                        <mat-icon>settings</mat-icon>
                         <p class="colorText">Profile settings</p>
                     </div>
                 </div>
@@ -31,21 +31,21 @@
                         <h5>Join quiz</h5>
                         <p class="secondaryText">complete quizes assigned to you by your teachers</p>
                     </div>
-                    <!-- <img src="assets/arrow.svg" alt="" id="joinArrow"> -->
+                    <mat-icon>navigate_next</mat-icon>
                 </div>
                 <div class="card">
                     <div>
                         <h5>Create quiz</h5>
                         <p class="secondaryText">create own custom quiz</p>
                     </div>
-                    <!-- <img src="assets/arrow.svg" alt="" id="createArrow"> -->
+                    <mat-icon>navigate_next</mat-icon>
                 </div>
                 <div class="card">
                     <div>
                         <h5>Quiz history</h5>
                         <p class="secondaryText">review quizzes you took in the past  </p>
                     </div>
-                    <!-- <img src="assets/arrow.svg" alt="" id="historyArrow"> -->
+                    <mat-icon>navigate_next</mat-icon>
                 </div>
             </div>
         </div>

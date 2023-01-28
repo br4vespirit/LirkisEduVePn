@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700;900&display=swap');
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -14,8 +16,8 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   vertical-align: baseline;
+  font-family: 'Poppins', sans-serif !important;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -45,7 +47,6 @@ table {
   --footer-color: #F6F6F6
 }
 
-
 body{
   margin: 0;
   padding: 0;
@@ -62,31 +63,39 @@ a{
   text-decoration: none !important;
   font-size: 0.7rem;
   font-weight: 700;
+  color: black !important;
 }
 
 
-p{
-  margin: 0;
-  padding: 0;
+p, h1, h3, h2{
+  padding: 1px !important;
+  margin: 1px !important;
+}
+
+h1{
+  font-size: 2rem !important;
+  font-weight: 900 !important;
 }
 
 h2{
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.2rem !important;
+  font-weight: 400 !important;
 }
 
 h3{
-  font-size: 1.2rem;
-  font-weight: 900;
+  font-size: 1.2rem !important;
+  font-weight: 900 !important; 
 }
 
 h4{
-  font-size: 1.5rem;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
 }
 
 h5{
-  color: var(--purple-color);
-  font-size: 0.9rem;
+  color: var(--purple-color) !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
 }
 
 .secondaryText{

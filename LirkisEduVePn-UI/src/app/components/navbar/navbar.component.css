@@ -32,7 +32,7 @@ a{
 h3{
     color: black;
     font-size: 1.2rem;
-    font-weight: 900;
+    font-weight: 600 !important;
     margin: 0;
 }
 
@@ -50,6 +50,23 @@ h3{
     color: white;
     z-index: 10;
     animation: showMenu 400ms ease forwards;
+}
+
+.secondCol{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.sidebar a{
+    opacity: 0.6;
+    color: white !important;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.sidebar a:hover{
+    font-weight: 600;
 }
 
 .flexCol{

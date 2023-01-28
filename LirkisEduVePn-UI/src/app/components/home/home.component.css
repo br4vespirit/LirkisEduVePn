@@ -22,6 +22,8 @@
     flex-direction: row;
     gap: 0.3rem;
     color: var(--purple-color);
+    justify-content: center;
+    align-items: center;
 }
 
 .selectionBoxes{
@@ -32,7 +34,7 @@
 
 .about{
     flex:2;
-    /* background: url("assets/coverPhoto.svg"); */
+    background: url("src/assets/coverPhoto.svg");
     background-size: cover;
     color: white;
     display: flex;
@@ -60,6 +62,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
+    align-items: center;
 }
 
 @media only screen and (max-width: 900px) {
