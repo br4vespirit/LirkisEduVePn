@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  token: string = this._utils.getToken();
 
+  constructor(private _utils: UtilsService){}
 }
