@@ -1,4 +1,4 @@
-package com.tuke.lirkiseduvepnservice.config;
+package com.tuke.lirkiseduvepnservice.security.filter;
 
 import com.tuke.lirkiseduvepnservice.service.JwtService;
 import jakarta.servlet.FilterChain;

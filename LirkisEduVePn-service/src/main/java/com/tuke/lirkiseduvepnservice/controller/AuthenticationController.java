@@ -3,6 +3,7 @@ package com.tuke.lirkiseduvepnservice.controller;
 import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationRequest;
 import com.tuke.lirkiseduvepnservice.model.dto.RegisterRequest;
 import com.tuke.lirkiseduvepnservice.service.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -27,10 +28,23 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<Void> register(@RequestBody AuthenticationRequest request) {
-        final String token = authenticationService.authenticate(request);
+    public ResponseEntity<Void> formLogin(@RequestBody AuthenticationRequest request) {
+        final String token = authenticationService.authenticateForm(request);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Authorization", token);
+        return new ResponseEntity<>(responseHeaders, HttpStatus.OK);
+    }
+
+    @PostMapping("/googleAuth")
+    public ResponseEntity<Void> googleLogin(HttpServletRequest servletRequest) {
+        String googleToken = servletRequest.getHeader("GoogleAuth");
+        if (googleToken == null) {
+            // TODO return here response status with 400 if needed this block of code
+            return null;
+        }
+        final String jwtToken = authenticationService.authenticateGoogle(googleToken);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Authorization", jwtToken);
         return new ResponseEntity<>(responseHeaders, HttpStatus.OK);
     }
 }

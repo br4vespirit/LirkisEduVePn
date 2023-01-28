@@ -1,4 +1,4 @@
-package com.tuke.lirkiseduvepnservice.config;
+package com.tuke.lirkiseduvepnservice.security.config;
 
 import com.tuke.lirkiseduvepnservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
