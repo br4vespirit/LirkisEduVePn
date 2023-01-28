@@ -33,4 +33,11 @@ export class BackendService {
       {headers: this.headers, observe: "response"}
     )
   }
+
+  public fetchProfile(): Observable<any> {
+    return this._client.get(this.API_URL + "/user/profile", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+    })
+  }
 }
