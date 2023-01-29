@@ -1,0 +1,8 @@
+{
+    "/dist/js/bundle.js": "/dist/js/bundle.js",
+    "/dist/index.js": "/dist/index.js",
+    "/dist/css/styles.css": "/dist/css/styles.css",
+    "/dist/assets/.DS_Store": "/dist/assets/.DS_Store",
+    "/dist/views/index.html": "/dist/views/index.html",
+    "/dist/views/scene.html": "/dist/views/scene.html"
+}

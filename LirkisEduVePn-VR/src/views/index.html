@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="description"
+      content="Interactive educational experience in virtual reality" />
+    <meta name="author" content="Adam Kašela, Štefan Korečko" />
+    <title>Vzdelávací zážitok vo webovej virtuálnej realite</title>
+    <link href="../css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+      id="mainNav">
+      <div class="container px-4">
+        <a class="navbar-brand" href="#page-top"
+          >Vzdelávací zážitok vo webovej virtuálnej realite</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#hero">Domov</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">O scéne</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Zdroje</a>
+            </li>
+          </ul>
+          <a
+            class="navbar-brand ms-lg-5 ms-sm-0"
+            href="https://github.com/KasiKral/aframe-petri-net-sim">
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Header-->
+    <header id="hero">
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img
+              src="../assets/images/museum-splash.jpg"
+              class="d-block mx-lg-auto img-fluid rounded shadow"
+              alt="VR history IMG"
+              loading="lazy" />
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+              Webová virtuálna realita pre vzdelávanie
+            </h1>
+            <p class="lead">
+              Technológie virtuálnej reality (VR) vedia používateľom ponúknuť
+              rôzne zážitky a skúsenosti. Jedným z tých pozoruhodnejších a
+              významnejších je ponorenie do histórie. Vo VR môže človek
+              preskúmať historické prostredie a dozvedieť sa o ňom jedinečným
+              dynamickým spôsobom.
+            </p>
+            <p class="lead">
+              Takýto zážitok sme sa vám pokúsili priniesť aj v našej
+              virtuálno-realitnej scéne. Do nej sa dostanete kliknutím na
+              tlačidlo Vyskúšaj. Ak ste tu však prvý krát, čítajte ďalej, aby
+              ste sa dozvedeli o čom scéna je a čo v nej robiť.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a
+                type="button"
+                class="btn btn-primary btn-lg px-4 me-md-2"
+                href="/scene"
+                >Vyskúšaj</a
+              >
+
+              <!--
+              Pre spustanie bez node.js pouzit namiesto
+              href="/scene"
+              toto:
+              href="./scene.html"
+              target ="_blank"
+              -->
+
+              <a
+                type="button"
+                class="btn btn-outline-secondary btn-lg px-4"
+                href="#about"
+                >Čítaj ďalej</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- About section-->
+    <section id="about" class="bg-light">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-9">
+            <h2>O scéne</h2>
+            <p class="lead">
+              Naša virtuálna scéna je zameraná na obdobie osvietenských reforiem
+              v Habsburskej monarchii. Scéna má podobu múzejnej expozície a
+              pozostáva z troch vzájomne prepojených miestností. Miestnosti
+              obsahujú 16 zaujímavých exponátov a musíte v nich splniť určité
+              úlohy.
+            </p>
+          </div>
+        </div>
+
+        <div class="row gx-4 py-5 justify-content-center">
+          <div class="col-lg-5">
+            <h3>Čo mám v scéne robiť?</h3>
+            <p class="lead">
+              Do scény sme rozmiestnili exponáty s informáciami a pridali k nim
+              tri úlohy. Kde presne úlohy nájdete, zistíte na orientačnom pláne,
+              ktorý je v strednej časti expozície. Orientačný plán vidieť aj na
+              obrázku napravo (alebo dole). Za každým názvom úlohy v pláne je
+              červený alebo zelený kruh. Červený znamená že ste úlohu ešte
+              nesplnili, zelený že ste ju už splnili.
+            </p>
+          </div>
+
+          <div class="col-lg-4">
+            <img
+              class="d-block mx-lg-auto img-fluid rounded shadow bg-transparent"
+              src="../assets/images/orientation-example.jpg"
+              alt="orientation panel" />
+          </div>
+        </div>
+        <div class="row gx-4 py-5 justify-content-center">
+          <div class="col-lg-5">
+            <h3>Kde sa dozviem o úlohe?</h3>
+            <p class="lead">
+              Keď vojdete do časti expozície v ktorej je úloha, objaví sa čierny
+              panel s opisom úlohy (na obrázku napravo alebo dole vidíte panel v
+              ľavej časti). Tu sa dozviete, čo máte v úlohe robiť. Keď úlohu
+              splníte, kliknite na modré tlačidlo <q>Potvrdiť odpoveď</q>. Ak je
+              splnená správne, tlačidlo sa zmení na zelené s nápisom
+              <q>Správna odpoveď</q>. Ak nie, tlačidlo zostane nezmenené a
+              môžete skúsiť splniť úlohu znova. Úlohy sú dvoch typov:
+            </p>
+            <ul class="lead">
+              <li>Prenášanie exponátov</li>
+              <li>Označovanie exponátov</li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <img
+              class="d-block mx-lg-auto img-fluid rounded shadow bg-transparent"
+              src="../assets/images/infoPanels-exampleBigger.jpg"
+              alt="task info" />
+          </div>
+        </div>
+        <div class="row gx-4 py-5 justify-content-center">
+          <div class="col-lg-9">
+            <h3>Ako označovať a prenášať exponáty?</h3>
+            <p class="lead">
+              O tom vám viac napovie nasledujúce video. Nižšie na tejto stránke
+              nájdete aj popis
+              <a href="#desc_icons">ikon exponátov</a>
+              a
+              <a href="#desc_sounds">použitých zvukov</a>.
+            </p>
+            <video controls class="d-block mx-lg-auto img-fluid">
+              <source
+                src="../assets/videos/objectManipDescription.mp4"
+                type="video/mp4" />
+
+              (Váš prehliadač žiaľ nepodporuje vložené videá.)
+            </video>
+          </div>
+        </div>
+        <h2 class="pb-2 border-bottom" id="desc_icons">Ikony exponátov</h2>
+        <div
+          class="row gx-4 py-5 row-cols-1 row-cols-lg-3 justify-content-center">
+          <div class="col mb-3 d-flex align-items-start">
+            <img
+              class="bi text-muted flex-shrink-0 me-3"
+              src="../assets/images/info-circle.png"
+              width="32rem"
+              height="32rem" />
+            <div>
+              <h4 class="fw-bold mb-0">Informácia</h4>
+              <p>
+                Po kliknutí na ňu sa zobrazia informácie o exponáte. Túto ikonu
+                majú aj exponáty, ktoré nie sú súčasťou úloh.
+              </p>
+            </div>
+          </div>
+          <div class="col mb-3 d-flex align-items-start">
+            <img
+              class="bi text-muted flex-shrink-0 me-3"
+              src="../assets/images/slash-circle-fill-red.png"
+              width="32rem"
+              height="32rem" />
+            <div>
+              <h4 class="fw-bold mb-0">Neoznačený exponát</h4>
+              <p>
+                Znanená, že exponát nie je označený ako časť odpovede na
+                príslušnú úlohu. Po kliknutí na ňu sa exponát stane označeným.
+              </p>
+            </div>
+          </div>
+          <div class="col mb-3 d-flex align-items-start">
+            <img
+              class="bi text-muted flex-shrink-0 me-3"
+              src="../assets/images/check-circle-fill-green.png"
+              width="32rem"
+              height="32rem" />
+            <div>
+              <h4 class="fw-bold mb-0">Označený exponát</h4>
+              <p>
+                Znanená, že exponát je označený ako časť odpovede na príslušnú
+                úlohu. Po kliknutí na ňu sa exponát stane neoznačeným.
+              </p>
+            </div>
+          </div>
+        </div>
+        <h2 class="pb-2 border-bottom" id="desc_sounds">Použité zvuky</h2>
+        <div
+          class="row gx-4 py-5 row-cols-md-1 row-cols-lg-3 justify-content-center">
+          <div class="col mb-3 d-flex align-items-start">
+            <div>
+              <h4 class="fw-bold mb-0">Úspešná odpoveď</h4>
+              <p class="py-2">
+                Zvukový signál, ktorý sa preharaje pri vykonaní potvrdenia na
+                paneli úlohy v prípade keď odpoveď je správna.
+              </p>
+              <audio controls>
+                <source src="../assets/sounds/success.wav" type="audio/wav" />
+              </audio>
+            </div>
+          </div>
+          <div class="col mb-3 d-flex align-items-start">
+            <div>
+              <h4 class="fw-bold mb-0">Neúspešná odpoveď</h4>
+              <p class="py-2">
+                Zvukový signál, ktorý sa preharaje pri vykonaní potvrdenia na
+                paneli úlohy v prípade keď odpoveď je nesprávna.
+              </p>
+              <audio controls>
+                <source src="../assets/sounds/unsuccess.wav" type="audio/wav" />
+              </audio>
+            </div>
+          </div>
+          <div class="col mb-3 d-flex align-items-start">
+            <div>
+              <h4 class="fw-bold mb-0">Bežná akcia</h4>
+              <p class="py-2">
+                Zvuky použité pri bežnej interakcii s expoíciami(napr. kliknutie
+                na ikonu Informácia).
+              </p>
+              <audio controls>
+                <source src="../assets/sounds/tap.wav" type="audio/wav" />
+              </audio>
+            </div>
+          </div>
+          <div class="col mb-3 d-flex align-items-start flex-column">
+            <div>
+              <h4 class="fw-bold mb-0">Úspešné vykonanie všetkých úloh</h4>
+              <p class="py-2">Po dokončení všetkých úloh zaznie tento zvuk.</p>
+              <audio controls>
+                <source src="../assets/sounds/win.wav" type="audio/wav" />
+              </audio>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services section-->
+    <section id="services">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-9 mb-5">
+            <h2>Zdroje</h2>
+            <p class="lead">
+              V tejto časti sa zaoberáme vypísaním referencií všetkých použitých
+              zdrojov, ktoré sme využili v tomto zážitku na dotvorenie
+              príslušnej scény zameranej na výučbu historických udalostí.
+            </p>
+          </div>
+        </div>
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-4">
+            <h4>Použitá literatúra</h4>
+            <p>
+              Použitá literatúra na popísanie historických udalostí
+              vyzobrazených vo VR scéne.
+            </p>
+            <ul class="icon-list">
+              <li>
+                <a
+                  href="https://sk.wikipedia.org/wiki/M%C3%A1ria_Ter%C3%A9zia"
+                  rel="noopener"
+                  target="_blank"
+                  >Mária Terézia - Wikipédia, 2022</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://sk.wikipedia.org/wiki/Franti%C5%A1ek_I._(Sv%C3%A4t%C3%A1_r%C3%ADmska_r%C3%AD%C5%A1a)"
+                  rel="noopener"
+                  target="_blank"
+                  >František I. Štefan Lotrinský - Wikipédia, 2022</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://sk.wikipedia.org/wiki/Karol_VI._(Sv%C3%A4t%C3%A1_r%C3%ADmska_r%C3%AD%C5%A1a)"
+                  rel="noopener"
+                  target="_blank"
+                  >Karol VI. Habsburský - Wikipédia, 2022</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://sk.wikipedia.org/wiki/Jozef_II._(Sv%C3%A4t%C3%A1_r%C3%ADmska_r%C3%AD%C5%A1a)"
+                  rel="noopener"
+                  target="_blank"
+                  >Jozef II. Habsburský - Wikipédia, 2022</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.mladeleta.sk/dejepis-pre-7-rocnik-zs-a-2-rocnik-gymnazia-s-osemrocnym-studiom#tb1=2"
+                  rel="noopener"
+                  target="_blank"
+                  >Dejepis Pre 7. Ročník Zš a 2. Ročník Gymnázia S Osemročným
+                  Štúdiom. SPN - Mladé letá. Prístupené Marec 23, 2022.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://www.korunovacie.sk/korunovacne-insignie.xhtml"
+                  rel="noopener"
+                  target="_blank"
+                  >Korunovačné slávnosti.
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4">
+            <h4>Licencie (CC)</h4>
+            <p>
+              Licencie na dostupné 3D modely a obrázky pužité v tomto projekte.
+            </p>
+            <ul class="icon-list">
+              <li>
+                <a
+                  href="https://free3d.com/3d-model/crown-hungarian-v1--158072.html"
+                  >Crown Hungarian V1 3D Model</a
+                >
+              </li>
+              <li>
+                <a href="https://skfb.ly/6XyIX"
+                  >"presidential mace" by p.yakubovich is licensed under
+                  Creative Commons Attribution</a
+                >
+              </li>
+              <li>
+                <a href="https://skfb.ly/6XqtZ"
+                  >"Steel Sword" by Peter Primini is licensed under Creative
+                  Commons Attribution</a
+                >
+              </li>
+              <li>
+                <a href="https://skfb.ly/6S8zY"
+                  >"Folded Towel" by Nicothin is licensed under Creative Commons
+                  Attribution</a
+                >
+              </li>
+              <li>
+                <a href="https://skfb.ly/XISE"
+                  >"Pile of books" by Brenwltrs is licensed under Creative
+                  Commons Attribution</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://3dwarehouse.sketchup.com/model/665f11007cfbe8e25fd98072462db6b7/Bratislava-castle"
+                  >Bratislava castle</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://3dwarehouse.sketchup.com/model/8b5af6ed28083ce4ed884fc168c5781/Katedr%C3%A1la-sv-Martina-Bratislava"
+                  >Katedrála sv. Martina ,Bratislava
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:1_thaler_Maria_Theresia_1780.png"
+                  >Windrain, CC BY-SA 4.0, via Wikimedia Commons</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg"
+                  >Tom Lemmens (in collaboration with Heralder), CC BY-SA 3.0,
+                  via Wikimedia Commons</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Kaiserin_Maria_Theresia_(HRR).jpg"
+                  >Martin van Meytens, Public domain, via Wikimedia Commons</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Meytens,_studio_or_circle_of_-_Francis_I,_Holy_Roman_Emperor.png"
+                  >Studio of Martin van Meytens, Public domain, via Wikimedia
+                  Commons</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Portrait_of_Emperor_Charles_VI_in_armour,_decorated_with_the_Order_of_the_Golden_Fleece.jpg"
+                  >Anonymous, Public domain, via Wikimedia Commons</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Joseph_Hickel_-_Emperor_Joseph_II,_pair.png"
+                  >Joseph Hickel, Public domain, via Wikimedia Commons</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h4>A-frame komponenty</h4>
+            <p>Zoznam použitých komponentov na rozšírenie A-frame scény.</p>
+            <ul class="icon-list">
+              <li>
+                <a href="https://www.npmjs.com/package/aframe-physics-system"
+                  >Physics for A-Frame VR</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/wmurphyrd/aframe-physics-extras"
+                  >A-Frame Physics Extras
+                </a>
+              </li>
+              <li>
+                <a href="https://www.npmjs.com/package/aframe-extras"
+                  >A-Frame Extras</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/wmurphyrd/aframe-super-hands-component"
+                  >Super Hands</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/supermedium/superframe/tree/master/components/event-set/"
+                  >aframe-event-set-component</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/supermedium/aframe-environment-component"
+                  >aframe-environment-component</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+      <div class="container px-4">
+        <p class="m-0 text-center text-white">
+          Copyright &copy; Zážitok vo virtuálnej realite - Adam Kašela &amp;
+          Štefan Korečko, 2022
+        </p>
+        <p class="m-0 text-center text-white">
+          Tento produkt vznikol s podporou projektu KEGA č. 048TUKE-4/2022:
+          <q>Technológie zdieľanej virtuálnej reality vo vzdelávacom procese</q
+          >.
+        </p>
+        <p class="m-0 text-center text-white">
+          Laboratórium LIRKIS, KPI FEI, Technická univerzita v Košiciach
+        </p>
+      </div>
+    </footer>
+
+    <script src="../index.js"></script>
+  </body>
+</html>
