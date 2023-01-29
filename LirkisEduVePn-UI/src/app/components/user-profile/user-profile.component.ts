@@ -13,16 +13,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   profile: UserProfile;
 
   profileSubscription: Subscription = new Subscription();
+  isLoaded: boolean = false;
 
   constructor(private _client: BackendService) {
 
   }
 
   ngOnInit(): void {
-    // console.log("Bearer " + localStorage.getItem("jwt-token"))
     this.profileSubscription = this._client.fetchProfile().subscribe(data => {
       this.profile = data as UserProfile;
-      console.log(this.profile);
+      this.isLoaded = true;
     })
   }
 
