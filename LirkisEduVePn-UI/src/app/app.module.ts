@@ -22,6 +22,10 @@ import {AuthGuard} from "./components/auth/auth.guard";
 import {AuthInterceptor} from "./components/auth/auth.interceptor";
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
+import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
+import { HistoryQuizComponent } from './components/history-quiz/history-quiz.component';
 
 
 @NgModule({
@@ -34,7 +38,10 @@ import {MatIconModule} from '@angular/material/icon';
     RegistrationComponent,
     FooterComponent,
     RegistrationComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    JoinQuizComponent,
+    CreateQuizComponent,
+    HistoryQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,8 @@ import {MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     MatSnackBarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

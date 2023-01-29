@@ -1,0 +1,21 @@
+<div class="close">
+    <mat-icon (click)="closeDialog()">close</mat-icon>                 
+</div>
+<p class="boldText heading">Create quiz</p>
+<form class="profileSettings">
+    <input type="text" placeholder="Quiz name*">
+    <input type="text" placeholder="Quiz description">
+    <p class="boldText">Import petri net scenario</p>
+    <div class="petriNet">
+        <select name="petri net" id="petriNet" class="file select mainButton">
+            <option value="predefined">predefined</option>
+            <option value="predefined">predefined</option>
+            <option value="predefined">predefined</option>
+        </select>
+        <button class="file mainButton">
+            <p class="secondaryText">file from system</p>
+            <mat-icon>upload</mat-icon>
+        </button>
+    </div>
+    <button type="submit" id="createQuizBtn" class="mainButton secondaryButton">Create quiz</button>
+</form>

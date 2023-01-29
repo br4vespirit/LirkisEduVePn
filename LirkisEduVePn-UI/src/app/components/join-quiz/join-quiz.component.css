@@ -1,0 +1,40 @@
+.quizOption{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 0.5px solid rgba(30, 30, 30, 0.1);
+}
+
+.quizOption .secondaryText{
+    text-align: left;
+    width: 70%;
+}
+
+.name{
+    display: flex;
+    gap: 1rem;
+}
+
+.language{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language mat-icon{
+    color: var(--purple-color) !important;
+    font-size: 1.3rem;
+    vertical-align: center;
+}
+
+.colorText{
+    color: var(--purple-color) !important;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+

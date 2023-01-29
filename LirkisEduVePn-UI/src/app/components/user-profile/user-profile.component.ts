@@ -2,6 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserProfile} from "../../models/user-profile.model";
 import {Subscription} from "rxjs";
 import {BackendService} from "../../services/backend.service";
+import { MatDialog } from '@angular/material/dialog';
+import { JoinQuizComponent } from '../join-quiz/join-quiz.component';
+import { CreateQuizComponent } from '../create-quiz/create-quiz.component';
+import { HistoryQuizComponent } from '../history-quiz/history-quiz.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,9 +19,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   profileSubscription: Subscription = new Subscription();
   isLoaded: boolean = false;
 
-  constructor(private _client: BackendService) {
-
-  }
+  constructor(private _client: BackendService, private matDialog:MatDialog) {}
 
   ngOnInit(): void {
     this.profileSubscription = this._client.fetchProfile().subscribe(data => {
@@ -29,4 +31,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.profileSubscription.unsubscribe();
   }
+
+  JoinQuizDialogOpen(){
+    this.matDialog.open(JoinQuizComponent);
+  }
+
+  CreateQuizDialogOpen(){
+    this.matDialog.open(CreateQuizComponent);
+  }
+
+  HistoryQuizDialogOpen(){
+    this.matDialog.open(HistoryQuizComponent);
+  }
+
 }

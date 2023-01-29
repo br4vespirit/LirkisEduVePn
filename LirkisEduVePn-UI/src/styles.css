@@ -135,8 +135,51 @@ h5{
   background-color: white;
   border-radius: 3rem;
   padding: 0.7rem 3rem;
-  color: var(--purple-color);
+  color: var(--purple-color) !important;
   font-size: 0.8rem;
   font-weight: 700;
   filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.mat-mdc-dialog-surface{
+  max-width: 70vw;
+  max-height: 70vh;
+  border: none;
+  text-align: center;
+  border-radius: 2rem !important;
+  padding: 1.5rem !important;
+  border: none !important;
+  min-width: 25vw !important;
+}
+
+dialog::backdrop{
+  background: black;
+  opacity: 0.6;
+}
+
+input{
+  border: none;
+  background-color: white;
+  width: 400px;
+  border-radius: 3rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: left;
+  filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.smallBoldText{
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.close{
+  text-align: right;
+  width: 100%;
+}
+
+.heading{
+  font-size: 1.3rem;
+  margin: 1rem 0 !important;
 }
