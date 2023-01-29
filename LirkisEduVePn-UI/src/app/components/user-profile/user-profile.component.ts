@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { JoinQuizComponent } from '../join-quiz/join-quiz.component';
 import { CreateQuizComponent } from '../create-quiz/create-quiz.component';
 import { HistoryQuizComponent } from '../history-quiz/history-quiz.component';
+import { ProfileSettingsComponent } from '../profile-settings/profile-settings.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -42,6 +43,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   HistoryQuizDialogOpen(){
     this.matDialog.open(HistoryQuizComponent);
+  }
+
+  ProfileSettingsDialogOpen(){
+    this.matDialog.open(ProfileSettingsComponent, {
+      data: this.profile
+    });
   }
 
 }

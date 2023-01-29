@@ -141,6 +141,12 @@ h5{
   filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.1));
 }
 
+.secondaryButton{
+  width:85%;
+  color: white !important;
+  background-color: var(--purple-color);
+}
+
 .mat-mdc-dialog-surface{
   max-width: 70vw;
   max-height: 70vh;

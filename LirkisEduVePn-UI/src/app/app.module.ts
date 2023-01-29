@@ -26,6 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
 import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
 import { HistoryQuizComponent } from './components/history-quiz/history-quiz.component';
+import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HistoryQuizComponent } from './components/history-quiz/history-quiz.com
     UserProfileComponent,
     JoinQuizComponent,
     CreateQuizComponent,
-    HistoryQuizComponent
+    HistoryQuizComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,

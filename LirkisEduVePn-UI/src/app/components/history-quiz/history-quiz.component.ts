@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-history-quiz',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HistoryQuizComponent {
 
+    constructor(private matDialogRef: MatDialogRef<HistoryQuizComponent>){}
+
+    closeDialog(){
+      this.matDialogRef.close();
+    }
 }

@@ -9,7 +9,7 @@
         <div>
           <p class="secondaryText">{{profile.role}}</p>
           <p class="boldText">{{profile.firstname}} {{profile.lastname}}</p>
-          <div class="settings" id="profileArrow">
+          <div class="settings" id="profileArrow" (click)="ProfileSettingsDialogOpen()">
             <mat-icon>settings</mat-icon>
             <p class="colorText">Profile settings</p>
           </div>

@@ -1,0 +1,37 @@
+<div class="close">
+    <mat-icon (click)="closeDialog()">close</mat-icon>          
+</div>
+<p class="boldText heading">Profile Settings</p>
+<form class="profileSettings">
+    <div>
+        <!-- <img src="assets/editProfile.svg" alt=""> -->
+        <p class="secondaryText">{{data.role}}</p>
+        <p class="boldText">{{data.firstname}} {{data.lastname}}</p>
+    </div>
+    <div class="input">
+        <div class="label">
+            <p class="smallBoldText">nickname</p>
+            <p class="colorText">change</p>
+        </div>
+        <input type="text" placeholder={{data.nickname}}>
+    </div>
+    <div class="input">
+        <div class="label">
+            <p class="smallBoldText">email</p>
+            <p class="colorText">change</p>
+        </div>
+        <input type="email" placeholder={{data.email}}>
+    </div>
+    <div class="input">
+        <div class="label">
+            <p class="smallBoldText">password</p>
+            <p class="colorText">change</p>
+        </div>
+        <input type="password" placeholder="***********">
+    </div>
+    <button type="submit" class="mainButton secondaryButton">Save</button>
+    <a class="mainButton logout" (click)="logout()">
+        <p>Logout</p>
+        <mat-icon>logout</mat-icon>
+    </a>
+</form>

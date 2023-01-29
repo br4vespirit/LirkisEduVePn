@@ -1,0 +1,29 @@
+.history{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.history h5{
+    padding: 0;
+    margin: 0;
+}
+
+.score, .score h5{
+    font-size: 0.7rem !important;
+}
+
+.quizOption{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 0.5px solid rgba(30, 30, 30, 0.1);
+}
+
+.quizOption .secondaryText{
+    text-align: left;
+    width: 70%;
+}
