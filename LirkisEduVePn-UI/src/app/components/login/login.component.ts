@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {LoginRequest} from "../../models/login-request.model";
 import {UtilsService} from "../../services/utils.service";
+import {TransferService} from "../../services/transfer.service";
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,10 @@ export class LoginComponent {
   form: FormGroup;
   loginUnsuccessful: boolean = false;
   loginSubscription: Subscription = new Subscription();
+  profileSubscription: Subscription = new Subscription();
 
   constructor(private _client: BackendService, private _snackBar: MatSnackBar,
-              private _router: Router, private _utils: UtilsService) {
+              private _router: Router, private _utils: UtilsService, private _transfer: TransferService) {
   }
 
   get email() {
@@ -38,12 +40,13 @@ export class LoginComponent {
   ngOnInit(): void {
     this.form = new FormGroup<any>({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', [Validators.required])
     });
   }
 
   ngOnDestroy(): void {
     this.loginSubscription.unsubscribe();
+    this.profileSubscription.unsubscribe();
   }
 
   login() {
@@ -59,15 +62,17 @@ export class LoginComponent {
           link = '/user/profile'; // TODO change redirect
         localStorage.removeItem("redirect-url");
 
-        this._router.navigateByUrl(link).then(r => r);
+        this.profileSubscription = this._client.fetchProfile().subscribe(profile => {
+          localStorage.setItem("user-profile", JSON.stringify(profile));
+          this._transfer.changeStatus(true);
+          this._router.navigateByUrl(link).then(r => r);
+        });
       },
       error: (response) => {
         if (response.status === 401)
           this.loginUnsuccessful = true;
       }
     })
-
-
   }
 
   openSuccessfulSnackbar() {
