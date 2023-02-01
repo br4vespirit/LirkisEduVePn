@@ -23,10 +23,11 @@ mix
   .sass('src/css/styles.scss', 'dist/css');
 
 mix.js('src/index.js', 'dist/index.js');
+mix.js('src/js/startUpConfig.js', 'dist/js/startUpConfig.js')
 
 mix.browserSync({
   injectChanges: false,
-  proxy: 'http://localhost:8080',
+  proxy: 'http://localhost:3000',
   files: ['dist/**/*']
 });
 
