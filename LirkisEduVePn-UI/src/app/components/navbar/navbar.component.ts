@@ -1,31 +1,33 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {UserProfile} from "../../models/user-profile.model";
 import {Subscription} from "rxjs";
 import {BackendService} from "../../services/backend.service";
+import {TransferService} from "../../services/transfer.service";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy{
-  colapse: boolean = false
-   // @ts-ignore
-  profile: UserProfile;
-  profileSubscription: Subscription = new Subscription();
+export class NavbarComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router, private _client: BackendService) {
+  colapse: boolean = false;
+  isLogged: boolean = false;
+
+  loggedSubscription: Subscription = new Subscription();
+
+  constructor(private router: Router, private _client: BackendService,
+              private _transfer: TransferService) {
   }
 
   ngOnInit(): void {
-    this.profileSubscription = this._client.fetchProfile().subscribe(data => {
-      this.profile = data as UserProfile;
+    this.loggedSubscription = this._transfer.loginStatus$.subscribe(value => {
+      console.log(value);
+      this.isLogged = value;
     })
   }
- 
+
   ngOnDestroy(): void {
-    this.profileSubscription.unsubscribe();
   }
 
   showMenu() {
@@ -39,6 +41,8 @@ export class NavbarComponent implements OnInit, OnDestroy{
   logout() {
     this.colapse = !this.colapse
     localStorage.removeItem("jwt-token");
+    localStorage.removeItem("user-profile");
+    this._transfer.changeStatus(false);
     this.router.navigate(["/login"]).then(r => r);
   }
 }

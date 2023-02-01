@@ -11,19 +11,15 @@
 <div class="sidebar" *ngIf="colapse">
   <div class="flexCol">
       <mat-icon (click)="showMenu()">close</mat-icon>
-      <div class="secondCol">
-          <!-- <img src="assets/profile.svg" alt=""> -->
-          <p class="boldTest">{{profile.firstname}} {{profile.lastname}}</p>
-          <p class="secondaryText">{{profile.role}}</p>
-      </div>
       <div class="secondCol" style="font-size: 24px;">
         <a class="boldTest" routerLink="/about">About</a>
-        <a class="boldTest" routerLink="/login">Login</a>
-        <a class="boldTest" routerLink="/register">Register</a>
+        <a *ngIf="isLogged" class="boldTest" routerLink="/user/profile">Profile</a>
+        <a *ngIf="!isLogged" class="boldTest" routerLink="/login">Login</a>
+        <a *ngIf="!isLogged" class="boldTest" routerLink="/register">Register</a>
       </div>
-      <div>
-        <!-- <a  class="boldTest">Logout</a> -->
-        <mat-icon (click)="logout()">logout</mat-icon>
-      </div>
+    <div *ngIf="isLogged">
+      <!-- <a  class="boldTest">Logout</a> -->
+      <mat-icon (click)="logout()">logout</mat-icon>
+    </div>
       </div>
 </div>
