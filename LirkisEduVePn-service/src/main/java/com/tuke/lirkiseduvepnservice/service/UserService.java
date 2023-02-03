@@ -24,4 +24,8 @@ public class UserService {
             return null;
         return userMapper.daoToDto(user);
     }
+
+    public void enableUser(String email) {
+        userRepository.enableUser(email);
+    }
 }

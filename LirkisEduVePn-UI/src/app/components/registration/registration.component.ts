@@ -101,11 +101,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         this.openUnsuccessfulSnackbar();
       }
     })
-
   }
 
   openSuccessfulSnackbar() {
-    const snackbarRef = this._snackBar.open('Registration successful', 'Go to login', {
+    const snackbarRef = this._snackBar.open('Registration successful. Go to your mailbox to verify mail', 'Go to login', {
       duration: 5000,
     });
 
