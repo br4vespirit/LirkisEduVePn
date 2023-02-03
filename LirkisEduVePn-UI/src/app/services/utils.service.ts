@@ -15,6 +15,7 @@ export class UtilsService {
 
   public logOut() {
     localStorage.removeItem("jwt-token");
+    localStorage.removeItem("user-profile");
   }
 
   public isLoggedIn(): boolean {
@@ -42,7 +43,7 @@ export class UtilsService {
     if (token === null)
       return true;
     let tokenInfo = this.getDecodedAccessToken(token);
-    // console.log(tokenInfo.exp - new Date().getTime() / 1000);
+    console.log(tokenInfo.exp - new Date().getTime() / 1000);
     return tokenInfo.exp - new Date().getTime() / 1000 < 0;
   }
 

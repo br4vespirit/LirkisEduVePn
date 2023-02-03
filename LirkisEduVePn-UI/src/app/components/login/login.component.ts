@@ -17,7 +17,6 @@ export class LoginComponent {
 
   // @ts-ignore
   form: FormGroup;
-  loginUnsuccessful: boolean = false;
   loginSubscription: Subscription = new Subscription();
   profileSubscription: Subscription = new Subscription();
 
@@ -38,6 +37,7 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
+    this.checkProfileUpdate();
     this.form = new FormGroup<any>({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
@@ -69,25 +69,33 @@ export class LoginComponent {
         });
       },
       error: (response) => {
-        if (response.status === 401)
-          this.loginUnsuccessful = true;
+        if (response.status === 401 || response.status === 403)
+          this.openUnsuccessfulSnackbar(response.error);
+        else
+          this.openUnsuccessfulSnackbar("An unexpected error occurred");
       }
     })
   }
 
-  openSuccessfulSnackbar() {
-    const snackbarRef = this._snackBar.open('Registration successful', 'Go to login', {
-      duration: 5000,
-    });
+  checkProfileUpdate() {
+    if (localStorage.getItem("emailChanged") != null && localStorage.getItem("passwordChanged") != null)
+      this.openUpdatedProfileBar("Your login data were changed.\nConfirm your email in your mailbox");
+    else if (localStorage.getItem("emailChanged") != null)
+      this.openUpdatedProfileBar("Your email was changed changed.\nConfirm it in your mailbox");
+    else if (localStorage.getItem("passwordChanged") != null)
+      this.openUpdatedProfileBar("Your password was changed.\nYou can now log in");
+    localStorage.removeItem("emailChanged");
+    localStorage.removeItem("passwordChanged");
+  }
 
-    snackbarRef.onAction().subscribe(() => {
-      this._router.navigate(["/login"]).then(r => r);
-      this._snackBar.dismiss();
+  openUnsuccessfulSnackbar(message: string) {
+    const snackbarRef = this._snackBar.open(message, '', {
+      duration: 5000,
     });
   }
 
-  openUnsuccessfulSnackbar() {
-    const snackbarRef = this._snackBar.open('User with this email is already registered', '', {
+  openUpdatedProfileBar(message: string) {
+    const snackbarRef = this._snackBar.open(message, '', {
       duration: 5000,
     });
   }

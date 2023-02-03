@@ -4,13 +4,13 @@
           <a routerLink="/home"><img src="/assets/logo.svg"></a>
           <a routerLink="/home"><h3>LirkisEduVePn</h3></a>
         </div>
-      <mat-icon (click)="showMenu()" *ngIf="canColapse()">menu</mat-icon>
+      <mat-icon (click)="showMenu()" *ngIf="canColapse()" style="cursor:pointer;">menu</mat-icon>
   </div>
 </div>
 
 <div class="sidebar" *ngIf="colapse">
   <div class="flexCol">
-      <mat-icon (click)="showMenu()">close</mat-icon>
+    <mat-icon (click)="showMenu()" style="cursor:pointer;">close</mat-icon>
       <div class="secondCol" style="font-size: 24px;">
         <a class="boldTest" routerLink="/about">About</a>
         <a *ngIf="isLogged" class="boldTest" routerLink="/user/profile">Profile</a>
@@ -19,7 +19,7 @@
       </div>
     <div *ngIf="isLogged">
       <!-- <a  class="boldTest">Logout</a> -->
-      <mat-icon (click)="logout()">logout</mat-icon>
+      <mat-icon (click)="logout()" style="cursor:pointer;">logout</mat-icon>
     </div>
       </div>
 </div>

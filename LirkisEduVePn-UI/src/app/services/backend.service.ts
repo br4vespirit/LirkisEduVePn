@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {RegistrationRequest} from "../models/registration-request.model";
 import {Observable} from "rxjs";
 import {LoginRequest} from "../models/login-request.model";
+import {ProfileUpdate} from "../models/profile-update.model";
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,13 @@ export class BackendService {
 
   public fetchProfile(): Observable<any> {
     return this._client.get(this.API_URL + "/user/profile", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+    })
+  }
+
+  public updateProfile(profile: ProfileUpdate): Observable<any> {
+    return this._client.patch(this.API_URL + "/user/profile", profile, {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
     })

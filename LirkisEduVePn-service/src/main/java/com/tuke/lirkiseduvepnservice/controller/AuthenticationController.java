@@ -1,5 +1,8 @@
 package com.tuke.lirkiseduvepnservice.controller;
 
+import com.tuke.lirkiseduvepnservice.exception.EmailRegisteredException;
+import com.tuke.lirkiseduvepnservice.exception.IncorrectCurrentPasswordException;
+import com.tuke.lirkiseduvepnservice.exception.PasswordMatchesException;
 import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationRequest;
 import com.tuke.lirkiseduvepnservice.model.dto.RegisterRequest;
 import com.tuke.lirkiseduvepnservice.service.AuthenticationService;
@@ -24,7 +27,10 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<Void> register(@RequestBody AuthenticationRequest request) {
+    public ResponseEntity<Void> register(@RequestBody AuthenticationRequest request) throws
+            IncorrectCurrentPasswordException,
+            EmailRegisteredException,
+            PasswordMatchesException {
         final String token = authenticationService.authenticate(request);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Authorization", token);

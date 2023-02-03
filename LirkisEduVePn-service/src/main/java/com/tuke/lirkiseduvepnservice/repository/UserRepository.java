@@ -15,6 +15,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email);
 
+    @Query(nativeQuery = true, value = "select email from users where id = :id")
+    String findEmailById(Long id);
+
+    @Query(nativeQuery = true, value = "select password from users where id = :id")
+    String findPasswordById(Long id);
+
     @Transactional
     @Modifying
     @Query("UPDATE User a SET a.isEnabled = TRUE WHERE a.email = ?1")
