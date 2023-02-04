@@ -84,7 +84,7 @@ h2{
 
 h3{
   font-size: 1.2rem !important;
-  font-weight: 900 !important; 
+  font-weight: 900 !important;
 }
 
 h4{
@@ -180,12 +180,24 @@ input{
   font-weight: 700;
 }
 
-.close{
+.close {
   text-align: right;
   width: 100%;
 }
 
-.heading{
+.heading {
   font-size: 1.3rem;
   margin: 1rem 0 !important;
+}
+
+.snackbar-success {
+  background-color: white;
+  color: darkgreen;
+  font-size: 14px;
+}
+
+.snackbar-unsuccessful {
+  background-color: white;
+  color: red;
+  font-size: 14px;
 }

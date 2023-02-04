@@ -1,37 +1,85 @@
 <div class="close">
-    <mat-icon (click)="closeDialog()">close</mat-icon>          
+  <mat-icon (click)="closeDialog()" style="cursor:pointer;">close</mat-icon>
 </div>
 <p class="boldText heading">Profile Settings</p>
-<form class="profileSettings">
-    <div>
-        <!-- <img src="assets/editProfile.svg" alt=""> -->
-        <p class="secondaryText">{{data.role}}</p>
-        <p class="boldText">{{data.firstname}} {{data.lastname}}</p>
+<div style="margin-bottom: 20px">
+  <!-- <img src="assets/editProfile.svg" alt=""> -->
+  <p class="secondaryText">{{data.role}}</p>
+  <p class="boldText">{{data.firstname}} {{data.lastname}}</p>
+</div>
+<form (ngSubmit)="updateProfile()" [formGroup]="form" class="profileSettings">
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">nickname</p>
+      <p class="colorText">change</p>
     </div>
-    <div class="input">
-        <div class="label">
-            <p class="smallBoldText">nickname</p>
-            <p class="colorText">change</p>
-        </div>
-        <input type="text" placeholder={{data.nickname}}>
+    <input formControlName="nickname" type="text">
+  </div>
+  <div *ngIf="nickname && nickname.invalid && nickname.touched" class="error-content">
+    <div *ngIf="nickname.hasError('required')">Username is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">email</p>
+      <p class="colorText">change</p>
     </div>
-    <div class="input">
-        <div class="label">
-            <p class="smallBoldText">email</p>
-            <p class="colorText">change</p>
-        </div>
-        <input type="email" placeholder={{data.email}}>
+    <input formControlName="email" type="email">
+  </div>
+  <div *ngIf="email && email.invalid && email.touched" class="error-content">
+    <div *ngIf="email.hasError('required')">Email is required</div>
+    <div *ngIf="email.hasError('email')">Invalid email address</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">firstname</p>
+      <p class="colorText">change</p>
     </div>
-    <div class="input">
-        <div class="label">
-            <p class="smallBoldText">password</p>
-            <p class="colorText">change</p>
-        </div>
-        <input type="password" placeholder="***********">
+    <input formControlName="firstname" type="text">
+  </div>
+  <div *ngIf="firstname && firstname.invalid && firstname.touched" class="error-content">
+    <div *ngIf="firstname.hasError('required')">Firstname is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">lastname</p>
+      <p class="colorText">change</p>
     </div>
-    <button type="submit" class="mainButton secondaryButton">Save</button>
-    <a class="mainButton logout" (click)="logout()">
-        <p>Logout</p>
-        <mat-icon>logout</mat-icon>
-    </a>
+    <input formControlName="lastname" type="text">
+  </div>
+  <div *ngIf="lastname && lastname.invalid && lastname.touched" class="error-content">
+    <div *ngIf="lastname.hasError('required')">Lastname is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">current password</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="currentPassword" placeholder="Enter to set a new password (optional)" type="password">
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">new password</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="newPassword" type="password">
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">repeat new password</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="repeatNewPassword" type="password">
+  </div>
+
+  <button class="mainButton secondaryButton" type="submit">Save</button>
 </form>
+<a (click)="logout()" class="mainButton logout" style="cursor:pointer; margin: 20px auto auto;">
+  <p>Logout</p>
+  <mat-icon>logout</mat-icon>
+</a>

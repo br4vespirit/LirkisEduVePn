@@ -6,6 +6,8 @@ import {JoinQuizComponent} from '../join-quiz/join-quiz.component';
 import {CreateQuizComponent} from '../create-quiz/create-quiz.component';
 import {HistoryQuizComponent} from '../history-quiz/history-quiz.component';
 import {ProfileSettingsComponent} from '../profile-settings/profile-settings.component';
+import {Subscription} from "rxjs";
+import {TransferService} from "../../services/transfer.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -17,13 +19,21 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   profile: UserProfile;
   isLoaded: boolean = false;
 
-  constructor(private _client: BackendService, private matDialog:MatDialog) {}
+  profileChangesSubscription: Subscription = new Subscription();
+
+  constructor(private _client: BackendService, private matDialog: MatDialog, private _transfer: TransferService) {
+
+  }
 
   ngOnInit(): void {
     const parsedProfile = localStorage.getItem("user-profile");
     if (parsedProfile)
       this.profile = JSON.parse(parsedProfile) as UserProfile;
     this.isLoaded = true;
+
+    this.profileChangesSubscription = this._transfer.profileStatus$.subscribe(profile => {
+      this.profile = profile;
+    })
   }
 
   ngOnDestroy(): void {

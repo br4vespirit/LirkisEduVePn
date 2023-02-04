@@ -15,12 +15,17 @@
     justify-content: space-between;
 }
 
-.logout{
-    color: #FF0A0A !important;
-    display: flex;
-    gap: 1rem;
-    margin: 1.5rem 0;
+.logout {
+  color: #FF0A0A !important;
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
-.logout p, .logout mat-icon{
-    opacity: 0.6;
+
+.logout p, .logout mat-icon {
+  opacity: 0.6;
+}
+
+.error-content {
+  color: red;
 }

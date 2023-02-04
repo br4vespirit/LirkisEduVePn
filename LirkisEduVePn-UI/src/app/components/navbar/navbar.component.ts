@@ -20,9 +20,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
               private _transfer: TransferService) {
   }
 
+  // TODO fix navbar when user logged out it still shows in navbar profile and logout buttons
   ngOnInit(): void {
+    if (localStorage.getItem("jwt-token"))
+      this.isLogged = true;
     this.loggedSubscription = this._transfer.loginStatus$.subscribe(value => {
-      console.log(value);
       this.isLogged = value;
     })
   }
