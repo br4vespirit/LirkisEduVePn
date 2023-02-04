@@ -15,6 +15,10 @@
     </div>
     <input formControlName="nickname" type="text">
   </div>
+  <div *ngIf="nickname && nickname.invalid && nickname.touched" class="error-content">
+    <div *ngIf="nickname.hasError('required')">Username is required</div>
+  </div>
+
   <div class="input">
     <div class="label">
       <p class="smallBoldText">email</p>
@@ -22,6 +26,11 @@
     </div>
     <input formControlName="email" type="email">
   </div>
+  <div *ngIf="email && email.invalid && email.touched" class="error-content">
+    <div *ngIf="email.hasError('required')">Email is required</div>
+    <div *ngIf="email.hasError('email')">Invalid email address</div>
+  </div>
+
   <div class="input">
     <div class="label">
       <p class="smallBoldText">firstname</p>
@@ -29,6 +38,10 @@
     </div>
     <input formControlName="firstname" type="text">
   </div>
+  <div *ngIf="firstname && firstname.invalid && firstname.touched" class="error-content">
+    <div *ngIf="firstname.hasError('required')">Firstname is required</div>
+  </div>
+
   <div class="input">
     <div class="label">
       <p class="smallBoldText">lastname</p>
@@ -36,6 +49,10 @@
     </div>
     <input formControlName="lastname" type="text">
   </div>
+  <div *ngIf="lastname && lastname.invalid && lastname.touched" class="error-content">
+    <div *ngIf="lastname.hasError('required')">Lastname is required</div>
+  </div>
+
   <div class="input">
     <div class="label">
       <p class="smallBoldText">current password</p>
@@ -43,6 +60,7 @@
     </div>
     <input formControlName="currentPassword" placeholder="Enter to set a new password (optional)" type="password">
   </div>
+
   <div class="input">
     <div class="label">
       <p class="smallBoldText">new password</p>
@@ -50,6 +68,7 @@
     </div>
     <input formControlName="newPassword" type="password">
   </div>
+
   <div class="input">
     <div class="label">
       <p class="smallBoldText">repeat new password</p>
@@ -57,6 +76,7 @@
     </div>
     <input formControlName="repeatNewPassword" type="password">
   </div>
+
   <button class="mainButton secondaryButton" type="submit">Save</button>
 </form>
 <a (click)="logout()" class="mainButton logout" style="cursor:pointer; margin: 20px auto auto;">
