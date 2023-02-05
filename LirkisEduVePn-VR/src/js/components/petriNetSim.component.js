@@ -1,7 +1,16 @@
 import { SceneEvent } from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
+import Transition from '../modules/transition.mjs';
 import * as serverLogger from '../modules/serverLogger.mjs';
+
+const loadPetrinet = async () => {
+  const net = petriNetLoader.loadXMLDoc('../assets/petriNetFile/28032022_net_exhibition.pnml');
+  return {
+    netData: net,
+    transitions: net.transitions
+  }
+}
 
 AFRAME.registerComponent('petri-net-sim', {
   schema: {
@@ -13,12 +22,17 @@ AFRAME.registerComponent('petri-net-sim', {
   },
   // Do something when component first attached.
   init: function () {
-    var data = this.data;
-    var loadedNet = petriNetLoader.loadXMLDoc(
-      '../assets/petriNetFile/28032022_net_exhibition.pnml'
-    );
-    var net = (this.petriNet = new PetriNet(loadedNet));
-    console.log(net);
+    let data = this.data;
+    
+    // load petri net and array with transitions
+    let net;
+    const Transitions = [];
+    loadPetrinet().then(res => {
+      net = (this.petriNet = new PetriNet(res.netData));
+      res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
+      console.log(Transitions);
+    });
+
     serverLogger.createParseSession(1, new Date(), new Date());
 
     this.transitionEventHandler = () => {
