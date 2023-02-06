@@ -1,3 +1,5 @@
+import { playConfirmationSuccessSound, playConfirmationUnsuccessSound, updateVisualProgres } from '../transitionFunctions';
+
 /**
  * @class
  */
@@ -12,11 +14,14 @@ export default class Transition {
 
 
     ifTransitionEnabled() {
-        // imported function
+        // imported functions
+        playConfirmationSuccessSound(this.transitionName);
+        updateVisualProgres(this.transitionName);
     }
 
     ifTransitionDisabled() {
         // imported function
+        playConfirmationUnsuccessSound(this.transitionName);
     }
 
     always() {
