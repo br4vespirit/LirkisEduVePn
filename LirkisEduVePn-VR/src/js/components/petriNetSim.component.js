@@ -1,7 +1,7 @@
 import { SceneEvent } from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
-import Transition from '../modules/transition.js';
+import Transition from '../modules/transition.mjs';
 import * as serverLogger from '../modules/serverLogger.mjs';
 
 AFRAME.registerComponent('petri-net-sim', {
@@ -32,8 +32,7 @@ AFRAME.registerComponent('petri-net-sim', {
       if (net.isEnabled(data.message)) {
         net.fire(data.message);
         console.log('Transition Enabled');
-        this.playConfirmationSuccessSound(data.message);
-        this.updateVisualProgress(data.message);
+        Transitions.find(el => el.transitionName === data.message).ifTransitionEnabled();
         if (net.getMarking(data.finalPlace) === data.taskCount) {
           this.showFinalMessage();
           this.playVictorySound();
@@ -46,7 +45,7 @@ AFRAME.registerComponent('petri-net-sim', {
           1
         );
       } else {
-        this.playConfirmationUnsuccessSound(data.message);
+        Transitions.find(el => el.transitionName === data.message).ifTransitionDisaled();
         console.log('Transition Not Enabled');
         serverLogger.createParseFiringAttempt(
           1,
@@ -99,15 +98,6 @@ AFRAME.registerComponent('petri-net-sim', {
     }
   },
 
-  remove: function () {
-    // Do something the component or its entity is detached.
-  },
-
-  // eslint-disable-next-line no-unused-vars
-  tick: function (time, timeDelta) {
-    // Do something on every scene tick or frame.
-  },
-
   resolveSceneEvent: function (element, data, handler) {
     switch (data.event) {
       case SceneEvent.enteredPlace:
@@ -128,37 +118,12 @@ AFRAME.registerComponent('petri-net-sim', {
     }
   },
 
-  playConfirmationSuccessSound: function (elementId) {
-    if (elementId.includes('confirm')) {
-      var confirmationEntity = document.querySelector(`#${elementId}`);
-      confirmationEntity.setAttribute('material', 'color: #36c991;');
-      confirmationEntity.setAttribute('text', 'value: Správna odpoveď');
-      confirmationEntity.emit('success');
-    }
-  },
-
-  playConfirmationUnsuccessSound: function (elementId) {
-    if (elementId.includes('confirm')) {
-      var confirmationEntity = document.querySelector(`#${elementId}`);
-      confirmationEntity.emit('unsuccess');
-    }
-  },
 
   playVictorySound: function () {
     var environmentEntity = document.querySelector('#player');
     setTimeout(() => {
       environmentEntity.emit('win');
     }, 2000);
-  },
-
-  updateVisualProgress: function (elementId) {
-    if (elementId.includes('confirm')) {
-      var progressEntity = document.querySelector(`#${elementId}Progress`);
-      progressEntity.setAttribute(
-        'material',
-        'color: green; side: double; shader: flat'
-      );
-    }
   },
 
   showFinalMessage: function () {

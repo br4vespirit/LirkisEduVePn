@@ -1,4 +1,4 @@
-import { playConfirmationSuccessSound, playConfirmationUnsuccessSound, updateVisualProgres } from '../transitionFunctions';
+import { playConfirmationSuccessSound, playConfirmationUnsuccessSound, updateVisualProgres } from '../transitionFunctions.js';
 
 /**
  * @class
