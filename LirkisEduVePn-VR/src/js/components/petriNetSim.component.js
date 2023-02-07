@@ -2,6 +2,7 @@ import { SceneEvent } from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import Transition from '../modules/transition.mjs';
+import Place from '../modules/place.mjs';
 import * as serverLogger from '../modules/serverLogger.mjs';
 
 
@@ -20,10 +21,14 @@ AFRAME.registerComponent('petri-net-sim', {
     // load petri net and array with transitions
     let net;
     const Transitions = [];
+    const Places = [];
+    // regex pattern to find only places we want
+    const pattern = /^P[1-9]{1}$/;
     
     petriNetLoader.loadXMLDoc('../assets/petriNetFile/28032022_net_exhibition.pnml').then(res => {
         net = (this.petriNet = new PetriNet(res));
         res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
+        res.places.filter(ell => pattern.test(ell.name)).forEach(place => Places.push(new Place(place.name)));
     });
 
     // TODO: start session if there isnt one already existing
@@ -47,18 +52,11 @@ AFRAME.registerComponent('petri-net-sim', {
     };
 
     this.changePlaceEventHandler = () => {
-      var taskPanel = document.querySelector(`#task${data.message}`);
-      var prevTaskPanel = document.querySelector(`#task${data.activePlace}`);
-      if (taskPanel) {
-        taskPanel.setAttribute('visible', !taskPanel.getAttribute('visible'));
-        taskPanel.children.item(2).classList.toggle('interactible');
-      } else if (prevTaskPanel) {
-        prevTaskPanel.setAttribute(
-          'visible',
-          !prevTaskPanel.getAttribute('visible')
-        );
-        prevTaskPanel.children.item(2).classList.toggle('interactible');
-      }
+      // var taskPanel = document.querySelector(`#task${data.message}`);
+      // var prevTaskPanel = document.querySelector(`#task${data.activePlace}`);
+      const places = Places.filter(el => (el.placeName === data.message || el.placeName === data.activePlace));
+      console.log(places);
+      places.forEach(el => el.always());
       data.activePlace = data.message;
       console.log(data);
     };
