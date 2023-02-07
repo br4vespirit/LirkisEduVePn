@@ -15,13 +15,6 @@ export const playConfirmationUnsuccessSound = (elementId) => {
     }
 }
 
-export const playVictorySound = () => {
-    var environmentEntity = document.querySelector('#player');
-    setTimeout(() => {
-      environmentEntity.emit('win');
-    }, 2000);
-}
-
 export const updateVisualProgres = (elementId) =>  {
     if (elementId.includes('confirm')) {
       var progressEntity = document.querySelector(`#${elementId}Progress`);
@@ -31,9 +24,3 @@ export const updateVisualProgres = (elementId) =>  {
       );
     }
 }
-
-export const showFinalMessage = () => {
-    var finalMsgEntity = document.querySelector('#gratulationMsg');
-    finalMsgEntity.setAttribute('visible', 'true');
-}
-

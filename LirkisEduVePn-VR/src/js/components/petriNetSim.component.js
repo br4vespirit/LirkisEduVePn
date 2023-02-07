@@ -4,6 +4,7 @@ import PetriNet from '../modules/petriNet.mjs';
 import Transition from '../modules/transition.mjs';
 import * as serverLogger from '../modules/serverLogger.mjs';
 
+
 AFRAME.registerComponent('petri-net-sim', {
   schema: {
     event: { type: 'string', default: 'Scene Loaded' },
@@ -23,39 +24,26 @@ AFRAME.registerComponent('petri-net-sim', {
     petriNetLoader.loadXMLDoc('../assets/petriNetFile/28032022_net_exhibition.pnml').then(res => {
         net = (this.petriNet = new PetriNet(res));
         res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
-        console.log(Transitions);
-    })
+    });
 
+    // TODO: start session if there isnt one already existing
     serverLogger.createParseSession(1, new Date(), new Date());
 
     this.transitionEventHandler = () => {
-      if (net.isEnabled(data.message)) {
+      const transition = Transitions.find(el => el.transitionName === data.message);
+      const isTransitionEnabled = net.isEnabled(data.message);
+      if (isTransitionEnabled) {
         net.fire(data.message);
-        console.log('Transition Enabled');
-        Transitions.find(el => el.transitionName === data.message).ifTransitionEnabled();
+        transition.ifTransitionEnabled();
+        // TODO: multiple ways of ending the task (quit, wrong answers, ..)
         if (net.getMarking(data.finalPlace) === data.taskCount) {
           this.showFinalMessage();
           this.playVictorySound();
         }
-        serverLogger.createParseFiringAttempt(
-          1,
-          data.message,
-          true,
-          new Date(),
-          1
-        );
       } else {
-        Transitions.find(el => el.transitionName === data.message).ifTransitionDisaled();
-        console.log('Transition Not Enabled');
-        serverLogger.createParseFiringAttempt(
-          1,
-          data.message,
-          false,
-          new Date(),
-          1
-        );
+        transition.ifTransitionDisabled();
       }
-      console.log(net);
+      transition.always(isTransitionEnabled);
     };
 
     this.changePlaceEventHandler = () => {
@@ -81,11 +69,7 @@ AFRAME.registerComponent('petri-net-sim', {
     var data = this.data;
     var el = this.el;
     // `event` updated. Remove the previous event listener if it exists.
-    if (
-      oldData.event &&
-      oldData.event === SceneEvent.firedTransition &&
-      data.event !== oldData.event
-    ) {
+    if (oldData.event && oldData.event === SceneEvent.firedTransition && data.event !== oldData.event) {
       el.removeEventListener(oldData.event, this.transitionEventHandler);
     } else {
       el.removeEventListener(oldData.event, this.changePlaceEventHandler);

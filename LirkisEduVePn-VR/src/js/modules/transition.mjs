@@ -24,7 +24,14 @@ export default class Transition {
         playConfirmationUnsuccessSound(this.transitionName);
     }
 
-    always() {
+    /**
+     * 
+     * @param {boolean} isTransitionEnabled - jfkajfk a
+     */
+    always(isTransitionEnabled) {
         // imported function
+        // TODO: log user activity to server
+        //serverLogger.createParseFiringAttempt(1,data.message,true,new Date(),1);
+        console.log(this.transitionName, isTransitionEnabled);
     }
 }
