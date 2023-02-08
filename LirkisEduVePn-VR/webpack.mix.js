@@ -16,6 +16,7 @@ mix
       'src/js/modules/serverLogger.mjs',
       'src/js/modules/petriNetLoader.mjs',
       'src/js/modules/petriNet.mjs',
+      'src/js/modules/transition.mjs',
       'src/js/models/sceneEvent.enum.js'
     ],
     'dist/js/bundle.js'

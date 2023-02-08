@@ -2,13 +2,12 @@
  * @param {string} url - A DOMString representing the URL to send the request to.
  * @returns {import('../models/typedefs').pNet} Returns Object representing petri net.
  */
-export function loadXMLDoc(url) {
-  var xmlhttp = new XMLHttpRequest();
-  var data = { places: [], arcs: [], transitions: [] };
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
+export async function loadXMLDoc(url) {
+      var data = { places: [], arcs: [], transitions: [] };
+      const response = await fetch(url);
+      const pnml = await response.text();
       var parser = new DOMParser();
-      var xmlDoc = parser.parseFromString(this.response, 'text/xml');
+      var xmlDoc = parser.parseFromString(pnml, 'text/xml');
       var obj = xmlToJson(xmlDoc)['pnml:pnml']['pnml:net']['pnml:page'];
       var places = obj['pnml:place'];
       var transitions = obj['pnml:transition'];
@@ -37,11 +36,8 @@ export function loadXMLDoc(url) {
             element['pnml:inscription']['pnml:text']['#text']
           )
         });
-      });
-    }
-  };
-  xmlhttp.open('GET', url, true);
-  xmlhttp.send();
+      })
+
   return data;
 }
 
