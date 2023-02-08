@@ -37,6 +37,9 @@ public class User implements UserDetails {
 
     private boolean isEnabled;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<ConfirmationToken> tokens;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

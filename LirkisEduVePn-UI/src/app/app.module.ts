@@ -23,10 +23,15 @@ import {AuthInterceptor} from "./components/auth/auth.interceptor";
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
-import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
-import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
-import { HistoryQuizComponent } from './components/history-quiz/history-quiz.component';
-import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
+import {JoinQuizComponent} from './components/join-quiz/join-quiz.component';
+import {CreateQuizComponent} from './components/create-quiz/create-quiz.component';
+import {HistoryQuizComponent} from './components/history-quiz/history-quiz.component';
+import {ProfileSettingsComponent} from './components/profile-settings/profile-settings.component';
+import {UsersDashboardComponent} from './components/users-dashboard/users-dashboard.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
+import {UserSettingsComponent} from './components/user-settings/user-settings.component';
 
 
 @NgModule({
@@ -43,7 +48,10 @@ import { ProfileSettingsComponent } from './components/profile-settings/profile-
     JoinQuizComponent,
     CreateQuizComponent,
     HistoryQuizComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    UsersDashboardComponent,
+    ConfirmationDialog,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +65,9 @@ import { ProfileSettingsComponent } from './components/profile-settings/profile-
     MatSnackBarModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

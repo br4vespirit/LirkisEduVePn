@@ -48,4 +48,26 @@ export class BackendService {
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
     })
   }
+
+  public getAllUsers(): Observable<any> {
+    return this._client.get(this.API_URL + "/user/all", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+    })
+  }
+
+  public deleteUserById(id: number): Observable<any> {
+    return this._client.delete(this.API_URL + "/dashboard/users/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+    })
+  }
+
+  public updateUserFromDashboard(profile: ProfileUpdate): Observable<any> {
+    console.log(profile)
+    return this._client.patch(this.API_URL + "/dashboard/users", profile, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+    })
+  }
 }

@@ -6,6 +6,8 @@ import {LoginComponent} from "./components/login/login.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {AuthGuard} from "./components/auth/auth.guard";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
+import {UsersDashboardComponent} from "./components/users-dashboard/users-dashboard.component";
+import {RoleGuard} from "./components/auth/role.guard";
 
 const routes: Routes = [
   {
@@ -35,6 +37,14 @@ const routes: Routes = [
     path: "user/profile",
     component: UserProfileComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "dashboard/users",
+    component: UsersDashboardComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      expectedRole: "ADMIN"
+    }
   },
   {
     path: "**",

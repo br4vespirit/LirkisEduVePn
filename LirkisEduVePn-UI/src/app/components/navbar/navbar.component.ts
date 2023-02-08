@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Subscription} from "rxjs";
 import {BackendService} from "../../services/backend.service";
 import {TransferService} from "../../services/transfer.service";
+import {UserProfile} from "../../models/user-profile.model";
 
 @Component({
   selector: 'app-navbar',
@@ -13,8 +14,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   colapse: boolean = false;
   isLogged: boolean = false;
+  role: string = "";
 
   loggedSubscription: Subscription = new Subscription();
+  roleSubscription: Subscription = new Subscription();
 
   constructor(private router: Router, private _client: BackendService,
               private _transfer: TransferService) {
@@ -24,8 +27,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (localStorage.getItem("jwt-token"))
       this.isLogged = true;
+
+    let user_profile_presents = localStorage.getItem("user-profile")
+    if (user_profile_presents) {
+      let profile: UserProfile = JSON.parse(user_profile_presents);
+      this.role = profile.role;
+    }
+
     this.loggedSubscription = this._transfer.loginStatus$.subscribe(value => {
       this.isLogged = value;
+    });
+    this.roleSubscription = this._transfer.roleStatus$.subscribe(role => {
+      this.role = role;
     })
   }
 

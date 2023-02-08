@@ -14,6 +14,7 @@
       <div class="secondCol" style="font-size: 24px;">
         <a class="boldTest" routerLink="/about">About</a>
         <a *ngIf="isLogged" class="boldTest" routerLink="/user/profile">Profile</a>
+        <a *ngIf="isLogged && role === 'ADMIN'" class="boldTest" routerLink="/dashboard/users">User management</a>
         <a *ngIf="!isLogged" class="boldTest" routerLink="/login">Login</a>
         <a *ngIf="!isLogged" class="boldTest" routerLink="/register">Register</a>
       </div>

@@ -64,6 +64,7 @@ export class LoginComponent {
 
         this.profileSubscription = this._client.fetchProfile().subscribe(profile => {
           localStorage.setItem("user-profile", JSON.stringify(profile));
+          this._transfer.changeRole(profile.role);
           this._transfer.changeStatus(true);
           this._router.navigateByUrl(link).then(r => r);
         });

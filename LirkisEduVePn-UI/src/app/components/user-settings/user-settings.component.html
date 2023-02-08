@@ -1,0 +1,62 @@
+<div class="close">
+  <mat-icon (click)="closeDialog()" style="cursor:pointer;">close</mat-icon>
+</div>
+<p class="boldText heading">Profile Settings</p>
+<!--<div style="margin-bottom: 20px">-->
+<!--  <p class="secondaryText">{{data.role}}</p>-->
+<!--  <p class="boldText">{{data.firstname}} {{data.lastname}}</p>-->
+<!--</div>-->
+<form (ngSubmit)="updateProfile()" [formGroup]="form" class="profileSettings">
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">lastname</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="lastname" type="text">
+  </div>
+  <div *ngIf="lastname && lastname.invalid && lastname.touched" class="error-content">
+    <div *ngIf="lastname.hasError('required')">Lastname is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">firstname</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="firstname" type="text">
+  </div>
+  <div *ngIf="firstname && firstname.invalid && firstname.touched" class="error-content">
+    <div *ngIf="firstname.hasError('required')">Firstname is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">email</p>
+    </div>
+    <input formControlName="email" type="email">
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">nickname</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="nickname" type="text">
+  </div>
+  <div *ngIf="nickname && nickname.invalid && nickname.touched" class="error-content">
+    <div *ngIf="nickname.hasError('required')">Username is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">role</p>
+      <p class="colorText">change</p>
+    </div>
+    <select class="" formControlName="role">
+      <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+    </select>
+  </div>
+
+  <button class="mainButton secondaryButton" type="submit">Save</button>
+</form>
