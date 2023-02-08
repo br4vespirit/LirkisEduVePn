@@ -14,7 +14,6 @@ export default class Place {
 
 
     always() {
-        // imported functions
         const taskPanel = document.querySelector(`#task${this.placeName}`);
         if(taskPanel){
             taskPanel.setAttribute('visible', !taskPanel.getAttribute('visible'));

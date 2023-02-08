@@ -37,6 +37,7 @@ AFRAME.registerComponent('petri-net-sim', {
     this.transitionEventHandler = () => {
       const transition = Transitions.find(el => el.transitionName === data.message);
       const isTransitionEnabled = net.isEnabled(data.message);
+
       if (isTransitionEnabled) {
         net.fire(data.message);
         transition.ifTransitionEnabled();
@@ -48,24 +49,21 @@ AFRAME.registerComponent('petri-net-sim', {
       } else {
         transition.ifTransitionDisabled();
       }
+      // log user activity
       transition.always(isTransitionEnabled);
     };
 
     this.changePlaceEventHandler = () => {
-      // var taskPanel = document.querySelector(`#task${data.message}`);
-      // var prevTaskPanel = document.querySelector(`#task${data.activePlace}`);
       const places = Places.filter(el => (el.placeName === data.message || el.placeName === data.activePlace));
-      console.log(places);
       places.forEach(el => el.always());
       data.activePlace = data.message;
-      console.log(data);
     };
   },
 
   update: function (oldData) {
     // Do something when component's data is updated.
-    var data = this.data;
-    var el = this.el;
+    const data = this.data;
+    const el = this.el;
     // `event` updated. Remove the previous event listener if it exists.
     if (oldData.event && oldData.event === SceneEvent.firedTransition && data.event !== oldData.event) {
       el.removeEventListener(oldData.event, this.transitionEventHandler);
@@ -102,14 +100,14 @@ AFRAME.registerComponent('petri-net-sim', {
 
 
   playVictorySound: function () {
-    var environmentEntity = document.querySelector('#player');
+    const environmentEntity = document.querySelector('#player');
     setTimeout(() => {
       environmentEntity.emit('win');
     }, 2000);
   },
 
   showFinalMessage: function () {
-    var finalMsgEntity = document.querySelector('#gratulationMsg');
+    const finalMsgEntity = document.querySelector('#gratulationMsg');
     finalMsgEntity.setAttribute('visible', 'true');
   }
 });
