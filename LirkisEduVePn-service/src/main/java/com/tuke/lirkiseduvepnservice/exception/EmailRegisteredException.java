@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when user tries to update hs email with already existing one
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Email is already registered")
 public class EmailRegisteredException extends RuntimeException {
 

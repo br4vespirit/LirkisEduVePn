@@ -17,18 +17,37 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Properties;
 
+/**
+ * Configuration class with beans that will be injected in other services, controllers and configuration classes.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
+    /**
+     * JPA repository that manages users table
+     */
     private final UserRepository userRepository;
 
+
+    /**
+     * Bean of an UserDetailsServer type which implements loadUserByUsername() method to retrieve a user by a specific value
+     * as email or username
+     *
+     * @return user details service object with custom loadUserByUsername() method
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+
+    /**
+     * Bean of an AuthenticationProvider type that is used to create a custom Authentication Provider or use some prepared
+     *
+     * @return DaoAuthenticationProvider instance with password encoder and user details service
+     */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -37,23 +56,42 @@ public class ApplicationConfig {
         return authProvider;
     }
 
+
+    /**
+     * Bean of an AuthenticationManager type that is used to authenticate user
+     *
+     * @param config configuration for an Authentication
+     * @return authentication manager instance
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
+
+    /**
+     * Bean of an PasswordEncoder type that is used to encrypt and hash passwords
+     *
+     * @return BcryptPasswordEncoder instance
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+
+    /**
+     * Bean of an JavaMailSender that is used to send email for a specific user
+     *
+     * @return JavaMailSender instance with custom configuration
+     */
     @Bean
-//    @Qualifier("gmailSender")
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("ddmygames08@gmail.com");
+        // TODO do something with this password and try to hash it
         mailSender.setPassword("wrjqtjnrfqaoptfc");
 
         Properties props = mailSender.getJavaMailProperties();

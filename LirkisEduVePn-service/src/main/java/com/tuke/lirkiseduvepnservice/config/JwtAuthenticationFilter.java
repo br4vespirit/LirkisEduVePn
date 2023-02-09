@@ -17,13 +17,33 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * Class that is used authenticate and authorize user
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    /**
+     * Service that provides methods for working with a JWT token
+     */
     private final JwtService jwtService;
+
+
+    /**
+     * Service that load user from a database by his specific data lik username or email. In out project it is email
+     */
     private final UserDetailsService userDetailsService;
 
+
+    /**
+     * Filter that will be invoked after each request to a secure endpoint. Here will be validated JWT token with jwtService
+     * and validate whether user is allowed to access requested endpoint or not.
+     *
+     * @param request     http request with needed information
+     * @param response    http response which can contains some additional information if it is needed
+     * @param filterChain using to invoke next filter in the chain of filters
+     */
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response,

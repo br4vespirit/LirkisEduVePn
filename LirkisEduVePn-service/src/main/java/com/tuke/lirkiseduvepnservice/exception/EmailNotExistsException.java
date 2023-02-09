@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when user tries to authenticate with non-existing email address
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Email not exists")
 public class EmailNotExistsException extends RuntimeException {
 

@@ -21,18 +21,61 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+/**
+ * Service layer class to implement business logic of all methods which are linked with a user authentication
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
 
+    /**
+     * JPA repository to manage user
+     */
     private final UserRepository userRepository;
+
+
+    /**
+     * Implementation of an PasswordEncoder interface to encrypt and match passwords
+     */
     private final PasswordEncoder passwordEncoder;
+
+
+    /**
+     * Service that contains logic with a JWT token
+     */
     private final JwtService jwtService;
+
+
+    /**
+     * Implementation of an AuthenticationManager interface to authenticate user with his credentials
+     */
     private final AuthenticationManager authenticationManager;
+
+
+    /**
+     * Service that implements logic for working with confirmation tokens
+     */
     private final ConfirmationTokenService confirmationTokenService;
+
+
+    /**
+     * Service that implements logic to work with users
+     */
     private final UserService userService;
+
+
+    /**
+     * Implementation of an EmailSender interface to send confirmation to a users' email
+     */
     private final EmailSender emailSender;
 
+
+    /**
+     * Method to register a new user inside a "users" database
+     *
+     * @param request request with a users' registration data
+     * @return true if user was registered otherwise false
+     */
     public boolean register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail()))
             return false;
@@ -54,6 +97,16 @@ public class AuthenticationService {
         return true;
     }
 
+
+    /**
+     * Method to authenticate registered user that has requested som secured API
+     *
+     * @param request user login data to authenticate
+     * @return JWT token that will be used for a further authorization
+     * @throws IncorrectPasswordException exception that will be thrown if user enters incorrect password
+     * @throws EmailNotExistsException    exception that will be thrown if user enters email that doesn't exist
+     * @throws EmailNotVerifiedException  exception that will be thrown if user enters email that is not confirmed
+     */
     public String authenticate(AuthenticationRequest request) throws
             IncorrectPasswordException,
             EmailNotExistsException,
@@ -76,6 +129,12 @@ public class AuthenticationService {
         return jwtService.generateToken(user);
     }
 
+
+    /**
+     * Method to confirm user email via his mailbox
+     *
+     * @param token token that is mapped to a user account that should be confirmed
+     */
     @Transactional
     public void confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService

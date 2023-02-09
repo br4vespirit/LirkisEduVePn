@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data Transfer Object that represents User profile that sends to a client from a server after whenever it needed
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

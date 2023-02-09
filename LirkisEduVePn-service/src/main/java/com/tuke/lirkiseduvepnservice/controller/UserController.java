@@ -14,13 +14,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest endpoints for a user
+ */
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
 
+    /**
+     * Service that contains all necessary logic to perform actions with a user
+     */
     private final UserService userService;
 
+
+    /**
+     * Endpoint that is used to get user profile within a JWT token
+     *
+     * @param servletRequest request which contains JWT token inside Authorization header
+     * @return user profile data
+     */
     @GetMapping("/profile")
     public ResponseEntity<UserProfileDto> get(HttpServletRequest servletRequest) {
         String jwtToken = servletRequest.getHeader("Authorization");
@@ -28,6 +41,16 @@ public class UserController {
         return new ResponseEntity<>(dto, dto == null ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
+
+    /**
+     * Endpoint that is used to update user profile. This endpoint allows user to update his profile by himself
+     *
+     * @param request request with updated user profile data
+     * @return updated user profile data
+     * @throws EmailRegisteredException          when user changes his email and this email is already exists
+     * @throws PasswordMatchesException          when user tries to change his password and entered new password and repeated new password do not matches
+     * @throws IncorrectCurrentPasswordException when user tries to change his password, but he entered incorrectly his current password
+     */
     // TODO if necessary add @Valid to @RequestBody
     @PatchMapping("/profile")
     public ResponseEntity<UserProfileDto> update(@RequestBody ProfileUpdateRequest request) throws
@@ -39,6 +62,11 @@ public class UserController {
                 HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to retrieve all user from a database
+     *
+     * @return list of users profiles
+     */
     @GetMapping("/all")
     public ResponseEntity<List<UserProfileDto>> findAll() {
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);

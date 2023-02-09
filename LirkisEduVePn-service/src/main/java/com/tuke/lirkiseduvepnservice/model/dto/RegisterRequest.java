@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data Transfer Object that represents Registration request that sends from a client to a server after user submitted "register" button
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

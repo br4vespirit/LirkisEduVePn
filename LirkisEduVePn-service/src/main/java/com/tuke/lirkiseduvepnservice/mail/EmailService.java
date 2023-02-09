@@ -10,14 +10,32 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of a EmailSender interface which will email a specific user
+ */
 @Component
 @RequiredArgsConstructor
 public class EmailService implements EmailSender {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
+    /**
+     * Logger that is used to log some errors
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
 
+
+    /**
+     * Object that will email user
+     */
     private final JavaMailSender javaMailSender;
 
+
+    /**
+     * Method that is used to send email for a user
+     *
+     * @param to   mail address of a user
+     * @param name name + surname of a user as a concatenated string
+     * @param link link with confirmation token as request parameter which is catching in AuthenticationController endpoint
+     */
     @Override
     @Async
     public void send(String to, String name, String link) {
@@ -35,6 +53,14 @@ public class EmailService implements EmailSender {
         }
     }
 
+
+    /**
+     * HTML builder of an email
+     *
+     * @param name mail address of a user
+     * @param link name + surname of a user as a concatenated string
+     * @return HTML message in a string format
+     */
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +

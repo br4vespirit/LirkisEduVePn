@@ -14,19 +14,56 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * Service layer class to implement business logic of methods which are linked with User
+ */
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
+    /**
+     * Mapper to map between DAO and DTO users
+     */
     private final UserMapper userMapper;
+
+
+    /**
+     * JPA repository for a user management
+     */
     private final UserRepository userRepository;
+
+
+    /**
+     * Service that contains logic with a JWT token
+     */
     private final JwtService jwtService;
+
+
+    /**
+     * Implementation of an PasswordEncoder interface to encrypt and match passwords
+     */
     private final PasswordEncoder passwordEncoder;
+
+
+    /**
+     *
+     */
     private final EmailService emailService;
+
+
+    /**
+     * Service that implements logic for working with confirmation tokens
+     */
     private final ConfirmationTokenService confirmationTokenService;
 
+
+    /**
+     * Method to get user profile data with given JWT token
+     *
+     * @param jwt token to decode
+     * @return user profile data
+     */
     public UserProfileDto get(String jwt) {
         if (jwt == null)
             return null;
@@ -37,10 +74,27 @@ public class UserService {
         return userMapper.daoToDto(user);
     }
 
+
+    /**
+     * Method to enable user account by his email
+     *
+     * @param email email of user to be enabled
+     */
     public void enableUser(String email) {
         userRepository.enableUser(email);
     }
 
+
+    /**
+     * Method to update user from user settings, user perform update by himself.
+     * When user changes his email, his account becomes disabled anf new confirmation token creates and email with confirmation sends to a user mailbox
+     *
+     * @param request updated data received from a client
+     * @return updated user profile data
+     * @throws EmailRegisteredException          when user changes his email and this email is already exists
+     * @throws PasswordMatchesException          when user tries to change his password and entered new password and repeated new password do not matches
+     * @throws IncorrectCurrentPasswordException when user tries to change his password, but he entered incorrectly his current password
+     */
     public UserProfileDto update(ProfileUpdateRequest request) throws
             EmailRegisteredException,
             PasswordMatchesException,
@@ -61,7 +115,6 @@ public class UserService {
                 throw new PasswordMatchesException("Passwords are mismatched");
             else {
                 final String password = userRepository.findPasswordById(request.getId());
-                String t = passwordEncoder.encode(password);
                 if (!passwordEncoder.matches(request.getCurrentPassword(), password))
                     throw new IncorrectCurrentPasswordException("Incorrect current password");
                 toChangePassword = true;
@@ -87,10 +140,16 @@ public class UserService {
         return userMapper.daoToDto(user);
     }
 
+
+    /**
+     * Method to retrieve all users from database and map them to to their profile then
+     *
+     * @return list of users profiles
+     */
     public List<UserProfileDto> findAll() {
         return userRepository.findAll()
                 .stream()
                 .map(userMapper::daoToDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

@@ -16,14 +16,29 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+/**
+ * Configuration of a spring security
+ */
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig {
 
+    /**
+     * JWT authentication filter that is used to authenticate and authorize user oce per request
+     */
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+
+    /**
+     * Authentication provider that provides som logic of authentication
+     */
     private final AuthenticationProvider authenticationProvider;
 
+
+    /**
+     * Bean of an SecurityFilterChain type that is used to configure security in a project
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -42,6 +57,13 @@ public class SecurityConfig {
         return http.build();
     }
 
+
+    /**
+     * Bean of an CorsConfigurationSource type that is used to configure CORS in requests and allow in for a specific
+     * origins, methods, headers etc.
+     *
+     * @return CorsConfigurationSource instance that is used inside SecurityFilterChain configuration
+     */
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

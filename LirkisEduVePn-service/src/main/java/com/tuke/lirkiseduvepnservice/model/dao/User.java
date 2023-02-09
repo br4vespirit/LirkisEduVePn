@@ -10,6 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Entity, that represents table users. It consists from standard fields like nickname, firstname, lastname,
+ * from authentication data as email, password, role and if account is enabled or not and some additional data like
+ * confirmation tokens and others.
+ */
 @Entity
 @Table(name = "users")
 @Builder
@@ -38,7 +43,7 @@ public class User implements UserDetails {
     private boolean isEnabled;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<ConfirmationToken> tokens;
+    private transient List<ConfirmationToken> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

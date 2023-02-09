@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when user tries to authenticate with incorrect password
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Password is incorrect")
 public class IncorrectPasswordException extends RuntimeException {
 

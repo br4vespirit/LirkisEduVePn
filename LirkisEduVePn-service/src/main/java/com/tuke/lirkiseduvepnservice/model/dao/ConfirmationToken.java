@@ -8,6 +8,10 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * Entity that validates whether user had activated his account or not. Firstly, when user registers, confirmation token
+ * creates and email with confirmation sends to a user mailbox. User account will be blocked until he confirms it in email
+ */
 @Entity
 @Getter
 @Setter

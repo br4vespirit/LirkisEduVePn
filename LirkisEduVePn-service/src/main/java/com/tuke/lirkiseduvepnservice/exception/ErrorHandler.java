@@ -5,6 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * Handler that is used to handle exceptions that has been thrown from a controllers and return a specific Http status to a user
+ * instead of using default spring /error handler
+ */
 @ControllerAdvice
 public class ErrorHandler {
 
