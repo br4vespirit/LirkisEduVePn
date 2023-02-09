@@ -1,16 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+// @ts-ignore
+
+import {Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+// import 'aframe';
 import 'aframe-environment-component';
 import 'aframe-physics-extras';
 import 'aframe-extras';
 import 'aframe-event-set-component';
 import 'super-hands';
 
+import './js/components/toggleInfo.component.js';
+import './js/components/clkMultiEventHandler.component.js';
+import './js/components/clkSingleEventHandler.component.js';
+import './js/components/collisionDetectorEventHandler.component.js';
+import './js/components/petriNetSim.component.js';
+
+
 @Component({
   selector: 'app-scene',
   templateUrl: './scene.component.html',
   styleUrls: ['./scene.component.css']
 })
-export class SceneComponent {
+export class SceneComponent  {
   // items = [
   //   { id: 'museum', uri: '../assets/3dModels/museum_final.glb' },
   //   { id: 'navmesh', uri: '../assets/3dModels/navMesh.glb' },

@@ -35,6 +35,13 @@ import {UserSettingsComponent} from './components/user-settings/user-settings.co
 import { SceneComponent } from './components/scene/scene.component';
 
 
+// @ts-ignore
+import * as AFRAME from "aframe";
+declare global {
+  interface Window { AFRAME: any; }
+}
+window.AFRAME = AFRAME;
+
 @NgModule({
   declarations: [
     AppComponent,
