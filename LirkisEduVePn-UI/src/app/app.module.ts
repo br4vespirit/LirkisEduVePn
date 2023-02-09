@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -32,6 +32,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
 import {UserSettingsComponent} from './components/user-settings/user-settings.component';
+import { SceneComponent } from './components/scene/scene.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {UserSettingsComponent} from './components/user-settings/user-settings.co
     ProfileSettingsComponent,
     UsersDashboardComponent,
     ConfirmationDialog,
-    UserSettingsComponent
+    UserSettingsComponent,
+    SceneComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ import {UserSettingsComponent} from './components/user-settings/user-settings.co
   ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
