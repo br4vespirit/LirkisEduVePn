@@ -2,11 +2,12 @@
 
 import {Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 // import 'aframe';
-import 'aframe-environment-component';
-import 'aframe-physics-extras';
-import 'aframe-extras';
-import 'aframe-event-set-component';
-import 'super-hands';
+// import 'aframe-environment-component';
+// import 'aframe-physics-extras';
+// import 'aframe-extras';
+// import 'aframe-event-set-component';
+// import 'super-hands';
+// import 'src/bundle.js';
 
 import './js/components/toggleInfo.component.js';
 import './js/components/clkMultiEventHandler.component.js';

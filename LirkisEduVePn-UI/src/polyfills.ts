@@ -54,6 +54,13 @@
  */
 
 import 'aframe';
+import 'super-hands';
+import 'aframe-event-set-component';
+// import 'aframe-physics-system';
+import './bundle.js';
+import 'aframe-extras';
+import 'aframe-physics-extras';
+import 'aframe-environment-component';
 
 
 
