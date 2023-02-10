@@ -1,9 +1,9 @@
-<a-scene #scene
+<a-scene
   renderer="colorManagement: true"
   light="defaultLightsEnabled: false"
   shadow="type: pcfsoft"
   petri-net-sim="finalPlace: final; taskCount: 3"
-  gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+  gltf-model="dracoDecoderPath: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/'"
   physics="gravity: 0">
   <!-- Load Assets -->
   <a-assets>
@@ -60,7 +60,7 @@
     <img
       id="karol"
       src="../assets/images/Portrait_of_Emperor_Charles_VI_in_armour,_decorated_with_the_Order_of_the_Golden_Fleece-min.jpg" />
-    <img [attr.id]="'controls'" [attr.src]="'../assets/images/Keyboard_controls.jpeg'" crossorigin="anonymous"/>
+    <img id="controls" src="../assets/images/Keyboard_controls.png" />
     <img id="museumMap" src="../assets/images/museum-map.png" />
     <img id="infoPanel" src="../assets/images/Panel.png" />
     <img id="infoIcon" src="../assets/images/info-circle.png" />
@@ -86,15 +86,15 @@
     id="player"
     geometry="primitive: cylinder; radius: 0.3"
     material="color: green; wireframe: true; visible: false"
-    [attr.position]="'8.275 1 2.93'"
-    movement-controls
+    position="8.275 1 2.93"
+    movement-controls="constrainToNavMesh: true"
     static-body
     sound="src: #win; on: win; poolSize: 1;">
     <a-entity
       id="playerhead"
       body="type: static; shape: sphere; sphereRadius: 0.001"
       camera
-      [attr.position]="'0 1.75 0'"
+      position="0 1.75 0"
       look-controls="pointerLockEnabled:true"
       super-hands="colliderEvent: raycaster-intersection;
                              colliderEventProperty: els;
@@ -105,14 +105,14 @@
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
-        [attr.position]="'0 0 -1'"></a-entity>
+        position="0 0 -1"></a-entity>
     </a-entity>
   </a-entity>
 
   <!-- Map and navigationMesh ---------------------------------------------------------------------->
-  <a-entity gltf-model="#museum" position="0 1 16"></a-entity>
+  <a-gltf-model src="#museum" position="0 1 16"></a-gltf-model>
   <a-entity
-    id = "navmeshEntity"
+    gltf-model="#navmesh"
     position="0 1 16"
     visible="false"
     nav-mesh></a-entity>
@@ -154,13 +154,12 @@
       anchor="left">
     </a-text>
     <a-plane
-      [attr.id]="'controlsEntity'"
-      [attr.src]="'#controls'"
-      [attr.scale]="'3 1.5 0'"
-      [attr.height]="'auto'"
-      [attr.width]="'auto'"
-      [attr.position]="'1.76035 -2.26774 0.00962'"
-      [attr.material]="'transparent: true; shader: flat'">
+      src="#controls"
+      scale="3 1.5 0"
+      height="auto"
+      width="auto"
+      position="1.76035 -2.26774 0.00962"
+      material="transparent: true; shader: flat">
     </a-plane>
   </a-entity>
 
@@ -190,8 +189,8 @@
     id="map"
     src="#museumMap"
     scale="4.79 3.23 0.00001"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     position="8.21406 4.35163 7.976"
     rotation="0 180 0"
     material="transparent: true; shader: flat">
@@ -218,8 +217,8 @@
   <a-plane
     src="#erb"
     scale="2 2.42 2"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     rotation="0 180 0"
     position="8.248 3.374 -2.099">
     <a-entity
@@ -240,8 +239,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.02688 1.216 0">
           <a-text
@@ -285,8 +284,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.awidth]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.02688 1.216 0">
           <a-text
@@ -330,8 +329,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.02688 1.216 0">
           <a-text
@@ -379,8 +378,8 @@
     id="taskP1"
     src="#infoPanel"
     material="transparent: true; shader: flat"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     scale="1.2 1.170 1"
     position="-5.7592 2.3 13.02616"
     rotation="-8.68 180 0"
@@ -422,8 +421,8 @@
   <a-plane
     src="#maria"
     scale="2 2.42 2"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     rotation="0 -90 0"
     position="-2.177 3.354 11.266">
     <a-entity
@@ -453,8 +452,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -483,8 +482,8 @@
   <a-plane
     src="#karol"
     scale="2 2.42 2"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     rotation="0 -90 0"
     position="-2.177 3.354 8.379">
     <a-entity
@@ -514,8 +513,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -544,8 +543,8 @@
   <a-plane
     src="#jozef"
     scale="2 2.42 2"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     rotation="0 90 0"
     position="-9.518 3.354 11.266">
     <a-entity
@@ -575,8 +574,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -605,8 +604,8 @@
   <a-plane
     src="#frantisek"
     scale="2 2.42 2"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     rotation="0 90 0"
     position="-9.518 3.354 8.379">
     <a-entity
@@ -636,8 +635,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -680,8 +679,8 @@
     src="#infoPanel"
     material="transparent: true; shader: flat"
     visible="false"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     scale="1.2 1.170 1"
     position="-5.7592 2.3 -6.5"
     rotation="-8.68 0 0">
@@ -759,8 +758,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -826,8 +825,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -893,8 +892,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -960,8 +959,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.19709 1.216 0">
           <a-text
@@ -1048,8 +1047,8 @@
     src="#infoPanel"
     material="transparent: true; shader: flat"
     visible="false"
-    [attr.height]="'auto'"
-    [attr.width]="'auto'"
+    height="auto"
+    width="auto"
     scale="1.2 1.170 1"
     position="19.584 2.35122 -4.565"
     rotation="-8.68 0 0">
@@ -1105,8 +1104,8 @@
           src="#infoPanel"
           visible="false"
           material="transparent: true; opacity: 0.95; shader: flat"
-          [attr.height]="'auto'"
-          [attr.width]="'auto'"
+          height="auto"
+          width="auto"
           scale="1.5 2 1"
           position="-0.02688 1.216 0">
           <a-text
@@ -1227,5 +1226,3 @@
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
 </a-scene>
-
-
