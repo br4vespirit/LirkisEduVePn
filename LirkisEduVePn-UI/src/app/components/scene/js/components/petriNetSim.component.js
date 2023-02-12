@@ -17,14 +17,14 @@ AFRAME.registerComponent('petri-net-sim', {
   // Do something when component first attached.
   init: function () {
     let data = this.data;
-    
+
     // load petri net and array with transitions
     let net;
     const Transitions = [];
     const Places = [];
     // regex pattern to find only places we want
     const pattern = /^P[1-9]{1}$/;
-    
+
     petriNetLoader.loadXMLDoc('../assets/petriNetFile/28032022_net_exhibition.pnml').then(res => {
         net = (this.petriNet = new PetriNet(res));
         res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));

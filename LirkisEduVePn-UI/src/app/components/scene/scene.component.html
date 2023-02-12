@@ -3,7 +3,7 @@
   light="defaultLightsEnabled: false"
   shadow="type: pcfsoft"
   petri-net-sim="finalPlace: final; taskCount: 3"
-  gltf-model="dracoDecoderPath: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/'"
+  gltf-model="dracoDecoderPath: ''"
   physics="gravity: 0">
   <!-- Load Assets -->
   <a-assets>
@@ -16,7 +16,7 @@
     <audio id="win" src="../assets/sounds/win.wav"></audio>
     <a-asset-item
       id="museum"
-      src="../assets/3dModels/museum_final.glb"></a-asset-item>
+      src="../assets/3dModels/museum_final.gltf"></a-asset-item>
     <a-asset-item
       id="navmesh"
       src="../assets/3dModels/navMesh.glb"></a-asset-item>
@@ -110,7 +110,7 @@
   </a-entity>
 
   <!-- Map and navigationMesh ---------------------------------------------------------------------->
-  <a-gltf-model src="#museum" position="0 1 16"></a-gltf-model>
+  <a-entity gltf-model="#museum" position="0 1 16"></a-entity>
   <a-entity
     gltf-model="#navmesh"
     position="0 1 16"
