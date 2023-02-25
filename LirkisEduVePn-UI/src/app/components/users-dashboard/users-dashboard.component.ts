@@ -19,7 +19,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
 
   // @ts-ignore
   dataSource: MatTableDataSource;
-  displayedColumns = ["firstname", "lastname", "email", "username", "role", "actions"];
+  displayedColumns = ["firstname", "lastname", "email", "username", "role", "groups", "actions"];
 
   users: UserProfile[] = [];
   admin_id: number = 0;
@@ -68,9 +68,9 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
 
   editUser(id: number) {
     let profile: UserProfile = new UserProfile();
-    for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].id === id) {
-        profile = this.users[i];
+    for (const element of this.users) {
+      if (element.id === id) {
+        profile = element;
         break;
       }
     }

@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {BackendService} from "../../services/backend.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {Group} from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-registration',
@@ -17,9 +18,12 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   passwordsMatch: boolean = true;
-  // emailExists: boolean = false;
+
+  groupsSubscription: Subscription = new Subscription();
 
   registrationUserSubscription: Subscription = new Subscription();
+
+  _groups: Group[] = [];
 
   constructor(private _client: BackendService, private _snackBar: MatSnackBar,
               private _router: Router) {
@@ -61,23 +65,33 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     return null;
   }
 
+  get groups() {
+    if (this.form)
+      return this.form.controls['groups'];
+    return null;
+  }
+
   ngOnInit(): void {
+    this.groupsSubscription = this._client.getGroups().subscribe(data => {
+      this._groups = data as Group[];
+    })
     this.form = new FormGroup<any>({
       username: new FormControl('', [Validators.required]),
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
+      groups: new FormControl('', [])
     });
   }
 
   ngOnDestroy(): void {
     this.registrationUserSubscription.unsubscribe();
+    this.groupsSubscription.unsubscribe();
   }
 
   register() {
-    // this.emailExists = false;
     if (this.password?.value != this.confirmPassword?.value) {
       this.passwordsMatch = false;
       return;
@@ -87,7 +101,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       this.email?.value,
       this.password?.value,
       this.firstname?.value,
-      this.lastname?.value
+      this.lastname?.value,
+      this.groups?.value
     );
 
     this.registrationUserSubscription = this._client.register(request).subscribe({
@@ -95,8 +110,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         this.form.reset({});
         this.openSuccessfulSnackbar();
       },
-      error: (response) => {
-        // this.emailExists = true;
+      error: () => {
         this.form.reset({});
         this.openUnsuccessfulSnackbar();
       }
@@ -115,7 +129,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   openUnsuccessfulSnackbar() {
-    const snackbarRef = this._snackBar.open('User with this email is already registered', '', {
+    this._snackBar.open('User with this email is already registered', '', {
       duration: 5000,
     });
   }

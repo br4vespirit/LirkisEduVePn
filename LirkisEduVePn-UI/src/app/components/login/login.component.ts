@@ -59,7 +59,7 @@ export class LoginComponent {
 
         let link: string = localStorage.getItem("redirect-url") as string;
         if (link === null)
-          link = '/user/profile'; // TODO change redirect
+          link = '/user/profile';
         localStorage.removeItem("redirect-url");
 
         this.profileSubscription = this._client.fetchProfile().subscribe(profile => {
@@ -90,13 +90,13 @@ export class LoginComponent {
   }
 
   openUnsuccessfulSnackbar(message: string) {
-    const snackbarRef = this._snackBar.open(message, '', {
+    this._snackBar.open(message, '', {
       duration: 5000,
     });
   }
 
   openUpdatedProfileBar(message: string) {
-    const snackbarRef = this._snackBar.open(message, '', {
+    this._snackBar.open(message, '', {
       duration: 5000,
     });
   }

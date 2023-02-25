@@ -6,9 +6,11 @@ import com.tuke.lirkiseduvepnservice.exception.IncorrectPasswordException;
 import com.tuke.lirkiseduvepnservice.mail.EmailSender;
 import com.tuke.lirkiseduvepnservice.model.Role;
 import com.tuke.lirkiseduvepnservice.model.dao.ConfirmationToken;
+import com.tuke.lirkiseduvepnservice.model.dao.Group;
 import com.tuke.lirkiseduvepnservice.model.dao.User;
 import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationRequest;
 import com.tuke.lirkiseduvepnservice.model.dto.RegisterRequest;
+import com.tuke.lirkiseduvepnservice.repository.GroupRepository;
 import com.tuke.lirkiseduvepnservice.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Service layer class to implement business logic of all methods which are linked with a user authentication
@@ -69,6 +73,8 @@ public class AuthenticationService {
      */
     private final EmailSender emailSender;
 
+    private final GroupRepository groupRepository;
+
 
     /**
      * Method to register a new user inside a "users" database
@@ -79,6 +85,13 @@ public class AuthenticationService {
     public boolean register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail()))
             return false;
+        List<Group> groups = new ArrayList<>();
+        if (request.getGroups() != null) {
+            for (Long groupId : request.getGroups()) {
+                groups.add(groupRepository.findById(groupId).orElse(null));
+            }
+        }
+
         User user = User.builder()
                 .nickname(request.getNickname())
                 .email(request.getEmail())
@@ -86,6 +99,7 @@ public class AuthenticationService {
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .role(Role.STUDENT)
+                .groups(groups)
                 .build();
         userRepository.save(user);
         String confirmationToken = confirmationTokenService.generateConfirmationToken(user);

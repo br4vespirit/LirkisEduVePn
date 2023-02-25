@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * Data Transfer Object that represents User profile that sends to a client from a server after whenever it needed
  */
@@ -17,4 +19,5 @@ public class UserProfileDto {
     private String nickname;
     private String email;
     private String role;
+    private List<GroupDto> groups;
 }

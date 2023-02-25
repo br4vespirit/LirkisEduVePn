@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * Data Transfer Object that represents Registration request that sends from a client to a server after user submitted "register" button
  */
@@ -16,4 +18,5 @@ public class RegisterRequest {
     private String password;
     private String firstname;
     private String lastname;
+    private List<Long> groups;
 }

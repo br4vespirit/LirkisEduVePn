@@ -52,13 +52,17 @@
             <div *ngIf="!passwordsMatch">Passwords do not match</div>
           </div>
 
+          <div class="input">
+            <mat-select formControlName="groups" multiple placeholder="Choose groups">
+              <mat-option *ngFor="let group of _groups" [value]="group.id">
+                {{group.name}}
+              </mat-option>
+            </mat-select>
+          </div>
+
         </div>
         <button [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Register</button>
       </form>
-
-      <!--      <div *ngIf="emailExists" class="error-content">-->
-      <!--        <span>User with this email is already exists</span>-->
-      <!--      </div>-->
 
       <div style="text-align: center;">
         <p class="secondaryText">Already have an account ?</p>

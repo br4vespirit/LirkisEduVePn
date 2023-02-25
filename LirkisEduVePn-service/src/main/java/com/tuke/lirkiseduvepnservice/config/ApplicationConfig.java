@@ -91,7 +91,6 @@ public class ApplicationConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("ddmygames08@gmail.com");
-        // TODO do something with this password and try to hash it
         mailSender.setPassword("wrjqtjnrfqaoptfc");
 
         Properties props = mailSender.getJavaMailProperties();

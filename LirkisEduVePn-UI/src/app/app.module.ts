@@ -32,6 +32,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
 import {UserSettingsComponent} from './components/user-settings/user-settings.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {UserSettingsComponent} from './components/user-settings/user-settings.co
     MatIconModule,
     MatDialogModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule
   ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

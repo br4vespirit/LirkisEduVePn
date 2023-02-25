@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Rest controller for admin dashboard
  */
-// TODO разрешить ендпоинт только для админ роли
 @RestController
 @RequestMapping("/api/v1/dashboard")
 @RequiredArgsConstructor

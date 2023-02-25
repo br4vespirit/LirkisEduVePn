@@ -9,6 +9,7 @@ import {BackendService} from "../../services/backend.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ProfileUpdate} from "../../models/profile-update.model";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Group} from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-user-settings',
@@ -20,7 +21,11 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   form: FormGroup;
   roles: string[] = ['STUDENT', 'TEACHER', 'ADMIN']
 
+  groupsSubscription: Subscription = new Subscription();
+
   profile_update_subscription: Subscription = new Subscription();
+
+  _groups: Group[] = [];
 
   constructor(private matDialogRef: MatDialogRef<UserSettingsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: UserProfile,
@@ -60,25 +65,39 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
     return null;
   }
 
+  get groups() {
+    if (this.form)
+      return this.form.controls['groups'];
+    return null;
+  }
+
   closeDialog() {
     this.matDialogRef.close();
   }
 
   ngOnInit(): void {
     let profile: UserProfile = this.data;
+    console.log(profile.groups)
     this.form = new FormGroup<any>({
       email: new FormControl(profile.email, [Validators.required, Validators.email]),
       nickname: new FormControl(profile.nickname, [Validators.required]),
       firstname: new FormControl(profile.firstname, [Validators.required]),
       lastname: new FormControl(profile.lastname, [Validators.required]),
-      role: new FormControl(profile.role, [Validators.required])
+      role: new FormControl(profile.role, [Validators.required]),
+      groups: new FormControl('', [])
     });
     this.form.controls['email'].disable();
+
+    this.groupsSubscription = this._client.getGroups().subscribe(data => {
+      this._groups = data as Group[]
+      this.autocompleteGroups(profile);
+    })
   }
 
   ngOnDestroy(): void {
     this.matDialogRef.close();
     this.profile_update_subscription.unsubscribe();
+    this.groupsSubscription.unsubscribe();
   }
 
   updateProfile() {
@@ -89,6 +108,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
       firstname: this.firstname?.value,
       lastname: this.lastname?.value,
       role: this.role?.value,
+      groups: this.groups?.value,
     })
 
     this.profile_update_subscription = this._client.updateUserFromDashboard(profile).subscribe({
@@ -114,8 +134,21 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
       nickname: profile.nickname,
       firstname: profile.firstname,
       lastname: profile.lastname,
-      role: profile.role
+      role: profile.role,
+      groups: profile.groups
     })
+  }
+
+  private autocompleteGroups(profile: UserProfile) {
+    let gr: Group[] = [];
+    this._groups.forEach((group: Group) => {
+      profile.groups.forEach((g: Group) => {
+        if (g.id === group.id) {
+          gr.push(group);
+        }
+      });
+    });
+    this.form.controls['groups'].setValue(gr);
   }
 
   openSuccessfulSnackbar() {

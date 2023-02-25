@@ -38,28 +38,28 @@ export class BackendService {
   public fetchProfile(): Observable<any> {
     return this._client.get(this.API_URL + "/user/profile", {
       responseType: "json",
-      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
 
   public updateProfile(profile: ProfileUpdate): Observable<any> {
     return this._client.patch(this.API_URL + "/user/profile", profile, {
       responseType: "json",
-      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
 
   public getAllUsers(): Observable<any> {
     return this._client.get(this.API_URL + "/user/all", {
       responseType: "json",
-      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
 
   public deleteUserById(id: number): Observable<any> {
     return this._client.delete(this.API_URL + "/dashboard/users/" + id, {
       responseType: "json",
-      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
 
@@ -67,7 +67,13 @@ export class BackendService {
     console.log(profile)
     return this._client.patch(this.API_URL + "/dashboard/users", profile, {
       responseType: "json",
-      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token") as string}
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public getGroups(): Observable<any> {
+    return this._client.get(this.API_URL + "/group", {
+      responseType: "json"
     })
   }
 }

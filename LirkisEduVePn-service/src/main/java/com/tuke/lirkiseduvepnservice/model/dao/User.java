@@ -40,10 +40,21 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @ManyToMany
+    @JoinTable(
+            name = "users_groups",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id")
+    )
+    private List<Group> groups;
+
+    @OneToMany(mappedBy = "user")
+    private List<TaskSession> taskSessions;
+
     private boolean isEnabled;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private transient List<ConfirmationToken> tokens;
+    private List<ConfirmationToken> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -51,7 +51,6 @@ public class UserController {
      * @throws PasswordMatchesException          when user tries to change his password and entered new password and repeated new password do not matches
      * @throws IncorrectCurrentPasswordException when user tries to change his password, but he entered incorrectly his current password
      */
-    // TODO if necessary add @Valid to @RequestBody
     @PatchMapping("/profile")
     public ResponseEntity<UserProfileDto> update(@RequestBody ProfileUpdateRequest request) throws
             IncorrectCurrentPasswordException,
