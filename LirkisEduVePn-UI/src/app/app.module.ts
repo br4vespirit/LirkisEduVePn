@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -34,6 +34,7 @@ import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confi
 import {UserSettingsComponent} from './components/user-settings/user-settings.component';
 import {MatSelectModule} from "@angular/material/select";
 import {PreviewScenariosComponent} from './components/preview-scenarios/preview-scenarios.component';
+import { SceneComponent } from './components/scene/scene.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {PreviewScenariosComponent} from './components/preview-scenarios/preview-
     UsersDashboardComponent,
     ConfirmationDialog,
     UserSettingsComponent,
-    PreviewScenariosComponent
+    PreviewScenariosComponent,
+    SceneComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import {PreviewScenariosComponent} from './components/preview-scenarios/preview-
   ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

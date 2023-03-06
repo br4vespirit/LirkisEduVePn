@@ -12,10 +12,6 @@ export class JoinQuizComponent {
 
   constructor(private matDialogRef:MatDialogRef<JoinQuizComponent>){}
 
-  openScene(){
-    // @ts-ignore
-    window.location.href= SCENE_URL;
-  }
   closeDialog(){
     this.matDialogRef.close();
   }

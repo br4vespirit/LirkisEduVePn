@@ -8,6 +8,7 @@ import {AuthGuard} from "./components/auth/auth.guard";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
 import {UsersDashboardComponent} from "./components/users-dashboard/users-dashboard.component";
 import {RoleGuard} from "./components/auth/role.guard";
+import {SceneComponent} from "./components/scene/scene.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: "user/profile",
     component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "scene",
+    component: SceneComponent,
     canActivate: [AuthGuard]
   },
   {

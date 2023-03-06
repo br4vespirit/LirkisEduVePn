@@ -4,7 +4,7 @@ AFRAME.registerComponent('toggle-info', {
   init: function () {
     // Do something when component first attached.
     let el = this.el;
-    var childEl = el.firstElementChild;
+    let childEl = el.firstElementChild;
     this.el.addEventListener('click', () => {
       childEl.setAttribute('visible', !childEl.getAttribute('visible'));
     });
