@@ -83,12 +83,12 @@
 
   <!-- AVATAR BODY ------------->
   <a-entity
+    physics-collider
     id="player"
-    geometry="primitive: cylinder; radius: 0.3"
-    material="color: green; wireframe: true; visible: false"
+    static-body="shape: sphere; sphereRadius: 0.02"
+    material="color: green; wireframe: true; visible: true"
     position="8.275 1 2.93"
     movement-controls="constrainToNavMesh: true"
-    static-body
     sound="src: #win; on: win; poolSize: 1;">
     <a-entity
       id="playerhead"
@@ -101,7 +101,7 @@
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
-        raycaster="objects: .interactible, .P3C, .P3I, #P1confirm;"
+        raycaster="objects: .interactible, .P3C, .P3I, #P1confirm, #P2confirm, #P3confirm;"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
@@ -153,14 +153,12 @@
       align="right"
       anchor="left">
     </a-text>
-    <a-plane
-      src="#controls"
-      scale="3 1.5 0"
-      height="auto"
-      width="auto"
-      position="1.76035 -2.26774 0.00962"
-      material="transparent: true; shader: flat">
-    </a-plane>
+    <a-image
+      [attr.src]="'#controls'"
+      height="1.5"
+      width="3"
+      [attr.position]="'1.76035 -2.26774 0.00962'">
+    </a-image>
   </a-entity>
 
   <a-entity
@@ -187,13 +185,11 @@
   </a-entity>
   <a-plane
     id="map"
-    src="#museumMap"
-    scale="4.79 3.23 0.00001"
-    height="auto"
-    width="auto"
-    position="8.21406 4.35163 7.976"
-    rotation="0 180 0"
-    material="transparent: true; shader: flat; src:#museumMap">
+    [attr.src]="'#museumMap'"
+    height="3.23"
+    width="4.79"
+    [attr.position]="'8.21406 4.35163 7.976'"
+    rotation="0 180 0">
   </a-plane>
   <a-circle
     id="P1confirmProgress"
@@ -366,16 +362,14 @@
     material="color: red; wireframe: true"
     visible="false">
   </a-box>
-  <a-plane
+  <a-image
     id="taskP1"
-    src="#infoPanel"
-    material="transparent: true; shader: flat"
-    height="auto"
-    width="auto"
-    scale="1.2 1.170 1"
-    position="-5.7592 2.3 13.02616"
+    [attr.src]="'#infoPanel'"
+    height="1.170"
+    width="1.2"
+    [attr.position]="'-5.7592 2.3 13.02616'"
     rotation="-8.68 180 0"
-    visible="true">
+    visible="false">
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -408,7 +402,7 @@
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
       sound__success="src: #success_sound; on: success; poolSize: 2"
       sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
-  </a-plane>
+  </a-image>
 
   <a-plane
     src="#maria"
@@ -666,15 +660,13 @@
     visible="false">
   </a-box>
 
-  <a-plane
+  <a-image
     id="taskP2"
-    src="#infoPanel"
-    material="transparent: true; shader: flat"
-    visible="true"
-    height="auto"
-    width="auto"
-    scale="1.2 1.170 1"
-    position="-5.7592 2.3 -6.5"
+    [attr.src]="'#infoPanel'"
+    visible="false"
+    height="1.170"
+    width="1.2"
+    [attr.position]="'-5.7592 2.3 -6.5'"
     rotation="-8.68 0 0">
     <a-text
       class="uloha"
@@ -708,7 +700,7 @@
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
       sound__success="src: #success_sound; on: success; poolSize: 2"
       sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
-  </a-plane>
+  </a-image>
 
   <a-entity
     gltf-model="#book"
@@ -1034,15 +1026,13 @@
     visible="false">
   </a-box>
 
-  <a-plane
+  <a-image
     id="taskP3"
-    src="#infoPanel"
-    material="transparent: true; shader: flat"
-    visible="true"
-    height="auto"
-    width="auto"
-    scale="1.2 1.170 1"
-    position="19.584 2.35122 -4.565"
+    [attr.src]="'#infoPanel'"
+    visible="false"
+    height="1.170"
+    width="1.2"
+    [attr.position]="'19.584 2.35122 -4.565'"
     rotation="-8.68 0 0">
     <a-text
       class="uloha"
@@ -1076,7 +1066,7 @@
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
       sound__success="src: #success_sound; on: success; poolSize: 2"
       sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
-  </a-plane>
+  </a-image>
 
   <a-entity gltf-model="#svMartin" position="0 1 16">
     <a-entity
