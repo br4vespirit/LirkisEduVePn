@@ -10,27 +10,28 @@
     <meta name="description" content="Now in 3D!" />
 
     <script
-      src="https://aframe.io/releases/1.0.4/aframe.min.js"
+      src="https://aframe.io/releases/1.4.0/aframe.min.js"
       crossorigin="anonymous"></script>
 
+    <script src="../js/geometry.js"></script>
     <script
       src="https://unpkg.com/super-hands@^3.0.2/dist/super-hands.min.js"
       crossorigin="anonymous"></script>
     <script
       src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"
       crossorigin="anonymous"></script>
+    
     <!--PHYSICS SYSTEM------------------------------------------------------------------------------------------------------>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+
     <script
-      src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"
+      src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@fb96ab2/dist/aframe-extras.min.js"
       crossorigin="anonymous"></script>
     <script
       src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"
       crossorigin="anonymous"></script>
     <script
-      src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"
+      src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"
       crossorigin="anonymous"></script>
     <!--BUNDLED SCRIPTS------------------------------------------------------------------------------------------------------>
     <script src="../js/bundle.js"></script>
@@ -45,7 +46,7 @@
       gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
       physics="gravity: 0">
       <!-- Load Assets -->
-      <a-assets timeout="10000">
+      <a-assets timeout="2000">
         <!-- global -->
         <audio id="success_sound" src="../assets/sounds/success.wav"></audio>
         <audio

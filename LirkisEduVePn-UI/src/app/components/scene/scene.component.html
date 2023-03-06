@@ -16,10 +16,10 @@
     <audio id="win" src="../assets/sounds/win.wav"></audio>
     <a-asset-item
       id="museum"
-      src="../assets/3dModels/museum_final.glb"></a-asset-item>
+      src="../assets/3dModels/museumNew.glb"></a-asset-item>
     <a-asset-item
       id="navmesh"
-      src="../assets/3dModels/navMesh.glb"></a-asset-item>
+      src="../assets/3dModels/navmeshNew.glb"></a-asset-item>
     <a-asset-item
       id="coin"
       src="../assets/3dModels/coin.glb"></a-asset-item>
@@ -87,8 +87,8 @@
     geometry="primitive: cylinder; radius: 0.3"
     material="color: green; wireframe: true; visible: false"
     position="8.275 1 2.93"
-    static-body
     movement-controls="constrainToNavMesh: true"
+    static-body
     sound="src: #win; on: win; poolSize: 1;">
     <a-entity
       id="playerhead"
@@ -101,7 +101,7 @@
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
-        raycaster="objects: .interactible, .P3C, .P3I;"
+        raycaster="objects: .interactible, .P3C, .P3I, #P1confirm;"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
@@ -193,7 +193,7 @@
     width="auto"
     position="8.21406 4.35163 7.976"
     rotation="0 180 0"
-    material="transparent: true; shader: flat">
+    material="transparent: true; shader: flat; src:#museumMap">
   </a-plane>
   <a-circle
     id="P1confirmProgress"
@@ -364,16 +364,8 @@
     scale="7.920 0.2 7"
     position="-5.889 1.167 10.203"
     material="color: red; wireframe: true"
-    visible="true">
+    visible="false">
   </a-box>
-  <a-box
-    scale="7.5 3 0.5"
-    position="-5.889 2.444 6.634"
-
-  >
-  </a-box>
-
-
   <a-plane
     id="taskP1"
     src="#infoPanel"
@@ -383,7 +375,7 @@
     scale="1.2 1.170 1"
     position="-5.7592 2.3 13.02616"
     rotation="-8.68 180 0"
-    visible="false">
+    visible="true">
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -678,7 +670,7 @@
     id="taskP2"
     src="#infoPanel"
     material="transparent: true; shader: flat"
-    visible="false"
+    visible="true"
     height="auto"
     width="auto"
     scale="1.2 1.170 1"
@@ -1046,7 +1038,7 @@
     id="taskP3"
     src="#infoPanel"
     material="transparent: true; shader: flat"
-    visible="false"
+    visible="true"
     height="auto"
     width="auto"
     scale="1.2 1.170 1"

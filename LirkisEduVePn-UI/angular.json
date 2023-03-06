@@ -27,7 +27,6 @@
               { "glob": "**/*", "input": "node_modules/aframe/dist", "output": "./assets/lib/aframe/dist/" },
               { "glob": "**/*", "input": "node_modules/aframe-physics-extras/dist", "output": "./assets/lib/aframe-physics-extras/dist/" },
               { "glob": "**/*", "input": "node_modules/aframe-physics-system/dist", "output": "./assets/lib/aframe-physics-system/dist/" },
-              { "glob": "**/*", "input": "node_modules/aframe-extras/dist", "output": "./assets/lib/aframe-extras/dist/" },
               { "glob": "**/*", "input": "node_modules/aframe-environment-component/dist", "output": "./assets/lib/aframe-environment-component/dist/" },
               { "glob": "**/*", "input": "node_modules/aframe-event-set-component/dist", "output": "./assets/lib/aframe-event-set-component/dist/" },
               { "glob": "**/*", "input": "node_modules/super-hands/dist", "output": "./assets/lib/super-hands/dist/" }
