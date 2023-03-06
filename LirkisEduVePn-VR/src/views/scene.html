@@ -1,129 +1,130 @@
 <!DOCTYPE html>
 <html lang="sk">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="author" content="Adam Kašela, Štefan Korečko" />
-    <link rel="stylesheet" href="../css/styles.css" />
-    <title>Zážitok vo virtuálnej realite</title>
-    <meta name="description" content="Now in 3D!" />
+      <meta charset="utf-8"/>
+      <meta content="width=device-width" name="viewport"/>
+      <meta content="yes" name="apple-mobile-web-app-capable"/>
+      <meta content="Adam Kašela, Štefan Korečko" name="author"/>
+      <link href="../css/styles.css" rel="stylesheet"/>
+      <title>Zážitok vo virtuálnej realite</title>
+      <meta content="Now in 3D!" name="description"/>
 
-    <script
-      src="https://aframe.io/releases/1.0.4/aframe.min.js"
-      crossorigin="anonymous"></script>
+      <script
+              crossorigin="anonymous"
+              src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
-    <script
-      src="https://unpkg.com/super-hands@^3.0.2/dist/super-hands.min.js"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"
-      crossorigin="anonymous"></script>
-    <!--PHYSICS SYSTEM------------------------------------------------------------------------------------------------------>
-    <script
-      src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"
-      crossorigin="anonymous"></script>
-    <!--BUNDLED SCRIPTS------------------------------------------------------------------------------------------------------>
-    <script src="../js/bundle.js"></script>
+      <script src="../js/geometry.js"></script>
+      <script
+              crossorigin="anonymous"
+              src="https://unpkg.com/super-hands@^3.0.2/dist/super-hands.min.js"></script>
+      <script
+              crossorigin="anonymous"
+              src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+
+      <!--PHYSICS SYSTEM------------------------------------------------------------------------------------------------------>
+      <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+      <script
+              crossorigin="anonymous"
+              src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@fb96ab2/dist/aframe-extras.min.js"></script>
+      <script
+              crossorigin="anonymous"
+              src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+      <script
+              crossorigin="anonymous"
+              src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
+      <!--BUNDLED SCRIPTS------------------------------------------------------------------------------------------------------>
+      <script src="../js/bundle.js"></script>
   </head>
 
   <body>
-    <a-scene
-      renderer="colorManagement: true"
-      light="defaultLightsEnabled: false"
-      shadow="type: pcfsoft"
-      petri-net-sim="finalPlace: final; taskCount: 3"
-      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
-      physics="gravity: 0">
+  <a-scene
+          gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+          light="defaultLightsEnabled: false"
+          petri-net-sim="finalPlace: final; taskCount: 3"
+          physics="gravity: 0"
+          renderer="colorManagement: true"
+          shadow="type: pcfsoft">
       <!-- Load Assets -->
-      <a-assets timeout="10000">
-        <!-- global -->
-        <audio id="success_sound" src="../assets/sounds/success.wav"></audio>
-        <audio
-          id="unsuccess_sound"
-          src="../assets/sounds/unsuccess.wav"></audio>
-        <audio id="tap" src="../assets/sounds/tap.wav"></audio>
-        <audio id="win" src="../assets/sounds/win.wav"></audio>
-        <a-asset-item
-          id="museum"
-          src="../assets/3dModels/museum_final.glb"></a-asset-item>
-        <a-asset-item
-          id="navmesh"
-          src="../assets/3dModels/navMesh.glb"></a-asset-item>
-        <a-asset-item
-          id="coin"
-          src="../assets/3dModels/coin.glb"></a-asset-item>
-        <a-asset-item
-          id="svMartin"
-          src="../assets/3dModels/svMartin.glb"></a-asset-item>
-        <a-asset-item
-          id="blava"
-          src="../assets/3dModels/blava.glb"></a-asset-item>
-        <a-asset-item
-          id="crown"
-          src="../assets/3dModels/crown.glb"></a-asset-item>
-        <a-asset-item id="cup" src="../assets/3dModels/cup.glb"></a-asset-item>
-        <a-asset-item
-          id="apple_coat"
-          src="../assets/3dModels/apple_coat.glb"></a-asset-item>
-        <a-asset-item
-          id="sword"
-          src="../assets/3dModels/sword.glb"></a-asset-item>
-        <a-asset-item
-          id="mace"
-          src="../assets/3dModels/mace.glb"></a-asset-item>
-        <a-asset-item
-          id="book"
-          src="../assets/3dModels/book.glb"></a-asset-item>
-        <img
-          id="erb"
-          src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png" />
-        <img
-          id="maria"
-          src="../assets/images/Kaiserin_Maria_Theresia_(HRR)-min.jpg" />
-        <img
-          id="jozef"
-          src="../assets/images/Joseph_Hickel_-_Emperor_Joseph_II,_pair-min.png" />
-        <img
-          id="frantisek"
-          src="../assets/images/Meytens,_studio_or_circle_of_-_Francis_I,_Holy_Roman_Emperor-min.png" />
-        <img
-          id="karol"
-          src="../assets/images/Portrait_of_Emperor_Charles_VI_in_armour,_decorated_with_the_Order_of_the_Golden_Fleece-min.jpg" />
-        <img id="controls" src="../assets/images/Keyboard_controls.png" />
-        <img id="museumMap" src="../assets/images/museum-map.png" />
-        <img id="infoPanel" src="../assets/images/Panel.png" />
-        <img id="infoIcon" src="../assets/images/info-circle.png" />
-        <img id="unselected" src="../assets/images/slash-circle-fill-red.png" />
-        <img id="selected" src="../assets/images/check-circle-fill-green.png" />
-        <a-mixin
-          id="canGrab"
-          hoverable
-          grabbable
-          draggable
-          droppable
-          dynamic-body
-          sleepy></a-mixin>
+      <a-assets timeout="2000">
+          <!-- global -->
+          <audio id="success_sound" src="../assets/sounds/success.wav"></audio>
+          <audio
+                  id="unsuccess_sound"
+                  src="../assets/sounds/unsuccess.wav"></audio>
+          <audio id="tap" src="../assets/sounds/tap.wav"></audio>
+          <audio id="win" src="../assets/sounds/win.wav"></audio>
+          <a-asset-item
+                  id="museum"
+                  src="../assets/3dModels/museum_final.glb"></a-asset-item>
+          <a-asset-item
+                  id="navmesh"
+                  src="../assets/3dModels/navMesh.glb"></a-asset-item>
+          <a-asset-item
+                  id="coin"
+                  src="../assets/3dModels/coin.glb"></a-asset-item>
+          <a-asset-item
+                  id="svMartin"
+                  src="../assets/3dModels/svMartin.glb"></a-asset-item>
+          <a-asset-item
+                  id="blava"
+                  src="../assets/3dModels/blava.glb"></a-asset-item>
+          <a-asset-item
+                  id="crown"
+                  src="../assets/3dModels/crown.glb"></a-asset-item>
+          <a-asset-item id="cup" src="../assets/3dModels/cup.glb"></a-asset-item>
+          <a-asset-item
+                  id="apple_coat"
+                  src="../assets/3dModels/apple_coat.glb"></a-asset-item>
+          <a-asset-item
+                  id="sword"
+                  src="../assets/3dModels/sword.glb"></a-asset-item>
+          <a-asset-item
+                  id="mace"
+                  src="../assets/3dModels/mace.glb"></a-asset-item>
+          <a-asset-item
+                  id="book"
+                  src="../assets/3dModels/book.glb"></a-asset-item>
+          <img
+                  id="erb"
+                  src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png"/>
+          <img
+                  id="maria"
+                  src="../assets/images/Kaiserin_Maria_Theresia_(HRR)-min.jpg"/>
+          <img
+                  id="jozef"
+                  src="../assets/images/Joseph_Hickel_-_Emperor_Joseph_II,_pair-min.png"/>
+          <img
+                  id="frantisek"
+                  src="../assets/images/Meytens,_studio_or_circle_of_-_Francis_I,_Holy_Roman_Emperor-min.png"/>
+          <img
+                  id="karol"
+                  src="../assets/images/Portrait_of_Emperor_Charles_VI_in_armour,_decorated_with_the_Order_of_the_Golden_Fleece-min.jpg"/>
+          <img id="controls" src="../assets/images/Keyboard_controls.png"/>
+          <img id="museumMap" src="../assets/images/museum-map.png"/>
+          <img id="infoPanel" src="../assets/images/Panel.png"/>
+          <img id="infoIcon" src="../assets/images/info-circle.png"/>
+          <img id="unselected" src="../assets/images/slash-circle-fill-red.png"/>
+          <img id="selected" src="../assets/images/check-circle-fill-green.png"/>
+          <a-mixin
+                  draggable
+                  droppable
+                  dynamic-body
+                  grabbable
+                  hoverable
+                  id="canGrab"
+                  sleepy></a-mixin>
       </a-assets>
 
       <!-- Environment -->
       <a-entity
-        environment="preset: yavapai; skyType: atmosphere; playArea: 1.2; lightPosition: -0.24 30 -1">
+              environment="preset: yavapai; skyType: atmosphere; playArea: 1.2; lightPosition: -0.24 30 -1">
       </a-entity>
 
       <!-- AVATAR BODY ------------->
       <a-entity
-        id="player"
-        geometry="primitive: cylinder; radius: 0.3"
+              id="player"
+              geometry="primitive: cylinder; radius: 0.3"
         material="color: green; wireframe: true; visible: false"
         position="8.275 1 2.93"
         movement-controls="constrainToNavMesh: true"
