@@ -1,5 +1,6 @@
 package com.tuke.lirkiseduvepnservice.model.dao;
 
+import com.tuke.lirkiseduvepnservice.model.SceneFileExtension;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,34 +9,25 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
-import java.util.List;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Scenario {
+public class SceneFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String description;
-
     @Lob
-    @Column(name = "pnml_file")
     @JdbcType(VarbinaryJdbcType.class)
     private byte[] file;
 
-    @OneToMany(mappedBy = "scenario")
-    private List<Task> tasks;
+    @Enumerated(EnumType.STRING)
+    private SceneFileExtension fileExtension;
 
-    @OneToMany(mappedBy = "scenario", cascade = CascadeType.PERSIST)
-    private List<LanguageFile> languageFiles;
-
-    @OneToMany(mappedBy = "scenario", cascade = CascadeType.PERSIST)
-    private List<ScenarioPhoto> scenarioPhotos;
+    @ManyToOne
+    @JoinColumn(name = "scene_id", nullable = false)
+    private Scene scene;
 }
