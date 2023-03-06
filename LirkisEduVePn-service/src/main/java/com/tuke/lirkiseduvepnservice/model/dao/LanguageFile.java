@@ -1,10 +1,13 @@
 package com.tuke.lirkiseduvepnservice.model.dao;
 
+import com.tuke.lirkiseduvepnservice.model.LanguageExtension;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 @Entity
 @AllArgsConstructor
@@ -18,10 +21,13 @@ public class LanguageFile {
     private Long id;
 
     @Lob
-    @Column(columnDefinition = "bytea")
+    @JdbcType(VarbinaryJdbcType.class)
     private byte[] file;
 
     @ManyToOne
     @JoinColumn(name = "scenario_id", nullable = false)
     private Scenario scenario;
+
+    @Enumerated(EnumType.STRING)
+    private LanguageExtension extension;
 }

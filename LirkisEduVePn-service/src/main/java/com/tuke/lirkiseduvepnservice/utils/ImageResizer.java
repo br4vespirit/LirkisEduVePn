@@ -1,0 +1,33 @@
+package com.tuke.lirkiseduvepnservice.utils;
+
+import org.springframework.stereotype.Service;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
+@Service
+public class ImageResizer {
+
+    public byte[] resizeImage(byte[] imageData, int width, int height) throws Exception {
+        // Read the image data into a BufferedImage
+        ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
+        BufferedImage image = ImageIO.read(bais);
+
+        // Create a new BufferedImage for the resized image
+        BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        // Resize the image using Graphics2D
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(image, 0, 0, width, height, null);
+        g.dispose();
+
+        // Convert the resized image to a byte array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(resizedImage, "jpg", baos);
+
+        return baos.toByteArray();
+    }
+}

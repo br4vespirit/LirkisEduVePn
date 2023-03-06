@@ -33,6 +33,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
 import {UserSettingsComponent} from './components/user-settings/user-settings.component';
 import {MatSelectModule} from "@angular/material/select";
+import {PreviewScenariosComponent} from './components/preview-scenarios/preview-scenarios.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {MatSelectModule} from "@angular/material/select";
     ProfileSettingsComponent,
     UsersDashboardComponent,
     ConfirmationDialog,
-    UserSettingsComponent
+    UserSettingsComponent,
+    PreviewScenariosComponent
   ],
   imports: [
     BrowserModule,

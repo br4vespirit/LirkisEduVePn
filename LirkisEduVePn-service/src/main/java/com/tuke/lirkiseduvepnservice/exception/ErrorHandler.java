@@ -41,4 +41,29 @@ public class ErrorHandler {
     public ResponseEntity<String> handleEmailRegisteredException(IncorrectPasswordException e) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
     }
+
+    @ExceptionHandler(IncorrectFileExtensionException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(IncorrectFileExtensionException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(IncorrectLanguageExtensionException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(IncorrectLanguageExtensionException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(InstanceNotFoundException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(InstanceNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(UnknownDirectoryException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(UnknownDirectoryException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(UnknownFileException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(UnknownFileException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }

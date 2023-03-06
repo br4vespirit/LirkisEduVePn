@@ -8,6 +8,7 @@ import {HistoryQuizComponent} from '../history-quiz/history-quiz.component';
 import {ProfileSettingsComponent} from '../profile-settings/profile-settings.component';
 import {Subscription} from "rxjs";
 import {TransferService} from "../../services/transfer.service";
+import {PreviewScenariosComponent} from "../preview-scenarios/preview-scenarios.component";
 
 @Component({
   selector: 'app-user-profile',
@@ -47,14 +48,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.matDialog.open(CreateQuizComponent);
   }
 
-  HistoryQuizDialogOpen(){
+  HistoryQuizDialogOpen() {
     this.matDialog.open(HistoryQuizComponent);
   }
 
-  ProfileSettingsDialogOpen(){
+  ProfileSettingsDialogOpen() {
     this.matDialog.open(ProfileSettingsComponent, {
       data: this.profile
     });
   }
 
+  PreviewScenariosDialogOpen() {
+    this.matDialog.open(PreviewScenariosComponent);
+  }
 }

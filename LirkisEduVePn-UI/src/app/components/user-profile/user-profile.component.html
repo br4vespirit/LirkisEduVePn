@@ -35,12 +35,19 @@
           </div>
           <mat-icon (click)="JoinQuizDialogOpen()" style="cursor:pointer;">navigate_next</mat-icon>
         </div>
-        <div class="card">
+        <div *ngIf="profile.role != 'STUDENT'" class="card">
           <div>
             <h5>Create quiz</h5>
             <p class="secondaryText">create own custom quiz</p>
           </div>
           <mat-icon (click)="CreateQuizDialogOpen()" style="cursor:pointer;">navigate_next</mat-icon>
+        </div>
+        <div *ngIf="profile.role != 'STUDENT'" class="card">
+          <div>
+            <h5>Preview Scenarios</h5>
+            <p class="secondaryText">preview all scenarios</p>
+          </div>
+          <mat-icon (click)="PreviewScenariosDialogOpen()" style="cursor:pointer;">navigate_next</mat-icon>
         </div>
         <div class="card">
           <div>

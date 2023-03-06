@@ -1,0 +1,19 @@
+<div *ngIf="current_scenario">
+  <h3>{{current_scenario.name}}</h3>
+  <img (click)="change_scenario_photo()" [src]="current_photo" alt="no photo"/>
+</div>
+
+<div style="margin-top: 20px">
+  <mat-icon (click)="prev_scenario()"
+            [ngStyle]="{
+            'cursor': current_index === 0 ? 'default' : 'pointer',
+            'color': current_index === 0 ? 'gray' : 'inherit'
+            }">navigate_before
+  </mat-icon>
+  <mat-icon (click)="next_scenario()"
+            [ngStyle]="{
+            'cursor': current_index === scenarios.length-1 ? 'default' : 'pointer',
+            'color': current_index === scenarios.length-1 ? 'gray' : 'inherit'
+            }">navigate_next
+  </mat-icon>
+</div>
