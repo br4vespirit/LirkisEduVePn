@@ -101,11 +101,12 @@
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
-        raycaster="objects: .interactible, .P3C, .P3I, #P1confirm, #P2confirm, #P3confirm;"
+        raycaster="objects: .interactible, .P3C, .P3I"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
-        position="0 0 -1"></a-entity>
+        position="0 0 -1">
+      </a-entity>
     </a-entity>
   </a-entity>
 
@@ -1008,7 +1009,7 @@
     physics-collider
     collision-filter="collisionForces: false"
     collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
-    static-body
+    static-body="shape:sphere"
     scale="3.69 2.8 2.28"
     position="22.51704 3.933 -5.80505"
     material="color: red; opacity: 0.15"
