@@ -26,7 +26,7 @@ public class Scene {
     @OneToMany(mappedBy = "scene")
     private List<Task> tasks;
 
-    @OneToMany(mappedBy = "scene")
+    @OneToMany(mappedBy = "scene", cascade = CascadeType.PERSIST)
     private List<SceneFile> sceneFiles;
 
     @OneToMany(mappedBy = "scene", cascade = CascadeType.PERSIST)

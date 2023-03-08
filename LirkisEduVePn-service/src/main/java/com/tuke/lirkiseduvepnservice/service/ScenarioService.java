@@ -6,10 +6,11 @@ import com.tuke.lirkiseduvepnservice.model.dao.LanguageFile;
 import com.tuke.lirkiseduvepnservice.model.dao.Scenario;
 import com.tuke.lirkiseduvepnservice.model.dao.ScenarioPhoto;
 import com.tuke.lirkiseduvepnservice.model.dto.ScenarioPreviewResponse;
-import com.tuke.lirkiseduvepnservice.model.dto.ScenarioRequestDto;
+import com.tuke.lirkiseduvepnservice.model.dto.ScenarioRequest;
 import com.tuke.lirkiseduvepnservice.model.mapper.ScenarioMapper;
 import com.tuke.lirkiseduvepnservice.repository.ScenarioRepository;
 import com.tuke.lirkiseduvepnservice.utils.ImageResizer;
+import com.tuke.lirkiseduvepnservice.utils.PhotoExtractor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -25,19 +27,13 @@ import java.util.zip.ZipInputStream;
 @RequiredArgsConstructor
 @Slf4j
 public class ScenarioService {
-
-    private static final Set<String> PHOTO_EXTENSIONS = new HashSet<>(Arrays.asList(".png", ".jpg", ".jpeg", ".webp"));
     private final ScenarioRepository scenarioRepository;
     private final ScenarioMapper scenarioMapper;
     private final ImageResizer imageResizer;
+    private final PhotoExtractor photoExtractor;
 
     @Transactional
-    public void saveScenario(ScenarioRequestDto request) throws
-            UnknownDirectoryException,
-            UnknownFileException,
-            InstanceNotFoundException,
-            IncorrectFileExtensionException,
-            IncorrectLanguageExtensionException {
+    public void saveScenario(ScenarioRequest request) {
         MultipartFile file = request.getFile();
 
         try (ZipInputStream zipInputStream = new ZipInputStream(file.getInputStream())) {
@@ -58,8 +54,11 @@ public class ScenarioService {
                     if (entry.isDirectory() && !filename.equals("photo/")) {
                         throw new UnknownDirectoryException("An unknown directory other than \"photo/\" was found in the zip file");
                     } else if (!entry.isDirectory()) {
-                        ScenarioPhoto scenarioPhoto = parseScenarioPhotos(filename, content);
-                        scenarioPhotoList.add(scenarioPhoto);
+                        boolean validated = photoExtractor.validatePhotoFile(filename);
+                        if (validated) {
+                            ScenarioPhoto scenarioPhoto = new ScenarioPhoto(content);
+                            scenarioPhotoList.add(scenarioPhoto);
+                        }
                     }
                 } else if (filename.startsWith("lang/")) {
                     if (entry.isDirectory() && !filename.equals("lang/")) {
@@ -75,7 +74,7 @@ public class ScenarioService {
                 } else if (filename.endsWith(".pnml")) {
                     scenario.setFile(content);
                 } else {
-                    throw new UnknownFileException("An unknown directory other than \".pnml\" was found in the zip file");
+                    throw new UnknownFileException("An unknown file other than \".pnml\" was found in the zip file");
                 }
             }
 
@@ -133,30 +132,6 @@ public class ScenarioService {
         return extension;
     }
 
-
-    private ScenarioPhoto parseScenarioPhotos(String filename, byte[] content) {
-        ScenarioPhoto scenarioPhoto;
-        final String photoExtension = getFileExtension(filename);
-        if (!PHOTO_EXTENSIONS.contains(photoExtension)) {
-            throw new IncorrectFileExtensionException("Provided file inside \"photo/\" directory has other than .png, .jpg, .jpeg or .webp extension");
-        }
-        filename = filename.substring(0, filename.length() - photoExtension.length());
-        if (filename.contains(".")) {
-            throw new IncorrectFileExtensionException("Provided file inside \"photo/\" directory has an unauthorized extension");
-        }
-        scenarioPhoto = new ScenarioPhoto();
-        scenarioPhoto.setPhoto(content);
-        return scenarioPhoto;
-    }
-
-    private String getFileExtension(String filename) {
-        int lastDotIndex = filename.lastIndexOf(".");
-        if (lastDotIndex == -1) {
-            return "";
-        }
-        return filename.substring(lastDotIndex);
-    }
-
     public List<ScenarioPreviewResponse> findAll() {
         List<ScenarioPreviewResponse> response = scenarioRepository.findAll()
                 .stream()
@@ -170,13 +145,9 @@ public class ScenarioService {
         return response;
     }
 
-    private void resizeImages(List<ScenarioPreviewResponse> scenarios) throws Exception {
+    private void resizeImages(List<ScenarioPreviewResponse> scenarios) {
         for (ScenarioPreviewResponse response : scenarios) {
-            List<byte[]> photos = response.getPhotos();
-            List<byte[]> resizedPhotos = new ArrayList<>();
-            for (byte[] photo : photos) {
-                resizedPhotos.add(imageResizer.resizeImage(photo, 500, 300));
-            }
+            List<byte[]> resizedPhotos = imageResizer.resizeImages(response.getPhotos());
             response.setPhotos(resizedPhotos);
         }
     }

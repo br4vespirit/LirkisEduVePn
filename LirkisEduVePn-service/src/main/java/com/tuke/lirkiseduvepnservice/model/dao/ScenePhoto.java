@@ -26,4 +26,8 @@ public class ScenePhoto {
     @Lob
     @JdbcType(VarbinaryJdbcType.class)
     private byte[] photo;
+
+    public ScenePhoto(byte[] photo) {
+        this.photo = photo;
+    }
 }

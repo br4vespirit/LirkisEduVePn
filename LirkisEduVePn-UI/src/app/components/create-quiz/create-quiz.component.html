@@ -1,21 +1,16 @@
 <div class="close">
-    <mat-icon (click)="closeDialog()">close</mat-icon>
+  <mat-icon (click)="closeDialog()">close</mat-icon>
 </div>
-<p class="boldText heading">Create quiz</p>
+<p class="boldText heading">Create scenario</p>
 <form (ngSubmit)="send()" [formGroup]="form" class="profileSettings">
-  <input formControlName="name" placeholder="Quiz name*" type="text">
-  <input formControlName="description" placeholder="Quiz description" type="text">
+  <input formControlName="name" placeholder="Scenario name*" type="text">
+  <input formControlName="description" placeholder="Scenario description" type="text">
   <p class="boldText">Import petri net scenario</p>
   <div class="petriNet">
-    <!--        <select name="petri net" id="petriNet" class="file select mainButton">-->
-    <!--            <option value="predefined">predefined</option>-->
-    <!--            <option value="predefined">predefined</option>-->
-    <!--            <option value="predefined">predefined</option>-->
-    <!--        </select>-->
     <div class="file mainButton">
       <input (change)="onFileSelected($event)" type="file">
     </div>
   </div>
-  <button [disabled]="form.invalid" class="mainButton secondaryButton" id="createQuizBtn" type="submit">Create quiz
+  <button [disabled]="form.invalid" class="mainButton secondaryButton" id="createQuizBtn" type="submit">Create Scenario
   </button>
 </form>

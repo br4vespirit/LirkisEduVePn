@@ -1,0 +1,16 @@
+<div class="close">
+  <mat-icon (click)="closeDialog()">close</mat-icon>
+</div>
+<p class="boldText heading">Create scene</p>
+<form (ngSubmit)="send()" [formGroup]="form" class="profileSettings">
+  <input formControlName="name" placeholder="Scene name*" type="text">
+  <input formControlName="description" placeholder="Scene description" type="text">
+  <p class="boldText">Import zip file</p>
+  <div class="petriNet">
+    <div class="file mainButton">
+      <input (change)="onFileSelected($event)" type="file">
+    </div>
+  </div>
+  <button [disabled]="form.invalid" class="mainButton secondaryButton" id="createQuizBtn" type="submit">Create scene
+  </button>
+</form>

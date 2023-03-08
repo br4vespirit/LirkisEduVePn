@@ -87,6 +87,16 @@ export class BackendService {
     )
   }
 
+  public saveScene(request: FormData): Observable<any> {
+    return this._client.post<any>(
+      this.API_URL + "/scene",
+      request,
+      {
+        headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+      }
+    )
+  }
+
   public getPreviewProfiles(): Observable<any> {
     return this._client.get(this.API_URL + "/scenario", {
       responseType: "json",

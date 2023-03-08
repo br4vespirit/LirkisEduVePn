@@ -27,14 +27,15 @@ import {JoinQuizComponent} from './components/join-quiz/join-quiz.component';
 import {CreateQuizComponent} from './components/create-quiz/create-quiz.component';
 import {HistoryQuizComponent} from './components/history-quiz/history-quiz.component';
 import {ProfileSettingsComponent} from './components/profile-settings/profile-settings.component';
-import {UsersDashboardComponent} from './components/users-dashboard/users-dashboard.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
 import {UserSettingsComponent} from './components/user-settings/user-settings.component';
 import {MatSelectModule} from "@angular/material/select";
 import {PreviewScenariosComponent} from './components/preview-scenarios/preview-scenarios.component';
-import { SceneComponent } from './components/scene/scene.component';
+import {SceneComponent} from './components/scene/scene.component';
+import {CreateSceneComponent} from './components/create-scene/create-scene.component';
 
 
 @NgModule({
@@ -52,11 +53,12 @@ import { SceneComponent } from './components/scene/scene.component';
     CreateQuizComponent,
     HistoryQuizComponent,
     ProfileSettingsComponent,
-    UsersDashboardComponent,
+    DashboardComponent,
     ConfirmationDialog,
     UserSettingsComponent,
     PreviewScenariosComponent,
-    SceneComponent
+    SceneComponent,
+    CreateSceneComponent
   ],
   imports: [
     BrowserModule,

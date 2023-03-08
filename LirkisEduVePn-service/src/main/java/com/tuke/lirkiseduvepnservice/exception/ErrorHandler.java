@@ -66,4 +66,14 @@ public class ErrorHandler {
     public ResponseEntity<String> handleEmailRegisteredException(UnknownFileException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
+    @ExceptionHandler(EnoughSceneFilesException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(EnoughSceneFilesException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(RecurringFileExtensionException.class)
+    public ResponseEntity<String> handleEmailRegisteredException(RecurringFileExtensionException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }

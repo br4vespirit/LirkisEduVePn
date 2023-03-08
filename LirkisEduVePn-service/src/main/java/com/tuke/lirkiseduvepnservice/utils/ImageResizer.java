@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ImageResizer {
@@ -29,5 +31,17 @@ public class ImageResizer {
         ImageIO.write(resizedImage, "jpg", baos);
 
         return baos.toByteArray();
+    }
+
+    public List<byte[]> resizeImages(List<byte[]> photos) {
+        List<byte[]> resizedPhotos = new ArrayList<>();
+        for (byte[] photo : photos) {
+            try {
+                resizedPhotos.add(resizeImage(photo, 500, 300));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return resizedPhotos;
     }
 }
