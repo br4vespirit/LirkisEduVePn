@@ -45,6 +45,15 @@
     <a-asset-item
       id="book"
       src="../assets/3dModels/book.glb"></a-asset-item>
+    <a-asset-item
+      id="silk"
+      src="../assets/3dModels/silk.glb"></a-asset-item>
+    <a-asset-item
+      id="parfume"
+      src="../assets/3dModels/fancy_perfume_bottle.glb"></a-asset-item>
+    <a-asset-item
+      id="spiceBottle"
+      src="../assets/3dModels/spice_container.glb"></a-asset-item>
     <img
       id="erb"
       src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png" />
@@ -940,37 +949,37 @@
   </a-entity>
 
   <!-- Exposition Room 3 ------------------------------------------------------------------------------->
-  <a-entity id="collisionWalls" visible="false">
-    <a-plane
-      scale="7.92 20.24 20.36"
-      position="22.543 2.263 3.0333"
-      rotation="-90 0 0"
-      static-body></a-plane>
-    <a-plane
-      scale="7.92 20.24 20.36"
-      position="22.543 5.98686 3.0333"
-      rotation="90 0 0"
-      static-body></a-plane>
-    <a-plane
-      scale="7.92 5.52 20.36"
-      position="22.543 4.077 -7.10858"
-      static-body></a-plane>
-    <a-plane
-      scale="7.92 5.52 20.36"
-      position="22.543 4.077 13.37271"
-      static-body
-      rotation="180 0 0"></a-plane>
-    <a-plane
-      scale="20.35 4.509 0.00001"
-      position="18.868 3.67585 3.1656"
-      rotation="0 90 0"
-      static-body></a-plane>
-    <a-plane
-      scale="20.35 4.509 0.00001"
-      position="26.17209 3.67585 3.1656"
-      rotation="180 90 0"
-      static-body></a-plane>
-  </a-entity>
+<!--  <a-entity id="collisionWalls" visible="false">-->
+<!--    <a-plane-->
+<!--      scale="7.92 20.24 20.36"-->
+<!--      position="22.543 2.263 3.0333"-->
+<!--      rotation="-90 0 0"-->
+<!--      static-body></a-plane>-->
+<!--    <a-plane-->
+<!--      scale="7.92 20.24 20.36"-->
+<!--      position="22.543 5.98686 3.0333"-->
+<!--      rotation="90 0 0"-->
+<!--      static-body></a-plane>-->
+<!--    <a-plane-->
+<!--      scale="7.92 5.52 20.36"-->
+<!--      position="22.543 4.077 -7.10858"-->
+<!--      static-body></a-plane>-->
+<!--    <a-plane-->
+<!--      scale="7.92 5.52 20.36"-->
+<!--      position="22.543 4.077 13.37271"-->
+<!--      static-body-->
+<!--      rotation="180 0 0"></a-plane>-->
+<!--    <a-plane-->
+<!--      scale="20.35 4.509 0.00001"-->
+<!--      position="18.868 3.67585 3.1656"-->
+<!--      rotation="0 90 0"-->
+<!--      static-body></a-plane>-->
+<!--    <a-plane-->
+<!--      scale="20.35 4.509 0.00001"-->
+<!--      position="26.17209 3.67585 3.1656"-->
+<!--      rotation="180 90 0"-->
+<!--      static-body></a-plane>-->
+<!--  </a-entity>-->
 
   <a-box
     id="pedestal"
@@ -1131,4 +1140,129 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+
+  <!-- Exposition Room 4 ------------------------------------------------------------------------------->
+  <a-box
+    id="pedestalEx4"
+    physics-collider
+    collision-filter="collisionForces: false"
+    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
+    static-body="shape:sphere"
+    scale="3.69 2.8 2.28"
+    position="-18.35 3.933 11.5"
+    material="color: red; opacity: 0.15"
+    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2">
+  </a-box>
+
+  <a-box
+    id="place4"
+    physics-collider="ignoreSleep: true"
+    collision-detector="collisionEvent: P4; clearedCollisionEvent: Roaming"
+    static-body
+    scale="7.920 0.2 20.360"
+    position="-18.35 1.167 3.142"
+    material="color: red; wireframe: true"
+    visible="true">
+  </a-box>
+
+  <a-image
+    id="taskP4"
+    [attr.src]="'#infoPanel'"
+    visible="true"
+    height="1.170"
+    width="1.2"
+    [attr.position]="'-15.5 2.35122 11'"
+    rotation="-8.68 180 0">
+    <a-text
+      class="uloha"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      value="Úloha"
+      text="width: 1.2; wrapCount: 20; alphaTest: 3"
+      position="-0.411 0.34394 0.00671"
+      color="#F2F2F2">
+    </a-text>
+    <a-text
+      id="P4question"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      value="Nájdite Uhorské korunovačné insígnie v miestnosti a preneste ich na prázdny podstavec napravo."
+      text="width: 0.8; wrapCount: 20; alphaTest: 3"
+      position="-0.411 0.02874 0.01202"
+      color="#F2F2F2">
+    </a-text>
+    <a-text
+      id="P4confirm"
+      clk-single-event-handler="name: P4confirm"
+      position="0 -0.33365 0.004"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      align="center"
+      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"
+      scale="0.44 0.25 1"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
+      sound__success="src: #success_sound; on: success; poolSize: 2"
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
+  </a-image>
+
+  <a-entity
+    gltf-model="#silk"
+    scale="0.5 0.5 0.5"
+    class="P4C"
+    position="-18.407 2 -5.5"
+    mixin="canGrab"></a-entity>
+  <a-text
+    id="P4Silk"
+    position="-18.407 2.133 -5.234"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
+    value="Silk"
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+
+  <a-entity
+    gltf-model="#parfume"
+    scale="0.3 0.3 0.3"
+    class="P4C"
+    position="-21.3 2.7 -5.668"
+    mixin="canGrab"></a-entity>
+  <a-text
+    id="P4Parfume"
+    position="-20.936 2.133 -5.668"
+    rotation="0 90 0"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
+    value="Parfume"
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+
+  <a-entity
+    gltf-model="#spice"
+    class="P4C"
+    position="-15.848 2.133 -2.509"
+    mixin="canGrab"></a-entity>
+  <a-text
+    id="P4Spice"
+    position="-15.848 2.133 -2.509"
+    rotation="0 -90 0"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
+    value="Spice"
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+
 </a-scene>
