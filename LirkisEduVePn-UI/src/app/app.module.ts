@@ -40,6 +40,7 @@ import {CreateTaskComponent} from './components/create-task/create-task.componen
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {PreviewSceneComponent} from './components/preview-scene/preview-scene.component';
+import {PreviewTasksComponent} from './components/preview-tasks/preview-tasks.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import {PreviewSceneComponent} from './components/preview-scene/preview-scene.co
     SceneComponent,
     CreateSceneComponent,
     CreateTaskComponent,
-    PreviewSceneComponent
+    PreviewSceneComponent,
+    PreviewTasksComponent
   ],
   imports: [
     BrowserModule,

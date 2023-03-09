@@ -121,4 +121,18 @@ export class BackendService {
       }
     )
   }
+
+  public getTasksPreview(): Observable<any> {
+    return this._client.get(this.API_URL + "/task/preview", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public getTaskFiles(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/task/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
 }
