@@ -21,6 +21,8 @@ public class Task {
 
     private String name;
 
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "scenario_id", nullable = false)
     private Scenario scenario;

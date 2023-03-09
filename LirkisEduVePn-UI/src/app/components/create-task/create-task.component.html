@@ -1,0 +1,46 @@
+<div class="close">
+  <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
+</div>
+<form [formGroup]="form">
+  <div *ngIf="stage === 1" class="profileSettings">
+    <p class="boldText heading">Add name and description of a task</p>
+    <input formControlName="name" placeholder="Task name*" type="text">
+    <input formControlName="description" placeholder="Task description" type="text">
+    <button (click)="goToStage2()" class="mainButton secondaryButton" type="submit">Next stage</button>
+  </div>
+
+
+  <div *ngIf="stage === 2" class="profileSettings">
+    <p class="boldText heading">Choose scenario</p>
+    <div class="slide-box">
+      <mat-radio-group formControlName="scenario" style="display: flex; flex-direction: column;">
+        <mat-radio-button *ngFor="let scenario of scenarios; let i=index" [value]="scenario.id.toString()">
+          <div>
+            {{scenario.name}}
+            <button (click)="openScenarioPreview(i)" style="margin-left: 10px">Preview</button>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button (click)="goToStage1()" class="mainButton secondaryButton" type="submit">Previous stage</button>
+    <button (click)="goToStage3()" class="mainButton secondaryButton" type="submit">Next stage</button>
+  </div>
+
+
+  <div *ngIf="stage === 3" class="profileSettings">
+    <p class="boldText heading">Choose scene</p>
+    <div class="slide-box">
+      <mat-radio-group formControlName="scene" style="display: flex; flex-direction: column;">
+        <mat-radio-button *ngFor="let scene of scenes; let i=index" [value]="scene.id.toString()">
+          <div>
+            {{scene.name}}
+            <button (click)="openScenePreview(i)" style="margin-left: 10px">Preview</button>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button (click)="goToStage2()" class="mainButton secondaryButton" type="submit">Previous stage</button>
+    <button (click)="send()" [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Create task
+    </button>
+  </div>
+</form>

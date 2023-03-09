@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CreateQuizComponent} from "../create-quiz/create-quiz.component";
 import {CreateSceneComponent} from "../create-scene/create-scene.component";
+import {CreateTaskComponent} from "../create-task/create-task.component";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -26,5 +27,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   CreateSceneDialogOpen() {
     this.matDialog.open(CreateSceneComponent);
+  }
+
+  CreateTaskDialogOpen() {
+    this.matDialog.open(CreateTaskComponent);
   }
 }

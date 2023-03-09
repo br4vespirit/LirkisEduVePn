@@ -4,6 +4,7 @@ import {RegistrationRequest} from "../models/registration-request.model";
 import {Observable} from "rxjs";
 import {LoginRequest} from "../models/login-request.model";
 import {ProfileUpdate} from "../models/profile-update.model";
+import {TaskCreation} from "../models/task-creation.model";
 
 @Injectable({
   providedIn: 'root'
@@ -97,10 +98,27 @@ export class BackendService {
     )
   }
 
-  public getPreviewProfiles(): Observable<any> {
+  public getScenariosPreview(): Observable<any> {
     return this._client.get(this.API_URL + "/scenario", {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
+  }
+
+  public getScenesPreview(): Observable<any> {
+    return this._client.get(this.API_URL + "/scene", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public saveTask(task: TaskCreation): Observable<any> {
+    return this._client.post<any>(
+      this.API_URL + "/task",
+      task,
+      {
+        headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+      }
+    )
   }
 }

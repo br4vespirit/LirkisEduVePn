@@ -36,6 +36,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {PreviewScenariosComponent} from './components/preview-scenarios/preview-scenarios.component';
 import {SceneComponent} from './components/scene/scene.component';
 import {CreateSceneComponent} from './components/create-scene/create-scene.component';
+import {CreateTaskComponent} from './components/create-task/create-task.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatRadioModule} from "@angular/material/radio";
+import {PreviewSceneComponent} from './components/preview-scene/preview-scene.component';
 
 
 @NgModule({
@@ -58,7 +62,9 @@ import {CreateSceneComponent} from './components/create-scene/create-scene.compo
     UserSettingsComponent,
     PreviewScenariosComponent,
     SceneComponent,
-    CreateSceneComponent
+    CreateSceneComponent,
+    CreateTaskComponent,
+    PreviewSceneComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +81,9 @@ import {CreateSceneComponent} from './components/create-scene/create-scene.compo
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

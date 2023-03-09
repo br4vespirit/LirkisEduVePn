@@ -1,9 +1,9 @@
 <div class="close">
   <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
 </div>
-<div *ngIf="scenario">
-  <h3 style="margin-bottom: 15px !important;">{{scenario.name}}</h3>
-  <p style="margin-bottom: 25px !important;">{{scenario.description}}</p>
+<div *ngIf="scene">
+  <h3 style="margin-bottom: 15px !important;">{{scene.name}}</h3>
+  <p style="margin-bottom: 25px !important;">{{scene.description}}</p>
   <img [src]="current_photo" alt="no photo"/>
 </div>
 
@@ -11,3 +11,4 @@
   <mat-icon (click)="prev_photo()" style="cursor: pointer">navigate_before</mat-icon>
   <mat-icon (click)="next_photo()" style="cursor: pointer">navigate_next</mat-icon>
 </div>
+
