@@ -30,9 +30,8 @@ public class Scenario {
     @JdbcType(VarbinaryJdbcType.class)
     private byte[] file;
 
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
+    @OneToMany(mappedBy = "scenario")
+    private List<Task> tasks;
 
     @OneToMany(mappedBy = "scenario", cascade = CascadeType.PERSIST)
     private List<LanguageFile> languageFiles;

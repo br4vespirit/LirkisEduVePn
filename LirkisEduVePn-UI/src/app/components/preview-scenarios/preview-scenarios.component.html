@@ -1,19 +1,13 @@
-<div *ngIf="current_scenario">
-  <h3>{{current_scenario.name}}</h3>
-  <img (click)="change_scenario_photo()" [src]="current_photo" alt="no photo"/>
+<div class="close">
+  <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
+</div>
+<div *ngIf="scenario">
+  <h3 style="margin-bottom: 15px !important;">{{scenario.name}}</h3>
+  <p style="margin-bottom: 25px !important;">{{scenario.description}}</p>
+  <img [src]="current_photo" alt="no photo"/>
 </div>
 
 <div style="margin-top: 20px">
-  <mat-icon (click)="prev_scenario()"
-            [ngStyle]="{
-            'cursor': current_index === 0 ? 'default' : 'pointer',
-            'color': current_index === 0 ? 'gray' : 'inherit'
-            }">navigate_before
-  </mat-icon>
-  <mat-icon (click)="next_scenario()"
-            [ngStyle]="{
-            'cursor': current_index === scenarios.length-1 ? 'default' : 'pointer',
-            'color': current_index === scenarios.length-1 ? 'gray' : 'inherit'
-            }">navigate_next
-  </mat-icon>
+  <mat-icon (click)="prev_photo()" style="cursor: pointer">navigate_before</mat-icon>
+  <mat-icon (click)="next_photo()" style="cursor: pointer">navigate_next</mat-icon>
 </div>

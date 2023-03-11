@@ -21,8 +21,15 @@ public class Task {
 
     private String name;
 
-    @OneToMany(mappedBy = "task")
-    private List<Scenario> scenarios;
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "scenario_id", nullable = false)
+    private Scenario scenario;
+
+    @ManyToOne
+    @JoinColumn(name = "scene_id", nullable = false)
+    private Scene scene;
 
     @OneToMany(mappedBy = "task")
     private List<TaskSession> taskSessions;

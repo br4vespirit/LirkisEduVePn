@@ -3,13 +3,13 @@ package com.tuke.lirkiseduvepnservice.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScenarioRequestDto {
+public class TaskRequestDto {
     private String name;
     private String description;
-    private MultipartFile file;
+    private Long scenarioId;
+    private Long sceneId;
 }

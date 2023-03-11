@@ -6,7 +6,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {AuthGuard} from "./components/auth/auth.guard";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
-import {UsersDashboardComponent} from "./components/users-dashboard/users-dashboard.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RoleGuard} from "./components/auth/role.guard";
 import {SceneComponent} from "./components/scene/scene.component";
 
@@ -45,11 +45,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "dashboard/users",
-    component: UsersDashboardComponent,
+    path: "dashboard",
+    component: DashboardComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      expectedRole: "ADMIN"
+      expectedRoles: ["ADMIN", "TEACHER"]
     }
   },
   {

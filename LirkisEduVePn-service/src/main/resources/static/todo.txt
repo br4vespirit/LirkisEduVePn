@@ -1,11 +1,8 @@
 // TODO: Allow to use endpoints only for a specific roles (AdminController f.e.)
 // TODO: Add validation with @Valid annotation to RequestBody in controllers
 // TODO: When user JWT token has expired in navbar it still showing buttons for a logged user. Maybe clear local storage from navbar also
-// TODO: Check if it's needed to use List<TaskSessionAttempts> in Task class
-// TODO: Check if we need to use name field in Scenario table
 // TODO: Remove JWT token from a AuthenticationResponse (response body should not contain JWT token)
 // TODO: With OpenAPI write documentation for a REST controllers
 // TODO: Cannot delete user when confirmation token exists
 // TODO: Do something with password that is used in java mail configuration
-// TODO: Should be relation between Task and Scenario one to many or one to one
 // TODO: In user-settings.component.ts try to avoid using autocompleteGroups() method, try to fill groups form control immediately (not working now)

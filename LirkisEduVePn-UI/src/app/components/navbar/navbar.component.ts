@@ -12,7 +12,7 @@ import {UserProfile} from "../../models/user-profile.model";
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  colapse: boolean = false;
+  collapse: boolean = false;
   isLogged: boolean = false;
   role: string = "";
 
@@ -47,15 +47,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   showMenu() {
-    this.colapse = !this.colapse
+    this.collapse = !this.collapse
   }
 
-  canColapse() {
+  canCollapse() {
     return this.router.url !== '/login' && this.router.url !== '/register'
   }
 
   logout() {
-    this.colapse = !this.colapse
+    this.collapse = !this.collapse
     localStorage.removeItem("jwt-token");
     localStorage.removeItem("user-profile");
     this._transfer.changeStatus(false);

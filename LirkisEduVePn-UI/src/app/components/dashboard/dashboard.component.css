@@ -1,0 +1,21 @@
+.my-card {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.my-card-title {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.my-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

@@ -3,12 +3,11 @@ import {UserProfile} from "../../models/user-profile.model";
 import {BackendService} from "../../services/backend.service";
 import {MatDialog} from '@angular/material/dialog';
 import {JoinQuizComponent} from '../join-quiz/join-quiz.component';
-import {CreateQuizComponent} from '../create-quiz/create-quiz.component';
 import {HistoryQuizComponent} from '../history-quiz/history-quiz.component';
 import {ProfileSettingsComponent} from '../profile-settings/profile-settings.component';
 import {Subscription} from "rxjs";
 import {TransferService} from "../../services/transfer.service";
-import {PreviewScenariosComponent} from "../preview-scenarios/preview-scenarios.component";
+import {PreviewTasksComponent} from "../preview-tasks/preview-tasks.component";
 
 @Component({
   selector: 'app-user-profile',
@@ -23,7 +22,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   profileChangesSubscription: Subscription = new Subscription();
 
   constructor(private _client: BackendService, private matDialog: MatDialog, private _transfer: TransferService) {
-
   }
 
   ngOnInit(): void {
@@ -44,10 +42,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.matDialog.open(JoinQuizComponent);
   }
 
-  CreateQuizDialogOpen(){
-    this.matDialog.open(CreateQuizComponent);
-  }
-
   HistoryQuizDialogOpen() {
     this.matDialog.open(HistoryQuizComponent);
   }
@@ -58,7 +52,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  PreviewScenariosDialogOpen() {
-    this.matDialog.open(PreviewScenariosComponent);
+  PreviewTasksDialogOpen() {
+    this.matDialog.open(PreviewTasksComponent);
   }
 }

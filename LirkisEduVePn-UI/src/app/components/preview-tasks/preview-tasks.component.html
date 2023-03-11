@@ -1,0 +1,11 @@
+<div class="close">
+  <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
+</div>
+<div class="slide-box">
+  <div *ngFor="let task of tasks; let i=index" style="margin-bottom: 20px;">
+    {{task.name}}
+    <button (click)="openScenarioPreview(i)" style="margin-left: 10px">Preview Scenario</button>
+    <button (click)="openScenePreview(i)" style="margin-left: 10px">Preview Scene</button>
+    <button (click)="startTask(i)" style="margin-left: 10px">Start</button>
+  </div>
+</div>
