@@ -1,4 +1,4 @@
-import { SceneEvent } from '../models/sceneEvent.enum';
+import {SceneEvent} from '../models/sceneEvent.enum';
 
 AFRAME.registerComponent('collision-detector', {
   schema: {

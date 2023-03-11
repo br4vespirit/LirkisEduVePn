@@ -4,7 +4,7 @@
 export default class PetriNet {
   /**
    * Constructs instance of PetriNet
-   * @param {import('../models/typedefs').pNet} netData - Object whitch represent petri net.
+   * @param {import('../models/typedefs.js').pNet} netData - Object whitch represent petri net.
    */
   constructor(netData) {
     this.netData = netData;

@@ -8,7 +8,7 @@ import {AuthGuard} from "./components/auth/auth.guard";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RoleGuard} from "./components/auth/role.guard";
-import {SceneComponent} from "./components/scene/scene.component";
+import {SceneComponent} from "./components/tasks/scenes/muzeum_extended/scene.component";
 
 const routes: Routes = [
   {

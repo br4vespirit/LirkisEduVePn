@@ -1,4 +1,4 @@
-import { SceneEvent } from '../models/sceneEvent.enum';
+import {SceneEvent} from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import Transition from '../modules/transition.mjs';
@@ -25,10 +25,10 @@ AFRAME.registerComponent('petri-net-sim', {
     // regex pattern to find only places we want
     const pattern = /^P[1-9]{1}$/;
 
-    petriNetLoader.loadXMLDoc('../assets/petriNetFile/28032022_net_exhibition.pnml').then(res => {
-        net = (this.petriNet = new PetriNet(res));
-        res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
-        res.places.filter(ell => pattern.test(ell.name)).forEach(place => Places.push(new Place(place.name)));
+    petriNetLoader.loadXMLDoc('../../scenarios/muzeum_extended/scenario.pnml').then(res => {
+      net = (this.petriNet = new PetriNet(res));
+      res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
+      res.places.filter(ell => pattern.test(ell.name)).forEach(place => Places.push(new Place(place.name)));
     });
 
     // TODO: start session if there isnt one already existing

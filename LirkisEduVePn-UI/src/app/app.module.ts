@@ -34,7 +34,7 @@ import {ConfirmationDialog} from "./components/dialogs/confirmation-dialog/confi
 import {UserSettingsComponent} from './components/user-settings/user-settings.component';
 import {MatSelectModule} from "@angular/material/select";
 import {PreviewScenariosComponent} from './components/preview-scenarios/preview-scenarios.component';
-import {SceneComponent} from './components/scene/scene.component';
+import {SceneComponent} from './components/tasks/scenes/muzeum_extended/scene.component';
 import {CreateSceneComponent} from './components/create-scene/create-scene.component';
 import {CreateTaskComponent} from './components/create-task/create-task.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";

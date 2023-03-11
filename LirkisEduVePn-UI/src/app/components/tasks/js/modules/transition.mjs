@@ -1,4 +1,8 @@
-import { playConfirmationSuccessSound, playConfirmationUnsuccessSound, updateVisualProgres } from '../transitionFunctions.js';
+import {
+  playConfirmationSuccessSound,
+  playConfirmationUnsuccessSound,
+  updateVisualProgres
+} from '../transitionFunctions.js';
 
 /**
  * @class
@@ -25,7 +29,7 @@ export default class Transition {
     }
 
     /**
-     * 
+     *
      * @param {boolean} isTransitionEnabled - jfkajfk a
      */
     always(isTransitionEnabled) {

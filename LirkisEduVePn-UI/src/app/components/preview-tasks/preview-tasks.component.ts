@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {PreviewScenariosComponent} from "../preview-scenarios/preview-scenarios.component";
 import {PreviewSceneComponent} from "../preview-scene/preview-scene.component";
 import {TaskFiles} from "../../models/task-files.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-preview-tasks',
@@ -20,7 +21,7 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
   task_files_subscription: Subscription = new Subscription();
 
   constructor(private matDialogRef: MatDialogRef<PreviewTasksComponent>, private _client: BackendService,
-              private matDialog: MatDialog) {
+              private matDialog: MatDialog, private _router: Router) {
   }
 
   ngOnInit() {
@@ -52,13 +53,8 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
       taskFiles = data as TaskFiles;
       TaskFiles.decode(taskFiles);
 
-      const htmlFilePath = 'LirkisEduVePn-UI/src/app/components/scene/scene.component.html';
-      const tsFilePath = 'LirkisEduVePn-UI/src/app/components/scene/scene.component.ts';
-      const specTsFilePath = 'LirkisEduVePn-UI/src/app/components/scene/scene.component.spec.ts';
-      const pnmlFilePath = 'LirkisEduVePn-UI/src/assets/petriNetFile/scenario.pnml';
-      const languageFilePath = 'LirkisEduVePn-UI/src/assets/sceneDescription.json';
-
-      console.log("success");
+      this._router.navigate(["/scene"], {state: {data: taskFiles}}).then();
+      this.matDialogRef.close();
     })
   }
 }

@@ -1,4 +1,4 @@
-import { SceneEvent } from '../models/sceneEvent.enum';
+import {SceneEvent} from '../models/sceneEvent.enum';
 
 AFRAME.registerComponent('clk-multi-event-handler', {
   schema: {

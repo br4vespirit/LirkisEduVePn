@@ -1,6 +1,6 @@
 /**
  * @param {string} url - A DOMString representing the URL to send the request to.
- * @returns {import('../models/typedefs').pNet} Returns Object representing petri net.
+ * @returns {import('../models/typedefs.js').pNet} Returns Object representing petri net.
  */
 export async function loadXMLDoc(url) {
       var data = { places: [], arcs: [], transitions: [] };
