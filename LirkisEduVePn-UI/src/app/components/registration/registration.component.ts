@@ -65,12 +65,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     return null;
   }
 
-  get groups() {
-    if (this.form)
-      return this.form.controls['groups'];
-    return null;
-  }
-
   ngOnInit(): void {
     this.groupsSubscription = this._client.getGroups().subscribe(data => {
       this._groups = data as Group[];
@@ -81,8 +75,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required]),
-      groups: new FormControl('', [])
+      confirmPassword: new FormControl('', [Validators.required])
     });
   }
 
@@ -102,9 +95,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       this.password?.value,
       this.firstname?.value,
       this.lastname?.value,
-      this.groups?.value
     );
-
     this.registrationUserSubscription = this._client.register(request).subscribe({
       complete: () => {
         this.form.reset({});

@@ -52,14 +52,6 @@
             <div *ngIf="!passwordsMatch">Passwords do not match</div>
           </div>
 
-          <div class="input">
-            <mat-select formControlName="groups" multiple placeholder="Choose groups">
-              <mat-option *ngFor="let group of _groups" [value]="group.id">
-                {{group.name}}
-              </mat-option>
-            </mat-select>
-          </div>
-
         </div>
         <button [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Register</button>
       </form>
