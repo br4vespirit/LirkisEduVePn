@@ -1,10 +1,9 @@
-<a-scene
-  renderer="colorManagement: true"
-  light="defaultLightsEnabled: false"
-  shadow="type: pcfsoft"
-  petri-net-sim="finalPlace: final; taskCount: 3"
-  gltf-model="dracoDecoderPath: ''"
-  physics="gravity: 0">
+<a-scene #scene
+         gltf-model="dracoDecoderPath: ''"
+         light="defaultLightsEnabled: false"
+         physics="gravity: 0"
+         renderer="colorManagement: true"
+         shadow="type: pcfsoft">
   <!-- Load Assets -->
   <a-assets>
     <!-- global -->
@@ -59,22 +58,37 @@
       src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png" />
     <img
       id="maria"
-      src="../assets/images/Kaiserin_Maria_Theresia_(HRR)-min.jpg" />
+      src="../assets/images/Kaiserin_Maria_Theresia_(HRR)-min.jpg"/>
     <img
       id="jozef"
-      src="../assets/images/Joseph_Hickel_-_Emperor_Joseph_II,_pair-min.png" />
+      src="../assets/images/Joseph_Hickel_-_Emperor_Joseph_II,_pair-min.png"/>
     <img
       id="frantisek"
-      src="../assets/images/Meytens,_studio_or_circle_of_-_Francis_I,_Holy_Roman_Emperor-min.png" />
+      src="../assets/images/Meytens,_studio_or_circle_of_-_Francis_I,_Holy_Roman_Emperor-min.png"/>
     <img
       id="karol"
-      src="../assets/images/Portrait_of_Emperor_Charles_VI_in_armour,_decorated_with_the_Order_of_the_Golden_Fleece-min.jpg" />
-    <img id="controls" src="../assets/images/Keyboard_controls.png" />
-    <img id="museumMap" src="../assets/images/museum-map.png" />
-    <img id="infoPanel" src="../assets/images/Panel.png" />
-    <img id="infoIcon" src="../assets/images/info-circle.png" />
-    <img id="unselected" src="../assets/images/slash-circle-fill-red.png" />
-    <img id="selected" src="../assets/images/check-circle-fill-green.png" />
+      src="../assets/images/Portrait_of_Emperor_Charles_VI_in_armour,_decorated_with_the_Order_of_the_Golden_Fleece-min.jpg"/>
+
+    <img id="bel" src="../assets/images/bel.jpeg"/>
+    <img id="david" src="../assets/images/david.jpeg"/>
+    <img id="habsburg" src="../assets/images/Habsburg.jpeg"/>
+    <img id="kollar" src="../assets/images/jan-kollar.jpg"/>
+    <img id="venere" src="../assets/images/La_nascita_di_Venere.jpeg"/>
+    <img id="monaLisa" src="../assets/images/Mona_Lisa.jpeg"/>
+    <img id="pazman" src="../assets/images/Pazmany_Peter.jpeg"/>
+    <img id="plantageneti" src="../assets/images/Plantageneti.jpeg"/>
+    <img id="rafael" src="../assets/images/RAFAEL.jpeg"/>
+    <img id="stur" src="../assets/images/stur.jpeg"/>
+    <img id="valois" src="../assets/images/Valois.jpeg"/>
+    <img id="wittelsbach" src="../assets/images/Wittelsbach.jpeg"/>
+    <img id="map" src="../assets/images/map.png"/>
+
+    <img id="controls" src="../assets/images/Keyboard_controls.png"/>
+    <img id="museumMap" src="../assets/images/museum-map.png"/>
+    <img id="infoPanel" src="../assets/images/Panel.png"/>
+    <img id="infoIcon" src="../assets/images/info-circle.png"/>
+    <img id="unselected" src="../assets/images/slash-circle-fill-red.png"/>
+    <img id="selected" src="../assets/images/check-circle-fill-green.png"/>
     <a-mixin
       id="canGrab"
       hoverable
@@ -110,7 +124,7 @@
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
-        raycaster="objects: .interactible, .P3C, .P3I"
+        raycaster="objects: .interactible, .P3C, .P3I, .P4C, P4I, .P5C"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
@@ -120,9 +134,9 @@
   </a-entity>
 
   <!-- Map and navigationMesh ---------------------------------------------------------------------->
-  <a-entity gltf-model="#museum" position="0 1 16"></a-entity>
+  <a-entity [attr.gltf-model]="'#museum'" position="0 1 16"></a-entity>
   <a-entity
-    gltf-model="#navmesh"
+    [attr.gltf-model]="'#navmesh'"
     position="0 1 16"
     visible="false"
     nav-mesh></a-entity>
@@ -268,7 +282,7 @@
     </a-entity>
   </a-image>
 
-  <a-entity gltf-model="#coin" position="0 1 16">
+  <a-entity [attr.gltf-model]="'#coin'" position="0 1 16">
     <a-entity
       class="infoPanels"
       position="7.401 1.246 -4.877"
@@ -311,7 +325,7 @@
     </a-entity>
   </a-entity>
 
-  <a-entity gltf-model="#blava" position="0 1 16">
+  <a-entity [attr.gltf-model]="'#blava'" position="0 1 16">
     <a-entity
       class="infoPanels"
       position="6.71663 1.30132 -20.8599"
@@ -689,7 +703,7 @@
   </a-image>
 
   <a-entity
-    gltf-model="#book"
+    [attr.gltf-model]="'#book'"
     position="-8.768 2.640 -2.599"
     rotation="0 180 60">
     <a-text
@@ -754,7 +768,7 @@
   </a-entity>
 
   <a-entity
-    gltf-model="#book"
+    [attr.gltf-model]="'#book'"
     position="-8.768 2.640 -5.780"
     rotation="0 180 60">
     <a-text
@@ -819,7 +833,7 @@
   </a-entity>
 
   <a-entity
-    gltf-model="#book"
+    [attr.gltf-model]="'#book'"
     position="-2.904 2.640 -2.599"
     rotation="0 0 60">
     <a-text
@@ -884,7 +898,7 @@
   </a-entity>
 
   <a-entity
-    gltf-model="#book"
+    [attr.gltf-model]="'#book'"
     position="-2.904 2.640 -5.780"
     rotation="0 0 60">
     <a-text
@@ -1047,7 +1061,7 @@
   </a-image>
 
   <a-entity
-    gltf-model="#crown"
+    [attr.gltf-model]="'#crown'"
     class="P3C"
     position="22.582 2.456 12.098"
     mixin="canGrab"></a-entity>
@@ -1066,7 +1080,7 @@
     scale="0.4 0.2 1"></a-text>
 
   <a-entity
-    gltf-model="#cup"
+    [attr.gltf-model]="'#cup'"
     class="P3I"
     position="19.548 2.631 8.807"
     mixin="canGrab"></a-entity>
@@ -1085,7 +1099,7 @@
     scale="0.4 0.2 1"></a-text>
 
   <a-entity
-    gltf-model="#apple_coat"
+    [attr.gltf-model]="'#apple_coat'"
     class="P3C"
     position="25.467 2.456 12.031"
     mixin="canGrab"></a-entity>
@@ -1104,7 +1118,7 @@
     scale="0.4 0.2 1"></a-text>
 
   <a-entity
-    gltf-model="#sword"
+    [attr.gltf-model]="'#sword'"
     class="P3C"
     position="25.426 3.408 8.866"
     mixin="canGrab"></a-entity>
@@ -1123,7 +1137,7 @@
     scale="0.4 0.2 1"></a-text>
 
   <a-entity
-    gltf-model="#mace"
+    [attr.gltf-model]="'#mace'"
     class="P3C"
     position="19.505 3.773 11.937"
     mixin="canGrab"></a-entity>
@@ -1162,13 +1176,13 @@
     scale="7.920 0.2 20.360"
     position="-18.35 1.167 3.142"
     material="color: red; wireframe: true"
-    visible="true">
+    visible="false">
   </a-box>
 
   <a-image
     id="taskP4"
     [attr.src]="'#infoPanel'"
-    visible="true"
+    visible="false"
     height="1.170"
     width="1.2"
     [attr.position]="'-15.5 2.35122 11'"
@@ -1208,7 +1222,7 @@
   </a-image>
 
   <a-entity
-    gltf-model="#silk"
+    [attr.gltf-model]="'#silk'"
     scale="0.5 0.5 0.5"
     class="P4C"
     position="-18.407 2 -5.5"
@@ -1227,7 +1241,7 @@
     scale="0.4 0.2 1"></a-text>
 
   <a-entity
-    gltf-model="#parfume"
+    [attr.gltf-model]="'#parfume'"
     scale="0.3 0.3 0.3"
     class="P4C"
     position="-21.3 2.7 -5.668"
@@ -1246,11 +1260,11 @@
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
 
-  <a-entity
-    gltf-model="#spice"
-    class="P4C"
-    position="-15.848 2.133 -2.509"
-    mixin="canGrab"></a-entity>
+  <!--  <a-entity-->
+  <!--    gltf-model="#spice"-->
+  <!--    class="P4C"-->
+  <!--    position="-15.848 2.133 -2.509"-->
+  <!--    mixin="canGrab"></a-entity>-->
   <a-text
     id="P4Spice"
     position="-15.848 2.133 -2.509"
@@ -1266,5 +1280,1227 @@
     scale="0.4 0.2 1"></a-text>
 
   <!-- Exposition Room 5 ------------------------------------------------------------------------------->
+  <a-box
+    collision-detector="collisionEvent: P5; clearedCollisionEvent: Roaming"
+    id="place5"
+    material="color: red; wireframe: true"
+    physics-collider="ignoreSleep: true"
+    position="-30.7 1.167 3.142"
+    scale="7.920 0.2 20.360"
+    static-body
+    visible="false">
+  </a-box>
+
+  <a-image
+    [attr.position]="'-30.862 2.3 -6.5'"
+    [attr.src]="'#infoPanel'"
+    height="1.170"
+    id="taskP5"
+    rotation="-8.68 0 0"
+    visible="false"
+    width="1.2">
+    <a-text
+      class="uloha"
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      position="-0.411 0.3 0"
+      text="width: 1.2; wrapCount: 20; alphaTest: 3"
+      value="Úloha">
+    </a-text>
+    <a-text
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      id="P5question"
+      negate="false"
+      position="-0.411 0.01 0.00816"
+      text="width: 0.8; wrapCount: 20; alphaTest: 3"
+      value="Označte exponáty s reformami, ktoré zaviedla Mária Terézia.">
+    </a-text>
+    <a-text
+      align="center"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
+      clk-single-event-handler="name: P5confirm"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      id="P5confirm"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      negate="false"
+      position="0 -0.30236 0.00878"
+      scale="0.45 0.25 1"
+      sound__success="src: #success_sound; on: success; poolSize: 2"
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
+      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+  </a-image>
+
+  <a-image
+    [attr.position]="'-34.5 3.349 -2.114'"
+    [attr.src]="'#david'"
+    height="2.42"
+    rotation="0 90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.211 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.014 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1Frantisek"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="František I. Štefan Lotrinský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1FranisekDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'-34.5 3.349 -4.985'"
+    [attr.src]="'#monaLisa'"
+    height="2.42"
+    rotation="0 90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.211 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.014 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1Frantisek"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="František I. Štefan Lotrinský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1FranisekDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'-27.182 3.349 -4.985'"
+    [attr.src]="'#venere'"
+    height="2.42"
+    rotation="0 -90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.211 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.014 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1Frantisek"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="František I. Štefan Lotrinský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1FranisekDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'-27.182 3.349 -2.114'"
+    [attr.src]="'#rafael'"
+    height="2.42"
+    rotation="0 -90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.211 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.014 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1Frantisek"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="František I. Štefan Lotrinský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P1FranisekDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-box
+    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
+    collision-filter="collisionForces: false"
+    material="color: red; opacity: 0.15"
+    physics-collider
+    position="-34 1.9 -2.114'"
+    rotation="0 90 0"
+    scale="1 0.3 0.5"
+    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2"
+    static-body="shape:sphere">
+  </a-box>
+
+  <a-box
+    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
+    collision-filter="collisionForces: false"
+    material="color: red; opacity: 0.15"
+    physics-collider
+    position="-34 1.9 -4.985'"
+    rotation="0 90 0"
+    scale="1 0.3 0.5"
+    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2"
+    static-body="shape:sphere">
+  </a-box>
+
+  <a-box
+    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
+    collision-filter="collisionForces: false"
+    material="color: red; opacity: 0.15"
+    physics-collider
+    position="-27.5 1.9 -2.114'"
+    rotation="0 90 0"
+    scale="1 0.3 0.5"
+    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2"
+    static-body="shape:sphere">
+  </a-box>
+
+  <a-box
+    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
+    collision-filter="collisionForces: false"
+    material="color: red; opacity: 0.15"
+    physics-collider
+    position="-27.5 1.9 -4.985'"
+    rotation="0 90 0"
+    scale="1 0.3 0.5"
+    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2"
+    static-body="shape:sphere">
+  </a-box>
+
+  <a-entity
+    class="P5C"
+    geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
+    material="color: #363636"
+    mixin="canGrab"
+    position="-27.95 2.5 8.9'"
+    rotation="20 90 0">
+    <a-text
+      align="center"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 1.16"
+      id="P5DaVinci"
+      material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+      negate="false"
+      position="0 0 -0.026"
+      rotation="0 180 0"
+      scale="0.4 0.2 1"
+      text="color: #e3e3e3; wrapCount: 8.12"
+      value="DaVinci"
+      width="1"></a-text>
+  </a-entity>
+
+  <a-entity
+    class="infoPanels"
+    position="-28.15 2.2 8.9"
+    rotation="0 90 0">
+    <a-circle
+      animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+      class="interactible"
+      material="src: #infoIcon; side: double; shader: flat"
+      position="0 0 -0.21117"
+      radius="0.15"
+      rotation="0 180 0"
+      sound="src: #tap; on: click; poolSize: 2"
+      toggle-info>
+      <a-image
+        [attr.position]="'-0.014 1.216 0'"
+        [attr.src]="'#infoPanel'"
+        height="2"
+        visible="false"
+        width="1.5">
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1Frantisek"
+          negate="false"
+          position="-0.550 0.6 0"
+          text="width: 1.1; wrapCount: 20; alphaTest: 3"
+          value="František I. Štefan Lotrinský">
+        </a-text>
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1FranisekDescription"
+          negate="false"
+          position="-0.550 0 0"
+          text="width: 1.1; wrapCount: 33; alphaTest: 3"
+          value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+        </a-text>
+      </a-image>
+    </a-circle>
+  </a-entity>
+
+  <a-entity
+    class="P5C"
+    geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
+    material="color: #363636"
+    mixin="canGrab"
+    position="-27.95 2.5 12.05'"
+    rotation="20 90 0">
+    <a-text
+      align="center"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 1.16"
+      id="P5DaVinci"
+      material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+      negate="false"
+      position="0 0 -0.026"
+      rotation="0 180 0"
+      scale="0.4 0.2 1"
+      text="color: #e3e3e3; wrapCount: 8.12"
+      value="DaVinci"
+      width="1"></a-text>
+  </a-entity>
+
+  <a-entity
+    class="infoPanels"
+    position="-28.15 2.2 12.05"
+    rotation="0 90 0">
+    <a-circle
+      animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+      class="interactible"
+      material="src: #infoIcon; side: double; shader: flat"
+      position="0 0 -0.21117"
+      radius="0.15"
+      rotation="0 180 0"
+      sound="src: #tap; on: click; poolSize: 2"
+      toggle-info>
+      <a-image
+        [attr.position]="'-0.014 1.216 0'"
+        [attr.src]="'#infoPanel'"
+        height="2"
+        visible="false"
+        width="1.5">
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1Frantisek"
+          negate="false"
+          position="-0.550 0.6 0"
+          text="width: 1.1; wrapCount: 20; alphaTest: 3"
+          value="František I. Štefan Lotrinský">
+        </a-text>
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1FranisekDescription"
+          negate="false"
+          position="-0.550 0 0"
+          text="width: 1.1; wrapCount: 33; alphaTest: 3"
+          value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+        </a-text>
+      </a-image>
+    </a-circle>
+  </a-entity>
+
+  <a-entity
+    class="P5C"
+    geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
+    material="color: #363636"
+    mixin="canGrab"
+    position="-33.7 2.5 8.9'"
+    rotation="20 -90 0">
+    <a-text
+      align="center"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 1.16"
+      id="P5DaVinci"
+      material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+      negate="false"
+      position="0 0 -0.026"
+      rotation="0 180 0"
+      scale="0.4 0.2 1"
+      text="color: #e3e3e3; wrapCount: 8.12"
+      value="DaVinci"
+      width="1"></a-text>
+  </a-entity>
+
+  <a-entity
+    class="infoPanels"
+    position="-33.1 2.2 8.9"
+    rotation="0 90 0">
+    <a-circle
+      animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+      class="interactible"
+      material="src: #infoIcon; side: double; shader: flat"
+      position="0 0 -0.21117"
+      radius="0.15"
+      rotation="0 0 0"
+      sound="src: #tap; on: click; poolSize: 2"
+      toggle-info>
+      <a-image
+        [attr.position]="'-0.014 1.216 0'"
+        [attr.src]="'#infoPanel'"
+        height="2"
+        visible="false"
+        width="1.5">
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1Frantisek"
+          negate="false"
+          position="-0.550 0.6 0"
+          text="width: 1.1; wrapCount: 20; alphaTest: 3"
+          value="František I. Štefan Lotrinský">
+        </a-text>
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1FranisekDescription"
+          negate="false"
+          position="-0.550 0 0"
+          text="width: 1.1; wrapCount: 33; alphaTest: 3"
+          value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+        </a-text>
+      </a-image>
+    </a-circle>
+  </a-entity>
+
+  <a-entity
+    class="P5C"
+    geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
+    material="color: #363636"
+    mixin="canGrab"
+    position="-33.7 2.5 12.05'"
+    rotation="20 -90 0">
+    <a-text
+      align="center"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 1.16"
+      id="P5DaVinci"
+      material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+      negate="false"
+      position="0 0 -0.026"
+      rotation="0 180 0"
+      scale="0.4 0.2 1"
+      text="color: #e3e3e3; wrapCount: 8.12"
+      value="DaVinci"
+      width="1"></a-text>
+  </a-entity>
+
+  <a-entity
+    class="infoPanels"
+    position="-33.1 2.2 12.05"
+    rotation="0 90 0">
+    <a-circle
+      animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+      class="interactible"
+      material="src: #infoIcon; side: double; shader: flat"
+      position="0 0 -0.21117"
+      radius="0.15"
+      rotation="0 0 0"
+      sound="src: #tap; on: click; poolSize: 2"
+      toggle-info>
+      <a-image
+        [attr.position]="'-0.014 1.216 0'"
+        [attr.src]="'#infoPanel'"
+        height="2"
+        visible="false"
+        width="1.5">
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1Frantisek"
+          negate="false"
+          position="-0.550 0.6 0"
+          text="width: 1.1; wrapCount: 20; alphaTest: 3"
+          value="František I. Štefan Lotrinský">
+        </a-text>
+        <a-text
+          color="#F2F2F2"
+          font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+          id="P1FranisekDescription"
+          negate="false"
+          position="-0.550 0 0"
+          text="width: 1.1; wrapCount: 33; alphaTest: 3"
+          value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+        </a-text>
+      </a-image>
+    </a-circle>
+  </a-entity>
+
+  <!-- Exposition Room 6 ------------------------------------------------------------------------------->
+  <a-box
+    collision-detector="collisionEvent: P6; clearedCollisionEvent: Roaming"
+    id="place6"
+    material="color: red; wireframe: true"
+    physics-collider
+    position="35 1.167 10.203"
+    scale="7.920 0.2 7"
+    static-body
+    visible="false">
+  </a-box>
+  <a-image
+    [attr.position]="'35 2.3 13.02616'"
+    [attr.src]="'#infoPanel'"
+    height="1.170"
+    id="taskP6"
+    rotation="-8.68 180 0"
+    visible="false"
+    width="1.2">
+    <a-text
+      class="uloha"
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      position="-0.411 0.3 0"
+      text="width: 1.2; wrapCount: 20; alphaTest: 3"
+      value="Úloha">
+    </a-text>
+    <a-text
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      id="P6question"
+      negate="false"
+      position="-0.411 0.02749 0.01946"
+      text="width: 0.8; wrapCount: 20; alphaTest: 3"
+      value="Kto nastúpil v roku 1740 na Habsburgský trón? Označte jeho alebo jej portrét.">
+    </a-text>
+    <a-text
+      align="center"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
+      clk-single-event-handler="name: P6confirm"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      id="P6confirm"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      negate="false"
+      position="0 -0.29141 0.01752"
+      scale="0.44 0.25 1"
+      sound__success="src: #success_sound; on: success; poolSize: 2"
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
+      text="width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+  </a-image>
+
+  <a-image
+    [attr.position]="'38.650 3.354 8.379'"
+    [attr.src]="'#pazman'"
+    height="2.42"
+    rotation="0 -90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P6Cselect; secondToggleEvent: P6Cunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6Pazman"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6PazmanDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'38.650 3.354 11.266'"
+    [attr.src]="'#stur'"
+    height="2.42"
+    rotation="0 -90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P6Iselect; secondToggleEvent: P6Iunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6PStur"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6SturDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'31.305 3.354 8.379'"
+    [attr.src]="'#bel'"
+    height="2.42"
+    rotation="0 90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P6Iselect; secondToggleEvent: P6Iunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6Bel"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6BelDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'31.305 3.354 11.266'"
+    [attr.src]="'#kollar'"
+    height="2.42"
+    rotation="0 90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P6Iselect; secondToggleEvent: P6Iunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6PKollar"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P6KollarDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <!-- Exposition Room 7 ------------------------------------------------------------------------------->
+  <a-box
+    collision-detector="collisionEvent: P7; clearedCollisionEvent: Roaming"
+    id="place7"
+    material="color: red; wireframe: true"
+    physics-collider
+    position="35 1.167 -3.74901"
+    scale="7.92 0.2 7"
+    static-body
+    visible="false">
+  </a-box>
+
+  <a-image
+    [attr.position]="'35 2.3 -6.5'"
+    [attr.src]="'#infoPanel'"
+    height="1.170"
+    id="taskP7"
+    rotation="-8.68 0 0"
+    visible="false"
+    width="1.2">
+    <a-text
+      class="uloha"
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      position="-0.411 0.3 0"
+      text="width: 1.2; wrapCount: 20; alphaTest: 3"
+      value="Úloha">
+    </a-text>
+    <a-text
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      id="P7question"
+      negate="false"
+      position="-0.411 0.01 0.00816"
+      text="width: 0.8; wrapCount: 20; alphaTest: 3"
+      value="Označte exponáty s reformami, ktoré zaviedla Mária Terézia.">
+    </a-text>
+    <a-text
+      align="center"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
+      clk-single-event-handler="name: P7confirm"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      id="P7confirm"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      negate="false"
+      position="0 -0.30236 0.00878"
+      scale="0.45 0.25 1"
+      sound__success="src: #success_sound; on: success; poolSize: 2"
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
+      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+  </a-image>
+
+  <a-image
+    [attr.position]="'38.650 3.354 -4.919'"
+    [attr.src]="'#wittelsbach'"
+    height="2.42"
+    rotation="0 -90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P7Iselect; secondToggleEvent: P7Iunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7Wittelsbach"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7Wittelsbach"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'38.650 3.354 -2.003'"
+    [attr.src]="'#valois'"
+    height="2.42"
+    rotation="0 -90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P7Iselect; secondToggleEvent: P7Iunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7Valois"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7ValoisDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'31.305 3.354 -4.919'"
+    [attr.src]="'#plantageneti'"
+    height="2.42"
+    rotation="0 90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P7Iselect; secondToggleEvent: P7Iunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7Plantageneti"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7PlantagenetiDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <a-image
+    [attr.position]="'31.305 3.354 -2.003'"
+    [attr.src]="'#habsburg'"
+    height="2.42"
+    rotation="0 90 0"
+    width="2">
+    <a-entity
+      class="infoPanels"
+      position="0.395 -1.380 0.025"
+      rotation="0 90 0">
+      <a-circle
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        class="interactible"
+        clk-multi-event-handler="firstToggleEvent: P7Cselect; secondToggleEvent: P7Cunselect"
+        material="src: #unselected; side: double; shader: flat"
+        position="0 0 -0.60927"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"></a-circle>
+      <a-circle
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        class="interactible"
+        material="src: #infoIcon; side: double; shader: flat"
+        position="0 0 -0.21117"
+        radius="0.15"
+        rotation="0 -90 0"
+        sound="src: #tap; on: click; poolSize: 2"
+        toggle-info>
+        <a-image
+          [attr.position]="'-0.19709 1.216 0'"
+          [attr.src]="'#infoPanel'"
+          height="2"
+          visible="false"
+          width="1.5">
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7Habsburg"
+            negate="false"
+            position="-0.550 0.6 0"
+            text="width: 1.1; wrapCount: 20; alphaTest: 3"
+            value="Karol VI. Habsburský">
+          </a-text>
+          <a-text
+            color="#F2F2F2"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+            id="P7HabsburgDescription"
+            negate="false"
+            position="-0.550 0 0"
+            text="width: 1.1; wrapCount: 33; alphaTest: 3"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+          </a-text>
+        </a-image>
+      </a-circle>
+    </a-entity>
+  </a-image>
+
+  <!-- Exposition Room 8 ------------------------------------------------------------------------------->
+  <a-box
+    collision-detector="collisionEvent: P8; clearedCollisionEvent: Roaming"
+    id="place8"
+    material="color: red; wireframe: true"
+    physics-collider
+    position="47.5 1.167 10.203"
+    scale="7.920 0.2 7"
+    static-body
+    visible="false">
+  </a-box>
+  <a-image
+    [attr.position]="'47.5 2.3 13.02616'"
+    [attr.src]="'#infoPanel'"
+    height="1.170"
+    id="taskP8"
+    rotation="-8.68 180 0"
+    visible="false"
+    width="1.2">
+    <a-text
+      class="uloha"
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      position="-0.411 0.3 0"
+      text="width: 1.2; wrapCount: 20; alphaTest: 3"
+      value="Úloha">
+    </a-text>
+    <a-text
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      id="P8question"
+      negate="false"
+      position="-0.411 0.02749 0.01946"
+      text="width: 0.8; wrapCount: 20; alphaTest: 3"
+      value="Kto nastúpil v roku 1740 na Habsburgský trón? Označte jeho alebo jej portrét.">
+    </a-text>
+    <a-text
+      align="center"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
+      clk-single-event-handler="name: P8confirm"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      id="P8confirm"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      negate="false"
+      position="0 -0.29141 0.01752"
+      scale="0.44 0.25 1"
+      sound__success="src: #success_sound; on: success; poolSize: 2"
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
+      text="width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+  </a-image>
+
+  <a-image
+    [attr.position]="'51.140 3.354 3.179'"
+    [attr.src]="'#map'"
+    height="3.390"
+    rotation="0 -90 0"
+    width="9.450">
+  </a-image>
+
+  <!-- Exposition Room 9 ------------------------------------------------------------------------------->
+  <a-box
+    collision-detector="collisionEvent: P9; clearedCollisionEvent: Roaming"
+    id="place9"
+    material="color: red; wireframe: true"
+    physics-collider
+    position="47.5 1.167 -3.74901"
+    scale="7.92 0.2 7"
+    static-body
+    visible="false">
+  </a-box>
+
+  <a-image
+    [attr.position]="'47.5 2.3 -6.5'"
+    [attr.src]="'#infoPanel'"
+    height="1.170"
+    id="taskP9"
+    rotation="-8.68 0 0"
+    visible="false"
+    width="1.2">
+    <a-text
+      class="uloha"
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      position="-0.411 0.3 0"
+      text="width: 1.2; wrapCount: 20; alphaTest: 3"
+      value="Úloha">
+    </a-text>
+    <a-text
+      color="#F2F2F2"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      id="P9question"
+      negate="false"
+      position="-0.411 0.01 0.00816"
+      text="width: 0.8; wrapCount: 20; alphaTest: 3"
+      value="Označte exponáty s reformami, ktoré zaviedla Mária Terézia.">
+    </a-text>
+    <a-text
+      align="center"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
+      clk-single-event-handler="name: P9confirm"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      id="P9confirm"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      negate="false"
+      position="0 -0.30236 0.00878"
+      scale="0.45 0.25 1"
+      sound__success="src: #success_sound; on: success; poolSize: 2"
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
+      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+  </a-image>
 
 </a-scene>

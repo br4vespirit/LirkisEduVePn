@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskFilesDto {
-    private byte[] htmlFile;
-    private byte[] tsFile;
-    private byte[] specTsFile;
     private byte[] pnmlFile;
     private byte[] languageFile;
 }

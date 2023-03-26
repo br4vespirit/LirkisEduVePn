@@ -1,9 +1,9 @@
-<div class="main" *ngIf="!showScene">
-    <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
+<div class="main">
+  <app-navbar *ngIf="!showScene"></app-navbar>
+  <router-outlet></router-outlet>
+  <app-footer *ngIf="!showScene"></app-footer>
 </div>
-<div *ngIf="showScene">
-  <!-- Scene component will be shown here -->
-  <app-scene></app-scene>
-</div>
+<!--<div *ngIf="showScene">-->
+<!--  &lt;!&ndash; Scene component will be shown here &ndash;&gt;-->
+<!--  <app-scene></app-scene>-->
+<!--</div>-->

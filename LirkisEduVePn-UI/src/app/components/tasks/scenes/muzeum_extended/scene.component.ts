@@ -1,12 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 import '../../js/components/collisionDetectorEventHandler.component.js';
 import '../../js/components/toggleInfo.component.js';
 import '../../js/components/clkMultiEventHandler.component.js';
 import '../../js/components/clkSingleEventHandler.component.js';
 import '../../js/components/petriNetSim.component.js';
+import '../../js/components/sceneLanguage.component.js';
 import {TaskFiles} from "../../../../models/task-files.model";
-import {Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+import {BackendService} from "../../../../services/backend.service";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -14,24 +17,37 @@ import {Router} from "@angular/router";
   templateUrl: './scene.component.html',
   styleUrls: ['./scene.component.css']
 })
-export class SceneComponent implements OnInit {
+export class SceneComponent {
+
+  @ViewChild('scene') scene!: ElementRef;
 
   // @ts-ignore
+  taskId: number;
+  // @ts-ignore
   taskFiles: TaskFiles
+  task_files_subscription: Subscription = new Subscription();
 
-  constructor(private _router: Router) {
+
+  constructor(private _route: ActivatedRoute, private _client: BackendService) {
+
+    this._route.params.subscribe(params => {
+      this.taskId = params['taskId'];
+    })
+
     // @ts-ignore
-    this.taskFiles = this._router.getCurrentNavigation()?.extras.state.data as TaskFiles;
-    console.log(this.taskFiles)
-  }
+    this.task_files_subscription = this._client.getTaskFiles(this.taskId).subscribe(data => {
+      this.taskFiles = data as TaskFiles;
+      TaskFiles.decode(this.taskFiles);
 
-  ngOnInit(): void {
+      if (this.taskFiles) {
+        // attach petri net sim component to the scene
+        const petriNetSimAttr = `finalPlace: final; taskCount: 3; pnmlFile: ${this.taskFiles.pnmlFile}`;
+        this.scene.nativeElement.setAttribute('petri-net-sim', petriNetSimAttr);
 
-    // TODO: get language files from database
+        // attach language component to the scene
+        this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}; languageVersion: sk`)
+      }
 
-    // TODO: get pnml file from database
-
-    // TODO: get scene file form database (html file)
-
+    })
   }
 }

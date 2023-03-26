@@ -8,11 +8,12 @@ import * as serverLogger from '../modules/serverLogger.mjs';
 
 AFRAME.registerComponent('petri-net-sim', {
   schema: {
-    event: { type: 'string', default: 'Scene Loaded' },
-    message: { type: 'string', default: SceneEvent.petriNetLoaded },
-    activePlace: { type: 'string', default: 'Roaming' },
-    finalPlace: { type: 'string' },
-    taskCount: { type: 'number', default: 1 }
+    event: {type: 'string', default: 'Scene Loaded'},
+    message: {type: 'string', default: SceneEvent.petriNetLoaded},
+    activePlace: {type: 'string', default: 'Roaming'},
+    finalPlace: {type: 'string'},
+    taskCount: {type: 'number', default: 1},
+    pnmlFile: {type: 'string', default: 'f'}
   },
   // Do something when component first attached.
   init: function () {
@@ -25,10 +26,11 @@ AFRAME.registerComponent('petri-net-sim', {
     // regex pattern to find only places we want
     const pattern = /^P[1-9]{1}$/;
 
-    petriNetLoader.loadXMLDoc('../../scenarios/muzeum_extended/scenario.pnml').then(res => {
+    petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
       res.places.filter(ell => pattern.test(ell.name)).forEach(place => Places.push(new Place(place.name)));
+      console.log(net);
     });
 
     // TODO: start session if there isnt one already existing

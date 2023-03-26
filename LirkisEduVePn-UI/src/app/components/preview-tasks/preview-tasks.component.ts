@@ -5,7 +5,6 @@ import {TaskPreview} from "../../models/task-preview.model";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {PreviewScenariosComponent} from "../preview-scenarios/preview-scenarios.component";
 import {PreviewSceneComponent} from "../preview-scene/preview-scene.component";
-import {TaskFiles} from "../../models/task-files.model";
 import {Router} from "@angular/router";
 
 @Component({
@@ -48,13 +47,9 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
   }
 
   startTask(i: number) {
-    let taskFiles: TaskFiles;
-    this.task_files_subscription = this._client.getTaskFiles(this.tasks[i].id).subscribe(data => {
-      taskFiles = data as TaskFiles;
-      TaskFiles.decode(taskFiles);
-
-      this._router.navigate(["/scene"], {state: {data: taskFiles}}).then();
-      this.matDialogRef.close();
-    })
+    // TODO: change this.tasks[i].scene.name into this.tasks[i].scene.folderName which should be equivalent to string that is used in app-routing module for the scene
+    this._router.navigate([`/${this.tasks[i].scene.name}/task/${this.tasks[i].id}`]).then(() => {
+      this.matDialogRef.close()
+    });
   }
 }

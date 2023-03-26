@@ -33,10 +33,15 @@ export class CreateSceneComponent {
     return this.form.controls['file'];
   }
 
+  get folder() {
+    return this.form.controls['folder']
+  }
+
   ngOnInit(): void {
     this.form = new FormGroup<any>({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
+      folder: new FormControl('', [Validators.required]),
       file: new FormControl('', [Validators.required])
     });
   }
@@ -59,6 +64,7 @@ export class CreateSceneComponent {
     const formData = new FormData();
     formData.append("name", this.name.value);
     formData.append("description", this.description.value);
+    formData.append("folder", this.folder.value)
     formData.append('file', this.file.value, this.file.value.name);
     this.scene_creation_subscription = this._client.saveScene(formData).subscribe({
       next: () => {

@@ -1,4 +1,3 @@
-// import { playConfirmationSuccessSound, playConfirmationUnsuccessSound, updateVisualProgres } from '../transitionFunctions.js';
 
 /**
  * @class

@@ -3,29 +3,30 @@
  * @returns {import('../models/typedefs.js').pNet} Returns Object representing petri net.
  */
 export async function loadXMLDoc(url) {
-      var data = { places: [], arcs: [], transitions: [] };
-      const response = await fetch(url);
-      const pnml = await response.text();
-      var parser = new DOMParser();
-      var xmlDoc = parser.parseFromString(pnml, 'text/xml');
-      var obj = xmlToJson(xmlDoc)['pnml:pnml']['pnml:net']['pnml:page'];
-      var places = obj['pnml:place'];
-      var transitions = obj['pnml:transition'];
-      var arcs = obj['pnml:arc'];
-      places.forEach((element) => {
-        data.places.push({
-          id: element['@attributes'].id,
-          name: element['pnml:name']['pnml:text']['#text'],
-          marking: parseInt(
-            element['pnml:initialMarking']['pnml:text']['#text']
-          )
-        });
-      });
-      transitions.forEach((element) => {
-        data.transitions.push({
-          id: element['@attributes'].id,
-          name: element['pnml:name']['pnml:text']['#text']
-        });
+  var data = {places: [], arcs: [], transitions: []};
+  // const response = await fetch(url);
+  // const pnml = await response.text();
+  const pnml = url;
+  var parser = new DOMParser();
+  var xmlDoc = parser.parseFromString(pnml, 'text/xml');
+  var obj = xmlToJson(xmlDoc)['pnml:pnml']['pnml:net']['pnml:page'];
+  var places = obj['pnml:place'];
+  var transitions = obj['pnml:transition'];
+  var arcs = obj['pnml:arc'];
+  places.forEach((element) => {
+    data.places.push({
+      id: element['@attributes'].id,
+      name: element['pnml:name']['pnml:text']['#text'],
+      marking: parseInt(
+        element['pnml:initialMarking']['pnml:text']['#text']
+      )
+    });
+  });
+  transitions.forEach((element) => {
+    data.transitions.push({
+      id: element['@attributes'].id,
+      name: element['pnml:name']['pnml:text']['#text']
+    });
       });
       arcs.forEach((element) => {
         data.arcs.push({

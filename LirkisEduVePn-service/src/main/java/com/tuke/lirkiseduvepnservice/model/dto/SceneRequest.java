@@ -11,5 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class SceneRequest {
     private String name;
     private String description;
+    private String folder;
     private MultipartFile file;
 }

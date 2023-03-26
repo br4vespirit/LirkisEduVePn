@@ -5,7 +5,8 @@
 <form (ngSubmit)="send()" [formGroup]="form" class="profileSettings">
   <input formControlName="name" placeholder="Scene name*" type="text">
   <input formControlName="description" placeholder="Scene description" type="text">
-  <p class="boldText">Import zip file</p>
+  <input formControlName="folder" placeholder="Scene folder name" type="text">
+  <p class="boldText">Import scene photo</p>
   <div class="petriNet">
     <div class="file mainButton">
       <input (change)="onFileSelected($event)" type="file">

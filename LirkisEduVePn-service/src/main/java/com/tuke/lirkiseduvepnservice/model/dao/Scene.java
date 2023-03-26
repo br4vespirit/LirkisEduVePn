@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.util.List;
 
@@ -23,12 +25,13 @@ public class Scene {
 
     private String description;
 
+    private String folderName;
+
+    @Lob
+    @Column(name = "photo")
+    @JdbcType(VarbinaryJdbcType.class)
+    private byte[] photo;
+
     @OneToMany(mappedBy = "scene")
     private List<Task> tasks;
-
-    @OneToMany(mappedBy = "scene", cascade = CascadeType.PERSIST)
-    private List<SceneFile> sceneFiles;
-
-    @OneToMany(mappedBy = "scene", cascade = CascadeType.PERSIST)
-    private List<ScenePhoto> scenePhotos;
 }

@@ -41,6 +41,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {PreviewSceneComponent} from './components/preview-scene/preview-scene.component';
 import {PreviewTasksComponent} from './components/preview-tasks/preview-tasks.component';
+import {Muzeum_habsbourgComponent} from './components/tasks/scenes/muzeum_habsbourg/muzeum_habsbourg.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import {PreviewTasksComponent} from './components/preview-tasks/preview-tasks.co
     CreateSceneComponent,
     CreateTaskComponent,
     PreviewSceneComponent,
-    PreviewTasksComponent
+    PreviewTasksComponent,
+    Muzeum_habsbourgComponent
   ],
   imports: [
     BrowserModule,

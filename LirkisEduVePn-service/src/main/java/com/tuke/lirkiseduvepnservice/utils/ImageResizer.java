@@ -14,6 +14,8 @@ import java.util.List;
 public class ImageResizer {
 
     public byte[] resizeImage(byte[] imageData, int width, int height) throws Exception {
+        if (imageData == null)
+            return new byte[0];
         // Read the image data into a BufferedImage
         ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
         BufferedImage image = ImageIO.read(bais);

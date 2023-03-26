@@ -13,42 +13,17 @@ export class PreviewSceneComponent implements OnInit, OnDestroy {
   // @ts-ignore
   scene: ScenePreview;
 
-  current_photo_index = 0;
-  current_photo: string = "";
-
   constructor(private matDialogRef: MatDialogRef<PreviewSceneComponent>,
               private _client: BackendService, @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
     this.scene = this.data as ScenePreview;
-    for (let j = 0; j < this.scene.photos.length; j++) {
-      let base64_photo = this.scene.photos[j]
-      this.scene.photos[j] = `data:image/png;base64,${base64_photo}`
-    }
-    this.current_photo = this.scene.photos[this.current_photo_index];
+    this.scene.photo = `data:image/png;base64,${this.scene.photo}`
   }
 
   ngOnDestroy(): void {
 
-  }
-
-  prev_photo() {
-    if (this.current_photo_index > 0) {
-      this.current_photo_index--;
-    } else {
-      this.current_photo_index = this.scene.photos.length - 1;
-    }
-    this.current_photo = this.scene.photos[this.current_photo_index];
-  }
-
-  next_photo() {
-    if (this.current_photo_index < this.scene.photos.length - 1) {
-      this.current_photo_index++;
-    } else {
-      this.current_photo_index = 0;
-    }
-    this.current_photo = this.scene.photos[this.current_photo_index];
   }
 
   closeDialog() {

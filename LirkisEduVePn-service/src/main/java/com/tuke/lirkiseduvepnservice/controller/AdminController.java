@@ -5,6 +5,7 @@ import com.tuke.lirkiseduvepnservice.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -28,6 +29,7 @@ public class AdminController {
      * @return updates user
      */
     @PatchMapping("/users")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_TEACHER')")
     public ResponseEntity<UserProfileDto> update(@RequestBody UserProfileDto dto) {
         UserProfileDto profile = adminService.updateUser(dto);
         return new ResponseEntity<>(profile, profile == null ?
@@ -42,6 +44,7 @@ public class AdminController {
      * @return http status OK
      */
     @DeleteMapping("/users/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_TEACHER')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         adminService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);

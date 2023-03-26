@@ -48,7 +48,7 @@ public class AuthenticationController {
      * @throws EmailNotVerifiedException  exception that will be thrown if user enters email that is not confirmed
      */
     @PostMapping("/authenticate")
-    public ResponseEntity<Void> register(@RequestBody AuthenticationRequest request) throws
+    public ResponseEntity<Void> authenticate(@RequestBody AuthenticationRequest request) throws
             IncorrectCurrentPasswordException,
             EmailRegisteredException,
             PasswordMatchesException {

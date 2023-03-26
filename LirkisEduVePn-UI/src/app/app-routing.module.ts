@@ -9,6 +9,7 @@ import {UserProfileComponent} from "./components/user-profile/user-profile.compo
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RoleGuard} from "./components/auth/role.guard";
 import {SceneComponent} from "./components/tasks/scenes/muzeum_extended/scene.component";
+import {Muzeum_habsbourgComponent} from "./components/tasks/scenes/muzeum_habsbourg/muzeum_habsbourg.component";
 
 const routes: Routes = [
   {
@@ -40,8 +41,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "scene",
+    path: "scene/task/:taskId",
     component: SceneComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "habsbourg/task/:taskId",
+    component: Muzeum_habsbourgComponent,
     canActivate: [AuthGuard]
   },
   {
