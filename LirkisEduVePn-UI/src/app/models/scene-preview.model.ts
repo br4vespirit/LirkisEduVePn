@@ -3,6 +3,7 @@ export class ScenePreview {
   name: string = "";
   description: string = "";
   photo: string = "";
+  folderName: string = "";
 
   public constructor(init?: Partial<ScenePreview>) {
     Object.assign(this, init);

@@ -12,4 +12,5 @@ public class ScenePreviewResponse {
     private String name;
     private String description;
     private byte[] photo;
+    private String folderName;
 }

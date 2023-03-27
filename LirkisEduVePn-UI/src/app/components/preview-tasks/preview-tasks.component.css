@@ -2,7 +2,5 @@
   width: 500px;
   height: 400px;
   overflow: scroll;
-  /*display: flex;*/
-  /*flex-direction: row;*/
-  /*justify-content: flex-start;*/
+  text-align: left;
 }

@@ -47,8 +47,7 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
   }
 
   startTask(i: number) {
-    // TODO: change this.tasks[i].scene.name into this.tasks[i].scene.folderName which should be equivalent to string that is used in app-routing module for the scene
-    this._router.navigate([`/${this.tasks[i].scene.name}/task/${this.tasks[i].id}`]).then(() => {
+    this._router.navigate([`/${this.tasks[i].scene.folderName}/task/${this.tasks[i].id}`]).then(() => {
       this.matDialogRef.close()
     });
   }
