@@ -24,7 +24,9 @@ public class TaskSession {
 
     private Timestamp finishedAt;
 
-    private boolean status;
+    private Timestamp expiredAt;
+
+    private boolean successful;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

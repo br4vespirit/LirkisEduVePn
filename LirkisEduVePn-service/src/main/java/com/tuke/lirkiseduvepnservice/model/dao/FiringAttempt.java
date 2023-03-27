@@ -24,7 +24,7 @@ public class FiringAttempt {
 
     private Timestamp actionDate;
 
-    private boolean status;
+    private boolean successful;
 
     @ManyToOne
     @JoinColumn(name = "task_session_id", nullable = false)
