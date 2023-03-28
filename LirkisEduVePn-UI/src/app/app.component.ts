@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showScene = /^\/(scene|habsbourg).*$/.test(event.url);
+        this.showScene = /^\/(muzeum_extended|muzeum_habsbourg).*$/.test(event.url);
       }
     });
   }

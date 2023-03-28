@@ -3,7 +3,7 @@ import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import Transition from '../modules/transition.mjs';
 import Place from '../modules/place.mjs';
-import * as serverLogger from '../modules/serverLogger.mjs';
+import * as userActivityLogger from '../modules/userActivityLogger';
 
 
 AFRAME.registerComponent('petri-net-sim', {
@@ -13,7 +13,8 @@ AFRAME.registerComponent('petri-net-sim', {
     activePlace: {type: 'string', default: 'Roaming'},
     finalPlace: {type: 'string'},
     taskCount: {type: 'number', default: 1},
-    pnmlFile: {type: 'string', default: 'f'}
+    pnmlFile: {type: 'string'},
+    taskId: {type: 'number'}
   },
   // Do something when component first attached.
   init: function () {
@@ -34,7 +35,11 @@ AFRAME.registerComponent('petri-net-sim', {
     });
 
     // TODO: start session if there isnt one already existing
-    serverLogger.createParseSession(1, new Date(), new Date());
+    if (!localStorage.getItem('sessionID')){
+      userActivityLogger.createSession(this.data.taskId, 1).then(data =>
+          localStorage.setItem('sessionID', data)
+      );
+    }
 
     this.transitionEventHandler = () => {
       const transition = Transitions.find(el => el.transitionName === data.message);
@@ -43,13 +48,16 @@ AFRAME.registerComponent('petri-net-sim', {
       if (isTransitionEnabled) {
         net.fire(data.message);
         transition.ifTransitionEnabled();
+        userActivityLogger.createFiringAttemt(localStorage.getItem('sessionID'), data.message,  new Date(), true);
         // TODO: multiple ways of ending the task (quit, wrong answers, ..)
         if (net.getMarking(data.finalPlace) === data.taskCount) {
+          userActivityLogger.endSession(localStorage.getItem('sessionID'), new Date(), true);
           this.showFinalMessage();
           this.playVictorySound();
         }
       } else {
         transition.ifTransitionDisabled();
+        userActivityLogger.createFiringAttemt(localStorage.getItem('sessionID'), data.message,  new Date(), false);
       }
       // log user activity
       transition.always(isTransitionEnabled);
