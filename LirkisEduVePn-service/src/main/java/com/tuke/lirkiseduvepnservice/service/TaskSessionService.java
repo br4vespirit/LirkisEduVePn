@@ -3,6 +3,7 @@ package com.tuke.lirkiseduvepnservice.service;
 import com.tuke.lirkiseduvepnservice.model.dao.Task;
 import com.tuke.lirkiseduvepnservice.model.dao.TaskSession;
 import com.tuke.lirkiseduvepnservice.model.dao.User;
+import com.tuke.lirkiseduvepnservice.model.dto.TaskSessionFinishRequest;
 import com.tuke.lirkiseduvepnservice.model.dto.TaskSessionRequest;
 import com.tuke.lirkiseduvepnservice.repository.TaskRepository;
 import com.tuke.lirkiseduvepnservice.repository.TaskSessionRepository;
@@ -41,5 +42,15 @@ public class TaskSessionService {
         taskSessionRepository.save(session);
 
         return session.getId();
+    }
+
+    public void finishSession(TaskSessionFinishRequest request) {
+        TaskSession taskSession = taskSessionRepository.findById(request.getTaskSessionId()).orElseThrow();
+        if (taskSession.getFinishedAt() != null) {
+            throw new RuntimeException("err"); // create custom and say that session is already finished
+        }
+        taskSession.setFinishedAt(request.getFinishTime());
+        taskSession.setSuccessful(request.isSuccessful());
+        taskSessionRepository.save(taskSession);
     }
 }
