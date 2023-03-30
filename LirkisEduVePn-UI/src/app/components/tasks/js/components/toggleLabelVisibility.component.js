@@ -17,7 +17,6 @@ AFRAME.registerComponent('toggle-label-visibility', {
 
     this.el.addEventListener('click', () => {
       this.el.sceneEl.emit('toggleLabelVisibility');
-      console.log('click');
     });
   }
 });

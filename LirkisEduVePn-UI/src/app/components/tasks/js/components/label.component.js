@@ -31,14 +31,12 @@ AFRAME.registerComponent('label', {
     // Add event listener to each label component
     const sceneEl = document.querySelector('a-scene');
     sceneEl.addEventListener('toggleLabelVisibility', () => {
-      console.log('fakfkafldksafl')
-        this.el.setAttribute('visible', !this.el.getAttribute('visible'));
+      this.el.setAttribute('visible', !this.el.getAttribute('visible'));
     })
   },
 
   isVisibleToCurrentUser: function () {
-    const currentUser = JSON.parse(localStorage.getItem('user-profile'));
-    console.log(currentUser.role, this.visibleTo);
-    return this.visibleTo.includes(currentUser.role);
+    const currentUser = JSON.parse(localStorage.getItem('user-profile')).role;
+    return this.visibleTo.includes(currentUser);
   }
 });
