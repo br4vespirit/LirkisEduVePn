@@ -45,10 +45,16 @@ AFRAME.registerComponent('petri-net-sim', {
     }else {
       // TODO: get all transition from current session and fire them
       userActivityLogger.getFiredTransitionsFromSession(sessionID).then(res => {
-          res.forEach(transition => Transitions.find(el => el.transitionName === transition).then(el => {
-            el.ifTransitionEnabled();
-            net.fire(el);
-          }))
+        // net.fire('P2confirm');
+        console.log(res);
+        res.forEach(transition => {
+          const foundTransition = Transitions.find(el => el.transitionName === transition.action);
+          const isTransitionEnabled = net.isEnabled(transition.action);
+          if (isTransitionEnabled) {
+            foundTransition.ifTransitionEnabled();
+            net.fire(transition.action);
+          }
+        });
       })
     }
 

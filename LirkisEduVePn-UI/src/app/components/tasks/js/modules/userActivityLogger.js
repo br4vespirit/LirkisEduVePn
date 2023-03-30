@@ -58,14 +58,13 @@ export async function endSession(taskSessionId, finishTime, successful) {
 }
 
 export async function getFiredTransitionsFromSession(taskSessionId) {
-  const response = await fetch(`${url}/firing-attempt${taskSessionId}`, {
+  const response = await fetch(`${url}/firing-attempt/session/${taskSessionId}`, {
     method: 'GET',
     headers: autHeader
   })
 
   if (!response.ok) {
-    throw new Error(`Failed to end session: ${response.status} ${response.statusText}`);
+    throw new Error(`Failed to get transitions: ${response.status} ${response.statusText}`);
   }
-
   return response.json();
 }
