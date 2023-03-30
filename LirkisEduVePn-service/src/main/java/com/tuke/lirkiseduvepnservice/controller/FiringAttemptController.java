@@ -1,13 +1,14 @@
 package com.tuke.lirkiseduvepnservice.controller;
 
 import com.tuke.lirkiseduvepnservice.model.dto.FiringAttemptRequest;
+import com.tuke.lirkiseduvepnservice.model.dto.FiringAttemptResponse;
 import com.tuke.lirkiseduvepnservice.service.FiringAttemptService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,5 +21,11 @@ public class FiringAttemptController {
     public ResponseEntity<Void> create(@RequestBody FiringAttemptRequest request) {
         firingAttemptService.saveTransition(request);
         return ResponseEntity.ok().body(null);
+    }
+
+    @GetMapping("/session/{id}")
+    public ResponseEntity<List<FiringAttemptResponse>> get(@PathVariable(name = "id") Long id) {
+        List<FiringAttemptResponse> response = firingAttemptService.getAll(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
