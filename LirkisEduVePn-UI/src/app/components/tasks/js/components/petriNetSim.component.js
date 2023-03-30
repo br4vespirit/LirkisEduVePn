@@ -19,6 +19,7 @@ AFRAME.registerComponent('petri-net-sim', {
   // Do something when component first attached.
   init: function () {
     let data = this.data;
+    let sessionID = localStorage.getItem('sessionID');
 
     // load petri net and array with transitions
     let net;
@@ -34,11 +35,21 @@ AFRAME.registerComponent('petri-net-sim', {
       console.log(net);
     });
 
-    // TODO: start session if there isnt one already existing
-    if (!localStorage.getItem('sessionID')){
-      userActivityLogger.createSession(this.data.taskId, 1).then(data =>
-          localStorage.setItem('sessionID', data)
-      );
+    // create session or fire all transition from session data
+    if (!sessionID){
+      userActivityLogger.createSession(this.data.taskId, 1).then(data => {
+            localStorage.setItem('sessionID', data);
+            sessionID = data;
+        }
+      )
+    }else {
+      // TODO: get all transition from current session and fire them
+      userActivityLogger.getFiredTransitionsFromSession(sessionID).then(res => {
+          res.forEach(transition => Transitions.find(el => el.transitionName === transition).then(el => {
+            el.ifTransitionEnabled();
+            net.fire(el);
+          }))
+      })
     }
 
     this.transitionEventHandler = () => {
@@ -48,16 +59,15 @@ AFRAME.registerComponent('petri-net-sim', {
       if (isTransitionEnabled) {
         net.fire(data.message);
         transition.ifTransitionEnabled();
-        userActivityLogger.createFiringAttemt(localStorage.getItem('sessionID'), data.message,  new Date(), true);
+
         // TODO: multiple ways of ending the task (quit, wrong answers, ..)
         if (net.getMarking(data.finalPlace) === data.taskCount) {
-          userActivityLogger.endSession(localStorage.getItem('sessionID'), new Date(), true);
+          userActivityLogger.endSession(sessionID, new Date(), true);
           this.showFinalMessage();
           this.playVictorySound();
         }
       } else {
         transition.ifTransitionDisabled();
-        userActivityLogger.createFiringAttemt(localStorage.getItem('sessionID'), data.message,  new Date(), false);
       }
       // log user activity
       transition.always(isTransitionEnabled);

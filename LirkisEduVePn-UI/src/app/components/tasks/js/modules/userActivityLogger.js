@@ -51,8 +51,21 @@ export async function endSession(taskSessionId, finishTime, successful) {
   })
 
   if (!response.ok) {
-    throw new Error(`Failed to log action: ${response.status} ${response.statusText}`);
+    throw new Error(`Failed to end session: ${response.status} ${response.statusText}`);
   }else{
     localStorage.removeItem('sessionID');
   }
+}
+
+export async function getFiredTransitionsFromSession(taskSessionId) {
+  const response = await fetch(`${url}/firing-attempt${taskSessionId}`, {
+    method: 'GET',
+    headers: autHeader
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to end session: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json();
 }
