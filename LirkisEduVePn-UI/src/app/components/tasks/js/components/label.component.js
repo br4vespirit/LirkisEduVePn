@@ -29,10 +29,10 @@ AFRAME.registerComponent('label', {
     }
 
     // Add event listener to each label component
-    this.el.addEventListener('toggleLabelVisibility', () => {
-      if (this.isVisibleToCurrentUser()) {
+    const sceneEl = document.querySelector('a-scene');
+    sceneEl.addEventListener('toggleLabelVisibility', () => {
+      console.log('fakfkafldksafl')
         this.el.setAttribute('visible', !this.el.getAttribute('visible'));
-      }
     })
   },
 

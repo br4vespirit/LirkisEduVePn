@@ -142,7 +142,15 @@
     nav-mesh></a-entity>
 
   <a-entity label="label: My Label" position="6 4 -1"></a-entity>
-  <a-entity toggle-label-visibility position="6 4 -1"></a-entity>
+<!--  <a-entity class="interactible" toggle-label-visibility position="4 4 -1"></a-entity>-->
+  <a-circle
+    class="interactible"
+    toggle-label-visibility
+    material="src: #infoIcon; side: double; shader: flat"
+    radius="0.15"
+    position="4 4 -1"
+    animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+    sound="src: #tap; on: click; poolSize: 2"></a-circle>
 
   <!-- Middle Space ------------------------------------------------------------------------------->
   <a-entity id="WelcomMsg" position="6.536 4.5 -1.841">
