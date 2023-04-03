@@ -16,7 +16,8 @@ AFRAME.registerComponent('clk-multi-event-handler', {
       if (data.selected === false) {
         scene.setAttribute('petri-net-sim', {
           event: SceneEvent.firedTransition,
-          message: data.firstToggleEvent
+          message: data.firstToggleEvent,
+          eventElement: this
         });
         el.setAttribute(
           'material',
@@ -27,7 +28,8 @@ AFRAME.registerComponent('clk-multi-event-handler', {
       } else {
         scene.setAttribute('petri-net-sim', {
           event: SceneEvent.firedTransition,
-          message: data.secondToggleEvent
+          message: data.secondToggleEvent,
+          eventElement: this
         });
         el.setAttribute(
           'material',

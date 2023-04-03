@@ -4,6 +4,7 @@ import PetriNet from '../modules/petriNet.mjs';
 import Transition from '../modules/transition.mjs';
 import Place from '../modules/place.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
+import {transitions} from "../transitionScript";
 
 
 AFRAME.registerComponent('petri-net-sim', {
@@ -14,7 +15,9 @@ AFRAME.registerComponent('petri-net-sim', {
     finalPlace: {type: 'string'},
     taskCount: {type: 'number', default: 1},
     pnmlFile: {type: 'string'},
-    taskId: {type: 'number'}
+    taskId: {type: 'number'},
+    eventElement: {type: 'selector'}
+    // transitions : {type: 'array', default: []}
   },
   // Do something when component first attached.
   init: function () {
@@ -23,60 +26,60 @@ AFRAME.registerComponent('petri-net-sim', {
 
     // load petri net and array with transitions
     let net;
-    const Transitions = [];
+    // const Transitions = [];
     const Places = [];
     // regex pattern to find only places we want
     const pattern = /^P[1-9]{1}$/;
 
     petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
-      res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
+      // res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
       res.places.filter(ell => pattern.test(ell.name)).forEach(place => Places.push(new Place(place.name)));
       console.log(net);
     });
 
-    // create session or fire all transition from session data
-    if (!sessionID){
-      userActivityLogger.createSession(this.data.taskId, 1).then(data => {
-            localStorage.setItem('sessionID', data);
-            sessionID = data;
-        }
-      )
-    }else {
-      // TODO: get all transition from current session and fire them
-      userActivityLogger.getFiredTransitionsFromSession(sessionID).then(res => {
-        // net.fire('P2confirm');
-        console.log(res);
-        res.forEach(transition => {
-          const foundTransition = Transitions.find(el => el.transitionName === transition.action);
-          const isTransitionEnabled = net.isEnabled(transition.action);
-          if (isTransitionEnabled) {
-            foundTransition.ifTransitionEnabled();
-            net.fire(transition.action);
-          }
-        });
-      })
-    }
+    // // create session or fire all transition from session data
+    // if (!sessionID){
+    //   userActivityLogger.createSession(this.data.taskId, 1).then(data => {
+    //         localStorage.setItem('sessionID', data);
+    //         sessionID = data;
+    //     }
+    //   )
+    // }else {
+    //   // TODO: get all transition from current session and fire them
+    //   userActivityLogger.getFiredTransitionsFromSession(sessionID).then(res => {
+    //     res.forEach(transition => {
+    //       const foundTransition = Transitions.find(el => el.transitionName === transition.action);
+    //       const isTransitionEnabled = net.isEnabled(transition.action);
+    //       if (isTransitionEnabled) {
+    //         foundTransition.ifTransitionEnabled();
+    //         net.fire(transition.action);
+    //       }
+    //     });
+    //   })
+    // }
 
     this.transitionEventHandler = () => {
-      const transition = Transitions.find(el => el.transitionName === data.message);
+      // const transition = Transitions.find(el => el.transitionName === data.message);
+      const transition = transitions.find(el => el.transitionName === data.message);
       const isTransitionEnabled = net.isEnabled(data.message);
+      console.log(data.eventElement);
 
       if (isTransitionEnabled) {
         net.fire(data.message);
-        transition.ifTransitionEnabled();
+        transition.ifTransitionEnabled(data.message);
 
         // TODO: multiple ways of ending the task (quit, wrong answers, ..)
         if (net.getMarking(data.finalPlace) === data.taskCount) {
-          userActivityLogger.endSession(sessionID, new Date(), true);
+          // userActivityLogger.endSession(sessionID, new Date(), true);
           this.showFinalMessage();
           this.playVictorySound();
         }
       } else {
-        transition.ifTransitionDisabled();
+        transition.ifTransitionDisabled(data.message);
       }
       // log user activity
-      transition.always(isTransitionEnabled);
+      transition.always(data.message);
     };
 
     this.changePlaceEventHandler = () => {
