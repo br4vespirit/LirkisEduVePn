@@ -3,197 +3,214 @@ import * as transitionFunctions from './transitionFunctions';
 export const transitions = [
   {
     transitionName: 'P3Cplace',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P3Iplace',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P3confirm',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P3Cdisplace',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P3Idisplace',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P2Iselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P2Iunselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P2Cunselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P2Cselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P2confirm',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P1Cunselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P1Cselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P1Iselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P1Iunselect',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
   },
   {
     transitionName: 'P1confirm',
-    ifTransitionEnabled: (elementId) => {
-      transitionFunctions.playConfirmationSuccessSound(elementId);
-      transitionFunctions.updateVisualProgres(elementId);
+    ifTransitionFound: (targets, replay) => {
+
     },
-    ifTransitionDisabled: (elementId) => {
-      transitionFunctions.playConfirmationUnsuccessSound(elementId);
+    ifTransitionEnabled: (targets, replay) => {
+
     },
-    always: (elementId) => {
-      console.log(elementId);
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
     }
-  },
+  }
 ]

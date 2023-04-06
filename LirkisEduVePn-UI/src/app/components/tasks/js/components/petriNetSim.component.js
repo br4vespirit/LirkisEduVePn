@@ -1,7 +1,6 @@
 import {SceneEvent} from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
-import Transition from '../modules/transition.mjs';
 import Place from '../modules/place.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
 import {transitions} from "../transitionScript";
@@ -16,8 +15,7 @@ AFRAME.registerComponent('petri-net-sim', {
     taskCount: {type: 'number', default: 1},
     pnmlFile: {type: 'string'},
     taskId: {type: 'number'},
-    eventElement: {type: 'selector'}
-    // transitions : {type: 'array', default: []}
+    affectedElements: {type: 'array', default: []}
   },
   // Do something when component first attached.
   init: function () {
@@ -63,11 +61,10 @@ AFRAME.registerComponent('petri-net-sim', {
       // const transition = Transitions.find(el => el.transitionName === data.message);
       const transition = transitions.find(el => el.transitionName === data.message);
       const isTransitionEnabled = net.isEnabled(data.message);
-      console.log(data.eventElement);
 
       if (isTransitionEnabled) {
         net.fire(data.message);
-        transition.ifTransitionEnabled(data.message);
+        transition.ifTransitionEnabled(this.data.affectedElements, false);
 
         // TODO: multiple ways of ending the task (quit, wrong answers, ..)
         if (net.getMarking(data.finalPlace) === data.taskCount) {
@@ -76,10 +73,9 @@ AFRAME.registerComponent('petri-net-sim', {
           this.playVictorySound();
         }
       } else {
-        transition.ifTransitionDisabled(data.message);
+        transition.ifTransitionDisabled(this.data.affectedElements, false);
       }
       // log user activity
-      transition.always(data.message);
     };
 
     this.changePlaceEventHandler = () => {

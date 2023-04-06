@@ -6,7 +6,7 @@ export const playConfirmationSuccessSound = (elementId) => {
       confirmationEntity.setAttribute('text', 'value: Správna odpoveď');
       confirmationEntity.emit('success');
     }
-  }
+}
 
 export const playConfirmationUnsuccessSound = (elementId) => {
     if (elementId.includes('confirm')) {
@@ -23,4 +23,15 @@ export const updateVisualProgres = (elementId) =>  {
         'color: green; side: double; shader: flat'
       );
     }
+}
+
+export const changeSelectButton = (elementId) => {
+  const clkMultiEventHandler = elementId.getAttribute('clk-multi-event-handler').selected;
+  if (clkMultiEventHandler === false){
+    elementId.setAttribute('material', 'src: #selected; side: double; shader: flat');
+  }else{
+    elementId.setAttribute('material', 'src: #unselected; side: double; shader: flat');
+  }
+
+  elementId.setAttribute('clk-multi-event-handler', `selected: ${!clkMultiEventHandler}`);
 }
