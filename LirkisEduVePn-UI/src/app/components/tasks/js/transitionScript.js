@@ -35,9 +35,11 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
     },
     ifTransitionNotFound: (targets, replay) => {
 
@@ -77,7 +79,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -91,7 +94,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -135,9 +139,11 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
     },
     ifTransitionNotFound: (targets, replay) => {
 
@@ -149,7 +155,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -163,7 +170,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -177,7 +185,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -191,7 +200,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -205,9 +215,11 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+        transitionFunctions.playConfirmationSuccessSound(targets[0]);
+        transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
+        transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
     },
     ifTransitionNotFound: (targets, replay) => {
 

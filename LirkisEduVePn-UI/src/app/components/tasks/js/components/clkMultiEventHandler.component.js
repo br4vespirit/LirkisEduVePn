@@ -17,7 +17,6 @@ AFRAME.registerComponent('clk-multi-event-handler', {
     const scene = this.el.sceneEl;
 
     el.addEventListener('click', function () {
-      console.log(elementID);
       if (data.selected === false) {
         scene.setAttribute('petri-net-sim', {
           event: SceneEvent.firedTransition,
