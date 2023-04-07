@@ -1,9 +1,8 @@
 import {SceneEvent} from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
-import Place from '../modules/place.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
-import {transitions} from "../transitionScript";
+import {transitions, places} from "../transitionScript";
 
 
 AFRAME.registerComponent('petri-net-sim', {
@@ -24,15 +23,9 @@ AFRAME.registerComponent('petri-net-sim', {
 
     // load petri net and array with transitions
     let net;
-    // const Transitions = [];
-    const Places = [];
-    // regex pattern to find only places we want
-    const pattern = /^P[1-9]{1}$/;
 
     petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
-      // res.transitions.forEach(transition => Transitions.push(new Transition(transition.name)));
-      res.places.filter(ell => pattern.test(ell.name)).forEach(place => Places.push(new Place(place.name)));
       console.log(net);
     });
 
@@ -79,8 +72,8 @@ AFRAME.registerComponent('petri-net-sim', {
     };
 
     this.changePlaceEventHandler = () => {
-      const places = Places.filter(el => (el.placeName === data.message || el.placeName === data.activePlace));
-      places.forEach(el => el.always());
+      const place = places.find(el => el.placeName === data.message);
+      place.ifPlaceNotFound(place.placeName);
       data.activePlace = data.message;
     };
   },

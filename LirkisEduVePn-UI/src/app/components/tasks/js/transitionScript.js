@@ -226,3 +226,86 @@ export const transitions = [
     }
   }
 ]
+
+export const places = [
+  {
+    placeName: 'P1',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P2',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P3',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P4',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P5',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P6',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P7',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P8',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+  },
+  {
+    placeName: 'P9',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+    },
+  {
+    placeName: 'Roaming',
+    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceNotFound: () => {
+      transitionFunctions.placeBarrier('-3.819 1 5.049');
+      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    }
+    },
+]
