@@ -262,8 +262,10 @@ export const places = [
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
     ifPlaceNotFound: () => {},
     ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+      transitionFunctions.placeBarrier('-20.219 1 5.049');
+      transitionFunctions.placeBarrier('-16.525 1 5.049');
+      transitionFunctions.placeBarrier('-20.219 1 -2.507');
+      transitionFunctions.placeBarrier('-16.525 1 -2.507');
     }
   },
   {
@@ -271,10 +273,10 @@ export const places = [
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
     ifPlaceNotFound: () => {},
     ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('20.539 1 5.049');
-      transitionFunctions.placeBarrier('24.037 1 5.049');
-      transitionFunctions.placeBarrier('20.539 1 -2.285');
-      transitionFunctions.placeBarrier('24.037 1 -2.285');
+      transitionFunctions.placeBarrier('-32.698 1 5.049');
+      transitionFunctions.placeBarrier('-29.025 1 5.049');
+      transitionFunctions.placeBarrier('-32.698 1 -2.285');
+      transitionFunctions.placeBarrier('-29.025 1 -2.285');
     }
   },
   {
@@ -282,8 +284,8 @@ export const places = [
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
     ifPlaceNotFound: () => {},
     ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+      transitionFunctions.placeBarrier('33.194 1 5.049');
+      transitionFunctions.placeBarrier('36.678 1 5.049');
     }
   },
   {
@@ -291,8 +293,8 @@ export const places = [
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
     ifPlaceNotFound: () => {},
     ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+      transitionFunctions.placeBarrier('33.194 1 -2.285');
+      transitionFunctions.placeBarrier('36.678 1 -2.285');
     }
   },
   {
@@ -300,8 +302,8 @@ export const places = [
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
     ifPlaceNotFound: () => {},
     ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+      transitionFunctions.placeBarrier('45.616 1 5.049');
+      transitionFunctions.placeBarrier('49.328 1 5.049');
     }
   },
   {
@@ -309,17 +311,14 @@ export const places = [
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
     ifPlaceNotFound: () => {},
     ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+      transitionFunctions.placeBarrier('45.616 1 -2.285');
+      transitionFunctions.placeBarrier('49.328 1 -2.285');
     }
     },
   {
     placeName: 'Roaming',
-    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
+    ifPlaceFound: (placeName) => {},
     ifPlaceNotFound: () => {},
-    ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
-    }
+    ifPlaceNotFoundOnStart: () => {}
     }
 ]
