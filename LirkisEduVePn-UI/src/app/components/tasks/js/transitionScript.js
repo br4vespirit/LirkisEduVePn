@@ -231,7 +231,8 @@ export const places = [
   {
     placeName: 'P1',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
@@ -239,23 +240,28 @@ export const places = [
   {
     placeName: 'P2',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
+      transitionFunctions.placeBarrier('-3.819 1 -2.71779');
+      transitionFunctions.placeBarrier('-7.429 1 -2.71779');
     }
   },
   {
     placeName: 'P3',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
+      transitionFunctions.placeBarrier('20.539 1 5.049');
+      transitionFunctions.placeBarrier('24.037 1 5.049');
+      transitionFunctions.placeBarrier('20.539 1 -2.285');
+      transitionFunctions.placeBarrier('24.037 1 -2.285');
     }
   },
   {
     placeName: 'P4',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
@@ -263,15 +269,19 @@ export const places = [
   {
     placeName: 'P5',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
-      transitionFunctions.placeBarrier('-3.819 1 5.049');
-      transitionFunctions.placeBarrier('-7.429 1 5.049');
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
+      transitionFunctions.placeBarrier('20.539 1 5.049');
+      transitionFunctions.placeBarrier('24.037 1 5.049');
+      transitionFunctions.placeBarrier('20.539 1 -2.285');
+      transitionFunctions.placeBarrier('24.037 1 -2.285');
     }
   },
   {
     placeName: 'P6',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
@@ -279,7 +289,8 @@ export const places = [
   {
     placeName: 'P7',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
@@ -287,7 +298,8 @@ export const places = [
   {
     placeName: 'P8',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
@@ -295,7 +307,8 @@ export const places = [
   {
     placeName: 'P9',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
@@ -303,9 +316,10 @@ export const places = [
   {
     placeName: 'Roaming',
     ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
+    ifPlaceNotFound: () => {},
+    ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('-3.819 1 5.049');
       transitionFunctions.placeBarrier('-7.429 1 5.049');
     }
-    },
+    }
 ]

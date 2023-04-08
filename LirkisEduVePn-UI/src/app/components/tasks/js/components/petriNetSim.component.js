@@ -20,6 +20,7 @@ AFRAME.registerComponent('petri-net-sim', {
   init: function () {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
+    const finalRegex = /^(finalSucc|finalFail)/;
 
     // load petri net and array with transitions
     let net;
@@ -27,6 +28,9 @@ AFRAME.registerComponent('petri-net-sim', {
     petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
+      places.forEach(place => {
+        if(!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
+      })
     });
 
     // // create session or fire all transition from session data
@@ -51,29 +55,54 @@ AFRAME.registerComponent('petri-net-sim', {
     // }
 
     this.transitionEventHandler = () => {
-      // const transition = Transitions.find(el => el.transitionName === data.message);
       const transition = transitions.find(el => el.transitionName === data.message);
-      const isTransitionEnabled = net.isEnabled(data.message);
-
-      if (isTransitionEnabled) {
-        net.fire(data.message);
-        transition.ifTransitionEnabled(this.data.affectedElements, false);
-
-        // TODO: multiple ways of ending the task (quit, wrong answers, ..)
-        if (net.getMarking(data.finalPlace) === data.taskCount) {
-          // userActivityLogger.endSession(sessionID, new Date(), true);
-          this.showFinalMessage();
-          this.playVictorySound();
-        }
-      } else {
-        transition.ifTransitionDisabled(this.data.affectedElements, false);
+      const finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
+      // check if the transition is in the petri net
+      if (net.findTransition(transition.transitionName)){
+          transition.ifTransitionFound(this.data.affectedElements, false);
+          // check if the transition can be fired
+          if (net.isEnabled(transition.transitionName)){
+              // fire transition
+              net.fire(transition.transitionName);
+              // fire transition function
+              transition.ifTransitionEnabled(this.data.affectedElements, false);
+              // iterate trough final transitions and try if the transition can be fired
+              finalTransitions.forEach(el => {
+                  if (net.isEnabled(el.transitionName)) {
+                    net.fire(el.transitionName);
+                    el.ifTransitionEnabled(this.data.affectedElements, false);
+                  }
+              });
+          } else {
+              // if transition can be fired, fire different transition
+              transition.ifTransitionDisabled(this.data.affectedElements, false);
+          }
+      }else {
+          transition.ifTransitionNotFound(this.data.affectedElements, false);
       }
+
+      // const isTransitionEnabled = net.isEnabled(data.message);
+      //
+      // if (isTransitionEnabled) {
+      //   net.fire(data.message);
+      //   transition.ifTransitionEnabled(this.data.affectedElements, false);
+      //
+      //   // TODO: multiple ways of ending the task (quit, wrong answers, ..)
+      //   if (net.getMarking(data.finalPlace) === data.taskCount) {
+      //     // userActivityLogger.endSession(sessionID, new Date(), true);
+      //     this.showFinalMessage();
+      //     this.playVictorySound();
+      //   }
+      // } else {
+      //   transition.ifTransitionDisabled(this.data.affectedElements, false);
+      // }
       // log user activity
     };
 
     this.changePlaceEventHandler = () => {
       const place = places.find(el => el.placeName === data.message);
-      place.ifPlaceNotFound(place.placeName);
+      if (net.findPlace(place.placeName)) place.ifPlaceFound(place.placeName);
+      else place.ifPlaceNotFound();
       data.activePlace = data.message;
     };
   },
