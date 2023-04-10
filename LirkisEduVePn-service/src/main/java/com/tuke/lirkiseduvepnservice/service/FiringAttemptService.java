@@ -33,6 +33,8 @@ public class FiringAttemptService {
         firingAttempt.setActionDate(request.getActionDate());
         firingAttempt.setSuccessful(request.isSuccessful());
         firingAttempt.setTaskSession(taskSession);
+        firingAttempt.setActionFound(request.isActionFound());
+        firingAttempt.setActionTargets(request.getActionTargets());
 
         firingAttemptRepository.save(firingAttempt);
     }
@@ -43,7 +45,8 @@ public class FiringAttemptService {
         }
         return firingAttemptRepository.findBySessionIdAndTrue(sessionId)
                 .stream()
-                .map(f -> new FiringAttemptResponse(f.getAction(), f.isActionFound(), f.getActionTargets()))
+                .map(f -> new FiringAttemptResponse(f.getAction(), f.isActionFound(),
+                        f.isSuccessful(), f.getActionTargets()))
                 .toList();
     }
 }
