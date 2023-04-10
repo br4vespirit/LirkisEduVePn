@@ -22,13 +22,15 @@ export async function createSession(taskId, userId) {
   return await response.json();
 }
 
-export async function createFiringAttemt(taskSessionId, action, actionDate, successful) {
+export async function createFiringAttemt(taskSessionId, action, actionDate, successful, actionFound, actionTargets) {
   const response = await fetch(`${url}/firing-attempt`, {
     method: 'POST',
     headers: autHeader,
     body: JSON.stringify({
       taskSessionId: taskSessionId,
       action: action,
+      actionFound: actionFound,
+      actionTargets: actionTargets,
       actionDate: actionDate,
       successful: successful
     })
