@@ -7,7 +7,12 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorGreen();
+      if (replay){
+        const model = document.getElementById(targets[1]);
+        model.setAttribute('position', '22.51704 3.933 -5.80505');
+      }
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -21,7 +26,12 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorGreen();
+      if (replay){
+        const model = document.getElementById(targets[1]);
+        model.setAttribute('position', '22.51704 3.933 -5.80505');
+      }
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -51,7 +61,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorRed();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -65,7 +76,8 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets, replay) => {
-
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorRed();
     },
     ifTransitionDisabled: (targets, replay) => {
     },
@@ -220,6 +232,241 @@ export const transitions = [
     },
     ifTransitionDisabled: (targets, replay) => {
         transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },{
+    transitionName: 'P4Cplace',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorGreen();
+      if (replay){
+        const model = document.getElementById(targets[1]);
+        model.setAttribute('position', '22.51704 3.933 -5.80505');
+      }
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P4Iplace',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorGreen();
+      if (replay){
+        const model = document.getElementById(targets[1]);
+        model.setAttribute('position', '22.51704 3.933 -5.80505');
+      }
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P4confirm',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      transitionFunctions.updateVisualProgres(targets[1]);
+    },
+    ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P4Cdisplace',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorRed();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P4Idisplace',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["collision-detector"].changeBoxColorRed();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P6Cunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P6Cselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P6Iselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P6Iunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P6confirm',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      transitionFunctions.updateVisualProgres(targets[1]);
+    },
+    ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P7Cunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P7Cselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P7Iselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P7Iunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P7confirm',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      transitionFunctions.updateVisualProgres(targets[1]);
+    },
+    ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
     },
     ifTransitionNotFound: (targets, replay) => {
 

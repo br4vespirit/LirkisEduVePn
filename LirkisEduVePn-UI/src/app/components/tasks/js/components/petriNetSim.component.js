@@ -59,10 +59,12 @@ AFRAME.registerComponent('petri-net-sim', {
       const finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
       // check if the transition is in the petri net
       if (net.findTransition(transition.transitionName)){
+          console.log(transition.transitionName + ' found');
           transition.ifTransitionFound(this.data.affectedElements, false);
           // check if the transition can be fired
           if (net.isEnabled(transition.transitionName)){
               // fire transition
+              console.log('%c' + transition.transitionName + ' Transition Fired 🚀', 'color: #FB607F');
               net.fire(transition.transitionName);
               // fire transition function
               transition.ifTransitionEnabled(this.data.affectedElements, false);
@@ -78,6 +80,7 @@ AFRAME.registerComponent('petri-net-sim', {
               transition.ifTransitionDisabled(this.data.affectedElements, false);
           }
       }else {
+          console.log(transition.transitionName + ' not found');
           transition.ifTransitionNotFound(this.data.affectedElements, false);
       }
 
@@ -137,7 +140,7 @@ AFRAME.registerComponent('petri-net-sim', {
         break;
       case SceneEvent.firedTransition:
         element.addEventListener(data.message, handler);
-        console.log(SceneEvent.firedTransition + ' ' + data.message);
+        // console.log(SceneEvent.firedTransition + ' ' + data.message);
         break;
       default:
         console.log(SceneEvent.petriNetLoaded);
