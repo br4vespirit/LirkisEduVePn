@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -29,4 +30,9 @@ public class FiringAttempt {
     @ManyToOne
     @JoinColumn(name = "task_session_id", nullable = false)
     private TaskSession taskSession;
+
+    private boolean actionFound;
+
+    @ElementCollection
+    private List<String> actionTargets;
 }
