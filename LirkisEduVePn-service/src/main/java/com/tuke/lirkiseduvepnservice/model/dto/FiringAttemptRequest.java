@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +15,6 @@ public class FiringAttemptRequest {
     private String action;
     private Timestamp actionDate;
     private boolean successful;
+    private boolean actionFound;
+    private List<String> actionTargets;
 }
