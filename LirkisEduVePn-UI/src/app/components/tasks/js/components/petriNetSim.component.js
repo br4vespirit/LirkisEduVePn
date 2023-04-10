@@ -17,7 +17,7 @@ AFRAME.registerComponent('petri-net-sim', {
     affectedElements: {type: 'array', default: []}
   },
   // Do something when component first attached.
-  init: function () {
+  init: async function () {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
     const finalRegex = /^(finalSucc|finalFail)/;
@@ -33,73 +33,72 @@ AFRAME.registerComponent('petri-net-sim', {
       })
     });
 
+
     // // create session or fire all transition from session data
-    // if (!sessionID){
-    //   userActivityLogger.createSession(this.data.taskId, 1).then(data => {
-    //         localStorage.setItem('sessionID', data);
-    //         sessionID = data;
-    //     }
-    //   )
-    // }else {
-    //   // TODO: get all transition from current session and fire them
-    //   userActivityLogger.getFiredTransitionsFromSession(sessionID).then(res => {
-    //     res.forEach(transition => {
-    //       const foundTransition = Transitions.find(el => el.transitionName === transition.action);
-    //       const isTransitionEnabled = net.isEnabled(transition.action);
-    //       if (isTransitionEnabled) {
-    //         foundTransition.ifTransitionEnabled();
-    //         net.fire(transition.action);
-    //       }
-    //     });
-    //   })
-    // }
+    if (!sessionID) {
+      userActivityLogger.createSession(this.data.taskId, 1).then(data => {
+        console.log('%c New session created 🎉', 'color: #FB607F');
+        localStorage.setItem('sessionID', data);
+        sessionID = data;
+      })
+    } else {
+      console.log('%c Session restored 🎉', 'color: #FB607F');
+      // get all transition from current session and fire them
+      userActivityLogger.getFiredTransitionsFromSession(sessionID).then(res => {
+        res.forEach(transition => {
+          const transitionReplay = transitions.find(el => el.transitionName === transition.action);
+          if (transition.actionFound) {
+            transitionReplay.ifTransitionFound(transition.actionTargets, true);
+            if (transition.successful) {
+              net.fire(transitionReplay.transitionName);
+              transitionReplay.ifTransitionEnabled(transition.actionTargets, true);
+            } else transitionReplay.ifTransitionDisabled(transition.actionTargets, true);
+          } else {
+            transitionReplay.ifTransitionNotFound(transition.actionTargets, true)
+          }
+        });
+      })
+    }
 
     this.transitionEventHandler = () => {
       const transition = transitions.find(el => el.transitionName === data.message);
       const finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
       // check if the transition is in the petri net
-      if (net.findTransition(transition.transitionName)){
-          console.log(transition.transitionName + ' found');
-          transition.ifTransitionFound(this.data.affectedElements, false);
-          // check if the transition can be fired
-          if (net.isEnabled(transition.transitionName)){
-              // fire transition
-              console.log('%c' + transition.transitionName + ' Transition Fired 🚀', 'color: #FB607F');
-              net.fire(transition.transitionName);
-              // fire transition function
-              transition.ifTransitionEnabled(this.data.affectedElements, false);
-              // iterate trough final transitions and try if the transition can be fired
-              finalTransitions.forEach(el => {
-                  if (net.isEnabled(el.transitionName)) {
-                    net.fire(el.transitionName);
-                    el.ifTransitionEnabled(this.data.affectedElements, false);
-                  }
-              });
-          } else {
-              // if transition can be fired, fire different transition
-              transition.ifTransitionDisabled(this.data.affectedElements, false);
-          }
-      }else {
-          console.log(transition.transitionName + ' not found');
-          transition.ifTransitionNotFound(this.data.affectedElements, false);
+      if (net.findTransition(transition.transitionName)) {
+        console.log(transition.transitionName + ' found');
+        transition.ifTransitionFound(this.data.affectedElements, false);
+        // check if the transition can be fired
+        if (net.isEnabled(transition.transitionName)) {
+          // fire transition
+          console.log('%c' + transition.transitionName + ' Transition Fired 🚀', 'color: #FB607F');
+          net.fire(transition.transitionName);
+          // log user activity
+          userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), true, true, data.affectedElements);
+          // fire transition function
+          transition.ifTransitionEnabled(this.data.affectedElements, false);
+          // iterate trough final transitions and try if the transition can be fired
+          finalTransitions.forEach(el => {
+            if (net.isEnabled(el.transitionName)) {
+              net.fire(el.transitionName);
+              el.ifTransitionEnabled(this.data.affectedElements, false);
+              // log user activity and end session
+              userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), true, true, data.affectedElements);
+              // TODO: determine whether session ended successfull or not
+              userActivityLogger.endSession(sessionID, new Date(), true);
+            }
+          });
+        } else {
+          // if transition can be fired, fire different transition
+          transition.ifTransitionDisabled(this.data.affectedElements, false);
+          // log user activity
+          userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), false, true, data.affectedElements);
+        }
+      } else {
+        console.log(transition.transitionName + ' not found');
+        transition.ifTransitionNotFound(this.data.affectedElements, false);
+        // log user activity
+        userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), false, false, data.affectedElements);
       }
-
-      // const isTransitionEnabled = net.isEnabled(data.message);
-      //
-      // if (isTransitionEnabled) {
-      //   net.fire(data.message);
-      //   transition.ifTransitionEnabled(this.data.affectedElements, false);
-      //
-      //   // TODO: multiple ways of ending the task (quit, wrong answers, ..)
-      //   if (net.getMarking(data.finalPlace) === data.taskCount) {
-      //     // userActivityLogger.endSession(sessionID, new Date(), true);
-      //     this.showFinalMessage();
-      //     this.playVictorySound();
-      //   }
-      // } else {
-      //   transition.ifTransitionDisabled(this.data.affectedElements, false);
-      // }
-      // log user activity
     };
 
     this.changePlaceEventHandler = () => {
