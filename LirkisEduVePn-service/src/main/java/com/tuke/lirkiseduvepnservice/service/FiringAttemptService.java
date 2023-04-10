@@ -43,7 +43,7 @@ public class FiringAttemptService {
         }
         return firingAttemptRepository.findBySessionIdAndTrue(sessionId)
                 .stream()
-                .map(f -> new FiringAttemptResponse(f.getAction()))
+                .map(f -> new FiringAttemptResponse(f.getAction(), f.isActionFound(), f.getActionTargets()))
                 .toList();
     }
 }
