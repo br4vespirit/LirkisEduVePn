@@ -12,5 +12,6 @@ import java.util.List;
 public class FiringAttemptResponse {
     private String action;
     private boolean actionFound;
+    private boolean successful;
     private List<String> actionTargets;
 }
