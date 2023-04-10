@@ -22,7 +22,6 @@ AFRAME.registerComponent('collision-detector', {
       if (collided === 1 && (e.detail.els[0].id || e.detail.els[0].className)) {
         data.affectedElements = [elementID, e.detail.els[0].id];
         const collisionMsg = data.placeColliderType ? data.collisionEvent : `${e.detail.els[0].className}${data.collisionEvent}`;
-        // el.setAttribute('material', 'color: green');
         console.log(data.affectedElements);
         scene.setAttribute('petri-net-sim', {
           event: data.placeColliderType ? SceneEvent.enteredPlace : SceneEvent.firedTransition,
@@ -32,7 +31,6 @@ AFRAME.registerComponent('collision-detector', {
         scene.emit(collisionMsg);
       } else if (collided === 0 && (e.detail.clearedEls[0].id || e.detail.clearedEls[0].className)) {
         data.affectedElements = [elementID, e.detail.clearedEls[0].id];
-        // el.setAttribute('material', 'color: red');
         const clearedCollisionMsg = data.placeColliderType ? data.clearedCollisionEvent : `${e.detail.clearedEls[0].className}${data.clearedCollisionEvent}`;
         scene.setAttribute('petri-net-sim', {
           event: data.placeColliderType ? SceneEvent.leftPlace : SceneEvent.firedTransition,
