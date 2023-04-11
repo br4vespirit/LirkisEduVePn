@@ -17,7 +17,7 @@ AFRAME.registerComponent('petri-net-sim', {
     affectedElements: {type: 'array', default: []}
   },
   // Do something when component first attached.
-  init: async function () {
+  init: function () {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
     const finalRegex = /^(finalSucc|finalFail)/;
