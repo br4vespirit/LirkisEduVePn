@@ -48,8 +48,8 @@ public class TaskService {
     }
 
     @SneakyThrows
-    public List<TasksPreview> getTasksPreview() {
-        List<Task> tasks = taskRepository.findAll();
+    public List<TasksPreview> getTasksPreview(Long id) {
+        List<Task> tasks = taskRepository.findByUserId(id);
         List<TasksPreview> tasksPreviews = tasks.stream()
                 .map(taskMapper::daoToTaskPreview)
                 .toList();

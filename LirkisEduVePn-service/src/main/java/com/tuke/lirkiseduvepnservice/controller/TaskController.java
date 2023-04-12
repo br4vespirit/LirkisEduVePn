@@ -27,9 +27,9 @@ public class TaskController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/preview")
-    public ResponseEntity<List<TasksPreview>> get() {
-        List<TasksPreview> tasksPreviews = taskService.getTasksPreview();
+    @GetMapping("/preview/{id}")
+    public ResponseEntity<List<TasksPreview>> get(@PathVariable(name = "id") Long id) {
+        List<TasksPreview> tasksPreviews = taskService.getTasksPreview(id);
         return new ResponseEntity<>(tasksPreviews, HttpStatus.OK);
     }
 
