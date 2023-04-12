@@ -115,7 +115,6 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
       next: (profile) => {
         this.openSuccessfulSnackbar();
         this._transfer.changeUpdatedUser(profile);
-        this.updateForm(profile);
       },
       error: (err) => {
         if (err instanceof HttpErrorResponse) {
@@ -125,17 +124,6 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
             this.openUnsuccessfulSnackbar("An unexpected error occurred");
         }
       }
-    })
-  }
-
-  updateForm(profile: UserProfile) {
-    this.form.setValue({
-      email: profile.email,
-      nickname: profile.nickname,
-      firstname: profile.firstname,
-      lastname: profile.lastname,
-      role: profile.role,
-      groups: profile.groups
     })
   }
 

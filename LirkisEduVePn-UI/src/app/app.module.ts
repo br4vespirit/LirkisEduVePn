@@ -42,6 +42,10 @@ import {MatRadioModule} from "@angular/material/radio";
 import {PreviewSceneComponent} from './components/preview-scene/preview-scene.component';
 import {PreviewTasksComponent} from './components/preview-tasks/preview-tasks.component';
 import {Muzeum_habsbourgComponent} from './components/tasks/scenes/muzeum_habsbourg/muzeum_habsbourg.component';
+import {UsersDashboardComponent} from './components/users-dashboard/users-dashboard.component';
+import {GroupsDashboardComponent} from './components/groups-dashboard/groups-dashboard.component';
+import {GroupSettingsComponent} from './components/group-settings/group-settings.component';
+import {GroupsModificationComponent} from './components/groups-modification/groups-modification.component';
 
 
 @NgModule({
@@ -68,7 +72,11 @@ import {Muzeum_habsbourgComponent} from './components/tasks/scenes/muzeum_habsbo
     CreateTaskComponent,
     PreviewSceneComponent,
     PreviewTasksComponent,
-    Muzeum_habsbourgComponent
+    Muzeum_habsbourgComponent,
+    UsersDashboardComponent,
+    GroupsDashboardComponent,
+    GroupSettingsComponent,
+    GroupsModificationComponent
   ],
   imports: [
     BrowserModule,

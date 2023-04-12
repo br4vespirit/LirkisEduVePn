@@ -1,6 +1,7 @@
 package com.tuke.lirkiseduvepnservice.controller;
 
 import com.tuke.lirkiseduvepnservice.model.dto.TaskFilesDto;
+import com.tuke.lirkiseduvepnservice.model.dto.TaskNames;
 import com.tuke.lirkiseduvepnservice.model.dto.TaskRequestDto;
 import com.tuke.lirkiseduvepnservice.model.dto.TasksPreview;
 import com.tuke.lirkiseduvepnservice.service.TaskService;
@@ -36,5 +37,12 @@ public class TaskController {
     public ResponseEntity<TaskFilesDto> getTaskFiles(@PathVariable(name = "id") Long id) {
         TaskFilesDto taskFiles = taskService.getTaskFiles(id);
         return new ResponseEntity<>(taskFiles, HttpStatus.OK);
+    }
+
+    @GetMapping("/names")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_TEACHER')")
+    public ResponseEntity<List<TaskNames>> getTaskNames() {
+        List<TaskNames> taskNames = taskService.getTaskNames();
+        return new ResponseEntity<>(taskNames, HttpStatus.OK);
     }
 }

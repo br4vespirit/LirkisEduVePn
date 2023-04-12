@@ -10,6 +10,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RoleGuard} from "./components/auth/role.guard";
 import {SceneComponent} from "./components/tasks/scenes/muzeum_extended/scene.component";
 import {Muzeum_habsbourgComponent} from "./components/tasks/scenes/muzeum_habsbourg/muzeum_habsbourg.component";
+import {UsersDashboardComponent} from "./components/users-dashboard/users-dashboard.component";
+import {GroupsDashboardComponent} from "./components/groups-dashboard/groups-dashboard.component";
 
 const routes: Routes = [
   {
@@ -53,6 +55,22 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      expectedRoles: ["ADMIN", "TEACHER"]
+    }
+  },
+  {
+    path: "dashboard/users",
+    component: UsersDashboardComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      expectedRoles: ["ADMIN", "TEACHER"]
+    }
+  },
+  {
+    path: "dashboard/groups",
+    component: GroupsDashboardComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       expectedRoles: ["ADMIN", "TEACHER"]

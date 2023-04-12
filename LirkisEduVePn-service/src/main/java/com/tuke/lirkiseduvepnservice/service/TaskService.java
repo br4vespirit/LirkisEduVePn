@@ -6,6 +6,7 @@ import com.tuke.lirkiseduvepnservice.model.dao.Scenario;
 import com.tuke.lirkiseduvepnservice.model.dao.Scene;
 import com.tuke.lirkiseduvepnservice.model.dao.Task;
 import com.tuke.lirkiseduvepnservice.model.dto.TaskFilesDto;
+import com.tuke.lirkiseduvepnservice.model.dto.TaskNames;
 import com.tuke.lirkiseduvepnservice.model.dto.TaskRequestDto;
 import com.tuke.lirkiseduvepnservice.model.dto.TasksPreview;
 import com.tuke.lirkiseduvepnservice.model.mapper.TaskMapper;
@@ -76,5 +77,11 @@ public class TaskService {
         }
 
         return files;
+    }
+
+    public List<TaskNames> getTaskNames() {
+        return taskRepository.findAll().stream()
+                .map(task -> new TaskNames(task.getId(), task.getName()))
+                .toList();
     }
 }

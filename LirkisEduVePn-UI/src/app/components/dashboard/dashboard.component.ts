@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {CreateQuizComponent} from "../create-quiz/create-quiz.component";
 import {CreateSceneComponent} from "../create-scene/create-scene.component";
 import {CreateTaskComponent} from "../create-task/create-task.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-users-dashboard',
@@ -11,7 +12,7 @@ import {CreateTaskComponent} from "../create-task/create-task.component";
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-  constructor(private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,5 +32,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   CreateTaskDialogOpen() {
     this.matDialog.open(CreateTaskComponent);
+  }
+
+  UsersDashboardOpen() {
+    this._router.navigate(['/dashboard/users']).then();
+  }
+
+  GroupsTasksOpen() {
+    this._router.navigate(['/dashboard/groups']).then();
   }
 }

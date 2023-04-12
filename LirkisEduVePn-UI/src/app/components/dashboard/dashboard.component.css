@@ -19,3 +19,9 @@
   align-items: center;
   height: 100%;
 }
+
+.column-block {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+}
