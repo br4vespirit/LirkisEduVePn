@@ -22,6 +22,7 @@ AFRAME.registerComponent('petri-net-sim', {
     let sessionID = localStorage.getItem('sessionID');
     const userData = JSON.parse(localStorage.getItem('user-profile'));
     const finalRegex = /^(finalSucc|finalFail)/;
+    let finalTransitions;
 
     // load petri net and array with transitions
     let net;
@@ -29,6 +30,7 @@ AFRAME.registerComponent('petri-net-sim', {
     petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
+      finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
       // for every place fire function on start
       places.forEach(place => {
         if(!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
@@ -64,7 +66,6 @@ AFRAME.registerComponent('petri-net-sim', {
 
     this.transitionEventHandler = () => {
       const transition = transitions.find(el => el.transitionName === data.message);
-      const finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
       // check if the transition is in the petri net
       if (net.findTransition(transition.transitionName)) {
         console.log(transition.transitionName + ' found');
