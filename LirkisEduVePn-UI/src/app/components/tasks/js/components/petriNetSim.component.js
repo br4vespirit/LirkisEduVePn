@@ -20,6 +20,7 @@ AFRAME.registerComponent('petri-net-sim', {
   init: function () {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
+    const userData = JSON.parse(localStorage.getItem('user-profile'));
     const finalRegex = /^(finalSucc|finalFail)/;
 
     // load petri net and array with transitions
@@ -28,15 +29,16 @@ AFRAME.registerComponent('petri-net-sim', {
     petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
+      // for every place fire function on start
       places.forEach(place => {
         if(!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
       })
     });
 
-
-    // // create session or fire all transition from session data
+    // TODO: make sure that session that is being restored is from logged user
+    // create session or fire all transition from session data
     if (!sessionID) {
-      userActivityLogger.createSession(this.data.taskId, 1).then(data => {
+      userActivityLogger.createSession(this.data.taskId, userData.id).then(data => {
         console.log('%c New session created 🎉', 'color: #FB607F');
         localStorage.setItem('sessionID', data);
         sessionID = data;
