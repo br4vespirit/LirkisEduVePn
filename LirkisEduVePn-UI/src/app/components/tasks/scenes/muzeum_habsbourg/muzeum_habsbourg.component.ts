@@ -6,10 +6,13 @@ import '../../js/components/clkMultiEventHandler.component.js';
 import '../../js/components/clkSingleEventHandler.component.js';
 import '../../js/components/petriNetSim.component.js';
 import '../../js/components/sceneLanguage.component.js';
+// import '../../js/transitionScript.js';
 import {TaskFiles} from "../../../../models/task-files.model";
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
 import {Subscription} from "rxjs";
+// @ts-ignore
+import {transitions} from "../../js/transitionScript.js";
 
 
 @Component({
@@ -26,6 +29,7 @@ export class Muzeum_habsbourgComponent {
   // @ts-ignore
   taskFiles: TaskFiles
   task_files_subscription: Subscription = new Subscription();
+  transitions = transitions;
 
 
   constructor(private _route: ActivatedRoute, private _client: BackendService) {
@@ -34,6 +38,8 @@ export class Muzeum_habsbourgComponent {
       this.taskId = params['taskId'];
     })
 
+    transitions[0].always('thisff');
+
     // @ts-ignore
     this.task_files_subscription = this._client.getTaskFiles(this.taskId).subscribe(data => {
       this.taskFiles = data as TaskFiles;
@@ -41,7 +47,7 @@ export class Muzeum_habsbourgComponent {
 
       if (this.taskFiles) {
         // attach petri net sim component to the scene
-        const petriNetSimAttr = `finalPlace: final; taskCount: 3; pnmlFile: ${this.taskFiles.pnmlFile}`;
+        const petriNetSimAttr = `finalPlace: final; taskCount: 3; pnmlFile: ${this.taskFiles.pnmlFile}; taskId: ${this.taskId}; transitions: ${JSON.stringify(transitions)}`;
         this.scene.nativeElement.setAttribute('petri-net-sim', petriNetSimAttr);
 
         // attach language component to the scene

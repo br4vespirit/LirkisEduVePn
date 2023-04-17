@@ -2,61 +2,51 @@ import {SceneEvent} from '../models/sceneEvent.enum';
 
 AFRAME.registerComponent('collision-detector', {
   schema: {
-    collisionEvent: { type: 'string' },
-    clearedCollisionEvent: { type: 'string' },
-    placeColliderType: { type: 'boolean', default: true }
+    collisionEvent: {type: 'string'},
+    clearedCollisionEvent: {type: 'string'},
+    placeColliderType: {type: 'boolean', default: true},
+    affectedElements: {type: 'array', default: []}
   },
 
   init: function () {
+    const elementID = this.el.getAttribute('id');
     // Do something when component first attached.
     let el = this.el;
-    var data = this.data;
-    var scene = document.querySelector('a-scene');
+    const data = this.data;
+    const scene = document.querySelector('a-scene');
 
     // listen for collisions
     el.addEventListener('collisions', (e) => {
-      var collided = e.detail.els.length;
+      const collided = e.detail.els.length;
+
       if (collided === 1 && (e.detail.els[0].id || e.detail.els[0].className)) {
-        var collisionMsg = data.placeColliderType
-          ? data.collisionEvent
-          : `${e.detail.els[0].className}${data.collisionEvent}`;
-        el.setAttribute('material', 'color: green');
+        data.affectedElements = [elementID, e.detail.els[0].id];
+        const collisionMsg = data.placeColliderType ? data.collisionEvent : `${e.detail.els[0].className}${data.collisionEvent}`;
+        console.log(data.affectedElements);
         scene.setAttribute('petri-net-sim', {
-          event: data.placeColliderType
-            ? SceneEvent.enteredPlace
-            : SceneEvent.firedTransition,
-          message: collisionMsg
+          event: data.placeColliderType ? SceneEvent.enteredPlace : SceneEvent.firedTransition,
+          message: collisionMsg,
+          affectedElements: data.affectedElements
         });
         scene.emit(collisionMsg);
-      } else if (
-        collided === 0 &&
-        (e.detail.clearedEls[0].id || e.detail.clearedEls[0].className)
-      ) {
-        el.setAttribute('material', 'color: red');
-        var clearedCollisionMsg = data.placeColliderType
-          ? data.clearedCollisionEvent
-          : `${e.detail.clearedEls[0].className}${data.clearedCollisionEvent}`;
+      } else if (collided === 0 && (e.detail.clearedEls[0].id || e.detail.clearedEls[0].className)) {
+        data.affectedElements = [elementID, e.detail.clearedEls[0].id];
+        const clearedCollisionMsg = data.placeColliderType ? data.clearedCollisionEvent : `${e.detail.clearedEls[0].className}${data.clearedCollisionEvent}`;
         scene.setAttribute('petri-net-sim', {
-          event: data.placeColliderType
-            ? SceneEvent.leftPlace
-            : SceneEvent.firedTransition,
-          message: clearedCollisionMsg
+          event: data.placeColliderType ? SceneEvent.leftPlace : SceneEvent.firedTransition,
+          message: clearedCollisionMsg,
+          affectedElements: data.affectedElements
         });
         scene.emit(clearedCollisionMsg);
       }
     });
   },
 
-  update: function () {
-    // Do something when component's data is updated.
+  changeBoxColorGreen: function () {
+    this.el.setAttribute('material', 'color: green');
   },
 
-  remove: function () {
-    // Do something the component or its entity is detached.
-  },
-
-  // eslint-disable-next-line no-unused-vars
-  tick: function (time, timeDelta) {
-    // Do something on every scene tick or frame.
+  changeBoxColorRed: function () {
+    this.el.setAttribute('material', 'color: red');
   }
 });

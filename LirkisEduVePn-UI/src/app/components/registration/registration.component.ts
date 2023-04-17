@@ -5,7 +5,6 @@ import {Subscription} from "rxjs";
 import {BackendService} from "../../services/backend.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import {Group} from 'src/app/models/group.model';
 
 @Component({
   selector: 'app-registration',
@@ -22,8 +21,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   groupsSubscription: Subscription = new Subscription();
 
   registrationUserSubscription: Subscription = new Subscription();
-
-  _groups: Group[] = [];
 
   constructor(private _client: BackendService, private _snackBar: MatSnackBar,
               private _router: Router) {
@@ -66,9 +63,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.groupsSubscription = this._client.getGroups().subscribe(data => {
-      this._groups = data as Group[];
-    })
     this.form = new FormGroup<any>({
       username: new FormControl('', [Validators.required]),
       firstname: new FormControl('', [Validators.required]),

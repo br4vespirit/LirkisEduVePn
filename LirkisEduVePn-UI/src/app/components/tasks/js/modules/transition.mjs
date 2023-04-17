@@ -3,6 +3,7 @@ import {
   playConfirmationUnsuccessSound,
   updateVisualProgres
 } from '../transitionFunctions.js';
+import * as userActivityLogger from '../modules/userActivityLogger';
 
 /**
  * @class
@@ -18,24 +19,28 @@ export default class Transition {
 
 
     ifTransitionEnabled() {
-        // imported functions
-        playConfirmationSuccessSound(this.transitionName);
-        updateVisualProgres(this.transitionName);
+      // imported functions
+      playConfirmationSuccessSound(this.transitionName);
+      updateVisualProgres(this.transitionName);
     }
 
-    ifTransitionDisabled() {
-        // imported function
-        playConfirmationUnsuccessSound(this.transitionName);
-    }
+  ifTransitionDisabled() {
+    // imported function
+    playConfirmationUnsuccessSound(this.transitionName);
+  }
 
-    /**
-     *
-     * @param {boolean} isTransitionEnabled - jfkajfk a
-     */
-    always(isTransitionEnabled) {
-        // imported function
-        // TODO: log user activity to server
-        //serverLogger.createParseFiringAttempt(1,data.message,true,new Date(),1);
-        console.log(this.transitionName, isTransitionEnabled);
-    }
+  /**
+   *
+   * @param {boolean} isTransitionEnabled
+   */
+  always(isTransitionEnabled) {
+    // log user activity to server
+    console.log(this.transitionName, isTransitionEnabled);
+    userActivityLogger.createFiringAttemt(
+      localStorage.getItem('sessionID'),
+      this.transitionName,
+      new Date(),
+      isTransitionEnabled
+    );
+  }
 }

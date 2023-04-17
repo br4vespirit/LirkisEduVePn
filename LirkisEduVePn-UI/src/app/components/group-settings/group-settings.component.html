@@ -1,0 +1,24 @@
+<form (ngSubmit)="createGroup()" [formGroup]="form" class="profileSettings">
+  <p class="boldText heading">Create a new group</p>
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">name</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="name" placeholder="Enter group name" type="text">
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">tasks</p>
+      <p class="colorText">change</p>
+    </div>
+    <mat-select formControlName="tasks" multiple placeholder="Choose tasks" style="width: 250px">
+      <mat-option *ngFor="let task of _tasks" [value]="task.id">
+        {{task.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <button [disabled]="form.invalid" class="mainButton secondaryButton" type="submit">Create</button>
+</form>

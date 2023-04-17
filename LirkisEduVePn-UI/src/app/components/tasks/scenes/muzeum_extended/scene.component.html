@@ -3,6 +3,7 @@
          light="defaultLightsEnabled: false"
          physics="gravity: 0"
          renderer="colorManagement: true"
+         id="scene"
          shadow="type: pcfsoft">
   <!-- Load Assets -->
   <a-assets>
@@ -53,9 +54,12 @@
     <a-asset-item
       id="spiceBottle"
       src="../assets/3dModels/spice_container.glb"></a-asset-item>
+    <a-asset-item
+      id="ropeBarrier"
+      src="../assets/3dModels/rope_barrier.glb"></a-asset-item>
     <img
       id="erb"
-      src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png" />
+      src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png"/>
     <img
       id="maria"
       src="../assets/images/Kaiserin_Maria_Theresia_(HRR)-min.jpg"/>
@@ -134,12 +138,21 @@
   </a-entity>
 
   <!-- Map and navigationMesh ---------------------------------------------------------------------->
-  <a-entity [attr.gltf-model]="'#museum'" position="0 1 16"></a-entity>
+  <a-entity [attr.gltf-model]="'#museum'" position="0 1 16" shadow="receive: true"></a-entity>
   <a-entity
     [attr.gltf-model]="'#navmesh'"
     position="0 1 16"
     visible="false"
     nav-mesh></a-entity>
+
+  <a-circle
+    animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+    class="interactible"
+    material="src: #infoIcon; side: double; shader: flat"
+    position="4 4 -1"
+    radius="0.15"
+    sound="src: #tap; on: click; poolSize: 2"
+    toggle-label-visibility></a-circle>
 
   <!-- Middle Space ------------------------------------------------------------------------------->
   <a-entity id="WelcomMsg" position="6.536 4.5 -1.841">
@@ -386,6 +399,7 @@
     [attr.position]="'-5.7592 2.3 13.02616'"
     rotation="-8.68 180 0"
     visible="false">
+    <a-entity label="label: P1confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -406,7 +420,7 @@
     </a-text>
     <a-text
       id="P1confirm"
-      clk-single-event-handler="name: P1confirm"
+      clk-single-event-handler="name: P1confirm; affectedElements: P1confirmProgress"
       position="0 -0.29141 0.01752"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -430,7 +444,9 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Cselect/P1Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P1select1"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Cselect; secondToggleEvent: P1Cunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -487,7 +503,9 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P1select2"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -544,7 +562,9 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P1select3"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -601,7 +621,9 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P1select4"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -668,6 +690,7 @@
     width="1.2"
     [attr.position]="'-5.7592 2.3 -6.5'"
     rotation="-8.68 0 0">
+    <a-entity label="label: P2confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -688,7 +711,7 @@
     </a-text>
     <a-text
       id="P2confirm"
-      clk-single-event-handler="name: P2confirm"
+      clk-single-event-handler="name: P2confirm; affectedElements: P2confirmProgress"
       position="0 -0.30236 0.00878"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -720,7 +743,9 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P2select1"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -785,7 +810,9 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P2select2"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -850,7 +877,9 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P2select3"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -915,7 +944,9 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Iselect/P2Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
+        id="P2select3"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Iselect; secondToggleEvent: P2Iunselect"
         material="src: #unselected; side: double; shader: flat"
@@ -1026,6 +1057,7 @@
     width="1.2"
     [attr.position]="'19.584 2.35122 -4.565'"
     rotation="-8.68 0 0">
+    <a-entity label="label: P3confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1046,7 +1078,7 @@
     </a-text>
     <a-text
       id="P3confirm"
-      clk-single-event-handler="name: P3confirm"
+      clk-single-event-handler="name: P3confirm; affectedElements: P3confirmProgress"
       position="0 -0.33365 0.004"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -1063,6 +1095,7 @@
   <a-entity
     [attr.gltf-model]="'#crown'"
     class="P3C"
+    id="P3Crown"
     position="22.582 2.456 12.098"
     mixin="canGrab"></a-entity>
   <a-text
@@ -1078,10 +1111,13 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="22.508 2.333 11.528" rotation="0 180 0"></a-entity>
+
 
   <a-entity
     [attr.gltf-model]="'#cup'"
     class="P3I"
+    id="P3Cup"
     position="19.548 2.631 8.807"
     mixin="canGrab"></a-entity>
   <a-text
@@ -1097,10 +1133,12 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Iplace/P3Idisplace" position="19.985 2.333 8.820" rotation="0 90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#apple_coat'"
     class="P3C"
+    id="P3Apple"
     position="25.467 2.456 12.031"
     mixin="canGrab"></a-entity>
   <a-text
@@ -1116,10 +1154,12 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="25.05639 2.33372 11.98706" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#sword'"
     class="P3C"
+    id="P3Sword"
     position="25.426 3.408 8.866"
     mixin="canGrab"></a-entity>
   <a-text
@@ -1135,10 +1175,12 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12;"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="25.05639 2.33372 8.82306" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#mace'"
     class="P3C"
+    id="P3Mace"
     position="19.505 3.773 11.937"
     mixin="canGrab"></a-entity>
   <a-text
@@ -1154,6 +1196,7 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="19.985 2.333 11.987" rotation="0 90 0"></a-entity>
 
   <!-- Exposition Room 4 ------------------------------------------------------------------------------->
   <a-box
@@ -1187,6 +1230,7 @@
     width="1.2"
     [attr.position]="'-15.5 2.35122 11'"
     rotation="-8.68 180 0">
+    <a-entity label="label: P4confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1239,6 +1283,7 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P4Cplace/P4Cdisplace" position="-18.407 2.333 -5.234" rotation="0 0 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#parfume'"
@@ -1259,6 +1304,7 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P4Cplace/P4Cdisplace" position="-20.936 2.333 -5.668" rotation="0 90 0"></a-entity>
 
   <!--  <a-entity-->
   <!--    gltf-model="#spice"-->
@@ -1278,6 +1324,7 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P4Cplace/P4Cdisplace" position="-15.848 2.333 -2.509" rotation="0 -90 0"></a-entity>
 
   <!-- Exposition Room 5 ------------------------------------------------------------------------------->
   <a-box
@@ -1844,6 +1891,7 @@
     rotation="-8.68 180 0"
     visible="false"
     width="1.2">
+    <a-entity label="label: P6confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       color="#F2F2F2"
@@ -1888,6 +1936,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P6Cselect/P6Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -1945,6 +1994,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P6Iselect/P6Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -2002,6 +2052,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P6Iselect/P6Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -2059,6 +2110,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P6Iselect/P6Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -2126,6 +2178,7 @@
     rotation="-8.68 0 0"
     visible="false"
     width="1.2">
+    <a-entity label="label: P7confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       color="#F2F2F2"
@@ -2170,6 +2223,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P7Iselect/P7Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -2227,6 +2281,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P7Iselect/P7Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -2284,6 +2339,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P7Iselect/P7Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
@@ -2341,6 +2397,7 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P7Cselect/P7Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"

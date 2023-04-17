@@ -2,51 +2,46 @@ import {SceneEvent} from '../models/sceneEvent.enum';
 
 AFRAME.registerComponent('clk-multi-event-handler', {
   schema: {
-    firstToggleEvent: { type: 'string', default: 'firstToggleEvent' },
-    secondToggleEvent: { type: 'string', default: 'secondToggleEvent' },
-    selected: { type: 'boolean', default: false }
+    firstToggleEvent: {type: 'string', default: 'firstToggleEvent'},
+    secondToggleEvent: {type: 'string', default: 'secondToggleEvent'},
+    selected: {type: 'boolean', default: false},
+    affectedElements: {type: 'array', default: []}
   },
 
   // Do something when component first attached.
   init: function () {
-    var el = this.el;
-    var data = this.data;
-    var scene = this.el.sceneEl;
+    const elementID = this.el.getAttribute('id');
+    this.data.affectedElements.unshift(elementID);
+    const el = this.el;
+    let data = this.data;
+    const scene = this.el.sceneEl;
+
     el.addEventListener('click', function () {
       if (data.selected === false) {
         scene.setAttribute('petri-net-sim', {
           event: SceneEvent.firedTransition,
-          message: data.firstToggleEvent
+          message: data.firstToggleEvent,
+          affectedElements: data.affectedElements
         });
-        el.setAttribute(
-          'material',
-          'src: #selected; side: double; shader: flat'
-        );
         scene.emit(data.firstToggleEvent);
-        data.selected = !data.selected;
       } else {
         scene.setAttribute('petri-net-sim', {
           event: SceneEvent.firedTransition,
-          message: data.secondToggleEvent
+          message: data.secondToggleEvent,
+          affectedElements: data.affectedElements
         });
-        el.setAttribute(
-          'material',
-          'src: #unselected; side: double; shader: flat'
-        );
         scene.emit(data.secondToggleEvent);
-        data.selected = !data.selected;
       }
     });
   },
 
-  update: function () {},
+  toggleButton: function () {
+    if (this.data.selected === false) {
+      this.el.setAttribute('material', 'src: #selected; side: double; shader: flat');
+    } else {
+      this.el.setAttribute('material', 'src: #unselected; side: double; shader: flat');
+    }
 
-  remove: function () {
-    // Do something the component or its entity is detached.
-  },
-
-  // eslint-disable-next-line no-unused-vars
-  tick: function (time, timeDelta) {
-    // Do something on every scene tick or frame.
+    this.data.selected = !this.data.selected;
   }
 });

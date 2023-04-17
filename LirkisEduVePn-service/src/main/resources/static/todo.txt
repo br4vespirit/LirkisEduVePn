@@ -6,3 +6,5 @@
 // TODO: Cannot delete user when confirmation token exists
 // TODO: Do something with password that is used in java mail configuration
 // TODO: In user-settings.component.ts try to avoid using autocompleteGroups() method, try to fill groups form control immediately (not working now)
+// TODO: When creating a task session validate if it is not exists opened one
+// TODO: Entities names (most of them) should be unique

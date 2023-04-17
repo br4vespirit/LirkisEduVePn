@@ -1,0 +1,31 @@
+.profileSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 20vw;
+  padding: 0 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logout {
+  color: #FF0A0A !important;
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.logout p, .logout mat-icon {
+  opacity: 0.6;
+}
+
+.error-content {
+  color: red;
+}

@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {PreviewScenariosComponent} from "../preview-scenarios/preview-scenarios.component";
 import {PreviewSceneComponent} from "../preview-scene/preview-scene.component";
 import {Router} from "@angular/router";
+import {UserProfile} from "../../models/user-profile.model";
 
 @Component({
   selector: 'app-preview-tasks',
@@ -19,12 +20,18 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
   tasks_preview_subscription: Subscription = new Subscription();
   task_files_subscription: Subscription = new Subscription();
 
+  // @ts-ignore
+  profile: UserProfile;
+
   constructor(private matDialogRef: MatDialogRef<PreviewTasksComponent>, private _client: BackendService,
               private matDialog: MatDialog, private _router: Router) {
   }
 
   ngOnInit() {
-    this.tasks_preview_subscription = this._client.getTasksPreview().subscribe(data => {
+
+    // @ts-ignore
+    this.profile = JSON.parse(localStorage.getItem("user-profile")) as UserProfile;
+    this.tasks_preview_subscription = this._client.getTasksPreview(this.profile.id).subscribe(data => {
       this.tasks = data as TaskPreview[];
       console.log(this.tasks);
     })

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
 import {UserProfile} from "../models/user-profile.model";
+import {GroupTasks} from "../models/group-tasks.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,12 @@ export class TransferService {
   private updatedUserStatusSource = new Subject<UserProfile>();
   updatedUserStatus$ = this.updatedUserStatusSource.asObservable();
 
+  private createdGroupStatusSource = new Subject<GroupTasks>();
+  createdGroupStatus$ = this.createdGroupStatusSource.asObservable();
+
+  private updatedGroupStatusSource = new Subject<GroupTasks>();
+  updatedGroupStatus$ = this.updatedGroupStatusSource.asObservable();
+
   constructor() {
   }
 
@@ -36,5 +43,13 @@ export class TransferService {
 
   public changeUpdatedUser(user: UserProfile) {
     this.updatedUserStatusSource.next(user);
+  }
+
+  public changeCreatedGroup(group: GroupTasks) {
+    this.createdGroupStatusSource.next(group);
+  }
+
+  public changeUpdatedGroup(group: GroupTasks) {
+    this.updatedGroupStatusSource.next(group);
   }
 }

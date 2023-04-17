@@ -1,0 +1,31 @@
+<div class="close">
+  <mat-icon (click)="closeDialog()" style="cursor:pointer;">close</mat-icon>
+</div>
+<p class="boldText heading">Group Settings</p>
+<form (ngSubmit)="updateGroup()" [formGroup]="form" class="profileSettings">
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">name</p>
+      <p class="colorText">change</p>
+    </div>
+    <input formControlName="name" type="text">
+  </div>
+  <div *ngIf="name && name.invalid && name.touched" class="error-content">
+    <div *ngIf="name.hasError('required')">Name is required</div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      <p class="smallBoldText">tasks</p>
+      <p class="colorText">change</p>
+    </div>
+    <mat-select formControlName="tasks" multiple placeholder="Choose tasks" style="width: 250px">
+      <mat-option *ngFor="let task of _tasks" [value]="task.id">
+        {{task.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <button class="mainButton secondaryButton" type="submit">Save</button>
+</form>

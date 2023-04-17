@@ -2,18 +2,22 @@ import {SceneEvent} from '../models/sceneEvent.enum';
 
 AFRAME.registerComponent('clk-single-event-handler', {
   schema: {
-    name: { type: 'string', default: '' }
+    name: {type: 'string', default: ''},
+    affectedElements: {type: 'array', default: []}
   },
 
   // Do something when component first attached.
   init: function () {
-    var data = this.data;
-    var el = this.el;
-    var scene = this.el.sceneEl;
-    el.addEventListener('click', function () {
+    const elementID = this.el.getAttribute('id');
+    this.data.affectedElements.unshift(elementID);
+    let data = this.data;
+    const el = this.el;
+    const scene = this.el.sceneEl;
+    el.addEventListener('click', () => {
       scene.setAttribute('petri-net-sim', {
         event: SceneEvent.firedTransition,
-        message: data.name
+        message: data.name,
+        affectedElements: data.affectedElements
       });
       scene.emit(data.name);
     });

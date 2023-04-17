@@ -1,9 +1,8 @@
 export class Group {
-  id: number;
-  name: string;
+  id: number = 0;
+  name: string = "";
 
-  constructor(id: number, name: string) {
-    this.id = id;
-    this.name = name;
+  constructor(init?: Partial<Group>) {
+    Object.assign(this, init);
   }
 }

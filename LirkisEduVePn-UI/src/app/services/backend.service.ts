@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {LoginRequest} from "../models/login-request.model";
 import {ProfileUpdate} from "../models/profile-update.model";
 import {TaskCreation} from "../models/task-creation.model";
+import {GroupTasks} from "../models/group-tasks.model";
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +75,8 @@ export class BackendService {
 
   public getGroups(): Observable<any> {
     return this._client.get(this.API_URL + "/group", {
-      responseType: "json"
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
 
@@ -122,8 +124,8 @@ export class BackendService {
     )
   }
 
-  public getTasksPreview(): Observable<any> {
-    return this._client.get(this.API_URL + "/task/preview", {
+  public getTasksPreview(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/task/preview/" + id, {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
@@ -131,6 +133,45 @@ export class BackendService {
 
   public getTaskFiles(id: number): Observable<any> {
     return this._client.get(this.API_URL + "/task/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public fetchGroupsWithTasks(): Observable<any> {
+    return this._client.get(this.API_URL + "/group/with-tasks", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public fetchTaskNames(): Observable<any> {
+    return this._client.get(this.API_URL + "/task/names", {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public createGroup(group: GroupTasks): Observable<any> {
+    return this._client.post<any>(
+      this.API_URL + "/group",
+      group,
+      {
+        headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+      }
+    )
+  }
+
+  public updateGroupFromDashboard(group: GroupTasks): Observable<any> {
+    console.log(group)
+    return this._client.patch(this.API_URL + "/group", group, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public deleteGroupById(id: number): Observable<any> {
+    return this._client.delete(this.API_URL + "/group/" + id, {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
