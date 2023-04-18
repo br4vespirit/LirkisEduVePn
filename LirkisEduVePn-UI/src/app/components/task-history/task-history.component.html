@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="mainContent">
+    <div class="welcomeAndProfile">
+      <div class="welcome" style="text-align: center;">
+        <p class="boldText" style="opacity: 0.6;">Task history</p>
+        <h1>Task history</h1>
+      </div>
+    </div>
+
+    <div class="results">
+      <div style="text-align: center;">
+        <p class="colorText" style="font-weight: 700;">TEST DURATION</p>
+        <p class="secondaryText">32min 45sec</p>
+      </div>
+
+      <table>
+        <tr>
+          <th class="boldText"></th>
+          <th class="boldText">TRANSITION NAME</th>
+          <th class="boldText">FIRED AT</th>
+          <th class="boldText">SUCCESSFULL</th>
+        </tr>
+
+        <tr *ngFor="let firringAttempt of firringAttempts; let i = index">
+          <td class="colorText" style="text-align: left;"> #{{i + 1}}</td>
+          <td class="secondaryText">{{firringAttempt.action}}</td>
+          <td class="secondaryText">{{firringAttempt.action}}</td>
+          <td class="secondaryText">{{firringAttempt.successful}}</td>
+        </tr>
+      </table>
+      <a routerLink="/user/profile" class="mainButton">close</a>
+    </div>
+  </div>
+</div>

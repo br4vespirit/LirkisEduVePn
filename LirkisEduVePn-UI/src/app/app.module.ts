@@ -46,6 +46,7 @@ import {UsersDashboardComponent} from './components/users-dashboard/users-dashbo
 import {GroupsDashboardComponent} from './components/groups-dashboard/groups-dashboard.component';
 import {GroupSettingsComponent} from './components/group-settings/group-settings.component';
 import {GroupsModificationComponent} from './components/groups-modification/groups-modification.component';
+import { TaskHistoryComponent } from './components/task-history/task-history.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import {GroupsModificationComponent} from './components/groups-modification/grou
     UsersDashboardComponent,
     GroupsDashboardComponent,
     GroupSettingsComponent,
-    GroupsModificationComponent
+    GroupsModificationComponent,
+    TaskHistoryComponent
   ],
   imports: [
     BrowserModule,
