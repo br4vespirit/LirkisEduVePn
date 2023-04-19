@@ -145,14 +145,6 @@
     visible="false"
     nav-mesh></a-entity>
 
-  <a-circle
-    animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
-    class="interactible"
-    material="src: #infoIcon; side: double; shader: flat"
-    position="4 4 -1"
-    radius="0.15"
-    sound="src: #tap; on: click; poolSize: 2"
-    toggle-label-visibility></a-circle>
 
   <!-- Middle Space ------------------------------------------------------------------------------->
   <a-entity id="WelcomMsg" position="6.536 4.5 -1.841">
@@ -220,32 +212,38 @@
       color="#4F4F4F">
     </a-text>
   </a-entity>
-  <a-image
-    id="map"
-    [attr.src]="'#museumMap'"
-    height="3.23"
-    width="4.79"
-    [attr.position]="'8.21406 4.35163 7.976'"
+<!--  <a-image-->
+<!--    id="map"-->
+<!--    [attr.src]="'#museumMap'"-->
+<!--    height="3.23"-->
+<!--    width="4.79"-->
+<!--    [attr.position]="'8.21406 4.35163 7.976'"-->
+<!--    rotation="0 180 0">-->
+<!--  </a-image>-->
+  <a-entity
+    dashboard
+    position="8.21406 4.35163 7.976"
     rotation="0 180 0">
-  </a-image>
-  <a-circle
-    id="P1confirmProgress"
-    position="6.90593 3.5 7.956"
-    rotation="0 180 0"
-    scale="0.07 0.07 0.07"
-    material="color: red; side: double; shader: flat"></a-circle>
-  <a-circle
-    id="P2confirmProgress"
-    position="6.90593 3.3 7.956"
-    rotation="0 180 0"
-    scale="0.07 0.07 0.07"
-    material="color: red; side: double; shader: flat"></a-circle>
-  <a-circle
-    id="P3confirmProgress"
-    position="6.90593 3.1 7.956"
-    rotation="0 180 0"
-    scale="0.07 0.07 0.07"
-    material="color: red; side: double; shader: flat"></a-circle>
+  </a-entity>
+
+<!--  <a-circle-->
+<!--    id="P1confirmProgress"-->
+<!--    position="6.90593 3.5 7.956"-->
+<!--    rotation="0 180 0"-->
+<!--    scale="0.07 0.07 0.07"-->
+<!--    material="color: red; side: double; shader: flat"></a-circle>-->
+<!--  <a-circle-->
+<!--    id="P2confirmProgress"-->
+<!--    position="6.90593 3.3 7.956"-->
+<!--    rotation="0 180 0"-->
+<!--    scale="0.07 0.07 0.07"-->
+<!--    material="color: red; side: double; shader: flat"></a-circle>-->
+<!--  <a-circle-->
+<!--    id="P3confirmProgress"-->
+<!--    position="6.90593 3.1 7.956"-->
+<!--    rotation="0 180 0"-->
+<!--    scale="0.07 0.07 0.07"-->
+<!--    material="color: red; side: double; shader: flat"></a-circle>-->
 
   <a-image
     [attr.src] ="'#erb'"
