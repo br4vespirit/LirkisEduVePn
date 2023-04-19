@@ -1,69 +1,22 @@
 <div class="close">
-    <mat-icon (click)="closeDialog()">close</mat-icon>            
+  <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
 </div>
-<p class="boldText heading">Quiz history</p>
-<div class="quizOption">
-    <div class="history">
-        <div>
-            <p class="boldText">History test</p>
-            <p class="secondaryText">16.11.2022</p>
-        </div>
-        <div class="score">
-            <h5>SCORE</h5>
-            <p class="boldText">1.5/3</p>
-        </div>
+<p class="boldText heading">Tasks history</p>
+<div *ngFor="let session of current_sessions" class="quizOption">
+  <div class="history">
+    <div>
+      <p class="boldText">{{session.taskName}}</p>
+      <p class="secondaryText">{{session.finishedAt | date: 'yyyy-MM-dd'}}</p>
     </div>
-    <a href="#" class="mainButton">preview</a>
+  </div>
+  <a (click)="open_preview(session)" class="mainButton" style="cursor: pointer">preview</a>
 </div>
-<div class="quizOption">
-    <div class="history">
-        <div>
-            <p class="boldText">History test</p>
-            <p class="secondaryText">16.11.2022</p>
-        </div>
-        <div class="score">
-            <h5>SCORE</h5>
-            <p class="boldText">1.5/3</p>
-        </div>
-    </div>
-    <a href="#" class="mainButton">preview</a>
-</div>
-<div class="quizOption">
-    <div class="history">
-        <div>
-            <p class="boldText">History test</p>
-            <p class="secondaryText">16.11.2022</p>
-        </div>
-        <div class="score">
-            <h5>SCORE</h5>
-            <p class="boldText">1.5/3</p>
-        </div>
-    </div>
-    <a href="#" class="mainButton">preview</a>
-</div>
-<div class="quizOption">
-    <div class="history">
-        <div>
-            <p class="boldText">History test</p>
-            <p class="secondaryText">16.11.2022</p>
-        </div>
-        <div class="score">
-            <h5>SCORE</h5>
-            <p class="boldText">1.5/3</p>
-        </div>
-    </div>
-    <a href="#" class="mainButton">preview</a>
-</div>
-<div class="quizOption">
-    <div class="history">
-        <div>
-            <p class="boldText">History test</p>
-            <p class="secondaryText">16.11.2022</p>
-        </div>
-        <div class="score">
-            <h5>SCORE</h5>
-            <p class="boldText">1.5/3</p>
-        </div>
-    </div>
-    <a href="#" class="mainButton">preview</a>
+<div style="margin-top: 20px">
+  <button (click)="prev_sessions()" [disabled]="page === 0" mat-icon-button>
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+
+  <button (click)="next_sessions()" [disabled]="page >= max_pages - 1" mat-icon-button>
+    <mat-icon>navigate_next</mat-icon>
+  </button>
 </div>

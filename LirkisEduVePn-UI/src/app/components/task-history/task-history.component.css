@@ -1,0 +1,42 @@
+.results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+table {
+  min-width: 100%;
+  table-layout: fixed;
+}
+
+td, th {
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(30, 30, 30, 0.1);
+  padding: 0.5rem;
+}
+
+.welcomeAndProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-top: 5rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  text-align: right;
+  align-items: flex-start;
+  height: 70%;
+}
+
+.container {
+  justify-content: flex-start !important;
+}

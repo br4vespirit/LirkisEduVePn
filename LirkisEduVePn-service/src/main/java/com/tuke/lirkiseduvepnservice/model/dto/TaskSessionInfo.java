@@ -5,15 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FiringAttemptResponse {
-    private String action;
-    private boolean actionFound;
+public class TaskSessionInfo {
+    private Long id;
+    private String taskName;
+    private Timestamp finishedAt;
+    private Timestamp startedAt;
     private boolean successful;
-    private List<String> actionTargets;
-    private Timestamp firedAt;
 }

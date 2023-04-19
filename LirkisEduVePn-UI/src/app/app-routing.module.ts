@@ -12,6 +12,7 @@ import {SceneComponent} from "./components/tasks/scenes/muzeum_extended/scene.co
 import {Muzeum_habsbourgComponent} from "./components/tasks/scenes/muzeum_habsbourg/muzeum_habsbourg.component";
 import {UsersDashboardComponent} from "./components/users-dashboard/users-dashboard.component";
 import {GroupsDashboardComponent} from "./components/groups-dashboard/groups-dashboard.component";
+import {TaskHistoryComponent} from "./components/task-history/task-history.component";
 
 const routes: Routes = [
   {
@@ -45,6 +46,11 @@ const routes: Routes = [
   {
     path: "muzeum_extended/task/:taskId",
     component: SceneComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "history/session",
+    component: TaskHistoryComponent,
     canActivate: [AuthGuard]
   },
   {

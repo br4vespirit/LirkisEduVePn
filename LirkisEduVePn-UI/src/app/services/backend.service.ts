@@ -176,4 +176,18 @@ export class BackendService {
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
+
+  public getFiringAttempts(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/firing-attempt/session/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public getTaskSessionsInfo(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/task-session/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
 }
