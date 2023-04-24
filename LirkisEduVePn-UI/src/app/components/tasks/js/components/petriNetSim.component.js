@@ -1,5 +1,6 @@
 import {SceneEvent} from '../models/sceneEvent.enum';
 import * as petriNetLoader from '../modules/petriNetLoader.mjs';
+import * as cpnLoader from '../modules/cpnLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
 import {places, transitions} from "../transitionScript";
@@ -21,21 +22,32 @@ AFRAME.registerComponent('petri-net-sim', {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
     const userData = JSON.parse(localStorage.getItem('user-profile'));
-    const finalRegex = /^(finalSucc|finalFail)/;
+    const finalRegex = /^(finSucc|finFail)/;
     let finalTransitions;
 
     // load petri net and array with transitions
     let net;
 
-    petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
+    cpnLoader.loadCPNData('../../../../../assets/petriNetFile/refactor.cpn').then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
       finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
+      console.log(finalTransitions)
       // for every place fire function on start
       places.forEach(place => {
         if (!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
       })
-    });
+    })
+
+    // petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
+    //   net = (this.petriNet = new PetriNet(res));
+    //   console.log(net);
+    //   finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
+    //   // for every place fire function on start
+    //   places.forEach(place => {
+    //     if (!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
+    //   })
+    // });
 
     // TODO: make sure that session that is being restored is from logged user
     // create session or fire all transition from session data
@@ -82,6 +94,7 @@ AFRAME.registerComponent('petri-net-sim', {
           // iterate trough final transitions and try if the transition can be fired
           finalTransitions.forEach(el => {
             if (net.isEnabled(el.transitionName)) {
+              console.log(el.transitionName)
               net.fire(el.transitionName);
               el.ifTransitionEnabled(this.data.affectedElements, false);
               // log user activity and end session

@@ -471,7 +471,67 @@ export const transitions = [
     ifTransitionNotFound: (targets, replay) => {
 
     }
-  }
+  },
+  {
+    transitionName: 'finSucc',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnSucc')
+      transitionFunctions.playVictorySound()
+      transitionFunctions.showFinalMessage()
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail1',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playVictorySound()
+      transitionFunctions.showFinalMessage()
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail2',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playVictorySound()
+      transitionFunctions.showFinalMessage()
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  // {
+  //   transitionName: 'finFail3',
+  //   ifTransitionFound: (targets, replay) => {
+  //
+  //   },
+  //   ifTransitionEnabled: (targets, replay) => {
+  //     console.log('finnFail3')
+  //   },
+  //   ifTransitionDisabled: (targets, replay) => {
+  //   },
+  //   ifTransitionNotFound: (targets, replay) => {
+  //
+  //   }
+  // }
 ]
 
 export const places = [
