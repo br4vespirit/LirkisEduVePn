@@ -52,8 +52,14 @@
       id="parfume"
       src="../assets/3dModels/fancy_perfume_bottle.glb"></a-asset-item>
     <a-asset-item
-      id="spiceBottle"
+      id="spice"
       src="../assets/3dModels/spice_container.glb"></a-asset-item>
+    <a-asset-item
+      id="coffee"
+      src="../assets/3dModels/coffee.glb"></a-asset-item>
+    <a-asset-item
+      id="gold"
+      src="../assets/3dModels/gold.glb"></a-asset-item>
     <a-asset-item
       id="ropeBarrier"
       src="../assets/3dModels/rope_barrier.glb"></a-asset-item>
@@ -128,7 +134,7 @@
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
-        raycaster="objects: .interactible, .P3C, .P3I, .P4C, P4I, .P5C"
+        raycaster="objects: .interactible, .P3C, .P3I, .P4C, .P4I, .P5C"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
@@ -1271,9 +1277,10 @@
 
   <a-entity
     [attr.gltf-model]="'#silk'"
-    scale="0.5 0.5 0.5"
+    scale="2.5 2.5 2.5"
     class="P4C"
-    position="-18.407 2 -5.5"
+    id="P4Silk"
+    position="-18.407 0.5 -5.5"
     mixin="canGrab"></a-entity>
   <a-text
     id="P4Silk"
@@ -1292,6 +1299,7 @@
   <a-entity
     [attr.gltf-model]="'#parfume'"
     scale="0.3 0.3 0.3"
+    id="P4Parfume"
     class="P4C"
     position="-21.3 2.7 -5.668"
     mixin="canGrab"></a-entity>
@@ -1310,10 +1318,35 @@
     scale="0.4 0.2 1"></a-text>
   <a-entity label="label: P4Cplace/P4Cdisplace" position="-20.936 2.333 -5.668" rotation="0 90 0"></a-entity>
 
+  <a-entity
+    [attr.gltf-model]="'#gold'"
+    scale="0.15 0.15 0.15"
+    rotation="0 -90 0"
+    id="P4Gold"
+    class="P4I"
+    position="-15.448 2.4 -5.668"
+    mixin="canGrab"></a-entity>
+  <a-text
+    id="P4Gold"
+    position="-15.848 2.133 -5.668"
+    rotation="0 -90 0"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
+    value="Gold"
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P4Iplace/P4Idisplace" position="-15.848 2.333 -5.668" rotation="0 -90 0"></a-entity>
+
     <a-entity
-      gltf-model="#spice"
+      [attr.gltf-model]="'#spice'"
+      scale="0.02 0.02 0.02"
+      id="P4Spice"
       class="P4C"
-      position="-15.848 2.133 -2.509"
+      position="-15.448 2.4 -2.509"
       mixin="canGrab"></a-entity>
   <a-text
     id="P4Spice"
@@ -1329,6 +1362,28 @@
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
   <a-entity label="label: P4Cplace/P4Cdisplace" position="-15.848 2.333 -2.509" rotation="0 -90 0"></a-entity>
+
+  <a-entity
+    [attr.gltf-model]="'#coffee'"
+    scale="2 3 3"
+    id="P4Coffee"
+    class="P4I"
+    position="-21.3 2.4 -2.509"
+    mixin="canGrab"></a-entity>
+  <a-text
+    id="P4Coffe"
+    position="-20.940 2.133 -2.509"
+    rotation="0 90 0"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
+    value="Coffe"
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: PICplace/P4Idisplace" position="-20.940 2.333 -2.509" rotation="0 90 0"></a-entity>
 
   <!-- Exposition Room 5 ------------------------------------------------------------------------------->
   <a-box

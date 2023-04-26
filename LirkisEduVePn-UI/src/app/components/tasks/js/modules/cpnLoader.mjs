@@ -9,7 +9,6 @@ export async function loadCPNData(url) {
   const xmlDoc = parser.parseFromString(cpnText, 'text/xml');
   const obj = xmlToJson(xmlDoc).workspaceElements.cpnet.page;
 
-  console.log(obj);
   const data = {places: [], arcs: [], transitions: []};
   const places = obj.place;
   const transitions = obj.trans;

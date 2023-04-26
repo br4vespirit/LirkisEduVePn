@@ -1,5 +1,4 @@
 import {SceneEvent} from '../models/sceneEvent.enum';
-import * as petriNetLoader from '../modules/petriNetLoader.mjs';
 import * as cpnLoader from '../modules/cpnLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
@@ -28,7 +27,7 @@ AFRAME.registerComponent('petri-net-sim', {
     // load petri net and array with transitions
     let net;
 
-    cpnLoader.loadCPNData('../../../../../assets/petriNetFile/refactorInteractiveMap.cpn').then(res => {
+    cpnLoader.loadCPNData('../../../../../assets/petriNetFile/refactor.cpn').then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
       finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
@@ -84,6 +83,7 @@ AFRAME.registerComponent('petri-net-sim', {
         transition.ifTransitionFound(this.data.affectedElements, false);
         // check if the transition can be fired
         if (net.isEnabled(transition.transitionName)) {
+          console.log(net)
           // fire transition
           console.log('%c' + transition.transitionName + ' Transition Fired 🚀', 'color: #FB607F');
           net.fire(transition.transitionName);
@@ -162,17 +162,4 @@ AFRAME.registerComponent('petri-net-sim', {
         data.activePlace = 'Roaming';
     }
   },
-
-
-  playVictorySound: function () {
-    const environmentEntity = document.querySelector('#player');
-    setTimeout(() => {
-      environmentEntity.emit('win');
-    }, 2000);
-  },
-
-  showFinalMessage: function () {
-    const finalMsgEntity = document.querySelector('#gratulationMsg');
-    finalMsgEntity.setAttribute('visible', 'true');
-  }
 });
