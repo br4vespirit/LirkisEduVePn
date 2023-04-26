@@ -28,7 +28,7 @@ AFRAME.registerComponent('petri-net-sim', {
     // load petri net and array with transitions
     let net;
 
-    cpnLoader.loadCPNData('../../../../../assets/petriNetFile/refactor.cpn').then(res => {
+    cpnLoader.loadCPNData('../../../../../assets/petriNetFile/refactorInteractiveMap.cpn').then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
       finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));

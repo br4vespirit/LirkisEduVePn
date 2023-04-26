@@ -473,6 +473,82 @@ export const transitions = [
     }
   },
   {
+    transitionName: 'P8Cunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Cselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Iselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Iunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8confirm',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      transitionFunctions.updateVisualProgres(targets[1]);
+    },
+    ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
     transitionName: 'finSucc',
     ifTransitionFound: (targets, replay) => {
 
@@ -518,20 +594,76 @@ export const transitions = [
 
     }
   },
-  // {
-  //   transitionName: 'finFail3',
-  //   ifTransitionFound: (targets, replay) => {
-  //
-  //   },
-  //   ifTransitionEnabled: (targets, replay) => {
-  //     console.log('finnFail3')
-  //   },
-  //   ifTransitionDisabled: (targets, replay) => {
-  //   },
-  //   ifTransitionNotFound: (targets, replay) => {
-  //
-  //   }
-  // }
+  {
+    transitionName: 'finFail3',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail4',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail6',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail7',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail8',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail8')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  }
 ]
 
 export const places = [
@@ -619,16 +751,6 @@ export const places = [
     ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('45.616 1 5.049');
       transitionFunctions.placeBarrier('49.328 1 5.049');
-    }
-  },
-  {
-    placeName: 'P9',
-    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
-    },
-    ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('45.616 1 -2.285');
-      transitionFunctions.placeBarrier('49.328 1 -2.285');
     }
   },
   {
