@@ -281,7 +281,7 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
@@ -387,7 +387,7 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
@@ -463,7 +463,7 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
@@ -539,7 +539,7 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);

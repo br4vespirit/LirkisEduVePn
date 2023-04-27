@@ -83,10 +83,10 @@ AFRAME.registerComponent('petri-net-sim', {
         transition.ifTransitionFound(this.data.affectedElements, false);
         // check if the transition can be fired
         if (net.isEnabled(transition.transitionName)) {
-          console.log(net)
           // fire transition
           console.log('%c' + transition.transitionName + ' Transition Fired 🚀', 'color: #FB607F');
           net.fire(transition.transitionName);
+          console.log(net)
           // log user activity
           userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), true, true, data.affectedElements);
           // fire transition function
@@ -98,9 +98,10 @@ AFRAME.registerComponent('petri-net-sim', {
               net.fire(el.transitionName);
               el.ifTransitionEnabled(this.data.affectedElements, false);
               // log user activity and end session
-              userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), true, true, data.affectedElements);
-              // TODO: determine whether session ended successfull or not
-              userActivityLogger.endSession(sessionID, new Date(), true);
+              userActivityLogger.createFiringAttemt(sessionID, el.transitionName, new Date(), true, true, data.affectedElements);
+              // determine whether session ended successfull or not
+              const isSuccessful = /finSucc/.test(el.transitionName);
+              userActivityLogger.endSession(sessionID, new Date(), isSuccessful);
             }
           });
         } else {
