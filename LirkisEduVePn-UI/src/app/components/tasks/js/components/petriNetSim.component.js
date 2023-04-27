@@ -25,7 +25,6 @@ AFRAME.registerComponent('petri-net-sim', {
 
     // load petri net and array with transitions
     let net;
-
     cpnLoader.loadCPNData(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);

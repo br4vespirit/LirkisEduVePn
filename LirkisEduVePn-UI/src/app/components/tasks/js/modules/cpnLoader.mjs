@@ -1,10 +1,8 @@
 /**
- * @param {string} url - A DOMString representing the URL to send the request to.
+ * @param {string} cpnText - A DOMString representing the URL to send the request to.
  * @returns {Object} Returns an object representing the parsed CPN data.
  */
-export async function loadCPNData(url) {
-  const response = await fetch(url);
-  const cpnText = await response.text();
+export async function loadCPNData(cpnText) {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(cpnText, 'text/xml');
   const obj = xmlToJson(xmlDoc).workspaceElements.cpnet.page;

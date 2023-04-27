@@ -44,8 +44,13 @@ export class Muzeum_habsbourgComponent {
 
       if (this.taskFiles) {
         // attach petri net sim component to the scene
-        const petriNetSimAttr = `pnmlFile: ${this.taskFiles.pnmlFile}; taskId: ${this.taskId}`;
+        const petriNetSimAttr = {
+          pnmlFile: this.taskFiles.pnmlFile,
+          taskId: this.taskId
+        };
+
         this.scene.nativeElement.setAttribute('petri-net-sim', petriNetSimAttr);
+
 
         // attach language component to the scene
         this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}`)
