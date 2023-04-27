@@ -1,7 +1,6 @@
 AFRAME.registerComponent('language', {
   schema: {
-    languageFile: {type: 'string'},
-    languageVersion: {type: 'string'}
+    languageFile: {type: 'string'}
   },
   // Do something when component first attached.
   init: function () {

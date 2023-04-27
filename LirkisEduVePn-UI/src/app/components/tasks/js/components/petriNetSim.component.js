@@ -10,8 +10,6 @@ AFRAME.registerComponent('petri-net-sim', {
     event: {type: 'string', default: 'Scene Loaded'},
     message: {type: 'string', default: SceneEvent.petriNetLoaded},
     activePlace: {type: 'string', default: 'Roaming'},
-    finalPlace: {type: 'string'},
-    taskCount: {type: 'number', default: 1},
     pnmlFile: {type: 'string'},
     taskId: {type: 'number'},
     affectedElements: {type: 'array', default: []}
@@ -28,26 +26,15 @@ AFRAME.registerComponent('petri-net-sim', {
     // load petri net and array with transitions
     let net;
 
-    cpnLoader.loadCPNData('../../../../../assets/petriNetFile/refactor.cpn').then(res => {
+    cpnLoader.loadCPNData(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
       finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
-      console.log(finalTransitions)
       // for every place fire function on start
       places.forEach(place => {
         if (!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
       })
     })
-
-    // petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
-    //   net = (this.petriNet = new PetriNet(res));
-    //   console.log(net);
-    //   finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
-    //   // for every place fire function on start
-    //   places.forEach(place => {
-    //     if (!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
-    //   })
-    // });
 
     // TODO: make sure that session that is being restored is from logged user
     // create session or fire all transition from session data

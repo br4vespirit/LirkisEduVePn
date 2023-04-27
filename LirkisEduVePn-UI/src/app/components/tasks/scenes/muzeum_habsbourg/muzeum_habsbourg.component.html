@@ -3,6 +3,7 @@
          light="defaultLightsEnabled: false"
          physics="gravity: 0"
          renderer="colorManagement: true"
+         id="scene"
          shadow="type: pcfsoft">
   <!-- Load Assets -->
   <a-assets>
@@ -44,6 +45,9 @@
     <a-asset-item
       id="book"
       src="../assets/3dModels/book.glb"></a-asset-item>
+    <a-asset-item
+      id="ropeBarrier"
+      src="../assets/3dModels/rope_barrier.glb"></a-asset-item>
     <img
       id="erb"
       src="../assets/images/Middle_Coat_of_Arms_of_Maria_Theresa,_Holy_Roman_Empress.svg.png"/>
@@ -69,12 +73,12 @@
     <img id="unselected" src="../assets/images/slash-circle-fill-red.png"/>
     <img id="selected" src="../assets/images/check-circle-fill-green.png"/>
     <a-mixin
+      id="canGrab"
+      hoverable
+      grabbable
       draggable
       droppable
       dynamic-body
-      grabbable
-      hoverable
-      id="canGrab"
       sleepy></a-mixin>
   </a-assets>
 
@@ -85,82 +89,91 @@
 
   <!-- AVATAR BODY ------------->
   <a-entity
-    id="player"
-    material="color: green; wireframe: true; visible: true"
-    movement-controls="constrainToNavMesh: true"
     physics-collider
+    id="player"
+    static-body="shape: sphere; sphereRadius: 0.02"
+    material="color: green; wireframe: true; visible: true"
     position="8.275 1 2.93"
-    sound="src: #win; on: win; poolSize: 1;"
-    static-body="shape: sphere; sphereRadius: 0.02">
+    movement-controls="constrainToNavMesh: true"
+    sound="src: #win; on: win; poolSize: 1;">
     <a-entity
+      id="playerhead"
       body="type: static; shape: sphere; sphereRadius: 0.001"
       camera
-      id="playerhead"
-      look-controls="pointerLockEnabled:true"
       position="0 1.75 0"
+      look-controls="pointerLockEnabled:true"
       super-hands="colliderEvent: raycaster-intersection;
                              colliderEventProperty: els;
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
+        raycaster="objects: .interactible, .P3C, .P3I"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
-        position="0 0 -1"
-        raycaster="objects: .interactible, .P3C, .P3I, .P4C, P4I, .P5C">
+        position="0 0 -1">
       </a-entity>
     </a-entity>
   </a-entity>
 
   <!-- Map and navigationMesh ---------------------------------------------------------------------->
-  <a-entity [attr.gltf-model]="'#museum'" position="0 1 16"></a-entity>
+  <a-entity [attr.gltf-model]="'#museum'" position="0 1 16" shadow="receive: true"></a-entity>
   <a-entity
     [attr.gltf-model]="'#navmesh'"
-    nav-mesh
     position="0 1 16"
-    visible="false"></a-entity>
+    visible="false"
+    nav-mesh></a-entity>
+
+  <a-circle
+    animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+    class="interactible"
+    material="src: #infoIcon; side: double; shader: flat"
+    position="4 4 -1"
+    radius="0.15"
+    sound="src: #tap; on: click; poolSize: 2"
+    toggle-label-visibility></a-circle>
 
   <!-- Middle Space ------------------------------------------------------------------------------->
   <a-entity id="WelcomMsg" position="6.536 4.5 -1.841">
     <a-text
-      color="#333333"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0 0.7 0"
+      value="Osvietenstvo v Habsburskej monarchii"
       text="width: 3; wrapCount: 20"
-      value="Osvietenstvo v Habsburskej monarchii">
+      position="0 0.7 0"
+      color="#333333">
     </a-text>
     <a-text
-      color="#4F4F4F"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
+      value="Vitajte vo virtuálnej scéne, vytvorenej pomocou technológií webovej virtuálnej (VR) a rozšírenej (XR) reality. Scéna, v ktorej sa nachádzate je expozíciou zameranou na obdobie osvietenských reforiem v Habsburskej monarchii."
+      text="width: 3; wrapCount: 50"
       position=""
-      text="width: 3; wrapCount: 50"
-      value="Vitajte vo virtuálnej scéne, vytvorenej pomocou technológií webovej virtuálnej (VR) a rozšírenej (XR) reality. Scéna, v ktorej sa nachádzate je expozíciou zameranou na obdobie osvietenských reforiem v Habsburskej monarchii.">
+      color="#4F4F4F">
     </a-text>
     <a-text
-      color="#4F4F4F"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
+      value="Táto expozícia pozostáva z troch vzájomne prepojených miestností, ktoré obsahujú 16 zaujímavých exponátov. A sú tu pre vás pripravené tri úlohy na splnenie. Kde úlohy nájdete, zistíte na informačnom paneli oproti. Prajeme vám veľa šťastia a zábavy pri ich úspešnom plnení a preskúmavaní expozície."
+      text="width: 3; wrapCount: 50"
       position="0 -0.75 0"
-      text="width: 3; wrapCount: 50"
-      value="Táto expozícia pozostáva z troch vzájomne prepojených miestností, ktoré obsahujú 16 zaujímavých exponátov. A sú tu pre vás pripravené tri úlohy na splnenie. Kde úlohy nájdete, zistíte na informačnom paneli oproti. Prajeme vám veľa šťastia a zábavy pri ich úspešnom plnení a preskúmavaní expozície.">
+      color="#4F4F4F">
     </a-text>
     <a-text
-      align="right"
-      anchor="left"
-      color="#4F4F4F"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0.2 -1.24907 0"
+      value="Táto scéna pozostáva z 3 vzájomne prepojených miestností, ktoré obsahujú 16 zaujímavých expozícií, v ktorých musíte splniť nejaké úlohy. Prajeme vám veľa šťastia pri ich úspešnom dokončení, neváhajte a preskúmajte tento zažitok."
       text="width: 3; value: - Adam Kašela, Štefan Korečko; wrapCount: 50"
-      value="Táto scéna pozostáva z 3 vzájomne prepojených miestností, ktoré obsahujú 16 zaujímavých expozícií, v ktorých musíte splniť nejaké úlohy. Prajeme vám veľa šťastia pri ich úspešnom dokončení, neváhajte a preskúmajte tento zažitok.">
+      position="0.2 -1.24907 0"
+      color="#4F4F4F"
+      align="right"
+      anchor="left">
     </a-text>
     <a-image
-      [attr.position]="'1.76035 -2.26774 0.00962'"
       [attr.src]="'#controls'"
       height="1.5"
-      width="3">
+      width="3"
+      [attr.position]="'1.76035 -2.26774 0.00962'">
     </a-image>
   </a-entity>
 
@@ -170,91 +183,91 @@
     rotation="0 180 0"
     visible="false">
     <a-text
-      color="#333333"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0 0.7 0"
+      value="Gratulujeme"
       text="width: 3; wrapCount: 20"
-      value="Gratulujeme">
+      position="0 0.7 0"
+      color="#333333">
     </a-text>
     <a-text
-      color="#4F4F4F"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0 0.2 0"
+      value="Úspešne ste dokončili všetky úlohy v scéne. Pokial si chcete tento zážitok zopakovať ešte raz, stačí obnoviť stránku."
       text="width: 3; wrapCount: 50"
-      value="Úspešne ste dokončili všetky úlohy v scéne. Pokial si chcete tento zážitok zopakovať ešte raz, stačí obnoviť stránku.">
+      position="0 0.2 0"
+      color="#4F4F4F">
     </a-text>
   </a-entity>
   <a-image
-    [attr.position]="'8.21406 4.35163 7.976'"
+    id="map"
     [attr.src]="'#museumMap'"
     height="3.23"
-    id="map"
-    rotation="0 180 0"
-    width="4.79">
+    width="4.79"
+    [attr.position]="'8.21406 4.35163 7.976'"
+    rotation="0 180 0">
   </a-image>
   <a-circle
     id="P1confirmProgress"
-    material="color: red; side: double; shader: flat"
     position="6.90593 3.5 7.956"
     rotation="0 180 0"
-    scale="0.07 0.07 0.07"></a-circle>
+    scale="0.07 0.07 0.07"
+    material="color: red; side: double; shader: flat"></a-circle>
   <a-circle
     id="P2confirmProgress"
-    material="color: red; side: double; shader: flat"
     position="6.90593 3.3 7.956"
     rotation="0 180 0"
-    scale="0.07 0.07 0.07"></a-circle>
+    scale="0.07 0.07 0.07"
+    material="color: red; side: double; shader: flat"></a-circle>
   <a-circle
     id="P3confirmProgress"
-    material="color: red; side: double; shader: flat"
     position="6.90593 3.1 7.956"
     rotation="0 180 0"
-    scale="0.07 0.07 0.07"></a-circle>
+    scale="0.07 0.07 0.07"
+    material="color: red; side: double; shader: flat"></a-circle>
 
   <a-image
-    [attr.position]="'8.248 3.374 -2.099'"
-    [attr.src]="'#erb'"
+    [attr.src] ="'#erb'"
     height="2.42"
+    width="2"
     rotation="0 180 0"
-    width="2">
+    [attr.position]="'8.248 3.374 -2.099'">
     <a-entity
       class="infoPanels"
       position="0.247 -1.515 0.115"
       rotation="0 90 0">
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.23942"
         radius="0.15"
+        position="0 0 -0.23942"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.02688 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.02688 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="MariaTerezia"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.434 0"
+            value="Erb Márie Terézie"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Erb Márie Terézie">
+            position="-0.550 0.434 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="MariaTereziaDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="cisárovná Svätej rímskej ríše nemeckého národa (zdieľané), Kráľovná Uhorska, Česka, Chorvátska a Slavónska, Arcivojvodkyňa Rakúska, Vojvodkyňa Parmy a Piacenzy, Veľkovojvodkyňa Toskánska."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="cisárovná Svätej rímskej ríše nemeckého národa (zdieľané), Kráľovná Uhorska, Česka, Chorvátska a Slavónska, Arcivojvodkyňa Rakúska, Vojvodkyňa Parmy a Piacenzy, Veľkovojvodkyňa Toskánska.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -267,37 +280,37 @@
       position="7.401 1.246 -4.877"
       rotation="0 0 0">
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.23942"
         radius="0.15"
+        position="0 0 -0.23942"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'0 1.205 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'0 1.205 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="Toliar"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.7 0"
+            value="Toliar Márie Terézie"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Toliar Márie Terézie">
+            position="-0.550 0.7 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="ToliarDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Mária Terézia nechala počas svojej vlády vyraziť skoro 300 typov medených, strieborných  mincí. Jednou z najslávnejších mincí uvedenej panovníčky sú toliare nazývané levantské. Razili  sa v oblasti Predného Rakúska. Norma na ich razbu stanovovala nasledujúce parametre: veľkosť 40-41 mm, hmotnosť 28,06 g, obsahovali až 83,3 percent čistého striebra. Tieto mince boli v dobe svojej razby jednými z najreprezentatívnejších platidiel cisárovnej Márie Terézie."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Mária Terézia nechala počas svojej vlády vyraziť skoro 300 typov medených, strieborných  mincí. Jednou z najslávnejších mincí uvedenej panovníčky sú toliare nazývané levantské. Razili  sa v oblasti Predného Rakúska. Norma na ich razbu stanovovala nasledujúce parametre: veľkosť 40-41 mm, hmotnosť 28,06 g, obsahovali až 83,3 percent čistého striebra. Tieto mince boli v dobe svojej razby jednými z najreprezentatívnejších platidiel cisárovnej Márie Terézie.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -310,37 +323,37 @@
       position="6.71663 1.30132 -20.8599"
       rotation="0 90 0">
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.23942"
         radius="0.15"
+        position="0 0 -0.23942"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-plane
-          [attr.position]="'-0.02688 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.02688 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="BratislavskyHrad"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Bratislavský hrad"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Bratislavský hrad">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="BratislavskyHradDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Jadro hradu tvorí palác lichobežníkového tvaru, ktorý dal postaviť cisár Žigmund Luxemburský ako svoju rezidenciu a zároveň pevnosť proti husitom. Dnešnú podobu so štyrmi nárožnými vežičkami získal hrad v 17. storočí. V najväčšej z nich Korunnej veži sa uschovávali korunovačné klenoty. Najreprezentatívnejší charakter získal hrad počas panovania Márie Terézie, ktorá k hradnému palácu pristavala nové hospodárske budovy a založila záhrady."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Jadro hradu tvorí palác lichobežníkového tvaru, ktorý dal postaviť cisár Žigmund Luxemburský ako svoju rezidenciu a zároveň pevnosť proti husitom. Dnešnú podobu so štyrmi nárožnými vežičkami získal hrad v 17. storočí. V najväčšej z nich Korunnej veži sa uschovávali korunovačné klenoty. Najreprezentatívnejší charakter získal hrad počas panovania Márie Terézie, ktorá k hradnému palácu pristavala nové hospodárske budovy a založila záhrady.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-plane>
       </a-circle>
@@ -348,108 +361,112 @@
   </a-entity>
   <!-- Exposition Room 1 ------------------------------------------------------------------------------->
   <a-box
-    collision-detector="collisionEvent: P1; clearedCollisionEvent: Roaming"
     id="place1"
-    material="color: red; wireframe: true"
     physics-collider
-    position="-5.889 1.167 10.203"
-    scale="7.920 0.2 7"
+    collision-detector="collisionEvent: P1; clearedCollisionEvent: Roaming"
     static-body
+    scale="7.920 0.2 7"
+    position="-5.889 1.167 10.203"
+    material="color: red; wireframe: true"
     visible="false">
   </a-box>
   <a-image
-    [attr.position]="'-5.7592 2.3 13.02616'"
+    id="taskP1"
     [attr.src]="'#infoPanel'"
     height="1.170"
-    id="taskP1"
+    width="1.2"
+    [attr.position]="'-5.7592 2.3 13.02616'"
     rotation="-8.68 180 0"
-    visible="false"
-    width="1.2">
+    visible="false">
+    <a-entity label="label: P1confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
-      color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="-0.411 0.3 0"
+      value="Úloha"
       text="width: 1.2; wrapCount: 20; alphaTest: 3"
-      value="Úloha">
+      position="-0.411 0.3 0"
+      color="#F2F2F2">
     </a-text>
     <a-text
-      color="#F2F2F2"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P1question"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="-0.411 0.02749 0.01946"
+      value="Kto nastúpil v roku 1740 na Habsburgský trón? Označte jeho alebo jej portrét."
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
-      value="Kto nastúpil v roku 1740 na Habsburgský trón? Označte jeho alebo jej portrét.">
+      position="-0.411 0.02749 0.01946"
+      color="#F2F2F2">
     </a-text>
     <a-text
-      align="center"
-      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P1confirm"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      geometry="primitive: plane; height: 0.78; width: 2.020"
       id="P1confirm"
-      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
-      negate="false"
+      class="interactible"
+      clk-single-event-handler="name: P1confirm; affectedElements: P1confirmProgress"
       position="0 -0.29141 0.01752"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      align="center"
+      text="width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"
       scale="0.44 0.25 1"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
       sound__success="src: #success_sound; on: success; poolSize: 2"
-      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
-      text="width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
   </a-image>
 
   <a-image
-    [attr.position]="'-2.177 3.354 11.266'"
     [attr.src]="'#maria'"
     height="2.42"
+    width="2"
     rotation="0 -90 0"
-    width="2">
+    [attr.position]="'-2.177 3.354 11.266'">
     <a-entity
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Cselect/P1Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P1select1"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Cselect; secondToggleEvent: P1Cunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1MariaTerezia"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Mária Terézia"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Mária Terézia">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1MariaTereziaDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Mária Terézia (1717-1780), najstaršia dcéra nemeckého cisára Karola VI., posledného mužského potomka Habsburgovcov, nastúpila na trón na základe tzv. pragmatické sankcie. Aj keď nebola vychovávaná ako budúca vládkyňa, dokázala sa tejto úlohy naplno zhostiť. Vyhýbala sa konfliktom a svoje panovnícke rozhodnutia konzultovala s okruhom spolupracovníkov. Jej manželstvo napriek tomu, že bolo politicky dohodnutým sobášom bolo veľmi šťastné. Okrem vladárskych povinností si Mária Terézia príkladne plnila aj materské povinnosti. Mala 16 deti."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Mária Terézia (1717-1780), najstaršia dcéra nemeckého cisára Karola VI., posledného mužského potomka Habsburgovcov, nastúpila na trón na základe tzv. pragmatické sankcie. Aj keď nebola vychovávaná ako budúca vládkyňa, dokázala sa tejto úlohy naplno zhostiť. Vyhýbala sa konfliktom a svoje panovnícke rozhodnutia konzultovala s okruhom spolupracovníkov. Jej manželstvo napriek tomu, že bolo politicky dohodnutým sobášom bolo veľmi šťastné. Okrem vladárskych povinností si Mária Terézia príkladne plnila aj materské povinnosti. Mala 16 deti.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -457,56 +474,58 @@
   </a-image>
 
   <a-image
-    [attr.position]="'-2.177 3.354 8.379'"
     [attr.src]="'#karol'"
     height="2.42"
+    width="2"
     rotation="0 -90 0"
-    width="2">
+    [attr.position]="'-2.177 3.354 8.379'">
     <a-entity
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P1select2"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1Karol"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Karol VI. Habsburský"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Karol VI. Habsburský">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1KarolDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -514,56 +533,58 @@
   </a-image>
 
   <a-image
-    [attr.position]="'-9.518 3.354 11.266'"
     [attr.src]="'#jozef'"
     height="2.42"
+    width="2"
     rotation="0 90 0"
-    width="2">
+    [attr.position]="'-9.518 3.354 11.266'">
     <a-entity
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P1select3"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1Jozef"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Jozef II. Habsburský"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Jozef II. Habsburský">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1JozefDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Jozef II. (1741 - 1790) bol pripravovaný na to, že sa raz stane panovníkom. Ako šesťročný vedel písať a čítať vo viacerých jazykoch. Dostal dôkladné vzdelanie, jeho učiteľmi boli významní osvietenci. Nedal sa korunovať za uhorského a českého kráľa, preto ho šľachta posmešne nazývala „klobúkový kráľ”. Ešte v roku 1765 však bol korunovaný za nemeckého cisára. Už ako spoluvládca Mánie Terézie kritizoval pomalé a nedôsledné zavádzanie reforiem."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Jozef II. (1741 - 1790) bol pripravovaný na to, že sa raz stane panovníkom. Ako šesťročný vedel písať a čítať vo viacerých jazykoch. Dostal dôkladné vzdelanie, jeho učiteľmi boli významní osvietenci. Nedal sa korunovať za uhorského a českého kráľa, preto ho šľachta posmešne nazývala „klobúkový kráľ”. Ešte v roku 1765 však bol korunovaný za nemeckého cisára. Už ako spoluvládca Mánie Terézie kritizoval pomalé a nedôsledné zavádzanie reforiem.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -571,56 +592,58 @@
   </a-image>
 
   <a-image
-    [attr.position]="'-9.518 3.354 8.379'"
     [attr.src]="'#frantisek'"
     height="2.42"
+    width="2"
     rotation="0 90 0"
-    width="2">
+    [attr.position]="'-9.518 3.354 8.379'">
     <a-entity
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
+      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P1select4"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1Frantisek"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="František I. Štefan Lotrinský"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="František I. Štefan Lotrinský">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P1FranisekDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -629,56 +652,58 @@
 
   <!-- Exposition Room 2 ------------------------------------------------------------------------------->
   <a-box
-    collision-detector="collisionEvent: P2; clearedCollisionEvent: Roaming"
     id="place2"
-    material="color: red; wireframe: true"
     physics-collider
-    position="-5.889 1.167 -3.74901"
-    scale="7.92 0.2 7"
+    collision-detector="collisionEvent: P2; clearedCollisionEvent: Roaming"
     static-body
+    scale="7.92 0.2 7"
+    position="-5.889 1.167 -3.74901"
+    material="color: red; wireframe: true"
     visible="false">
   </a-box>
 
   <a-image
-    [attr.position]="'-5.7592 2.3 -6.5'"
-    [attr.src]="'#infoPanel'"
-    height="1.170"
     id="taskP2"
-    rotation="-8.68 0 0"
+    [attr.src]="'#infoPanel'"
     visible="false"
-    width="1.2">
+    height="1.170"
+    width="1.2"
+    [attr.position]="'-5.7592 2.3 -6.5'"
+    rotation="-8.68 0 0">
+    <a-entity label="label: P2confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
-      color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="-0.411 0.3 0"
+      value="Úloha"
       text="width: 1.2; wrapCount: 20; alphaTest: 3"
-      value="Úloha">
+      position="-0.411 0.3 0"
+      color="#F2F2F2">
     </a-text>
     <a-text
-      color="#F2F2F2"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P2question"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="-0.411 0.01 0.00816"
+      value="Označte exponáty s reformami, ktoré zaviedla Mária Terézia."
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
-      value="Označte exponáty s reformami, ktoré zaviedla Mária Terézia.">
+      position="-0.411 0.01 0.00816"
+      color="#F2F2F2">
     </a-text>
     <a-text
-      align="center"
-      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P2confirm"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      geometry="primitive: plane; height: 0.78; width: 2.020"
       id="P2confirm"
-      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
-      negate="false"
+      class="interactible"
+      clk-single-event-handler="name: P2confirm; affectedElements: P2confirmProgress"
       position="0 -0.30236 0.00878"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      align="center"
+      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"
       scale="0.45 0.25 1"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
       sound__success="src: #success_sound; on: success; poolSize: 2"
-      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
-      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
   </a-image>
 
   <a-entity
@@ -686,60 +711,62 @@
     position="-8.768 2.640 -2.599"
     rotation="0 180 60">
     <a-text
-      color="#c6c480"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P2ZdravotnaReformaBook"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0.00487 0.11162 -0.21353"
-      rotation="-90 0 -90"
+      value="ZDRAVOTNÁ REFORMA"
       text="width: 0.8; wrapCount: 33; alphaTest: 3"
-      value="ZDRAVOTNÁ REFORMA">
+      position="0.00487 0.11162 -0.21353"
+      color="#c6c480"
+      rotation="-90 0 -90">
     </a-text>
     <a-entity
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P2select1"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2ZdravotnaReforma"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Zdravotná reforma"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Zdravotná reforma">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2ZdravotnaReformaDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Zriadenie komisií, ktoré mali chrániť obyvateľstvo pred nákazlivými chorobami a tiež mali vykonávať osvetu u prostého obyvateľstva. Kontrolovali zdravotnícke zariadenia, bojovali proti šíreniu moru a iných nákazlivých chorôb a radili obyvateľstvu stavať murované domy, nie drevené. Komisie nariaďovali aj očkovanie proti chorobám."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Zriadenie komisií, ktoré mali chrániť obyvateľstvo pred nákazlivými chorobami a tiež mali vykonávať osvetu u prostého obyvateľstva. Kontrolovali zdravotnícke zariadenia, bojovali proti šíreniu moru a iných nákazlivých chorôb a radili obyvateľstvu stavať murované domy, nie drevené. Komisie nariaďovali aj očkovanie proti chorobám.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -751,60 +778,62 @@
     position="-8.768 2.640 -5.780"
     rotation="0 180 60">
     <a-text
-      color="#c6c480"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P2TezezianskyUrbarBook"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0.00487 0.11162 -0.21353"
-      rotation="-90 0 -90"
+      value="TEREZIÁNSKY URBÁR"
       text="width: 0.8; wrapCount: 33; alphaTest: 3"
-      value="TEREZIÁNSKY URBÁR">
+      position="0.00487 0.11162 -0.21353"
+      color="#c6c480"
+      rotation="-90 0 -90">
     </a-text>
     <a-entity
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P2select2"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2TerezianskyUrbar"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Tereziánsky urbár"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Tereziánsky urbár">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2TerezianskyUrbarDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Tereziánsky urbár určoval veľkosť poddanskej závislosti, na základe ktorej ustanovil povinnosti poddaných voči zemepánovi. Tak sa zo súkromno-právneho vzťahu medzi zemepánom a poddaným stal verejnoprávny vzťah, čím sa zlepšilo sociálne postavenie poddaných. Urbáre boli písané v jazyku ľudu, teda v slovenských oblastiach po slovensky. Urbárska regulácia upravovala poddanské pomery až do roku 1848, keď bolo poddanstvo zrušené."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Tereziánsky urbár určoval veľkosť poddanskej závislosti, na základe ktorej ustanovil povinnosti poddaných voči zemepánovi. Tak sa zo súkromno-právneho vzťahu medzi zemepánom a poddaným stal verejnoprávny vzťah, čím sa zlepšilo sociálne postavenie poddaných. Urbáre boli písané v jazyku ľudu, teda v slovenských oblastiach po slovensky. Urbárska regulácia upravovala poddanské pomery až do roku 1848, keď bolo poddanstvo zrušené.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -816,60 +845,62 @@
     position="-2.904 2.640 -2.599"
     rotation="0 0 60">
     <a-text
-      color="#c6c480"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P2SkolskyPoriadokBook"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0.00487 0.11162 -0.21694"
-      rotation="-90 0 -90"
+      value="VŠEOBECNÝ ŠKOLSKÝ PORIADOK"
       text="width: 0.7; wrapCount: 27.25; alphaTest: 3"
-      value="VŠEOBECNÝ ŠKOLSKÝ PORIADOK">
+      position="0.00487 0.11162 -0.21694"
+      color="#c6c480"
+      rotation="-90 0 -90">
     </a-text>
     <a-entity
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P2select3"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-image
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2SkolskyPoriadok"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Všeobecný školský poriadok"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Všeobecný školský poriadok">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2SkolskyPoriadokDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Podľa neho malo nárok na vzdelanie každé dieťa na území habsburskej monarchie, bez ohľadu na pôvod, miesto bydliska alebo pohlavie. V každej dedine sa mala založiť škola, v ktorej sa deti mali učiť tzv. trivium, teda čítať, písať a počítať, čím sa položili základy všeobecnej gramotnosti.  Všeobecný školský poriadok rozdelil školy na štyri základné typy  Ľudové školy (triviálne, hlavné a normálne),  Latinské gramatické školy, Gymnáziá a Univerzity a lýceá."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Podľa neho malo nárok na vzdelanie každé dieťa na území habsburskej monarchie, bez ohľadu na pôvod, miesto bydliska alebo pohlavie. V každej dedine sa mala založiť škola, v ktorej sa deti mali učiť tzv. trivium, teda čítať, písať a počítať, čím sa položili základy všeobecnej gramotnosti.  Všeobecný školský poriadok rozdelil školy na štyri základné typy  Ľudové školy (triviálne, hlavné a normálne),  Latinské gramatické školy, Gymnáziá a Univerzity a lýceá.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-image>
       </a-circle>
@@ -881,60 +912,62 @@
     position="-2.904 2.640 -5.780"
     rotation="0 0 60">
     <a-text
-      color="#c6c480"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P2PatentBook"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="0.00487 0.11162 -0.21694"
-      rotation="-90 0 -90"
+      value="PATENT O ZRUŠENÍ NEVOĽNÍCTVA"
       text="width: 0.7; wrapCount: 27.25; alphaTest: 3"
-      value="PATENT O ZRUŠENÍ NEVOĽNÍCTVA">
+      position="0.00487 0.11162 -0.21694"
+      color="#c6c480"
+      rotation="-90 0 -90">
     </a-text>
     <a-entity
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
+      <a-entity label="label: P2Iselect/P2Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
+        id="P2select4"
         class="interactible"
         clk-multi-event-handler="firstToggleEvent: P2Iselect; secondToggleEvent: P2Iunselect"
         material="src: #unselected; side: double; shader: flat"
-        position="0 0 -0.60927"
         radius="0.15"
+        position="0 0 -0.60927"
         rotation="0 -90 0"
+        animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         sound="src: #tap; on: click; poolSize: 2"></a-circle>
       <a-circle
-        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
         class="interactible"
+        toggle-info
         material="src: #infoIcon; side: double; shader: flat"
-        position="0 0 -0.21117"
         radius="0.15"
+        position="0 0 -0.21117"
         rotation="0 -90 0"
-        sound="src: #tap; on: click; poolSize: 2"
-        toggle-info>
+        animation="property: scale; dur: 300; easing: easeInOutQuad; dir: alternate; loop: false; from: 0 0 0; to: 1 1 1; startEvents: click;"
+        sound="src: #tap; on: click; poolSize: 2">
         <a-plane
-          [attr.position]="'-0.19709 1.216 0'"
           [attr.src]="'#infoPanel'"
-          height="2"
           visible="false"
-          width="1.5">
+          height="2"
+          width="1.5"
+          [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2Patent"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0.6 0"
+            value="Patent o zrušení nevoľníctva"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
-            value="Patent o zrušení nevoľníctva">
+            position="-0.550 0.6 0"
+            color="#F2F2F2">
           </a-text>
           <a-text
-            color="#F2F2F2"
-            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             id="P2PatentDescription"
+            font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
-            position="-0.550 0 0"
+            value="Patent o zrušení nevoľníctva umožnil poddaným, aby sa slobodne sťahovali, sobášili, dávali deti na remeslo a štúdium. Predtým potrebovali súhlas zemepána. Vydanie patentu urýchlilo sťahovanie voľnej pracovnej sily do miest a priemyselných stredísk."
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
-            value="Patent o zrušení nevoľníctva umožnil poddaným, aby sa slobodne sťahovali, sobášili, dávali deti na remeslo a štúdium. Predtým potrebovali súhlas zemepána. Vydanie patentu urýchlilo sťahovanie voľnej pracovnej sily do miest a priemyselných stredísk.">
+            position="-0.550 0 0"
+            color="#F2F2F2">
           </a-text>
         </a-plane>
       </a-circle>
@@ -975,162 +1008,175 @@
   <!--  </a-entity>-->
 
   <a-box
-    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
-    collision-filter="collisionForces: false"
     id="pedestal"
-    material="color: red; opacity: 0.15"
     physics-collider
-    position="22.51704 3.933 -5.80505"
+    collision-filter="collisionForces: false"
+    collision-detector="collisionEvent: place; clearedCollisionEvent: displace; placeColliderType: false"
+    static-body="shape:sphere"
     scale="3.69 2.8 2.28"
-    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2"
-    static-body="shape:sphere">
+    position="22.51704 3.933 -5.80505"
+    material="color: red; opacity: 0.15"
+    sound="src: ../assets/sounds/tap.wav; on: collisions; poolSize: 2">
   </a-box>
 
   <a-box
-    collision-detector="collisionEvent: P3; clearedCollisionEvent: Roaming"
     id="place3"
-    material="color: red; wireframe: true"
     physics-collider="ignoreSleep: true"
-    position="22.543 1.167 3.142"
-    scale="7.920 0.2 20.360"
+    collision-detector="collisionEvent: P3; clearedCollisionEvent: Roaming"
     static-body
+    scale="7.920 0.2 20.360"
+    position="22.543 1.167 3.142"
+    material="color: red; wireframe: true"
     visible="false">
   </a-box>
 
   <a-image
-    [attr.position]="'19.584 2.35122 -4.565'"
-    [attr.src]="'#infoPanel'"
-    height="1.170"
     id="taskP3"
-    rotation="-8.68 0 0"
+    [attr.src]="'#infoPanel'"
     visible="false"
-    width="1.2">
+    height="1.170"
+    width="1.2"
+    [attr.position]="'19.584 2.35122 -4.565'"
+    rotation="-8.68 0 0">
+    <a-entity label="label: P3confirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
-      color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="-0.411 0.34394 0.00671"
+      value="Úloha"
       text="width: 1.2; wrapCount: 20; alphaTest: 3"
-      value="Úloha">
+      position="-0.411 0.34394 0.00671"
+      color="#F2F2F2">
     </a-text>
     <a-text
-      color="#F2F2F2"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       id="P3question"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
-      position="-0.411 0.02874 0.01202"
+      value="Nájdite Uhorské korunovačné insígnie v miestnosti a preneste ich na prázdny podstavec napravo."
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
-      value="Nájdite Uhorské korunovačné insígnie v miestnosti a preneste ich na prázdny podstavec napravo.">
+      position="-0.411 0.02874 0.01202"
+      color="#F2F2F2">
     </a-text>
     <a-text
-      align="center"
-      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P3confirm"
-      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      geometry="primitive: plane; height: 0.78; width: 2.020"
       id="P3confirm"
-      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
-      negate="false"
+      class="interactible"
+      clk-single-event-handler="name: P3confirm; affectedElements: P3confirmProgress"
       position="0 -0.33365 0.004"
+      font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+      negate="false"
+      geometry="primitive: plane; height: 0.78; width: 2.020"
+      material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
+      align="center"
+      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"
       scale="0.44 0.25 1"
+      animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
       sound__success="src: #success_sound; on: success; poolSize: 2"
-      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"
-      text="class: confirm; width: 1.84; value: Potvrdiť Odpoveď; color: #e3e3e3; wrapCount: 15.94"></a-text>
+      sound__unsuccess="src: #unsuccess_sound; on: unsuccess; poolSize: 2"></a-text>
   </a-image>
 
   <a-entity
     [attr.gltf-model]="'#crown'"
     class="P3C"
-    mixin="canGrab"
-    position="22.582 2.456 12.098"></a-entity>
+    id="P3Crown"
+    position="22.582 2.456 12.098"
+    mixin="canGrab"></a-entity>
   <a-text
-    align="center"
-    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-    geometry="primitive: plane; height: 0.78; width: 1.16"
     id="P3Koruna"
-    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
-    negate="false"
     position="22.508 2.133 11.528"
     rotation="0 180 0"
-    scale="0.4 0.2 1"
-    text="color: #e3e3e3; wrapCount: 8.12"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
     value="Koruna"
-    width="1"></a-text>
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="22.508 2.333 11.528" rotation="0 180 0"></a-entity>
+
 
   <a-entity
     [attr.gltf-model]="'#cup'"
     class="P3I"
-    mixin="canGrab"
-    position="19.548 2.631 8.807"></a-entity>
+    id="P3Cup"
+    position="19.548 2.631 8.807"
+    mixin="canGrab"></a-entity>
   <a-text
-    align="center"
-    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-    geometry="primitive: plane; height: 0.78; width: 1.16"
     id="P3Casa"
-    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
-    negate="false"
     position="19.985 2.133 8.820"
     rotation="0 90 0"
-    scale="0.4 0.2 1"
-    text="color: #e3e3e3; wrapCount: 8.12"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
     value="Čaša"
-    width="1"></a-text>
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Iplace/P3Idisplace" position="19.985 2.333 8.820" rotation="0 90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#apple_coat'"
     class="P3C"
-    mixin="canGrab"
-    position="25.467 2.456 12.031"></a-entity>
+    id="P3Apple"
+    position="25.467 2.456 12.031"
+    mixin="canGrab"></a-entity>
   <a-text
-    align="center"
-    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-    geometry="primitive: plane; height: 0.78; width: 1.16"
     id="P3Jablko"
-    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
-    negate="false"
     position="25.05639 2.13372 11.98706"
     rotation="0 -90 0"
-    scale="0.4 0.2 1"
-    text="color: #e3e3e3; wrapCount: 8.12"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
     value="Jablko a Plášt"
-    width="1"></a-text>
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="25.05639 2.33372 11.98706" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#sword'"
     class="P3C"
-    mixin="canGrab"
-    position="25.426 3.408 8.866"></a-entity>
+    id="P3Sword"
+    position="25.426 3.408 8.866"
+    mixin="canGrab"></a-entity>
   <a-text
-    align="center"
-    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-    geometry="primitive: plane; height: 0.78; width: 1.16"
     id="P3Mec"
-    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
-    negate="false"
     position="25.05639 2.13372 8.82306"
     rotation="0 -90 0"
-    scale="0.4 0.2 1"
-    text="color: #e3e3e3; wrapCount: 8.12;"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
     value="Meč"
-    width="1"></a-text>
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12;"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="25.05639 2.33372 8.82306" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#mace'"
     class="P3C"
-    mixin="canGrab"
-    position="19.505 3.773 11.937"></a-entity>
+    id="P3Mace"
+    position="19.505 3.773 11.937"
+    mixin="canGrab"></a-entity>
   <a-text
-    align="center"
-    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-    geometry="primitive: plane; height: 0.78; width: 1.16"
     id="P3Zezlo"
-    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
-    negate="false"
     position="19.985 2.133 11.987"
     rotation="0 90 0"
-    scale="0.4 0.2 1"
-    text="color: #e3e3e3; wrapCount: 8.12"
+    font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
+    negate="false"
     value="Žezlo"
-    width="1"></a-text>
+    width="1"
+    geometry="primitive: plane; height: 0.78; width: 1.16"
+    material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
+    align="center"
+    text="color: #e3e3e3; wrapCount: 8.12"
+    scale="0.4 0.2 1"></a-text>
+  <a-entity label="label: P3Cplace/P3Cdisplace" position="19.985 2.333 11.987" rotation="0 90 0"></a-entity>
 </a-scene>
