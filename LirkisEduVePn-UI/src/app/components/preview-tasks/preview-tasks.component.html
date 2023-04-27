@@ -1,11 +1,38 @@
 <div class="close">
   <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
 </div>
-<div class="slide-box">
-  <div *ngFor="let task of tasks; let i=index" style="margin-bottom: 20px;">
-    {{task.name}}
-    <button (click)="openScenarioPreview(i)" style="margin-left: 10px">Preview Scenario</button>
-    <button (click)="openScenePreview(i)" style="margin-left: 10px">Preview Scene</button>
-    <button (click)="startTask(i)" style="margin-left: 10px">Start</button>
+<p class="boldText heading">Select quiz</p>
+<!--<div class="slide-box">-->
+
+<!--</div>-->
+<!--<div *ngFor="let task of tasks; let i=index" style="margin-bottom: 20px;" class="quizOption">-->
+<!--  {{task.name}}-->
+<!--  <button (click)="openScenarioPreview(i)" style="margin-left: 10px">Preview Scenario</button>-->
+<!--  <button (click)="openScenePreview(i)" style="margin-left: 10px">Preview Scene</button>-->
+<!--  <button (click)="startTask(i)" style="margin-left: 10px">Start</button>-->
+<!--</div>-->
+
+<div class="quizOption" *ngFor="let task of tasks; let i=index" style="margin-bottom: 20px;">
+    <div class="description">
+      <div class="name">
+        <p class="boldText">{{task.name}}</p>
+        <div class="language">
+          <mat-icon>language</mat-icon>
+            <select class="form-select form-select-sm form-control" [(ngModel)]="selectedLanguages[i]" (change)="onLanguageChange(selectedLanguages[i], i)">
+              <option *ngFor="let language of task.scenario.languages">
+                {{language}}
+              </option>
+            </select>
+        </div>
+      </div>
+      <p class="secondaryText">
+        {{task.description}}
+      </p>
+    </div>
+  <div class="preview">
+    <button (click)="openScenarioPreview(i)" class="mainButton">Preview Scenario</button>
+    <button (click)="openScenePreview(i)" class="mainButton">Preview Scene</button>
+    <button (click)="startTask(i)" class="mainButton">Start</button>
   </div>
+<!--  <a class="mainButton" routerLink="/scene" (click)="closeDialog()">Start</a>-->
 </div>

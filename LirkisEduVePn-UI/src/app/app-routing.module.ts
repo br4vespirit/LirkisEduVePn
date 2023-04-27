@@ -44,7 +44,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "muzeum_extended/task/:taskId",
+    path: "muzeum_extended/task/:taskId/:language",
     component: SceneComponent,
     canActivate: [AuthGuard]
   },
@@ -54,7 +54,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "muzeum_habsbourg/task/:taskId",
+    path: "muzeum_habsbourg/task/:taskId/:language",
     component: Muzeum_habsbourgComponent,
     canActivate: [AuthGuard]
   },

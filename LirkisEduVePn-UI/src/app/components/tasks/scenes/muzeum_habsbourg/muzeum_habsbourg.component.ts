@@ -13,6 +13,8 @@ import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
 import {Subscription} from "rxjs";
 
+// @ts-ignore
+import {TaskRequest} from "../../../../models/task-request.model";
 
 
 @Component({
@@ -26,6 +28,7 @@ export class Muzeum_habsbourgComponent {
 
   // @ts-ignore
   taskId: number;
+  language: string = "";
   // @ts-ignore
   taskFiles: TaskFiles
   task_files_subscription: Subscription = new Subscription();
@@ -35,10 +38,20 @@ export class Muzeum_habsbourgComponent {
 
     this._route.params.subscribe(params => {
       this.taskId = params['taskId'];
-    })
+      this.language = params['language'];
 
+      this.getTaskFiles();
+    })
+  }
+
+  private getTaskFiles() {
     // @ts-ignore
-    this.task_files_subscription = this._client.getTaskFiles(this.taskId).subscribe(data => {
+    let request: TaskRequest = new TaskRequest({
+      taskId: this.taskId,
+      language: this.language
+    })
+    // @ts-ignore
+    this.task_files_subscription = this._client.getTaskFiles(request).subscribe(data => {
       this.taskFiles = data as TaskFiles;
       TaskFiles.decode(this.taskFiles);
 
@@ -55,7 +68,6 @@ export class Muzeum_habsbourgComponent {
         // attach language component to the scene
         this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}`)
       }
-
     })
   }
 }

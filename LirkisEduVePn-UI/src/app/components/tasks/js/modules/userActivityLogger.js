@@ -8,7 +8,10 @@ const autHeader = new Headers({
 export async function createSession(taskId, userId) {
   const response = await fetch(`${url}/task-session/start`, {
     method: 'POST',
-    headers: autHeader,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " + localStorage.getItem("jwt-token")
+    },
     body: JSON.stringify({
       taskId: taskId,
       userId: userId

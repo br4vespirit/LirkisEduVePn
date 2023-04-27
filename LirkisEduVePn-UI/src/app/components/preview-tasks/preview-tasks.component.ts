@@ -17,6 +17,8 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
 
   tasks: TaskPreview[] = [];
 
+  selectedLanguages: string[] = [];
+
   tasks_preview_subscription: Subscription = new Subscription();
   task_files_subscription: Subscription = new Subscription();
 
@@ -33,6 +35,7 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
     this.profile = JSON.parse(localStorage.getItem("user-profile")) as UserProfile;
     this.tasks_preview_subscription = this._client.getTasksPreview(this.profile.id).subscribe(data => {
       this.tasks = data as TaskPreview[];
+      this.selectedLanguages = this.tasks.map(t => t.scenario.languages[0])
       console.log(this.tasks);
     })
   }
@@ -54,8 +57,12 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
   }
 
   startTask(i: number) {
-    this._router.navigate([`/${this.tasks[i].scene.folderName}/task/${this.tasks[i].id}`]).then(() => {
+    this._router.navigate([`/${this.tasks[i].scene.folderName}/task/${this.tasks[i].id}/${this.selectedLanguages[i]}`]).then(() => {
       this.matDialogRef.close()
     });
+  }
+
+  onLanguageChange(changedLanguage: string, index: number) {
+    this.selectedLanguages[index] = changedLanguage;
   }
 }
