@@ -34,7 +34,7 @@ public class TaskSessionService {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(now.getTime());
-        calendar.add(Calendar.HOUR_OF_DAY, 1);
+        calendar.add(Calendar.DAY_OF_MONTH, 2);
         Timestamp expirationTime = new Timestamp(calendar.getTimeInMillis());
         session.setExpiredAt(expirationTime);
 

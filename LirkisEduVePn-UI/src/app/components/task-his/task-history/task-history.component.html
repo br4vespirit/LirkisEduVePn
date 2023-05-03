@@ -10,6 +10,9 @@
         <h3>{{sessionData.startedAt | date: "dd/MM/yyyy HH:mm"}}</h3>
         <p class="boldText" style="opacity: 0.6;">FINISH OF THE TASK</p>
         <h3>{{sessionData.finishedAt | date: "dd/MM/yyyy HH:mm"}}</h3>
+        <p class="boldText" style="opacity: 0.6;">WAS FINISHED SUCCESSFULLY</p>
+        <h3 *ngIf="sessionData.successful">Yes</h3>
+        <h3 *ngIf="!sessionData.successful">No</h3>
       </div>
     </div>
 

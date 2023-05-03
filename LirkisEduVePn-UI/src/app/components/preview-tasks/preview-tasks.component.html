@@ -29,10 +29,16 @@
         {{task.description}}
       </p>
     </div>
-  <div class="preview">
+  <div>
     <button (click)="openScenarioPreview(i)" class="mainButton">Preview Scenario</button>
     <button (click)="openScenePreview(i)" class="mainButton">Preview Scene</button>
-    <button (click)="startTask(i)" class="mainButton">Start</button>
+    <span *ngIf="task.openSessions.length === 0">
+      <button (click)="startTask(i)" class="mainButton">Start</button>
+    </span>
+    <span *ngIf="task.openSessions.length > 0">
+      <button (click)="continueTask(i)" class="mainButton">Continue</button>
+      <button (click)="cancelTask(i)" class="mainButton">Finish</button>
+    </span>
   </div>
 <!--  <a class="mainButton" routerLink="/scene" (click)="closeDialog()">Start</a>-->
 </div>
