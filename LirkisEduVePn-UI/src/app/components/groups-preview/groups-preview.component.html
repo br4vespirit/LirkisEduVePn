@@ -1,0 +1,9 @@
+<div class="container" style="text-align: center; align-items: center; gap: 2rem">
+  <h1>Available Groups</h1>
+  <a (click)="directToTaskSessions(g.id)" *ngFor="let g of groups" class="mainButton"
+     style="cursor: pointer"> {{g.name}} </a>
+  <div>
+    <a (click)="navigateBack()" class="mainButton secondaryButton"
+       style="cursor: pointer"> Back </a>
+  </div>
+</div>

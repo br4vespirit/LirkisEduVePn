@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BackendService} from "../../services/backend.service";
-import {Subscription} from "rxjs";
+import {BackendService} from "../../../services/backend.service";
 import {Router} from "@angular/router";
-import {TaskSessionInfo} from "../../models/task-session-info.model";
+import {TaskSessionInfo} from "../../../models/task-session-info.model";
+import {Subscription} from "rxjs";
 
 // TODO: add get also time when each transition was fired
+
 interface FiringAttempt {
   action: string;
   actionFound: boolean;
@@ -20,36 +21,30 @@ interface FiringAttempt {
 })
 export class TaskHistoryComponent implements OnInit, OnDestroy {
 
-  firring_attempts_subscription: Subscription = new Subscription();
   // @ts-ignore
   firringAttempts: FiringAttempt[];
+  firring_attempts_subscription: Subscription = new Subscription();
   // @ts-ignore
   sessionData: TaskSessionInfo;
   duration: string = "";
 
-  current_attempts: FiringAttempt[] = [];
-  max_pages: number = 0;
-  page: number = 0;
-  items_per_page: number = 10;
+  extended_open: boolean = false;
+  loaded: boolean = false;
 
-  // TODO: get info about task (task name)
-  // TODO: get session duration and if session was successfull or not
+  from: string = "";
 
   constructor(private router: Router, private _client: BackendService,) {
     // @ts-ignore
     this.sessionData = this.router.getCurrentNavigation().extras.state.data as TaskSessionInfo;
+    // @ts-ignore
+    this.from = this.router.getCurrentNavigation().extras.state.from as string;
     this.countDuration()
-  }
-
-  ngOnDestroy(): void {
-    this.firring_attempts_subscription.unsubscribe();
   }
 
   ngOnInit(): void {
     this.firring_attempts_subscription = this._client.getFiringAttempts(this.sessionData.id).subscribe(data => {
       this.firringAttempts = data as [];
-      this.max_pages = Math.ceil(this.firringAttempts.length / this.items_per_page);
-      this.current_attempts = this.firringAttempts.slice(0, Math.min(this.firringAttempts.length, this.items_per_page));
+      this.loaded = true;
     })
   }
 
@@ -71,15 +66,19 @@ export class TaskHistoryComponent implements OnInit, OnDestroy {
     this.duration += `${seconds} sec`;
   }
 
-  prev_attempts() {
-    this.page--;
-    this.current_attempts = this.firringAttempts.slice(this.page * this.items_per_page,
-      Math.min(this.firringAttempts.length, (this.page + 1) * this.items_per_page));
+  ngOnDestroy(): void {
+    this.firring_attempts_subscription.unsubscribe();
   }
 
-  next_attempts() {
-    this.page++;
-    this.current_attempts = this.firringAttempts.slice(this.page * this.items_per_page,
-      Math.min(this.firringAttempts.length, (this.page + 1) * this.items_per_page));
+  change_status() {
+    this.extended_open = !this.extended_open;
+  }
+
+  close() {
+    if (this.from === 'profile') {
+      this.router.navigate(["/user/profile"]).then();
+    } else if (this.from === 'dashboard') {
+      this.router.navigate(["/dashboard/groups-history"]).then();
+    }
   }
 }

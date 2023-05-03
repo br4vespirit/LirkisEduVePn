@@ -1,0 +1,27 @@
+<div class="results">
+  <table>
+    <tr>
+      <th class="boldText"></th>
+      <th class="boldText">TRANSITION NAME</th>
+      <th class="boldText">FIRED AT</th>
+      <th class="boldText">SUCCESSFUL</th>
+    </tr>
+
+    <tr *ngFor="let firringAttempt of current_attempts; let i = index">
+      <td class="colorText" style="text-align: left;"> #{{i + 1 + page * items_per_page}}</td>
+      <td class="secondaryText">{{firringAttempt.action}}</td>
+      <td class="secondaryText">{{firringAttempt.firedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td class="secondaryText">{{firringAttempt.successful}}</td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 20px">
+    <button (click)="prev_attempts()" [disabled]="page === 0" mat-icon-button>
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+
+    <button (click)="next_attempts()" [disabled]="page >= max_pages - 1" mat-icon-button>
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+</div>

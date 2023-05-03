@@ -15,4 +15,5 @@ public class TaskSessionInfo {
     private Timestamp finishedAt;
     private Timestamp startedAt;
     private boolean successful;
+    private String userName;
 }

@@ -1,0 +1,31 @@
+<div *ngIf="loaded" class="container">
+  <div class="mainContent">
+    <div class="welcomeAndProfile">
+      <div class="welcome" style="text-align: center;">
+        <p class="boldText" style="opacity: 0.6;">USER NAME</p>
+        <h1>{{sessionData.userName}}</h1>
+        <p class="boldText" style="opacity: 0.6;">TASK NAME</p>
+        <h1>{{sessionData.taskName}}</h1>
+        <p class="boldText" style="opacity: 0.6;">START OF THE TASK</p>
+        <h3>{{sessionData.startedAt | date: "dd/MM/yyyy HH:mm"}}</h3>
+        <p class="boldText" style="opacity: 0.6;">FINISH OF THE TASK</p>
+        <h3>{{sessionData.finishedAt | date: "dd/MM/yyyy HH:mm"}}</h3>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <p class="colorText" style="font-weight: 700;">TEST DURATION</p>
+      <p class="secondaryText">{{duration}}</p>
+    </div>
+
+    <app-task-history-extended *ngIf="extended_open" [firringAttempts]="firringAttempts"></app-task-history-extended>
+    <app-task-history-statistics *ngIf="!extended_open"
+                                 [firringAttempts]="firringAttempts"></app-task-history-statistics>
+
+    <div class="buttons">
+      <a (click)="change_status()" *ngIf="!extended_open" class="mainButton" style="cursor: pointer">View extended</a>
+      <a (click)="change_status()" *ngIf="extended_open" class="mainButton" style="cursor: pointer">View statistics</a>
+      <a (click)="close()" class="mainButton secondaryButton" style="cursor: pointer">close</a>
+    </div>
+  </div>
+</div>

@@ -35,4 +35,10 @@ public class TaskSessionController {
         List<TaskSessionInfo> taskSessionInfos = taskSessionService.getInfoList(userId);
         return new ResponseEntity<>(taskSessionInfos, HttpStatus.OK);
     }
+
+    @GetMapping("/group/{id}")
+    public ResponseEntity<List<TaskSessionInfo>> getByGroupsId(@PathVariable(name = "id") Long groupId) {
+        List<TaskSessionInfo> taskSessionInfos = taskSessionService.getInfoListByGroup(groupId);
+        return new ResponseEntity<>(taskSessionInfos, HttpStatus.OK);
+    }
 }

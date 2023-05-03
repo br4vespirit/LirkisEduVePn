@@ -61,7 +61,18 @@ public class TaskSessionService {
         return taskSessions
                 .stream()
                 .map(t -> new TaskSessionInfo(t.getId(), t.getTask().getName(),
-                        t.getFinishedAt(), t.getStartedAt(), t.isSuccessful()))
+                        t.getFinishedAt(), t.getStartedAt(), t.isSuccessful(),
+                        t.getUser().getFirstname() + " " + t.getUser().getLastname()))
+                .toList();
+    }
+
+    public List<TaskSessionInfo> getInfoListByGroup(Long groupId) {
+        List<TaskSession> taskSessions = taskSessionRepository.findAllByGroupId(groupId);
+        return taskSessions
+                .stream()
+                .map(t -> new TaskSessionInfo(t.getId(), t.getTask().getName(),
+                        t.getFinishedAt(), t.getStartedAt(), t.isSuccessful(),
+                        t.getUser().getFirstname() + " " + t.getUser().getLastname()))
                 .toList();
     }
 }

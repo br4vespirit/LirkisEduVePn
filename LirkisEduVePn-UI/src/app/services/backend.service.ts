@@ -191,4 +191,11 @@ export class BackendService {
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
   }
+
+  public getTaskSessionsInfoByGroups(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/task-session/group/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
 }
