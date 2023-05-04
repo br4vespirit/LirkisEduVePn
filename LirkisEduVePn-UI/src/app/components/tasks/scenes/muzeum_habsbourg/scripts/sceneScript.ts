@@ -53,6 +53,11 @@ const showFinalMessage = () => {
   if (finalMsgEntity !== null) finalMsgEntity.setAttribute('visible', 'true');
 }
 
+const showFailMessage = () => {
+  const finalMsgEntity = document.querySelector('#failedMsg');
+  if (finalMsgEntity !== null) finalMsgEntity.setAttribute('visible', 'true');
+}
+
 export const transitions = [
   {
     transitionName: 'P3Cplace',
@@ -320,7 +325,6 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets: string[], replay: boolean) => {
-      console.log('finnSucc')
       playVictorySound()
       showFinalMessage()
     },
@@ -336,8 +340,7 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets: string[], replay: boolean) => {
-      playVictorySound()
-      showFinalMessage()
+      showFailMessage();
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {
     },
@@ -351,8 +354,7 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets: string[], replay: boolean) => {
-      playVictorySound()
-      showFinalMessage()
+      showFailMessage();
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {
     },
@@ -366,7 +368,7 @@ export const transitions = [
 
     },
     ifTransitionEnabled: (targets: string[], replay: boolean) => {
-      console.log('finnFail3')
+      showFailMessage();
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {
     },
