@@ -14,6 +14,8 @@ import {BackendService} from "../../../../services/backend.service";
 import {Subscription} from "rxjs";
 import {TaskRequest} from "../../../../models/task-request.model";
 
+import {transitions, places} from "./scripts/sceneScript";
+
 
 @Component({
   selector: 'app-scene',
@@ -40,6 +42,11 @@ export class SceneComponent {
 
       this.getTaskFiles();
     })
+
+    // @ts-ignore
+    window.transitions = transitions;
+    // @ts-ignore
+    window.places = places;
   }
 
   private getTaskFiles() {
