@@ -18,6 +18,8 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
 
   tasks: TaskPreview[] = [];
 
+  currentTasks: TaskPreview[] = [];
+
   selectedLanguages: string[] = [];
 
   tasks_preview_subscription: Subscription = new Subscription();
@@ -26,6 +28,10 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
 
   // @ts-ignore
   profile: UserProfile;
+
+  max_pages: number = 0;
+  page: number = 0;
+  items_per_page: number = 5;
 
   constructor(private matDialogRef: MatDialogRef<PreviewTasksComponent>, private _client: BackendService,
               private matDialog: MatDialog, private _router: Router) {
@@ -38,6 +44,8 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
     this.tasks_preview_subscription = this._client.getTasksPreview(this.profile.id).subscribe(data => {
       this.tasks = data as TaskPreview[];
       this.selectedLanguages = this.tasks.map(t => t.scenario.languages[0])
+      this.max_pages = Math.ceil(this.tasks.length / this.items_per_page);
+      this.currentTasks = this.tasks.slice(0, Math.min(this.tasks.length, this.items_per_page));
     })
   }
 
@@ -48,6 +56,18 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
 
   closeDialog() {
     this.matDialogRef.close();
+  }
+
+  prev_sessions() {
+    this.page--;
+    this.currentTasks = this.tasks.slice(this.page * this.items_per_page,
+      Math.min(this.tasks.length, (this.page + 1) * this.items_per_page));
+  }
+
+  next_sessions() {
+    this.page++;
+    this.currentTasks = this.tasks.slice(this.page * this.items_per_page,
+      Math.min(this.tasks.length, (this.page + 1) * this.items_per_page));
   }
 
   openScenarioPreview(i: number) {
