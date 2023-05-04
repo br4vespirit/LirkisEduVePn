@@ -1,9 +1,6 @@
 package com.tuke.lirkiseduvepnservice.controller;
 
-import com.tuke.lirkiseduvepnservice.model.dto.TaskFilesDto;
-import com.tuke.lirkiseduvepnservice.model.dto.TaskNames;
-import com.tuke.lirkiseduvepnservice.model.dto.TaskRequestDto;
-import com.tuke.lirkiseduvepnservice.model.dto.TasksPreview;
+import com.tuke.lirkiseduvepnservice.model.dto.*;
 import com.tuke.lirkiseduvepnservice.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,9 +30,9 @@ public class TaskController {
         return new ResponseEntity<>(tasksPreviews, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<TaskFilesDto> getTaskFiles(@PathVariable(name = "id") Long id) {
-        TaskFilesDto taskFiles = taskService.getTaskFiles(id);
+    @PostMapping("/files")
+    public ResponseEntity<TaskFilesDto> getTaskFiles(@RequestBody TaskFilesRequest request) {
+        TaskFilesDto taskFiles = taskService.getTaskFiles(request);
         return new ResponseEntity<>(taskFiles, HttpStatus.OK);
     }
 

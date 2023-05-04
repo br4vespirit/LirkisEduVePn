@@ -10,6 +10,15 @@ import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.util.List;
 
+/**
+ * Represents a scene for completing different tasks in the system.
+ * A scene consists of the name and description, photo of the scene,
+ * tasks that are created of this scene and the folder name of the scene
+ * that is saved in the Angular project.
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

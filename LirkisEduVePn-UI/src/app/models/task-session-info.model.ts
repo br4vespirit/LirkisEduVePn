@@ -1,0 +1,20 @@
+export class TaskSessionInfo {
+  id: number = 0;
+
+  userName: string = "";
+
+  taskName: string = "";
+
+  // @ts-ignore
+  finishedAt: Date;
+
+  // @ts-ignore
+  startedAt: Date;
+
+  // @ts-ignore
+  successful: boolean;
+
+  public constructor(init?: Partial<TaskSessionInfo>) {
+    Object.assign(this, init);
+  }
+}

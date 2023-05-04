@@ -13,6 +13,7 @@ import {TaskFiles} from "../../../../models/task-files.model";
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
 import {Subscription} from "rxjs";
+import {TaskRequest} from "../../../../models/task-request.model";
 
 
 @Component({
@@ -26,6 +27,7 @@ export class SceneComponent {
 
   // @ts-ignore
   taskId: number;
+  language: string = "";
   // @ts-ignore
   taskFiles: TaskFiles
   task_files_subscription: Subscription = new Subscription();
@@ -35,20 +37,33 @@ export class SceneComponent {
 
     this._route.params.subscribe(params => {
       this.taskId = params['taskId'];
-    })
+      this.language = params['language'];
 
+      this.getTaskFiles();
+    })
+  }
+
+  private getTaskFiles() {
     // @ts-ignore
-    this.task_files_subscription = this._client.getTaskFiles(this.taskId).subscribe(data => {
+    let request: TaskRequest = new TaskRequest({
+      taskId: this.taskId,
+      language: this.language
+    })
+    console.log(request);
+    this.task_files_subscription = this._client.getTaskFiles(request).subscribe(data => {
       this.taskFiles = data as TaskFiles;
       TaskFiles.decode(this.taskFiles);
 
       if (this.taskFiles) {
         // attach petri net sim component to the scene
-        const petriNetSimAttr = `finalPlace: final; taskCount: 3; pnmlFile: ${this.taskFiles.pnmlFile}; taskId: ${this.taskId}`;
+        const petriNetSimAttr = {
+          pnmlFile: this.taskFiles.pnmlFile,
+          taskId: this.taskId
+        };
         this.scene.nativeElement.setAttribute('petri-net-sim', petriNetSimAttr);
 
         // attach language component to the scene
-        this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}; languageVersion: sk`)
+        this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}`)
       }
 
     })

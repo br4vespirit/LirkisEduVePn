@@ -8,6 +8,15 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Represents a task that allowed users can start and complete.
+ * A task consists of the VR scene, scenario as configuration file,
+ * and the details of the task, such as all task sessions that belongs to this task,
+ * groups that are allowed to complete this task, and name and description of it
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

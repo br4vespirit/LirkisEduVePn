@@ -1,0 +1,30 @@
+<div class="container">
+  <div style="text-align: center; height: 100%">
+    <h1>Sessions in the group</h1>
+    <div *ngFor="let session of current_sessions" class="quizOption">
+      <div class="history">
+        <div>
+          <p class="boldText">{{session.taskName}}</p>
+          <p class="secondaryText">{{session.finishedAt | date: 'yyyy-MM-dd'}}</p>
+          <p class="secondaryText">{{session.userName}}</p>
+        </div>
+      </div>
+      <a (click)="open_preview(session)" class="mainButton" style="cursor: pointer; margin-left: 200px;">preview</a>
+    </div>
+    <div class="buttons">
+      <div>
+        <button (click)="prev_sessions()" [disabled]="page === 0" mat-icon-button>
+          <mat-icon>navigate_before</mat-icon>
+        </button>
+
+        <button (click)="next_sessions()" [disabled]="page >= max_pages - 1" mat-icon-button>
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="buttons">
+      <a (click)="navigateBack()" class="mainButton"
+         style="cursor: pointer"> Back </a>
+    </div>
+  </div>
+</div>

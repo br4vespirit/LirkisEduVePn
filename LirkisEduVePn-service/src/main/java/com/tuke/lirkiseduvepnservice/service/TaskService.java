@@ -1,14 +1,10 @@
 package com.tuke.lirkiseduvepnservice.service;
 
-import com.tuke.lirkiseduvepnservice.model.LanguageExtension;
 import com.tuke.lirkiseduvepnservice.model.dao.LanguageFile;
 import com.tuke.lirkiseduvepnservice.model.dao.Scenario;
 import com.tuke.lirkiseduvepnservice.model.dao.Scene;
 import com.tuke.lirkiseduvepnservice.model.dao.Task;
-import com.tuke.lirkiseduvepnservice.model.dto.TaskFilesDto;
-import com.tuke.lirkiseduvepnservice.model.dto.TaskNames;
-import com.tuke.lirkiseduvepnservice.model.dto.TaskRequestDto;
-import com.tuke.lirkiseduvepnservice.model.dto.TasksPreview;
+import com.tuke.lirkiseduvepnservice.model.dto.*;
 import com.tuke.lirkiseduvepnservice.model.mapper.TaskMapper;
 import com.tuke.lirkiseduvepnservice.repository.ScenarioRepository;
 import com.tuke.lirkiseduvepnservice.repository.SceneRepository;
@@ -64,14 +60,14 @@ public class TaskService {
         return tasksPreviews;
     }
 
-    public TaskFilesDto getTaskFiles(Long id) {
-        Task task = taskRepository.findById(id).orElseThrow();
+    public TaskFilesDto getTaskFiles(TaskFilesRequest request) {
+        Task task = taskRepository.findById(request.getTaskId()).orElseThrow();
         TaskFilesDto files = new TaskFilesDto();
         Scenario scenario = scenarioRepository.findById(task.getScenario().getId()).orElseThrow();
 
         files.setPnmlFile(scenario.getFile());
         for (LanguageFile languageFile : scenario.getLanguageFiles()) {
-            if (languageFile.getExtension().equals(LanguageExtension.SK)) {
+            if (languageFile.getExtension().name().equals(request.getLanguage())) {
                 files.setLanguageFile(languageFile.getFile());
             }
         }

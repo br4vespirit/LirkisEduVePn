@@ -281,7 +281,7 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
@@ -387,7 +387,7 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
@@ -463,10 +463,202 @@ export const transitions = [
     },
     ifTransitionEnabled: (targets, replay) => {
       transitionFunctions.playConfirmationSuccessSound(targets[0]);
-      transitionFunctions.updateVisualProgres(targets[1]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
     },
     ifTransitionDisabled: (targets, replay) => {
       transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Cunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Cselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Iselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8Iunselect',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      const element = document.getElementById(targets[0]);
+      element.components["clk-multi-event-handler"].toggleButton();
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'P8confirm',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playConfirmationSuccessSound(targets[0]);
+      // transitionFunctions.updateVisualProgres(targets[1]);
+    },
+    ifTransitionDisabled: (targets, replay) => {
+      transitionFunctions.playConfirmationUnsuccessSound(targets[0]);
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finSucc',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnSucc')
+      transitionFunctions.playVictorySound()
+      transitionFunctions.showFinalMessage()
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail1',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playVictorySound()
+      transitionFunctions.showFinalMessage()
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail2',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      transitionFunctions.playVictorySound()
+      transitionFunctions.showFinalMessage()
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail3',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail4',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail6',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail7',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail3')
+    },
+    ifTransitionDisabled: (targets, replay) => {
+    },
+    ifTransitionNotFound: (targets, replay) => {
+
+    }
+  },
+  {
+    transitionName: 'finFail8',
+    ifTransitionFound: (targets, replay) => {
+
+    },
+    ifTransitionEnabled: (targets, replay) => {
+      console.log('finnFail8')
+    },
+    ifTransitionDisabled: (targets, replay) => {
     },
     ifTransitionNotFound: (targets, replay) => {
 
@@ -559,16 +751,6 @@ export const places = [
     ifPlaceNotFoundOnStart: () => {
       transitionFunctions.placeBarrier('45.616 1 5.049');
       transitionFunctions.placeBarrier('49.328 1 5.049');
-    }
-  },
-  {
-    placeName: 'P9',
-    ifPlaceFound: (placeName) => transitionFunctions.showTaskPanel(placeName),
-    ifPlaceNotFound: () => {
-    },
-    ifPlaceNotFoundOnStart: () => {
-      transitionFunctions.placeBarrier('45.616 1 -2.285');
-      transitionFunctions.placeBarrier('49.328 1 -2.285');
     }
   },
   {

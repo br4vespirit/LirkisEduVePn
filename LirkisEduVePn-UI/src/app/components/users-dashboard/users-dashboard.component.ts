@@ -22,7 +22,7 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   displayedColumns = ["firstname", "lastname", "email", "username", "role", "groups", "actions"];
 
   users: UserProfile[] = [];
-  admin_id: number = 0;
+  // admin_id: number = 0;
 
   users_subscription: Subscription = new Subscription();
   confirmation_dialog_subscription: Subscription = new Subscription();
@@ -40,9 +40,9 @@ export class UsersDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    let profile = localStorage.getItem('user-profile');
-    if (profile != null)
-      this.admin_id = JSON.parse(profile).id;
+    // let profile = localStorage.getItem('user-profile');
+    // if (profile != null)
+    //   this.admin_id = JSON.parse(profile).id;
     this.users_subscription = this._client.getAllUsers().subscribe(users => {
       this.users = users as UserProfile[];
       this.dataSource = new MatTableDataSource(this.users);

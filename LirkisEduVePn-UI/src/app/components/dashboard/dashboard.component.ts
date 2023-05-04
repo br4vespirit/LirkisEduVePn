@@ -41,4 +41,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   GroupsTasksOpen() {
     this._router.navigate(['/dashboard/groups']).then();
   }
+
+  GroupsHistoryOpen() {
+    this._router.navigate(['/dashboard/groups-history']).then();
+  }
 }

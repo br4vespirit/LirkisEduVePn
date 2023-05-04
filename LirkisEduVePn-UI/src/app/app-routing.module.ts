@@ -12,7 +12,9 @@ import {SceneComponent} from "./components/tasks/scenes/muzeum_extended/scene.co
 import {Muzeum_habsbourgComponent} from "./components/tasks/scenes/muzeum_habsbourg/muzeum_habsbourg.component";
 import {UsersDashboardComponent} from "./components/users-dashboard/users-dashboard.component";
 import {GroupsDashboardComponent} from "./components/groups-dashboard/groups-dashboard.component";
-import {TaskHistoryComponent} from "./components/task-history/task-history.component";
+import {TaskHistoryComponent} from "./components/task-his/task-history/task-history.component";
+import {GroupsPreviewComponent} from "./components/groups-preview/groups-preview.component";
+import {GroupSessionsComponent} from "./components/group-sessions/group-sessions.component";
 
 const routes: Routes = [
   {
@@ -44,17 +46,17 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "muzeum_extended/task/:taskId",
+    path: "muzeum_extended/task/:taskId/:language",
     component: SceneComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: "history/session/:sessionId",
+    path: "history/session",
     component: TaskHistoryComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: "muzeum_habsbourg/task/:taskId",
+    path: "muzeum_habsbourg/task/:taskId/:language",
     component: Muzeum_habsbourgComponent,
     canActivate: [AuthGuard]
   },
@@ -77,6 +79,22 @@ const routes: Routes = [
   {
     path: "dashboard/groups",
     component: GroupsDashboardComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      expectedRoles: ["ADMIN", "TEACHER"]
+    }
+  },
+  {
+    path: "dashboard/groups-history",
+    component: GroupsPreviewComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      expectedRoles: ["ADMIN", "TEACHER"]
+    }
+  },
+  {
+    path: "dashboard/group/sessions",
+    component: GroupSessionsComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       expectedRoles: ["ADMIN", "TEACHER"]

@@ -1,5 +1,5 @@
 import {SceneEvent} from '../models/sceneEvent.enum';
-import * as petriNetLoader from '../modules/petriNetLoader.mjs';
+import * as cpnLoader from '../modules/cpnLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
 import {places, transitions} from "../transitionScript";
@@ -10,8 +10,6 @@ AFRAME.registerComponent('petri-net-sim', {
     event: {type: 'string', default: 'Scene Loaded'},
     message: {type: 'string', default: SceneEvent.petriNetLoaded},
     activePlace: {type: 'string', default: 'Roaming'},
-    finalPlace: {type: 'string'},
-    taskCount: {type: 'number', default: 1},
     pnmlFile: {type: 'string'},
     taskId: {type: 'number'},
     affectedElements: {type: 'array', default: []}
@@ -21,13 +19,13 @@ AFRAME.registerComponent('petri-net-sim', {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
     const userData = JSON.parse(localStorage.getItem('user-profile'));
-    const finalRegex = /^(finalSucc|finalFail)/;
+    const finalRegex = /^(finSucc|finFail)/;
     let finalTransitions;
+    let sessionComplete = false;
 
     // load petri net and array with transitions
     let net;
-
-    petriNetLoader.loadXMLDoc(this.data.pnmlFile).then(res => {
+    cpnLoader.loadCPNData(this.data.pnmlFile).then(res => {
       net = (this.petriNet = new PetriNet(res));
       console.log(net);
       finalTransitions = transitions.filter(el => finalRegex.test(el.transitionName));
@@ -35,7 +33,7 @@ AFRAME.registerComponent('petri-net-sim', {
       places.forEach(place => {
         if (!net.findPlace(place.placeName)) place.ifPlaceNotFoundOnStart();
       })
-    });
+    })
 
     // TODO: make sure that session that is being restored is from logged user
     // create session or fire all transition from session data
@@ -65,6 +63,8 @@ AFRAME.registerComponent('petri-net-sim', {
     }
 
     this.transitionEventHandler = () => {
+      // when user completed his session
+      if(sessionComplete) return;
       const transition = transitions.find(el => el.transitionName === data.message);
       // check if the transition is in the petri net
       if (net.findTransition(transition.transitionName)) {
@@ -75,6 +75,7 @@ AFRAME.registerComponent('petri-net-sim', {
           // fire transition
           console.log('%c' + transition.transitionName + ' Transition Fired 🚀', 'color: #FB607F');
           net.fire(transition.transitionName);
+          console.log(net)
           // log user activity
           userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), true, true, data.affectedElements);
           // fire transition function
@@ -82,12 +83,15 @@ AFRAME.registerComponent('petri-net-sim', {
           // iterate trough final transitions and try if the transition can be fired
           finalTransitions.forEach(el => {
             if (net.isEnabled(el.transitionName)) {
+              console.log(el.transitionName)
               net.fire(el.transitionName);
               el.ifTransitionEnabled(this.data.affectedElements, false);
               // log user activity and end session
-              userActivityLogger.createFiringAttemt(sessionID, transition.transitionName, new Date(), true, true, data.affectedElements);
-              // TODO: determine whether session ended successfull or not
-              userActivityLogger.endSession(sessionID, new Date(), true);
+              userActivityLogger.createFiringAttemt(sessionID, el.transitionName, new Date(), true, true, data.affectedElements);
+              // determine whether session ended successfull or not
+              const isSuccessful = /finSucc/.test(el.transitionName);
+              sessionComplete = true;
+              userActivityLogger.endSession(sessionID, new Date(), isSuccessful);
             }
           });
         } else {
@@ -105,6 +109,7 @@ AFRAME.registerComponent('petri-net-sim', {
     };
 
     this.changePlaceEventHandler = () => {
+      if(sessionComplete) return;
       const place = places.find(el => el.placeName === data.message);
       if (net.findPlace(place.placeName)) place.ifPlaceFound(place.placeName);
       else place.ifPlaceNotFound();
@@ -149,17 +154,4 @@ AFRAME.registerComponent('petri-net-sim', {
         data.activePlace = 'Roaming';
     }
   },
-
-
-  playVictorySound: function () {
-    const environmentEntity = document.querySelector('#player');
-    setTimeout(() => {
-      environmentEntity.emit('win');
-    }, 2000);
-  },
-
-  showFinalMessage: function () {
-    const finalMsgEntity = document.querySelector('#gratulationMsg');
-    finalMsgEntity.setAttribute('visible', 'true');
-  }
 });

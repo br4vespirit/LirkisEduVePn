@@ -6,13 +6,15 @@ import '../../js/components/clkMultiEventHandler.component.js';
 import '../../js/components/clkSingleEventHandler.component.js';
 import '../../js/components/petriNetSim.component.js';
 import '../../js/components/sceneLanguage.component.js';
-// import '../../js/transitionScript.js';
+import '../../js/components/label.component.js';
+import '../../js/components/toggleLabelVisibility.component.js';
 import {TaskFiles} from "../../../../models/task-files.model";
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";
 import {Subscription} from "rxjs";
+
 // @ts-ignore
-import {transitions} from "../../js/transitionScript.js";
+import {TaskRequest} from "../../../../models/task-request.model";
 
 
 @Component({
@@ -26,34 +28,46 @@ export class Muzeum_habsbourgComponent {
 
   // @ts-ignore
   taskId: number;
+  language: string = "";
   // @ts-ignore
   taskFiles: TaskFiles
   task_files_subscription: Subscription = new Subscription();
-  transitions = transitions;
 
 
   constructor(private _route: ActivatedRoute, private _client: BackendService) {
 
     this._route.params.subscribe(params => {
       this.taskId = params['taskId'];
+      this.language = params['language'];
+
+      this.getTaskFiles();
     })
+  }
 
-    transitions[0].always('thisff');
-
+  private getTaskFiles() {
     // @ts-ignore
-    this.task_files_subscription = this._client.getTaskFiles(this.taskId).subscribe(data => {
+    let request: TaskRequest = new TaskRequest({
+      taskId: this.taskId,
+      language: this.language
+    })
+    // @ts-ignore
+    this.task_files_subscription = this._client.getTaskFiles(request).subscribe(data => {
       this.taskFiles = data as TaskFiles;
       TaskFiles.decode(this.taskFiles);
 
       if (this.taskFiles) {
         // attach petri net sim component to the scene
-        const petriNetSimAttr = `finalPlace: final; taskCount: 3; pnmlFile: ${this.taskFiles.pnmlFile}; taskId: ${this.taskId}; transitions: ${JSON.stringify(transitions)}`;
+        const petriNetSimAttr = {
+          pnmlFile: this.taskFiles.pnmlFile,
+          taskId: this.taskId
+        };
+
         this.scene.nativeElement.setAttribute('petri-net-sim', petriNetSimAttr);
 
-        // attach language component to the scene
-        this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}; languageVersion: sk`)
-      }
 
+        // attach language component to the scene
+        this.scene.nativeElement.setAttribute('language', `languageFile: ${this.taskFiles.languageFile}`)
+      }
     })
   }
 }

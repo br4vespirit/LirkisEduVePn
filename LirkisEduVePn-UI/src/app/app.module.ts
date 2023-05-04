@@ -11,7 +11,7 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {FooterComponent} from './components/footer/footer.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -46,7 +46,15 @@ import {UsersDashboardComponent} from './components/users-dashboard/users-dashbo
 import {GroupsDashboardComponent} from './components/groups-dashboard/groups-dashboard.component';
 import {GroupSettingsComponent} from './components/group-settings/group-settings.component';
 import {GroupsModificationComponent} from './components/groups-modification/groups-modification.component';
-import { TaskHistoryComponent } from './components/task-history/task-history.component';
+import {TaskHistoryComponent} from './components/task-his/task-history/task-history.component';
+import {
+  TaskHistoryExtendedComponent
+} from './components/task-his/task-history-extended/task-history-extended.component';
+import {
+  TaskHistoryStatisticsComponent
+} from './components/task-his/task-history-statistics/task-history-statistics.component';
+import {GroupsPreviewComponent} from './components/groups-preview/groups-preview.component';
+import {GroupSessionsComponent} from './components/group-sessions/group-sessions.component';
 
 
 @NgModule({
@@ -78,27 +86,32 @@ import { TaskHistoryComponent } from './components/task-history/task-history.com
     GroupsDashboardComponent,
     GroupSettingsComponent,
     GroupsModificationComponent,
-    TaskHistoryComponent
+    TaskHistoryComponent,
+    TaskHistoryExtendedComponent,
+    TaskHistoryStatisticsComponent,
+    GroupsPreviewComponent,
+    GroupSessionsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatCardModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatCardModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatRadioModule,
+        FormsModule
+    ],
   providers: [UtilsService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],

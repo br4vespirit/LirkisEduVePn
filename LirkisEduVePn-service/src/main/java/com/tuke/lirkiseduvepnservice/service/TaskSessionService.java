@@ -4,6 +4,7 @@ import com.tuke.lirkiseduvepnservice.model.dao.Task;
 import com.tuke.lirkiseduvepnservice.model.dao.TaskSession;
 import com.tuke.lirkiseduvepnservice.model.dao.User;
 import com.tuke.lirkiseduvepnservice.model.dto.TaskSessionFinishRequest;
+import com.tuke.lirkiseduvepnservice.model.dto.TaskSessionInfo;
 import com.tuke.lirkiseduvepnservice.model.dto.TaskSessionRequest;
 import com.tuke.lirkiseduvepnservice.repository.TaskRepository;
 import com.tuke.lirkiseduvepnservice.repository.TaskSessionRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -52,5 +54,25 @@ public class TaskSessionService {
         taskSession.setFinishedAt(request.getFinishTime());
         taskSession.setSuccessful(request.isSuccessful());
         taskSessionRepository.save(taskSession);
+    }
+
+    public List<TaskSessionInfo> getInfoList(Long userId) {
+        List<TaskSession> taskSessions = taskSessionRepository.findAllByUserId(userId);
+        return taskSessions
+                .stream()
+                .map(t -> new TaskSessionInfo(t.getId(), t.getTask().getName(),
+                        t.getFinishedAt(), t.getStartedAt(), t.isSuccessful(),
+                        t.getUser().getFirstname() + " " + t.getUser().getLastname()))
+                .toList();
+    }
+
+    public List<TaskSessionInfo> getInfoListByGroup(Long groupId) {
+        List<TaskSession> taskSessions = taskSessionRepository.findAllByGroupId(groupId);
+        return taskSessions
+                .stream()
+                .map(t -> new TaskSessionInfo(t.getId(), t.getTask().getName(),
+                        t.getFinishedAt(), t.getStartedAt(), t.isSuccessful(),
+                        t.getUser().getFirstname() + " " + t.getUser().getLastname()))
+                .toList();
     }
 }

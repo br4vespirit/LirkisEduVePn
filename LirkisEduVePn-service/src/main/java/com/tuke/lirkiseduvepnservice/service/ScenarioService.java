@@ -71,7 +71,7 @@ public class ScenarioService {
                     }
                 } else if (entry.isDirectory()) {
                     throw new UnknownDirectoryException("An unknown directory other than \"lang/\" was found in the zip file");
-                } else if (filename.endsWith(".pnml")) {
+                } else if (filename.endsWith(".cpn")) {
                     scenario.setFile(content);
                 } else {
                     throw new UnknownFileException("An unknown file other than \".pnml\" was found in the zip file");

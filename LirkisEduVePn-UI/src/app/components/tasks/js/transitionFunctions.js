@@ -32,3 +32,15 @@ export const showTaskPanel = (placeName) => {
     taskPanel.children.item(2).classList.toggle('interactible');
   }
 }
+
+export const playVictorySound = () => {
+  const environmentEntity = document.querySelector('#player');
+  setTimeout(() => {
+    environmentEntity.emit('win');
+  }, 2000);
+}
+
+export const showFinalMessage = () => {
+  const finalMsgEntity = document.querySelector('#gratulationMsg');
+  finalMsgEntity.setAttribute('visible', 'true');
+}

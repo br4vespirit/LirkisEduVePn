@@ -6,6 +6,7 @@ import {LoginRequest} from "../models/login-request.model";
 import {ProfileUpdate} from "../models/profile-update.model";
 import {TaskCreation} from "../models/task-creation.model";
 import {GroupTasks} from "../models/group-tasks.model";
+import {TaskRequest} from "../models/task-request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -131,8 +132,8 @@ export class BackendService {
     })
   }
 
-  public getTaskFiles(id: number): Observable<any> {
-    return this._client.get(this.API_URL + "/task/" + id, {
+  public getTaskFiles(request: TaskRequest): Observable<any> {
+    return this._client.post<any>(this.API_URL + "/task/files", request, {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
@@ -179,6 +180,20 @@ export class BackendService {
 
   public getFiringAttempts(id: number): Observable<any> {
     return this._client.get(this.API_URL + "/firing-attempt/session/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public getTaskSessionsInfo(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/task-session/" + id, {
+      responseType: "json",
+      headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+    })
+  }
+
+  public getTaskSessionsInfoByGroups(id: number): Observable<any> {
+    return this._client.get(this.API_URL + "/task-session/group/" + id, {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
