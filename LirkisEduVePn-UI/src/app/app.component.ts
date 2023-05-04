@@ -11,6 +11,8 @@ export class AppComponent {
   showScene = false;
 
   constructor(private router: Router) {
+    // @ts-ignore
+    window.router = this.router;
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showScene = /^\/(muzeum_extended|muzeum_habsbourg).*$/.test(event.url);
