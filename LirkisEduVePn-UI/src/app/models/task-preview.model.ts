@@ -9,6 +9,7 @@ export class TaskPreview {
   scenario: ScenarioPreview;
   // @ts-ignore
   scene: ScenePreview;
+  openSessions: number[] = [];
 
   public constructor(init?: Partial<TaskPreview>) {
     Object.assign(this, init);

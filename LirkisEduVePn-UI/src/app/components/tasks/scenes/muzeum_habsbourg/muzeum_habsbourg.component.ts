@@ -15,6 +15,7 @@ import {Subscription} from "rxjs";
 
 // @ts-ignore
 import {TaskRequest} from "../../../../models/task-request.model";
+import {places, transitions} from "./scripts/sceneScript";
 
 
 @Component({
@@ -42,6 +43,11 @@ export class Muzeum_habsbourgComponent {
 
       this.getTaskFiles();
     })
+
+    // @ts-ignore
+    window.transitions = transitions;
+    // @ts-ignore
+    window.places = places;
   }
 
   private getTaskFiles() {

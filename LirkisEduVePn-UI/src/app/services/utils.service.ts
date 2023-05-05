@@ -16,6 +16,7 @@ export class UtilsService {
   public logOut() {
     localStorage.removeItem("jwt-token");
     localStorage.removeItem("user-profile");
+    localStorage.removeItem("sessionID");
   }
 
   public isLoggedIn(): boolean {

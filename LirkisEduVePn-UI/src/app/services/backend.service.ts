@@ -7,6 +7,7 @@ import {ProfileUpdate} from "../models/profile-update.model";
 import {TaskCreation} from "../models/task-creation.model";
 import {GroupTasks} from "../models/group-tasks.model";
 import {TaskRequest} from "../models/task-request.model";
+import {TaskSessionFinishRequest} from "../models/task-session-finish-request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -164,7 +165,6 @@ export class BackendService {
   }
 
   public updateGroupFromDashboard(group: GroupTasks): Observable<any> {
-    console.log(group)
     return this._client.patch(this.API_URL + "/group", group, {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
@@ -197,5 +197,15 @@ export class BackendService {
       responseType: "json",
       headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
     })
+  }
+
+  public finishTaskSession(request: TaskSessionFinishRequest): Observable<any> {
+    return this._client.post<any>(
+      this.API_URL + "/task-session/finish",
+      request,
+      {
+        headers: {Authorization: "Bearer " + localStorage.getItem("jwt-token")}
+      }
+    )
   }
 }
