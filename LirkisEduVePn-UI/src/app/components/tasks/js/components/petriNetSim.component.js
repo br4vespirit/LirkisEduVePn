@@ -2,8 +2,6 @@ import {SceneEvent} from '../models/sceneEvent.enum';
 import * as cpnLoader from '../modules/cpnLoader.mjs';
 import PetriNet from '../modules/petriNet.mjs';
 import * as userActivityLogger from '../modules/userActivityLogger';
-import {places, transitions} from "../transitionScript";
-
 
 AFRAME.registerComponent('petri-net-sim', {
   schema: {
@@ -22,6 +20,9 @@ AFRAME.registerComponent('petri-net-sim', {
     const finalRegex = /^(finSucc|finFail)/;
     let finalTransitions;
     let sessionComplete = false;
+
+    const transitions = window.transitions;
+    const places = window.places;
 
     // load petri net and array with transitions
     let net;
