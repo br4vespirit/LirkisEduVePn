@@ -47,7 +47,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**", "/api/v1/group/**", "/api/v1/scenario/**").permitAll()
+                .requestMatchers("/api/v1/auth/**", "/api/v1/group/**", "/api/v1/scenario/**",
+                        "/v3/api-docs", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()

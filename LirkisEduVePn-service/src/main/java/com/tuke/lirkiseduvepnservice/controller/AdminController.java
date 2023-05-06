@@ -2,6 +2,9 @@ package com.tuke.lirkiseduvepnservice.controller;
 
 import com.tuke.lirkiseduvepnservice.model.dto.UserProfileDto;
 import com.tuke.lirkiseduvepnservice.service.AdminService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/dashboard")
 @RequiredArgsConstructor
+@Tag(name = "Admin")
 public class AdminController {
 
     /**
@@ -28,6 +32,20 @@ public class AdminController {
      * @param dto request with update user
      * @return updates user
      */
+    @Operation(
+            description = "Endpoint to update a user profile with UserProfileDto object",
+            summary = "Update a user",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns updated user as UserProfileDto object",
+                            responseCode = "200"
+                    ),
+                    @ApiResponse(
+                            description = "Returns null",
+                            responseCode = "400"
+                    )
+            }
+    )
     @PatchMapping("/users")
     @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_TEACHER')")
     public ResponseEntity<UserProfileDto> update(@RequestBody UserProfileDto dto) {
@@ -43,6 +61,16 @@ public class AdminController {
      * @param id user identifier in database
      * @return http status OK
      */
+    @Operation(
+            description = "Endpoint to delete a user by user id",
+            summary = "Delete a user",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns nothing",
+                            responseCode = "200"
+                    )
+            }
+    )
     @DeleteMapping("/users/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_TEACHER')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
