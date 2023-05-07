@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when some kind of file or folder was not found inside .zip file
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Instance not found")
 public class InstanceNotFoundException extends RuntimeException {
 

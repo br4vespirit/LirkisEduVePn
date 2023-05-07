@@ -13,14 +13,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest endpoint for firing attempts
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/firing-attempt")
 @Tag(name = "Firing Attempt")
 public class FiringAttemptController {
 
+    /**
+     * Service that provide business logic to work with FiringAttempt entity
+     */
     private final FiringAttemptService firingAttemptService;
 
+    /**
+     * Endpoint to create a new firing attempt which will be linked to a session provided in request
+     *
+     * @param request FiringAttemptRequest object that contains information about firing attempt to create
+     * @return HTTP status 200
+     */
     @Operation(
             description = "Endpoint to create a new firing attempt which will be linked to a session provided in request",
             summary = "Create firing attempt",
@@ -37,6 +49,12 @@ public class FiringAttemptController {
         return ResponseEntity.ok().body(null);
     }
 
+    /**
+     * Endpoint to get list of firing attempts that belong to a given session id
+     *
+     * @param id iid of task session
+     * @return HTTP status 200 and list of firing attempts
+     */
     @Operation(
             description = "Endpoint to get list of firing attempts that belong to a given session id",
             summary = "Get list of firing attempts",

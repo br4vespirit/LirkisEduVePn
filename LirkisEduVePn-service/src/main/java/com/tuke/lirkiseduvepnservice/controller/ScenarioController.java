@@ -15,14 +15,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest endpoint for scenarios
+ */
 @RestController
 @RequestMapping("/api/v1/scenario")
 @RequiredArgsConstructor
 @Tag(name = "Scenario")
 public class ScenarioController {
 
+    /**
+     * Service that provide business logic to work with Scenario entity
+     */
     private final ScenarioService scenarioService;
 
+    /**
+     * Endpoint to register a new scenario in database
+     *
+     * @param request request object to create scenario
+     * @return HTTP status 200
+     */
     @Operation(
             description = "Endpoint to register a new scenario in database",
             summary = "Register a scenario inside the application",
@@ -40,6 +52,11 @@ public class ScenarioController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Get a list of ScenarioPreviewResponse objects, which contain information about scenario
+     *
+     * @return HTTP status 200 and list of ScenarioPreviewResponse objects
+     */
     @Operation(
             description = "Get a list of ScenarioPreviewResponse objects, which contain information about scenario",
             summary = "Get list of objects, which contain information about scenario",

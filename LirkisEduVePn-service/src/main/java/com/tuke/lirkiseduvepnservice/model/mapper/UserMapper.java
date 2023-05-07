@@ -6,7 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 /**
- * Implementation of a mapper between DAO and DTO users using mapstruct library
+ * The UserMapper is used to map User entity and related DTO objects between each other
+ * It contains several mapping methods that are used by the Spring Framework to automatically map objects based
+ * on their names.
  */
 @Mapper(componentModel = "spring")
 public abstract class UserMapper {

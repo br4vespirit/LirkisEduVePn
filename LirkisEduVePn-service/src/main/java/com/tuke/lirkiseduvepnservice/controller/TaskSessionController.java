@@ -14,14 +14,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest endpoint for tasks
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/task-session")
 @Tag(name = "Task Session")
 public class TaskSessionController {
 
+    /**
+     * Service that provide business logic to work with TaskSession entity
+     */
     private final TaskSessionService taskSessionService;
 
+    /**
+     * Endpoint to start a task session in web application with TaskSessionRequest object,
+     * that contains information about task
+     *
+     * @param request request that contains information about session to start/create
+     * @return HTTP status 200
+     */
     @Operation(
             description = "Endpoint to start a task session in web application with " +
                     "TaskSessionRequest object, that contains information about task",
@@ -39,6 +52,13 @@ public class TaskSessionController {
         return new ResponseEntity<>(sessionId, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to end a task session in web application with TaskSessionFinishRequest object,
+     * that contains information about session
+     *
+     * @param request request that contains information about session to finish
+     * @return HTTP status 200
+     */
     @Operation(
             description = "Endpoint to end a task session in web application with " +
                     "TaskSessionFinishRequest object, that contains information about session",
@@ -56,6 +76,12 @@ public class TaskSessionController {
         return ResponseEntity.ok().body(null);
     }
 
+    /**
+     * Endpoint to get all task sessions information that belongs to a user with provided user id
+     *
+     * @param userId id of a user
+     * @return HTTP status 200 and list of TaskSessionInfo objects
+     */
     @Operation(
             description = "Endpoint to get all task sessions information that belongs to a user with provided user id",
             summary = "Get list of task sessions information by user id",
@@ -72,6 +98,12 @@ public class TaskSessionController {
         return new ResponseEntity<>(taskSessionInfos, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to get all task sessions information that belongs to a group with provided group id
+     *
+     * @param groupId id of a group
+     * @return HTTP status 200 and list of TaskSessionInfo objects
+     */
     @Operation(
             description = "Endpoint to get all task sessions information that belongs to a group with provided group id",
             summary = "Get list of task sessions information by group id",

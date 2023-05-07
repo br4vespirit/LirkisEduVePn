@@ -9,6 +9,13 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
+/**
+ * Represents a language file of Scenario entity. The file is saved in a byte[] format inside the database.
+ * Each Scenario can have different language files
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

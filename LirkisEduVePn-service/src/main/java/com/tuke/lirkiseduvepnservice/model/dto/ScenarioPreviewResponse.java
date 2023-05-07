@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object response that represents preview of Scenario with all information
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

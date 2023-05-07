@@ -13,14 +13,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest endpoint for tasks
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/task")
 @Tag(name = "Task")
 public class TaskController {
 
+    /**
+     * Service that provide business logic to work with Task entity
+     */
     private final TaskService taskService;
 
+    /**
+     * Endpoint to create a new task
+     *
+     * @param request request object to create task
+     * @return HTTP status 200
+     */
     @Operation(
             description = "Endpoint to create a new task",
             summary = "Start task",
@@ -38,8 +50,14 @@ public class TaskController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to get task information for a preview by user id
+     *
+     * @param id id of a user
+     * @return HTTP status 200 and list of TasksPreview objects
+     */
     @Operation(
-            description = "Endpoint to get task information for a preview",
+            description = "Endpoint to get task information for a preview by user id",
             summary = "Get task information",
             responses = {
                     @ApiResponse(
@@ -54,6 +72,12 @@ public class TaskController {
         return new ResponseEntity<>(tasksPreviews, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to get task files from scenario
+     *
+     * @param request request to find necessary files that are linked to the task inside the given request
+     * @return HTTP status 200 and TaskFilesDto object
+     */
     @Operation(
             description = "Endpoint to get task files from scenario",
             summary = "Get task files",
@@ -70,6 +94,11 @@ public class TaskController {
         return new ResponseEntity<>(taskFiles, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to get list of TaskName object that contains task name and id
+     *
+     * @return HTTP status 200 and list of TaskNames objects
+     */
     @Operation(
             description = "Endpoint to get list of TaskName object that contains task name and id",
             summary = "Get list of TaskName objects",

@@ -15,14 +15,25 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest endpoint for groups
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/group")
 @Tag(name = "Group")
 public class GroupController {
 
+    /**
+     * Service that provide business logic to work with Group entity
+     */
     private final GroupService groupService;
 
+    /**
+     * Get a list of all groups
+     *
+     * @return HTTP status 200 and list of GroupDto objects
+     */
     @Operation(
             description = "Get a list of all groups",
             summary = "Get all groups",
@@ -39,6 +50,11 @@ public class GroupController {
         return new ResponseEntity<>(groupService.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * Get a list of all groups with list of allowed tasks to the current group in addition
+     *
+     * @return HTTP status 200 and list of GroupWithTasksDto objects
+     */
     @Operation(
             description = "Get a list of all groups with list of allowed tasks to the current group in addition",
             summary = "Get list of groups with allowed tasks",
@@ -55,6 +71,12 @@ public class GroupController {
         return new ResponseEntity<>(groupService.findAllWithTasks(), HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to create a new group with given GroupRequestDto object
+     *
+     * @param request request object to create group
+     * @return HTTP status 200 and created group
+     */
     @Operation(
             description = "Endpoint to create a new group with given GroupRequestDto object",
             summary = "Create a new group",
@@ -72,6 +94,12 @@ public class GroupController {
         return new ResponseEntity<>(group, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to update a group with GroupRequestDto object
+     *
+     * @param request request object to update group
+     * @return HTTP status 200 and updated group
+     */
     @Operation(
             description = "Endpoint to update a group with GroupRequestDto object",
             summary = "Update group",
@@ -89,8 +117,14 @@ public class GroupController {
                 HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
+    /**
+     * Endpoint to delete group by group id
+     *
+     * @param id id of group
+     * @return HTTP status 200
+     */
     @Operation(
-            description = "Delete group by group id",
+            description = "Endpoint to delete group by group id",
             summary = "Delete group",
             responses = {
                     @ApiResponse(

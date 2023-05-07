@@ -8,6 +8,9 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+/**
+ * Configuration of OpenApi documentation
+ */
 @OpenAPIDefinition(
         info = @Info(
                 description = "OpenApi documentation for application",

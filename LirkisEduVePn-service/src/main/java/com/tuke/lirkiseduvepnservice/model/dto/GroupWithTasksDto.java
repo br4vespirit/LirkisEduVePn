@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Data Transfer Object that represents extended GroupDto with list of TaskNames objects that are allowed for the current group
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
