@@ -8,6 +8,6 @@ WORKDIR /app
 
 RUN mvn package -f pom.xml -DskipTests
 
-RUN cp target/*.jar app.jar
+RUN cp target/LirkisEduVePn-service-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java","-jar", "app.jar"]
