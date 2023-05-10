@@ -1,6 +1,4 @@
-import {transitions} from "../transitionScript";
 import {endSession} from "../modules/userActivityLogger";
-import {SceneEvent} from "../models/sceneEvent.enum";
 
 AFRAME.registerComponent('dashboard', {
   schema: {
@@ -10,6 +8,7 @@ AFRAME.registerComponent('dashboard', {
 
   init: function () {
     this.scene = this.el.sceneEl;
+    const transitions = window.transitions;
     // Create a plane to contain the label text
     this.plane = document.createElement('a-plane');
     this.plane.setAttribute('width', '2');
@@ -46,11 +45,6 @@ AFRAME.registerComponent('dashboard', {
     // submit/end test buttons
     this.createEndButton();
     this.createBackButton();
-
-
-
-    // TODO: message after end of task
-
   },
 
   createTextElement: function (text, position){
