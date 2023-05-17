@@ -9,6 +9,14 @@ import lombok.Setter;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * The FiringAttempt is an entity class representing an attempt of users when they are completing a task.
+ * Each firing attempt consists of unique id, action what user did, time when he did the action, was it successful or not,
+ * id of task session, in which firing attempt was completed and some other additional fields
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

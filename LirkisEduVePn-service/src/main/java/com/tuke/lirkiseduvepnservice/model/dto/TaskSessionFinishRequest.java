@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
+/**
+ * Data Transfer Object request for finish session
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

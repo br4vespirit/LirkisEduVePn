@@ -8,6 +8,13 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * The Group class is an entity class representing a group of users within the system.
+ * It contains an ID field, a name field, and list of tasks that the current group is allowed to complete.
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

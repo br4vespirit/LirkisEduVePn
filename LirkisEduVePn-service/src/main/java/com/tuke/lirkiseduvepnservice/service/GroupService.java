@@ -15,14 +15,33 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ScenarioService class contains methods to manage groups
+ */
 @Service
 @RequiredArgsConstructor
 public class GroupService {
 
+    /**
+     * Repository for working with the "group" table in the database
+     */
     private final GroupRepository groupRepository;
+
+    /**
+     * Mapper to map all Group data transfer objects and Group entity between each other
+     */
     private final GroupMapper groupMapper;
+
+    /**
+     * Repository for working with the "task" table in the database
+     */
     private final TaskRepository taskRepository;
 
+    /**
+     * Method that finds all groups and return them as list of groups
+     *
+     * @return list of GroupDto objects
+     */
     public List<GroupDto> findAll() {
         return groupRepository.findAll()
                 .stream()
@@ -30,6 +49,11 @@ public class GroupService {
                 .toList();
     }
 
+    /**
+     * Method that finds all groups and return them as list of groups with tasks objects
+     *
+     * @return list of GroupWithTasksDto objects
+     */
     public List<GroupWithTasksDto> findAllWithTasks() {
         return groupRepository.findAll()
                 .stream()
@@ -37,6 +61,12 @@ public class GroupService {
                 .toList();
     }
 
+    /**
+     * Method that create a new group with GroupRequestDto object
+     *
+     * @param request GroupRequestDto object that contains information about group to create
+     * @return created group as GroupWithTasksDto object
+     */
     public GroupWithTasksDto create(GroupRequestDto request) {
         Group group = new Group();
         group.setName(request.getName());
@@ -56,6 +86,12 @@ public class GroupService {
         return groupMapper.daoToDtoWithGroups(group);
     }
 
+    /**
+     * Method that updates existing group with GroupRequestDto object
+     *
+     * @param dto GroupRequestDto object that contains information about group to update
+     * @return updated group as GroupWithTasksDto object
+     */
     public GroupWithTasksDto update(GroupRequestDto dto) {
         Group group = groupRepository.findById(dto.getId()).orElseThrow();
 
@@ -75,6 +111,11 @@ public class GroupService {
         return groupMapper.daoToDtoWithGroups(group);
     }
 
+    /**
+     * Method that deletes a group by provided group id
+     *
+     * @param id group id
+     */
     public void deleteGroup(Long id) {
         Group group = groupRepository.findById(id).orElseThrow();
         for (Task task : group.getTasks()) {

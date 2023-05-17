@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when incorrect file extension provided (not .pnml or .cpn for example)
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Incorrect extension")
 public class IncorrectFileExtensionException extends RuntimeException {
 

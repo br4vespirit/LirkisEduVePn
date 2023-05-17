@@ -16,19 +16,46 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * TaskSessionService class contains methods to manage tasks
+ */
 @Service
 @RequiredArgsConstructor
 public class TaskService {
 
+    /**
+     * Repository for working with the "task" table in the database
+     */
     private final TaskRepository taskRepository;
+
+    /**
+     * Repository for working with the "scene" table in the database
+     */
     private final SceneRepository sceneRepository;
+
+    /**
+     * Repository for working with the "scenario" table in the database
+     */
     private final ScenarioRepository scenarioRepository;
+
+    /**
+     * Mapper to map all Task data transfer objects and Task entity between each other
+     */
     private final TaskMapper taskMapper;
+
+    /**
+     * ImageResizer class to resize images
+     */
     private final ImageResizer imageResizer;
 
+
+    /**
+     * Creates a new task
+     *
+     * @param request object that contains all necessary data about task to create
+     */
     public void save(TaskRequestDto request) {
         Task task = new Task();
-        // TODO: add custom exception to or else throw;
         Scene scene = sceneRepository.findById(request.getSceneId()).orElseThrow();
         Scenario scenario = scenarioRepository.findById(request.getScenarioId()).orElseThrow();
 
@@ -43,6 +70,12 @@ public class TaskService {
         taskRepository.save(task);
     }
 
+    /**
+     * Finds all tasks that are allowed to a given user
+     *
+     * @param id id of a user
+     * @return List of TaskPreview object, where each contains dta about each task
+     */
     @SneakyThrows
     public List<TasksPreview> getTasksPreview(Long id) {
         List<Task> tasks = taskRepository.findByUserId(id);
@@ -60,6 +93,12 @@ public class TaskService {
         return tasksPreviews;
     }
 
+    /**
+     * Returns TaskFilesDto object that contains task files with provided TaskFilesRequest object
+     *
+     * @param request request that contains id and language of a task
+     * @return TaskFilesDto object
+     */
     public TaskFilesDto getTaskFiles(TaskFilesRequest request) {
         Task task = taskRepository.findById(request.getTaskId()).orElseThrow();
         TaskFilesDto files = new TaskFilesDto();
@@ -75,6 +114,11 @@ public class TaskService {
         return files;
     }
 
+    /**
+     * Finds in database all tasks and returns names of each one
+     *
+     * @return List of TaskNames object, where each contains name of the task
+     */
     public List<TaskNames> getTaskNames() {
         return taskRepository.findAll().stream()
                 .map(task -> new TaskNames(task.getId(), task.getName()))

@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data Transfer Object request that represents task to create
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

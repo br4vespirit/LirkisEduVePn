@@ -4,6 +4,9 @@ import com.tuke.lirkiseduvepnservice.exception.*;
 import com.tuke.lirkiseduvepnservice.model.dto.AuthenticationRequest;
 import com.tuke.lirkiseduvepnservice.model.dto.RegisterRequest;
 import com.tuke.lirkiseduvepnservice.service.AuthenticationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication")
 public class AuthenticationController {
 
     /**
@@ -31,6 +35,20 @@ public class AuthenticationController {
      * @param request request with a registration data
      * @return only status OK or BAD_REQUEST
      */
+    @Operation(
+            description = "Endpoint to register a new user in application with given RegisterRequest object",
+            summary = "Register a user",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns nothing. User was registered",
+                            responseCode = "200"
+                    ),
+                    @ApiResponse(
+                            description = "Returns nothing. User wasn't registered",
+                            responseCode = "400"
+                    )
+            }
+    )
     @PostMapping("/registration")
     public ResponseEntity<Void> register(@RequestBody RegisterRequest request) {
         return authenticationService.register(request) ? new ResponseEntity<>(HttpStatus.OK)
@@ -47,6 +65,16 @@ public class AuthenticationController {
      * @throws EmailNotExistsException    exception that will be thrown if user enters email that doesn't exist
      * @throws EmailNotVerifiedException  exception that will be thrown if user enters email that is not confirmed
      */
+    @Operation(
+            description = "Endpoint to authenticate a user in application with given AuthenticationRequest object",
+            summary = "Authenticate a user",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns nothing. User was authenticated",
+                            responseCode = "200"
+                    )
+            }
+    )
     @PostMapping("/authenticate")
     public ResponseEntity<Void> authenticate(@RequestBody AuthenticationRequest request) throws
             IncorrectCurrentPasswordException,
@@ -65,6 +93,16 @@ public class AuthenticationController {
      * @param token               confirmation token that will be confirmed
      * @param httpServletResponse http response which will redirect user to an Angular login page after he pressed "Activate" link in his mailbox
      */
+    @Operation(
+            description = "Endpoint to confirm registration with provided confirmation token",
+            summary = "Confirm registration",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns nothing. Registration is confirmed. User is redirected to an Angular page",
+                            responseCode = "200"
+                    )
+            }
+    )
     @GetMapping("/confirm")
     public void confirm(@RequestParam("token") String token, HttpServletResponse httpServletResponse) {
         authenticationService.confirmToken(token);

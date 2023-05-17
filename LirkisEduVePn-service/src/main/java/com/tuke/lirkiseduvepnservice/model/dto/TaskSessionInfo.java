@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
+/**
+ * Data Transfer Object response that represents information of each task session
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when unknown directory was found inside .zip file
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Unknown directory")
 public class UnknownDirectoryException extends RuntimeException {
 

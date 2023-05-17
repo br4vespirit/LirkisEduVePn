@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when incorrect language extension provided (not ISO 3166-1)
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Incorrect language extension")
 public class IncorrectLanguageExtensionException extends RuntimeException {
 

@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Data Transfer Object request that represents Scenario to create
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
