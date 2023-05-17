@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Data Transfer Object that represents response of firing attempt
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

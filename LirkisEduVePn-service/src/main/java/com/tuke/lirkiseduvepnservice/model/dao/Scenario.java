@@ -10,6 +10,14 @@ import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.util.List;
 
+/**
+ * Represents a scenario of tasks in application. A scenario is defined of .pnml or .cpn file
+ * which described how user should perform when completing a session. Also, it consists of language file
+ * (on what language text will be represented in application) and some photos of scenario.
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

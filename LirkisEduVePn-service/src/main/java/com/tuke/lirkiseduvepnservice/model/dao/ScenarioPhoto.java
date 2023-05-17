@@ -8,6 +8,12 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
+/**
+ * Represents a photo of Scenario entity. The photo is saved in a byte[] format inside the database
+ *
+ * @author Dmytro Demianenko
+ * @version 1.0
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serial;
 
+/**
+ * Exception that throws when unknown file was found inside .zip file
+ */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Unknown file")
 public class UnknownFileException extends RuntimeException {
 
