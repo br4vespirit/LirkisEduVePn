@@ -2,15 +2,6 @@
   <mat-icon (click)="closeDialog()" style="cursor: pointer">close</mat-icon>
 </div>
 <p class="boldText heading">Select task</p>
-<!--<div class="slide-box">-->
-
-<!--</div>-->
-<!--<div *ngFor="let task of tasks; let i=index" style="margin-bottom: 20px;" class="quizOption">-->
-<!--  {{task.name}}-->
-<!--  <button (click)="openScenarioPreview(i)" style="margin-left: 10px">Preview Scenario</button>-->
-<!--  <button (click)="openScenePreview(i)" style="margin-left: 10px">Preview Scene</button>-->
-<!--  <button (click)="startTask(i)" style="margin-left: 10px">Start</button>-->
-<!--</div>-->
 
 <div class="quizOption" *ngFor="let task of currentTasks; let i=index" style="margin-bottom: 20px;">
     <div class="description">
@@ -30,8 +21,6 @@
       </p>
     </div>
   <div>
-<!--    <button (click)="openScenarioPreview(i)" class="mainButton">Preview Scenario</button>-->
-<!--    <button (click)="openScenePreview(i)" class="mainButton">Preview Scene</button>-->
     <span *ngIf="task.openSessions.length === 0">
       <button (click)="startTask(i)" class="mainButton">Start</button>
     </span>
@@ -40,7 +29,6 @@
       <button (click)="continueTask(i)" class="mainButton" style="color: #F6F6F6 !important; background-color: #6ba464; padding: 0.3rem 2rem;">Continue</button>
     </span>
   </div>
-<!--  <a class="mainButton" routerLink="/scene" (click)="closeDialog()">Start</a>-->
 </div>
 <div style="margin-top: 20px">
   <button (click)="prev_sessions()" [disabled]="page === 0" mat-icon-button>

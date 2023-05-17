@@ -48,7 +48,7 @@ public class User implements UserDetails {
     )
     private List<Group> groups;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<TaskSession> taskSessions;
 
     private boolean isEnabled;

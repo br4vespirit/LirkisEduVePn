@@ -109,6 +109,8 @@ export class PreviewTasksComponent implements OnInit, OnDestroy {
       this.tasks_preview_subscription = this._client.getTasksPreview(this.profile.id).subscribe(data => {
         this.tasks = data as TaskPreview[];
         this.selectedLanguages = this.tasks.map(t => t.scenario.languages[0])
+        this.max_pages = Math.ceil(this.tasks.length / this.items_per_page);
+        this.currentTasks = this.tasks.slice(0, Math.min(this.tasks.length, this.items_per_page));
       })
     });
   }

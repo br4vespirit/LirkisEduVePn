@@ -23,15 +23,40 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+/**
+ * ScenarioService class contains methods to manage scenarios
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ScenarioService {
+
+    /**
+     * Repository for working with the "scenario" table in the database
+     */
     private final ScenarioRepository scenarioRepository;
+
+    /**
+     * Mapper to map all Scenario data transfer objects and Scenario entity between each other
+     */
     private final ScenarioMapper scenarioMapper;
+
+    /**
+     * ImageResizer class to resize images
+     */
     private final ImageResizer imageResizer;
+
+    /**
+     * The PhotoExtractor class contains methods for validating and extracting photo files based on their file extensions.
+     */
     private final PhotoExtractor photoExtractor;
 
+    /**
+     * Creates a new scenario. An object (request) containing a zip file will be received,
+     * from which all the necessary files for the scenario will be extracted
+     *
+     * @param request object that contains all necessary data about scenario to create
+     */
     @Transactional
     public void saveScenario(ScenarioRequest request) {
         MultipartFile file = request.getFile();
@@ -99,6 +124,14 @@ public class ScenarioService {
         }
     }
 
+    /**
+     * The method handles the file in the LanguageFile entity. The file must necessarily consist of two extensions:
+     * the file language in the form of ISO 3166-1, and at the end of the format must be json
+     *
+     * @param filename name of the file
+     * @param content  file content
+     * @return LanguageFile entity of hte parsed file
+     */
     private LanguageFile parseLanguageFile(String filename, byte[] content) {
         LanguageFile languageFile;
         if (filename.length() < 9 || !filename.endsWith(".json")) {
@@ -121,6 +154,12 @@ public class ScenarioService {
         return languageFile;
     }
 
+    /**
+     * The findLanguage method is used to find a LanguageExtension based on the provided language name.
+     *
+     * @param lang A String representing the name of the language to find.
+     * @return The LanguageExtension matching the provided name, or null if no match is
+     */
     private LanguageExtension findLanguage(String lang) {
         LanguageExtension extension = null;
         for (LanguageExtension value : LanguageExtension.values()) {
@@ -132,6 +171,13 @@ public class ScenarioService {
         return extension;
     }
 
+    /**
+     * The findAll method retrieves a List of all scenarios from the scenarioRepository and maps them
+     * to a List of ScenarioPreviewResponse objects using the scenarioMapper. It then calls the private
+     * resizeImages method to resize the photos in each ScenarioPreviewResponse object.
+     *
+     * @return A List of ScenarioPreviewResponse objects representing all scenarios in the scenarioRepository, with their photos resized.
+     */
     public List<ScenarioPreviewResponse> findAll() {
         List<ScenarioPreviewResponse> response = scenarioRepository.findAll()
                 .stream()
@@ -145,6 +191,12 @@ public class ScenarioService {
         return response;
     }
 
+    /**
+     * The resizeImages method takes a List of ScenarioPreviewResponse objects and resizes the
+     * photos in each object using the ImageResizer service.
+     *
+     * @param scenarios A List of ScenarioPreviewResponse objects to resize the photos of.
+     */
     private void resizeImages(List<ScenarioPreviewResponse> scenarios) {
         for (ScenarioPreviewResponse response : scenarios) {
             List<byte[]> resizedPhotos = imageResizer.resizeImages(response.getPhotos());

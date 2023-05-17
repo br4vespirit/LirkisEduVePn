@@ -17,16 +17,39 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * SceneService class contains methods to manage scenes
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class SceneService {
 
+    /**
+     * PhotoExtractor class for extraction photos
+     */
     private final PhotoExtractor photoExtractor;
+
+    /**
+     * Repository for working with the "scene" table in the database
+     */
     private final SceneRepository sceneRepository;
+
+    /**
+     * Mapper to map all Scene data transfer objects and Scene entity between each other
+     */
     private final SceneMapper sceneMapper;
+
+    /**
+     * ImageResizer class to resize images
+     */
     private final ImageResizer imageResizer;
 
+    /**
+     * Registers a scene in the database
+     *
+     * @param request object that contains all necessary data about scene to register
+     */
     @Transactional
     public void saveScene(SceneRequest request) {
         MultipartFile file = request.getFile();
@@ -47,6 +70,11 @@ public class SceneService {
         sceneRepository.save(scene);
     }
 
+    /**
+     * Returns all registered scene in the database
+     *
+     * @return list of ScenePreviewResponse objects
+     */
     public List<ScenePreviewResponse> findAll() {
         List<ScenePreviewResponse> response = sceneRepository.findAll()
                 .stream()
@@ -60,6 +88,11 @@ public class SceneService {
         return response;
     }
 
+    /**
+     * Resizes photo of each provided scene in a list
+     *
+     * @param scenes list of scenes
+     */
     private void resizeImage(List<ScenePreviewResponse> scenes) {
         for (ScenePreviewResponse response : scenes) {
             byte[] resizedPhotos = null;

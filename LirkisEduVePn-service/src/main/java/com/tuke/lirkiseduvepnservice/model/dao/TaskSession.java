@@ -46,6 +46,6 @@ public class TaskSession {
     @JoinColumn(name = "task_id", nullable = false)
     private Task task;
 
-    @OneToMany(mappedBy = "taskSession")
+    @OneToMany(mappedBy = "taskSession", cascade = CascadeType.REMOVE)
     private List<FiringAttempt> firingAttempts;
 }

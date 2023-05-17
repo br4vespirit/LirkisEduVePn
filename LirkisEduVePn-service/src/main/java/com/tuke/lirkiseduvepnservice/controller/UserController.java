@@ -6,6 +6,9 @@ import com.tuke.lirkiseduvepnservice.exception.PasswordMatchesException;
 import com.tuke.lirkiseduvepnservice.model.dto.ProfileUpdateRequest;
 import com.tuke.lirkiseduvepnservice.model.dto.UserProfileDto;
 import com.tuke.lirkiseduvepnservice.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
+@Tag(name = "User")
 public class UserController {
 
     /**
@@ -34,6 +38,20 @@ public class UserController {
      * @param servletRequest request which contains JWT token inside Authorization header
      * @return user profile data
      */
+    @Operation(
+            description = "Get user data by JWT token provided in HTTP request",
+            summary = "Get user profile data",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns UserProfileDto object with all necessary data",
+                            responseCode = "200"
+                    ),
+                    @ApiResponse(
+                            description = "Returns null if user with provided JWT was not found",
+                            responseCode = "400"
+                    )
+            }
+    )
     @GetMapping("/profile")
     public ResponseEntity<UserProfileDto> get(HttpServletRequest servletRequest) {
         String jwtToken = servletRequest.getHeader("Authorization");
@@ -51,6 +69,20 @@ public class UserController {
      * @throws PasswordMatchesException          when user tries to change his password and entered new password and repeated new password do not matches
      * @throws IncorrectCurrentPasswordException when user tries to change his password, but he entered incorrectly his current password
      */
+    @Operation(
+            description = "Update user with ProfileUpdateRequest object which is passed through request body",
+            summary = "Update user",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns updated UserProfileDto object",
+                            responseCode = "200"
+                    ),
+                    @ApiResponse(
+                            description = "Returns null if user with provided JWT was not found",
+                            responseCode = "400"
+                    )
+            }
+    )
     @PatchMapping("/profile")
     public ResponseEntity<UserProfileDto> update(@RequestBody ProfileUpdateRequest request) throws
             IncorrectCurrentPasswordException,
@@ -66,6 +98,16 @@ public class UserController {
      *
      * @return list of users profiles
      */
+    @Operation(
+            description = "Finds all users registered in the application",
+            summary = "Find all users",
+            responses = {
+                    @ApiResponse(
+                            description = "Returns list of registered users in application",
+                            responseCode = "200"
+                    )
+            }
+    )
     @GetMapping("/all")
     public ResponseEntity<List<UserProfileDto>> findAll() {
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
