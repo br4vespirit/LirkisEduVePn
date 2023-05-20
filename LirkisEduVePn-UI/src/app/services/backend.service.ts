@@ -14,7 +14,8 @@ import {TaskSessionFinishRequest} from "../models/task-session-finish-request.mo
 })
 export class BackendService {
 
-  private API_URL: string = "http://localhost:8080/api/v1";
+  // private API_URL: string = "http://localhost:8080/api/v1";
+  private API_URL: string = "http://147.232.205.222:8080/api/v1";
 
   private headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
