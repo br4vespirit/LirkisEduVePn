@@ -8,6 +8,7 @@ import '../../js/components/petriNetSim.component.js';
 import '../../js/components/sceneLanguage.component.js';
 import '../../js/components/label.component.js';
 import '../../js/components/toggleLabelVisibility.component.js';
+import '../../js/components/userDashboard.component.js';
 import {TaskFiles} from "../../../../models/task-files.model";
 import {ActivatedRoute} from "@angular/router";
 import {BackendService} from "../../../../services/backend.service";

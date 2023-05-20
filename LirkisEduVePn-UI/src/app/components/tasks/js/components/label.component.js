@@ -9,7 +9,7 @@ AFRAME.registerComponent('label', {
     const plane = document.createElement('a-plane');
     plane.setAttribute('width', '1');
     plane.setAttribute('height', '0.2');
-    plane.setAttribute('color', '#fff');
+    plane.setAttribute('material', 'color: white; side: double; shader: flat')
     plane.setAttribute('position', '0 0 0');
     plane.setAttribute('rounded', 'radius: 0.5');
 

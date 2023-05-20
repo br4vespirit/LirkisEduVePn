@@ -105,7 +105,9 @@
       super-hands="colliderEvent: raycaster-intersection;
                              colliderEventProperty: els;
                              colliderEndEvent:raycaster-intersection-cleared;
-                             colliderEndEventProperty: clearedEls;">
+                             colliderEndEventProperty: clearedEls;
+                             grabStartButtons: triggerdown;
+                             grabEndButtons: triggerup;">
       <a-entity
         raycaster="objects: .interactible, .P3C, .P3I"
         cursor="fuse: true; fuseTimeout: 0"
@@ -114,6 +116,8 @@
         position="0 0 -1">
       </a-entity>
     </a-entity>
+    <a-entity sphere-collider="objects: a-circle" super-hands hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+    <a-entity sphere-collider="objects: a-circle" super-hands hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
   </a-entity>
 
   <!-- Map and navigationMesh ---------------------------------------------------------------------->

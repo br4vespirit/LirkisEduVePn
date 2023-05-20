@@ -116,6 +116,15 @@ AFRAME.registerComponent('petri-net-sim', {
       else place.ifPlaceNotFound();
       data.activePlace = data.message;
     };
+
+    // when user click on end session button
+    this.el.addEventListener('endSession', () => {
+      if(!sessionComplete) {
+        userActivityLogger.endSession(sessionID, new Date(), false);
+        console.log('ended session');
+        sessionComplete = true;
+      }
+    })
   },
 
   update: function (oldData) {
