@@ -1,10 +1,7 @@
 import {endSession} from "../modules/userActivityLogger";
 
 AFRAME.registerComponent('dashboard', {
-  schema: {
-    // label: {type: 'string', default: ''},
-    // type: {type: 'string', default: 'transition'}
-  },
+  schema: {},
 
   init: function () {
     this.scene = this.el.sceneEl;
@@ -28,8 +25,8 @@ AFRAME.registerComponent('dashboard', {
     // task progress info
     let tasks = [];
     transitions.forEach(el => {
-      if (el.transitionName.includes('confirm')) {
-        const taskName = el.transitionName.replace('confirm', '');
+      if (el.transitionName.includes('Confirm')) {
+        const taskName = el.transitionName.replace('Confirm', '');
         tasks.push(taskName);
       }
     });
@@ -120,15 +117,15 @@ AFRAME.registerComponent('dashboard', {
     tasks.sort();
     let yPos = 1.05; // starting y-position
     tasks.forEach(el => {
-      this.createProgressCircle(el, `-1.2 ${yPos} 0.01`)
-      this.createTextElement(el, `-1 ${yPos} 0.01`);
+      this.createProgressCircle(el, `-1.7 ${yPos} 0.01`)
+      this.createTextElement(el, `-0.9 ${yPos} 0.01`);
       yPos -= 0.2; // decrement the y-position by 0.2
     });
   },
 
   createProgressCircle: function (name, position){
     const progressCircle = document.createElement('a-circle');
-    progressCircle.setAttribute('id', `${name}confirmProgress`);
+    progressCircle.setAttribute('id', `${name}ConfirmProgress`);
     progressCircle.setAttribute('position', position);
     progressCircle.setAttribute('scale', '0.07 0.07 0.07');
     progressCircle.setAttribute('material', 'color: red; side: double; shader: flat');

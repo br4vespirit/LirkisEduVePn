@@ -60,7 +60,7 @@ const showFailMessage = () => {
 
 export const transitions = [
   {
-    transitionName: 'P3Cplace',
+    transitionName: 'JewelsCplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -81,7 +81,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3Iplace',
+    transitionName: 'JewelsIplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -102,7 +102,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3confirm',
+    transitionName: 'JewelsConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -118,7 +118,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3Cdisplace',
+    transitionName: 'JewelsCdisplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -135,7 +135,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3Idisplace',
+    transitionName: 'JewelsIdisplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -152,7 +152,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Iselect',
+    transitionName: 'ReformsIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -169,7 +169,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Iunselect',
+    transitionName: 'ReformsIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -186,7 +186,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Cunselect',
+    transitionName: 'ReformsCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -203,7 +203,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Cselect',
+    transitionName: 'ReformsCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -220,7 +220,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2confirm',
+    transitionName: 'ReformsConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -236,7 +236,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Cunselect',
+    transitionName: 'MonarchCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -253,7 +253,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Cselect',
+    transitionName: 'MonarchCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -270,7 +270,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Iselect',
+    transitionName: 'MonarchIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -287,7 +287,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Iunselect',
+    transitionName: 'MonarchIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -304,7 +304,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1confirm',
+    transitionName: 'MonarchConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -319,7 +319,7 @@ export const transitions = [
 
     }
   }, {
-    transitionName: 'P4Cplace',
+    transitionName: 'ImportCplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -340,7 +340,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P4Iplace',
+    transitionName: 'ImportIplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -361,7 +361,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P4confirm',
+    transitionName: 'ImportConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -377,7 +377,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P4Cdisplace',
+    transitionName: 'ImportCdisplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -394,7 +394,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P4Idisplace',
+    transitionName: 'ImportIdisplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -411,7 +411,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P6Cunselect',
+    transitionName: 'CounterReformCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -428,7 +428,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P6Cselect',
+    transitionName: 'CounterReformCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -445,7 +445,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P6Iselect',
+    transitionName: 'CounterReformIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -462,7 +462,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P6Iunselect',
+    transitionName: 'CounterReformIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -479,7 +479,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P6confirm',
+    transitionName: 'CounterReformConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -495,7 +495,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P7Cunselect',
+    transitionName: 'DynastyCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -512,7 +512,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P7Cselect',
+    transitionName: 'DynastyCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -529,7 +529,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P7Iselect',
+    transitionName: 'DynastyIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -546,7 +546,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P7Iunselect',
+    transitionName: 'DynastyIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -563,7 +563,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P7confirm',
+    transitionName: 'DynastyConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -579,7 +579,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P8Cunselect',
+    transitionName: 'TurkStrikeCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -596,7 +596,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P8Cselect',
+    transitionName: 'TurkStrikeCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -613,7 +613,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P8Iselect',
+    transitionName: 'TurkStrikeIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -630,7 +630,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P8Iunselect',
+    transitionName: 'TurkStrikeIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -647,7 +647,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P8confirm',
+    transitionName: 'TurkStrikeConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -663,7 +663,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finSucc',
+    transitionName: 'finalSucc',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -678,7 +678,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail1',
+    transitionName: 'finalFail1',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -692,7 +692,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail2',
+    transitionName: 'finalFail2',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -706,7 +706,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail3',
+    transitionName: 'finalFail3',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -720,7 +720,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail4',
+    transitionName: 'finalFail4',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -734,7 +734,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail6',
+    transitionName: 'finalFail6',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -748,7 +748,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail7',
+    transitionName: 'finalFail7',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -762,7 +762,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail8',
+    transitionName: 'finalFail8',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -779,7 +779,7 @@ export const transitions = [
 
 export const places = [
   {
-    placeName: 'P1',
+    placeName: 'Monarch',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -789,7 +789,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P2',
+    placeName: 'Reforms',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -799,7 +799,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P3',
+    placeName: 'Jewels',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -811,7 +811,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P4',
+    placeName: 'Import',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -823,7 +823,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P5',
+    placeName: 'Renesance',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -835,7 +835,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P6',
+    placeName: 'CounterReform',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -845,7 +845,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P7',
+    placeName: 'Dynasty',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -855,7 +855,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P8',
+    placeName: 'TurkStrike',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },

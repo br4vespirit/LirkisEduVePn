@@ -134,7 +134,7 @@
                              colliderEndEvent:raycaster-intersection-cleared;
                              colliderEndEventProperty: clearedEls;">
       <a-entity
-        raycaster="objects: .interactible, .P3C, .P3I, .P4C, .P4I, .P5C"
+        raycaster="objects: .interactible, .JewelsC, .JewelsI, .ImportC, .ImportI"
         cursor="fuse: true; fuseTimeout: 0"
         geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.009"
         material="color: green; shader: flat"
@@ -411,9 +411,9 @@
   </a-entity>
   <!-- Exposition Room 1 ------------------------------------------------------------------------------->
   <a-box
-    id="place1"
+    id="Monarch"
     physics-collider
-    collision-detector="collisionEvent: P1; clearedCollisionEvent: Roaming"
+    collision-detector="collisionEvent: Monarch; clearedCollisionEvent: Roaming"
     static-body
     scale="7.920 0.2 7"
     position="-5.889 1.167 10.203"
@@ -421,14 +421,14 @@
     visible="false">
   </a-box>
   <a-image
-    id="taskP1"
+    id="taskMonarch"
     [attr.src]="'#infoPanel'"
     height="1.170"
     width="1.2"
     [attr.position]="'-5.7592 2.3 13.02616'"
     rotation="-8.68 180 0"
     visible="false">
-    <a-entity label="label: P1confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: MonarchConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -439,7 +439,7 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P1question"
+      id="MonarchQuestion"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Kto nastúpil v roku 1740 na Habsburgský trón? Označte jeho alebo jej portrét."
@@ -448,9 +448,9 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P1confirm"
+      id="MonarchConfirm"
       class="interactible"
-      clk-single-event-handler="name: P1confirm; affectedElements: P1confirmProgress"
+      clk-single-event-handler="name: MonarchConfirm; affectedElements: MonarchConfirmProgress"
       position="0 -0.29141 0.01752"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -474,11 +474,11 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P1Cselect/P1Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: MonarchCselect/MonarchCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P1select1"
+        id="MonarchSelect1"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P1Cselect; secondToggleEvent: P1Cunselect"
+        clk-multi-event-handler="firstToggleEvent: MonarchCselect; secondToggleEvent: MonarchCunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -501,7 +501,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P1MariaTerezia"
+            id="MonarchMariaTerezia"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Mária Terézia"
@@ -510,7 +510,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P1MariaTereziaDescription"
+            id="MonarchMariaTereziaDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Mária Terézia (1717-1780), najstaršia dcéra nemeckého cisára Karola VI., posledného mužského potomka Habsburgovcov, nastúpila na trón na základe tzv. pragmatické sankcie. Aj keď nebola vychovávaná ako budúca vládkyňa, dokázala sa tejto úlohy naplno zhostiť. Vyhýbala sa konfliktom a svoje panovnícke rozhodnutia konzultovala s okruhom spolupracovníkov. Jej manželstvo napriek tomu, že bolo politicky dohodnutým sobášom bolo veľmi šťastné. Okrem vladárskych povinností si Mária Terézia príkladne plnila aj materské povinnosti. Mala 16 deti."
@@ -533,11 +533,11 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: MonarchIselect/MonarchIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P1select2"
+        id="MonarchSelect2"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
+        clk-multi-event-handler="firstToggleEvent: MonarchIselect; secondToggleEvent: MonarchIunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -560,7 +560,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P1Karol"
+            id="MonarchKarol"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Karol VI. Habsburský"
@@ -569,7 +569,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P1KarolDescription"
+            id="MonarchKarolDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Karol VI. Habsburský (1685 - 1740) bol rakúsky arcivojvoda, rímskonemecký cisár, španielsky, uhorský a český kráľ z rodu Habsburgovcov, mladší syn cisára Leopolda I. a jeho tretej manželky Eleonóry Magdalény Falcko-neuburskej. Po svojom nástupe na cisársky trón a uzavretím Satmárskeho mieru zriadil schválením uhorského snemu stálu armádu, čo mu umožnilo zlikvidovať posledné zvyšky osmanského panstva v Uhorsku. Po definitívnom vytlačení Turkov z Uhorska nastúpil kurz hospodárskej a politickej konsolidácie monarchie."
@@ -592,11 +592,11 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: MonarchIselect/MonarchIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P1select3"
+        id="MonarchSelect3"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
+        clk-multi-event-handler="firstToggleEvent: MonarchIselect; secondToggleEvent: MonarchIunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -619,7 +619,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P1Jozef"
+            id="MonarchJozef"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Jozef II. Habsburský"
@@ -628,7 +628,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P1JozefDescription"
+            id="MonarchJozefDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Jozef II. (1741 - 1790) bol pripravovaný na to, že sa raz stane panovníkom. Ako šesťročný vedel písať a čítať vo viacerých jazykoch. Dostal dôkladné vzdelanie, jeho učiteľmi boli významní osvietenci. Nedal sa korunovať za uhorského a českého kráľa, preto ho šľachta posmešne nazývala „klobúkový kráľ”. Ešte v roku 1765 však bol korunovaný za nemeckého cisára. Už ako spoluvládca Mánie Terézie kritizoval pomalé a nedôsledné zavádzanie reforiem."
@@ -651,11 +651,11 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P1Iselect/P1Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: MonarchIselect/MonarchIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P1select4"
+        id="MonarchSelect4"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P1Iselect; secondToggleEvent: P1Iunselect"
+        clk-multi-event-handler="firstToggleEvent: MonarchIselect; secondToggleEvent: MonarchIunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -678,7 +678,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P1Frantisek"
+            id="MonarchFrantisek"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="František I. Štefan Lotrinský"
@@ -687,7 +687,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P1FranisekDescription"
+            id="MonarchFranisekDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="František Štefan I. Lotrinský (1708 - 1765) bol lotrinský vojvoda, toskánsky veľkovojvoda a cisár svätej ríše Rímskej. Svoje nie veľmi úspešné pôsobenie ako cisár si plne vynahradil v podnikateľskej oblasti, v ktorej prejavil mimoriadne nadanie. Základom jeho majetku sa stalo ohromné dedičstvo, ktoré mu poslúžilo na rozvoj podnikania. Okrem manufaktúr založil niekoľko bánk, stal sa hlavným dodávateľom pre habsburskú armádu, počas sedemročnej vojny dokonca zásoboval i armádu pruského kráľa Fridricha II."
@@ -702,9 +702,9 @@
 
   <!-- Exposition Room 2 ------------------------------------------------------------------------------->
   <a-box
-    id="place2"
+    id="Reforms"
     physics-collider
-    collision-detector="collisionEvent: P2; clearedCollisionEvent: Roaming"
+    collision-detector="collisionEvent: Reforms; clearedCollisionEvent: Roaming"
     static-body
     scale="7.92 0.2 7"
     position="-5.889 1.167 -3.74901"
@@ -713,14 +713,14 @@
   </a-box>
 
   <a-image
-    id="taskP2"
+    id="taskReforms"
     [attr.src]="'#infoPanel'"
     visible="false"
     height="1.170"
     width="1.2"
     [attr.position]="'-5.7592 2.3 -6.5'"
     rotation="-8.68 0 0">
-    <a-entity label="label: P2confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: ReformsConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -731,7 +731,7 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P2question"
+      id="ReformsQuestion"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Označte exponáty s reformami, ktoré zaviedla Mária Terézia."
@@ -740,9 +740,9 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P2confirm"
+      id="ReformsConfirm"
       class="interactible"
-      clk-single-event-handler="name: P2confirm; affectedElements: P2confirmProgress"
+      clk-single-event-handler="name: ReformsConfirm; affectedElements: ReformsConfirmProgress"
       position="0 -0.30236 0.00878"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -776,9 +776,9 @@
       rotation="0 0 -60">
       <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P2select1"
+        id="ReformsSelect1"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
+        clk-multi-event-handler="firstToggleEvent: ReformsCselect; secondToggleEvent: ReformsCunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -801,7 +801,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P2ZdravotnaReforma"
+            id="ReformsZdravotnaReforma"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Zdravotná reforma"
@@ -810,7 +810,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P2ZdravotnaReformaDescription"
+            id="ReformsZdravotnaReformaDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Zriadenie komisií, ktoré mali chrániť obyvateľstvo pred nákazlivými chorobami a tiež mali vykonávať osvetu u prostého obyvateľstva. Kontrolovali zdravotnícke zariadenia, bojovali proti šíreniu moru a iných nákazlivých chorôb a radili obyvateľstvu stavať murované domy, nie drevené. Komisie nariaďovali aj očkovanie proti chorobám."
@@ -828,7 +828,7 @@
     position="-8.768 2.640 -5.780"
     rotation="0 180 60">
     <a-text
-      id="P2TezezianskyUrbarBook"
+      id="ReformsTezezianskyUrbarBook"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="TEREZIÁNSKY URBÁR"
@@ -841,11 +841,11 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
-      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: ReformsCselect/ReformsCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P2select2"
+        id="ReformsSelect2"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
+        clk-multi-event-handler="firstToggleEvent: ReformsCselect; secondToggleEvent: ReformsCunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -868,7 +868,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P2TerezianskyUrbar"
+            id="ReformsTerezianskyUrbar"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Tereziánsky urbár"
@@ -877,7 +877,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P2TerezianskyUrbarDescription"
+            id="ReformsTerezianskyUrbarDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Tereziánsky urbár určoval veľkosť poddanskej závislosti, na základe ktorej ustanovil povinnosti poddaných voči zemepánovi. Tak sa zo súkromno-právneho vzťahu medzi zemepánom a poddaným stal verejnoprávny vzťah, čím sa zlepšilo sociálne postavenie poddaných. Urbáre boli písané v jazyku ľudu, teda v slovenských oblastiach po slovensky. Urbárska regulácia upravovala poddanské pomery až do roku 1848, keď bolo poddanstvo zrušené."
@@ -895,7 +895,7 @@
     position="-2.904 2.640 -2.599"
     rotation="0 0 60">
     <a-text
-      id="P2SkolskyPoriadokBook"
+      id="ReformsSkolskyPoriadokBook"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="VŠEOBECNÝ ŠKOLSKÝ PORIADOK"
@@ -908,11 +908,11 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
-      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: ReformsCselect/ReformsCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P2select3"
+        id="ReformsSelect3"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P2Cselect; secondToggleEvent: P2Cunselect"
+        clk-multi-event-handler="firstToggleEvent: ReformsCselect; secondToggleEvent: ReformsCunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -935,7 +935,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P2SkolskyPoriadok"
+            id="ReformsSkolskyPoriadok"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Všeobecný školský poriadok"
@@ -944,7 +944,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P2SkolskyPoriadokDescription"
+            id="ReformsSkolskyPoriadokDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Podľa neho malo nárok na vzdelanie každé dieťa na území habsburskej monarchie, bez ohľadu na pôvod, miesto bydliska alebo pohlavie. V každej dedine sa mala založiť škola, v ktorej sa deti mali učiť tzv. trivium, teda čítať, písať a počítať, čím sa položili základy všeobecnej gramotnosti.  Všeobecný školský poriadok rozdelil školy na štyri základné typy  Ľudové školy (triviálne, hlavné a normálne),  Latinské gramatické školy, Gymnáziá a Univerzity a lýceá."
@@ -962,7 +962,7 @@
     position="-2.904 2.640 -5.780"
     rotation="0 0 60">
     <a-text
-      id="P2PatentBook"
+      id="ReformsPatentBook"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="PATENT O ZRUŠENÍ NEVOĽNÍCTVA"
@@ -975,11 +975,11 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
-      <a-entity label="label: P2Iselect/P2Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: ReformsIselect/ReformsIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P2select4"
+        id="ReformsSelect4"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P2Iselect; secondToggleEvent: P2Iunselect"
+        clk-multi-event-handler="firstToggleEvent: ReformsIselect; secondToggleEvent: ReformsIunselect"
         material="src: #unselected; side: double; shader: flat"
         radius="0.15"
         position="0 0 -0.60927"
@@ -1002,7 +1002,7 @@
           width="1.5"
           [attr.position]="'-0.19709 1.216 0'">
           <a-text
-            id="P2Patent"
+            id="ReformsPatent"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Patent o zrušení nevoľníctva"
@@ -1011,7 +1011,7 @@
             color="#F2F2F2">
           </a-text>
           <a-text
-            id="P2PatentDescription"
+            id="ReformsPatentDescription"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
             negate="false"
             value="Patent o zrušení nevoľníctva umožnil poddaným, aby sa slobodne sťahovali, sobášili, dávali deti na remeslo a štúdium. Predtým potrebovali súhlas zemepána. Vydanie patentu urýchlilo sťahovanie voľnej pracovnej sily do miest a priemyselných stredísk."
@@ -1070,9 +1070,9 @@
   </a-box>
 
   <a-box
-    id="place3"
+    id="Jewels"
     physics-collider="ignoreSleep: true"
-    collision-detector="collisionEvent: P3; clearedCollisionEvent: Roaming"
+    collision-detector="collisionEvent: Jewels; clearedCollisionEvent: Roaming"
     static-body
     scale="7.920 0.2 20.360"
     position="22.543 1.167 3.142"
@@ -1081,14 +1081,14 @@
   </a-box>
 
   <a-image
-    id="taskP3"
+    id="taskJewels"
     [attr.src]="'#infoPanel'"
     visible="false"
     height="1.170"
     width="1.2"
     [attr.position]="'19.584 2.35122 -4.565'"
     rotation="-8.68 0 0">
-    <a-entity label="label: P3confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: JewelsConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1099,7 +1099,7 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P3question"
+      id="JewelsQuestion"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Nájdite Uhorské korunovačné insígnie v miestnosti a preneste ich na prázdny podstavec napravo."
@@ -1108,9 +1108,9 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P3confirm"
+      id="JewelsConfirm"
       class="interactible"
-      clk-single-event-handler="name: P3confirm; affectedElements: P3confirmProgress"
+      clk-single-event-handler="name: JewelsConfirm; affectedElements: JewelsConfirmProgress"
       position="0 -0.33365 0.004"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -1126,12 +1126,12 @@
 
   <a-entity
     [attr.gltf-model]="'#crown'"
-    class="P3C"
-    id="P3Crown"
+    class="JewelsC"
+    id="JewelsCrown"
     position="22.582 2.456 12.098"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P3Koruna"
+    id="JewelsKoruna"
     position="22.508 2.133 11.528"
     rotation="0 180 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1143,17 +1143,17 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P3Cplace/P3Cdisplace" position="22.508 2.333 11.528" rotation="0 180 0"></a-entity>
+  <a-entity label="label: JewelsCplace/JewelsCdisplace" position="22.508 2.333 11.528" rotation="0 180 0"></a-entity>
 
 
   <a-entity
     [attr.gltf-model]="'#cup'"
-    class="P3I"
-    id="P3Cup"
+    class="JewelsI"
+    id="JewelsCup"
     position="19.548 2.631 8.807"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P3Casa"
+    id="JewelsCasa"
     position="19.985 2.133 8.820"
     rotation="0 90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1165,16 +1165,16 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P3Iplace/P3Idisplace" position="19.985 2.333 8.820" rotation="0 90 0"></a-entity>
+  <a-entity label="label: JewelsIplace/JewelsIdisplace" position="19.985 2.333 8.820" rotation="0 90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#apple_coat'"
-    class="P3C"
-    id="P3Apple"
+    class="JewelsC"
+    id="JewelsApple"
     position="25.467 2.456 12.031"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P3Jablko"
+    id="JewelsJablko"
     position="25.05639 2.13372 11.98706"
     rotation="0 -90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1186,16 +1186,16 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P3Cplace/P3Cdisplace" position="25.05639 2.33372 11.98706" rotation="0 -90 0"></a-entity>
+  <a-entity label="label: JewelsCplace/JewelsCdisplace" position="25.05639 2.33372 11.98706" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#sword'"
-    class="P3C"
-    id="P3Sword"
+    class="JewelsC"
+    id="JewelsSword"
     position="25.426 3.408 8.866"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P3Mec"
+    id="JewelsMec"
     position="25.05639 2.13372 8.82306"
     rotation="0 -90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1207,16 +1207,16 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12;"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P3Cplace/P3Cdisplace" position="25.05639 2.33372 8.82306" rotation="0 -90 0"></a-entity>
+  <a-entity label="label: JewelsCplace/JewelsCdisplace" position="25.05639 2.33372 8.82306" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#mace'"
-    class="P3C"
-    id="P3Mace"
+    class="JewelsC"
+    id="JewelsMace"
     position="19.505 3.773 11.937"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P3Zezlo"
+    id="JewelsZezlo"
     position="19.985 2.133 11.987"
     rotation="0 90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1228,7 +1228,7 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P3Cplace/P3Cdisplace" position="19.985 2.333 11.987" rotation="0 90 0"></a-entity>
+  <a-entity label="label: JewelsCplace/JewelsCdisplace" position="19.985 2.333 11.987" rotation="0 90 0"></a-entity>
 
   <!-- Exposition Room 4 ------------------------------------------------------------------------------->
   <a-box
@@ -1244,9 +1244,9 @@
   </a-box>
 
   <a-box
-    id="place4"
+    id="Import"
     physics-collider="ignoreSleep: true"
-    collision-detector="collisionEvent: P4; clearedCollisionEvent: Roaming"
+    collision-detector="collisionEvent: Import; clearedCollisionEvent: Roaming"
     static-body
     scale="7.920 0.2 20.360"
     position="-18.35 1.167 3.142"
@@ -1255,14 +1255,14 @@
   </a-box>
 
   <a-image
-    id="taskP4"
+    id="taskImport"
     [attr.src]="'#infoPanel'"
     visible="false"
     height="1.170"
     width="1.2"
     [attr.position]="'-15.5 2.35122 11'"
     rotation="-8.68 180 0">
-    <a-entity label="label: P4confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: ImportConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1273,7 +1273,7 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P4question"
+      id="ImportQuestion"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Nájdite Uhorské korunovačné insígnie v miestnosti a preneste ich na prázdny podstavec napravo."
@@ -1282,9 +1282,9 @@
       color="#F2F2F2">
     </a-text>
     <a-text
-      id="P4confirm"
+      id="ImportConfirm"
       class="interactible"
-      clk-single-event-handler="name: P4confirm"
+      clk-single-event-handler="name: ImportConfirm"
       position="0 -0.33365 0.004"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
@@ -1301,12 +1301,12 @@
   <a-entity
     [attr.gltf-model]="'#silk'"
     scale="2.5 2.5 2.5"
-    class="P4C"
-    id="P4Silk"
+    class="ImportC"
+    id="ImportSilk"
     position="-18.407 0.5 -5.5"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P4Silk"
+    id="ImportSilk"
     position="-18.407 2.133 -5.234"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
     negate="false"
@@ -1317,17 +1317,17 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P4Cplace/P4Cdisplace" position="-18.407 2.333 -5.234" rotation="0 0 0"></a-entity>
+  <a-entity label="label: ImportCplace/ImportCdisplace" position="-18.407 2.333 -5.234" rotation="0 0 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#parfume'"
     scale="0.3 0.3 0.3"
-    id="P4Parfume"
-    class="P4C"
+    id="ImportParfume"
+    class="ImportC"
     position="-21.3 2.7 -5.668"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P4Parfume"
+    id="ImportParfume"
     position="-20.936 2.133 -5.668"
     rotation="0 90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1339,18 +1339,18 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P4Cplace/P4Cdisplace" position="-20.936 2.333 -5.668" rotation="0 90 0"></a-entity>
+  <a-entity label="label: ImportCplace/ImportCdisplace" position="-20.936 2.333 -5.668" rotation="0 90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#gold'"
     scale="0.15 0.15 0.15"
     rotation="0 -90 0"
-    id="P4Gold"
-    class="P4I"
+    id="ImportGold"
+    class="ImportI"
     position="-15.448 2.4 -5.668"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P4Gold"
+    id="ImportGold"
     position="-15.848 2.133 -5.668"
     rotation="0 -90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1362,17 +1362,17 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P4Iplace/P4Idisplace" position="-15.848 2.333 -5.668" rotation="0 -90 0"></a-entity>
+  <a-entity label="label: ImportIplace/ImportIdisplace" position="-15.848 2.333 -5.668" rotation="0 -90 0"></a-entity>
 
     <a-entity
       [attr.gltf-model]="'#spice'"
       scale="0.02 0.02 0.02"
-      id="P4Spice"
-      class="P4C"
+      id="ImportSpice"
+      class="ImportC"
       position="-15.448 2.4 -2.509"
       mixin="canGrab"></a-entity>
   <a-text
-    id="P4Spice"
+    id="ImportSpiceText"
     position="-15.848 2.133 -2.509"
     rotation="0 -90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1384,17 +1384,17 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: P4Cplace/P4Cdisplace" position="-15.848 2.333 -2.509" rotation="0 -90 0"></a-entity>
+  <a-entity label="label: ImportCplace/ImportCdisplace" position="-15.848 2.333 -2.509" rotation="0 -90 0"></a-entity>
 
   <a-entity
     [attr.gltf-model]="'#coffee'"
     scale="2 3 3"
-    id="P4Coffee"
-    class="P4I"
+    id="ImportCoffee"
+    class="ImportI"
     position="-21.3 2.4 -2.509"
     mixin="canGrab"></a-entity>
   <a-text
-    id="P4Coffe"
+    id="ImportCoffeText"
     position="-20.940 2.133 -2.509"
     rotation="0 90 0"
     font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
@@ -1406,12 +1406,12 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: PICplace/P4Idisplace" position="-20.940 2.333 -2.509" rotation="0 90 0"></a-entity>
+  <a-entity label="label: ImportCplace/ImportIdisplace" position="-20.940 2.333 -2.509" rotation="0 90 0"></a-entity>
 
   <!-- Exposition Room 5 ------------------------------------------------------------------------------->
   <a-box
-    collision-detector="collisionEvent: P5; clearedCollisionEvent: Roaming"
-    id="place5"
+    collision-detector="collisionEvent: Renesance; clearedCollisionEvent: Roaming"
+    id="Renesance"
     material="color: red; wireframe: true"
     physics-collider="ignoreSleep: true"
     position="-30.7 1.167 3.142"
@@ -1424,7 +1424,7 @@
     [attr.position]="'-30.862 2.3 -6.5'"
     [attr.src]="'#infoPanel'"
     height="1.170"
-    id="taskP5"
+    id="taskRenesance"
     rotation="-8.68 0 0"
     visible="false"
     width="1.2">
@@ -1440,7 +1440,7 @@
     <a-text
       color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      id="P5question"
+      id="RenesanceQuestion"
       negate="false"
       position="-0.411 0.01 0.00816"
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
@@ -1449,10 +1449,10 @@
     <a-text
       align="center"
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P5confirm"
+      clk-single-event-handler="name: RenesanceConfirm"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 2.020"
-      id="P5confirm"
+      id="RenesanceConfirm"
       class="interactible"
       material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
       negate="false"
@@ -1491,7 +1491,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1Frantisek"
+            id="RenesanceDavid"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1500,7 +1500,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1FranisekDescription"
+            id="RenesanceDavidDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1539,7 +1539,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1Frantisek"
+            id="RenesanceMonaLisa"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1548,7 +1548,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1FranisekDescription"
+            id="RenesanceMonaLisaDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1587,7 +1587,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1Frantisek"
+            id="RenesanceVenere"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1596,7 +1596,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1FranisekDescription"
+            id="RenesanceVenereDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1635,7 +1635,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1Frantisek"
+            id="RenesanceMadona"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1644,7 +1644,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P1FranisekDescription"
+            id="RenesanceMadonaDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1704,7 +1704,7 @@
   </a-box>
 
   <a-entity
-    class="P5C"
+    class="RenesanceC"
     geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
     material="color: #363636"
     mixin="canGrab"
@@ -1714,7 +1714,7 @@
       align="center"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 1.16"
-      id="P5DaVinci"
+      id="RenesanceDaVinciText"
       material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
       negate="false"
       position="0 0 -0.026"
@@ -1747,7 +1747,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1Frantisek"
+          id="RenesanceDaVinciText2"
           negate="false"
           position="-0.550 0.6 0"
           text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1756,7 +1756,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1FranisekDescription"
+          id="RenesanceDaVinciDescription"
           negate="false"
           position="-0.550 0 0"
           text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1767,7 +1767,7 @@
   </a-entity>
 
   <a-entity
-    class="P5C"
+    class="RenesanceC"
     geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
     material="color: #363636"
     mixin="canGrab"
@@ -1777,7 +1777,7 @@
       align="center"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 1.16"
-      id="P5DaVinci"
+      id="RenesanceMichelangeloText"
       material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
       negate="false"
       position="0 0 -0.026"
@@ -1810,7 +1810,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1Frantisek"
+          id="RenesanceMichelangeloText2"
           negate="false"
           position="-0.550 0.6 0"
           text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1819,7 +1819,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1FranisekDescription"
+          id="RenesanceMichelangeloDescription"
           negate="false"
           position="-0.550 0 0"
           text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1830,7 +1830,7 @@
   </a-entity>
 
   <a-entity
-    class="P5C"
+    class="RenesanceC"
     geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
     material="color: #363636"
     mixin="canGrab"
@@ -1840,7 +1840,7 @@
       align="center"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 1.16"
-      id="P5DaVinci"
+      id="RenesanceBotticelliText"
       material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
       negate="false"
       position="0 0 -0.026"
@@ -1873,7 +1873,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1Frantisek"
+          id="RenesanceBotticelliText2"
           negate="false"
           position="-0.550 0.6 0"
           text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1882,7 +1882,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1FranisekDescription"
+          id="RenesanceBotticelliDescription"
           negate="false"
           position="-0.550 0 0"
           text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1893,7 +1893,7 @@
   </a-entity>
 
   <a-entity
-    class="P5C"
+    class="RenesanceC"
     geometry="primitive: box; width: 0.5; height: 0.2; depth: 0.05"
     material="color: #363636"
     mixin="canGrab"
@@ -1903,7 +1903,7 @@
       align="center"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 1.16"
-      id="P5DaVinci"
+      id="RenesanceRaffaelText"
       material="color: #363636; flatShading: true; height: 254.55; width: 491.86"
       negate="false"
       position="0 0 -0.026"
@@ -1936,7 +1936,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1Frantisek"
+          id="RenesanceRaffaelText2"
           negate="false"
           position="-0.550 0.6 0"
           text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -1945,7 +1945,7 @@
         <a-text
           color="#F2F2F2"
           font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-          id="P1FranisekDescription"
+          id="RenesanceRaffaelDescription"
           negate="false"
           position="-0.550 0 0"
           text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -1957,8 +1957,8 @@
 
   <!-- Exposition Room 6 ------------------------------------------------------------------------------->
   <a-box
-    collision-detector="collisionEvent: P6; clearedCollisionEvent: Roaming"
-    id="place6"
+    collision-detector="collisionEvent: CounterReform; clearedCollisionEvent: Roaming"
+    id="CounterReform"
     material="color: red; wireframe: true"
     physics-collider
     position="35 1.167 10.203"
@@ -1970,11 +1970,11 @@
     [attr.position]="'35 2.3 13.02616'"
     [attr.src]="'#infoPanel'"
     height="1.170"
-    id="taskP6"
+    id="taskCounterReform"
     rotation="-8.68 180 0"
     visible="false"
     width="1.2">
-    <a-entity label="label: P6confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: CounterReformConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       color="#F2F2F2"
@@ -1987,7 +1987,7 @@
     <a-text
       color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      id="P6question"
+      id="CounterReformQuestion"
       negate="false"
       position="-0.411 0.02749 0.01946"
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
@@ -1996,10 +1996,10 @@
     <a-text
       align="center"
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P6confirm"
+      clk-single-event-handler="name: CounterReformConfirm"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 2.020"
-      id="P6confirm"
+      id="CounterReformConfirm"
       class="interactible"
       material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
       negate="false"
@@ -2020,12 +2020,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P6Cselect/P6Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: CounterReformCselect/CounterReformCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P6select1"
+        id="CounterReformSelect1"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P6Cselect; secondToggleEvent: P6Cunselect"
+        clk-multi-event-handler="firstToggleEvent: CounterReformCselect; secondToggleEvent: CounterReformCunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2049,7 +2049,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6Pazman"
+            id="CounterReformPazman"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2058,7 +2058,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6PazmanDescription"
+            id="CounterReformPazmanDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2079,12 +2079,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P6Iselect/P6Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: CounterReformIselect/CounterReformIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P6select2"
+        id="CounterReformSelect2"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P6Iselect; secondToggleEvent: P6Iunselect"
+        clk-multi-event-handler="firstToggleEvent: CounterReformIselect; secondToggleEvent: CounterReformIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2108,7 +2108,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6PStur"
+            id="CounterReformStur"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2117,7 +2117,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6SturDescription"
+            id="CounterReformSturDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2138,12 +2138,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P6Iselect/P6Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: CounterReformIselect/CounterReformIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P6select3"
+        id="CounterReformSelect3"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P6Iselect; secondToggleEvent: P6Iunselect"
+        clk-multi-event-handler="firstToggleEvent: CounterReformIselect; secondToggleEvent: CounterReformIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2167,7 +2167,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6Bel"
+            id="CounterReformBel"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2176,7 +2176,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6BelDescription"
+            id="CounterReformBelDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2197,12 +2197,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P6Iselect/P6Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: CounterReformIselect/CounterReformIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P6select4"
+        id="CounterReformSelect4"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P6Iselect; secondToggleEvent: P6Iunselect"
+        clk-multi-event-handler="firstToggleEvent: CounterReformIselect; secondToggleEvent: CounterReformIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2226,7 +2226,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6PKollar"
+            id="CounterReformKollar"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2235,7 +2235,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P6KollarDescription"
+            id="CounterReformKollarDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2248,8 +2248,8 @@
 
   <!-- Exposition Room 7 ------------------------------------------------------------------------------->
   <a-box
-    collision-detector="collisionEvent: P7; clearedCollisionEvent: Roaming"
-    id="place7"
+    collision-detector="collisionEvent: Dynasty; clearedCollisionEvent: Roaming"
+    id="Dynasty"
     material="color: red; wireframe: true"
     physics-collider
     position="35 1.167 -3.74901"
@@ -2262,11 +2262,11 @@
     [attr.position]="'35 2.3 -6.5'"
     [attr.src]="'#infoPanel'"
     height="1.170"
-    id="taskP7"
+    id="taskDynasty"
     rotation="-8.68 0 0"
     visible="false"
     width="1.2">
-    <a-entity label="label: P7confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: DynastyConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       color="#F2F2F2"
@@ -2279,7 +2279,7 @@
     <a-text
       color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      id="P7question"
+      id="DynastyQuestion"
       negate="false"
       position="-0.411 0.01 0.00816"
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
@@ -2288,10 +2288,10 @@
     <a-text
       align="center"
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P7confirm"
+      clk-single-event-handler="name: DynastyConfirm"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 2.020"
-      id="P7confirm"
+      id="DynastyConfirm"
       class="interactible"
       material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
       negate="false"
@@ -2312,12 +2312,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P7Iselect/P7Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: DynastyIselect/DynastyIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P7select1"
+        id="DynastySelect1"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P7Iselect; secondToggleEvent: P7Iunselect"
+        clk-multi-event-handler="firstToggleEvent: DynastyIselect; secondToggleEvent: DynastyIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2341,7 +2341,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7Wittelsbach"
+            id="DynastyWittelsbach"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2350,7 +2350,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7Wittelsbach"
+            id="DynastyWittelsbach"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2371,12 +2371,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P7Iselect/P7Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: DynastyIselect/DynastyIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P7select2"
+        id="DynastySelect2"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P7Iselect; secondToggleEvent: P7Iunselect"
+        clk-multi-event-handler="firstToggleEvent: DynastyIselect; secondToggleEvent: DynastyIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2400,7 +2400,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7Valois"
+            id="DynastyValois"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2409,7 +2409,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7ValoisDescription"
+            id="DynastyValoisDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2430,12 +2430,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P7Iselect/P7Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: DynastyIselect/DynastyIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P7select3"
+        id="DynastySelect3"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P7Iselect; secondToggleEvent: P7Iunselect"
+        clk-multi-event-handler="firstToggleEvent: DynastyIselect; secondToggleEvent: DynastyIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2459,7 +2459,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7Plantageneti"
+            id="DynastyPlantageneti"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2468,7 +2468,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7PlantagenetiDescription"
+            id="DynastyPlantagenetiDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2489,12 +2489,12 @@
       class="infoPanels"
       position="0.395 -1.380 0.025"
       rotation="0 90 0">
-      <a-entity label="label: P7Cselect/P7Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: DynastyCselect/DynastyCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P7select4"
+        id="PDynastySelect4"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P7Cselect; secondToggleEvent: P7Cunselect"
+        clk-multi-event-handler="firstToggleEvent: DynastyCselect; secondToggleEvent: DynastyCunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2518,7 +2518,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7Habsburg"
+            id="DynastyHabsburg"
             negate="false"
             position="-0.550 0.6 0"
             text="width: 1.1; wrapCount: 20; alphaTest: 3"
@@ -2527,7 +2527,7 @@
           <a-text
             color="#F2F2F2"
             font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-            id="P7HabsburgDescription"
+            id="DynastyHabsburgDescription"
             negate="false"
             position="-0.550 0 0"
             text="width: 1.1; wrapCount: 33; alphaTest: 3"
@@ -2540,8 +2540,8 @@
 
   <!-- Exposition Room 8 ------------------------------------------------------------------------------->
   <a-box
-    collision-detector="collisionEvent: P8; clearedCollisionEvent: Roaming"
-    id="place8"
+    collision-detector="collisionEvent: TurkStrike; clearedCollisionEvent: Roaming"
+    id="TurkStrike"
     material="color: red; wireframe: true"
     physics-collider
     position="47.5 1.167 3.114"
@@ -2596,11 +2596,11 @@
     [attr.position]="'50.874 2.3 3.274'"
     [attr.src]="'#infoPanel'"
     height="1.170"
-    id="taskP8"
+    id="taskTurkStrike"
     rotation="-8.68 -90 0"
     visible="false"
     width="1.2">
-    <a-entity label="label: P8confirm" position="0 0.576 0.01"></a-entity>
+    <a-entity label="label: TurkStrikeConfirm" position="0 0.576 0.01"></a-entity>
     <a-text
       class="uloha"
       color="#F2F2F2"
@@ -2613,7 +2613,7 @@
     <a-text
       color="#F2F2F2"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
-      id="P8question"
+      id="TurkStrikeQuestion"
       negate="false"
       position="-0.411 0.02749 0.01946"
       text="width: 0.8; wrapCount: 20; alphaTest: 3"
@@ -2622,10 +2622,10 @@
     <a-text
       align="center"
       animation="property: scale; dur: 400; easing: easeInOutSine; dir: normal; loop: false; from: 0.54 0.35 1.1; to: 0.44 0.25 1; startEvents: click;"
-      clk-single-event-handler="name: P8confirm"
+      clk-single-event-handler="name: TurkStrikeConfirm"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       geometry="primitive: plane; height: 0.78; width: 2.020"
-      id="P8confirm"
+      id="TurkStrikeConfirm"
       class="interactible"
       material="color: #338cd8; flatShading: true; height: 254.55; width: 492.44"
       negate="false"
@@ -2647,12 +2647,12 @@
       position="1.480 0.848 0.025"
       rotation="0 90 0"
       scale="0.5 0.5 0.5">
-      <a-entity label="label: P8Cselect/P8Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: TurkStrikeCselect/TurkStrikeCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P8select1"
+        id="TurkStrikeSelect1"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P8Cselect; secondToggleEvent: P8Cunselect"
+        clk-multi-event-handler="firstToggleEvent: TurkStrikeCselect; secondToggleEvent: TurkStrikeCunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2674,12 +2674,12 @@
       position="-2.371 0.320 0.025"
       rotation="0 90 0"
       scale="0.5 0.5 0.5">
-      <a-entity label="label: P8Cselect/P8Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: TurkStrikeCselect/TurkStrikeCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P8select2"
+        id="TurkStrikeSelect2"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P8Cselect; secondToggleEvent: P8Cunselect"
+        clk-multi-event-handler="firstToggleEvent: TurkStrikeCselect; secondToggleEvent: TurkStrikeCunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2701,12 +2701,12 @@
       position="1.302 -0.147 0.025"
       rotation="0 90 0"
       scale="0.5 0.5 0.5">
-      <a-entity label="label: P8Cselect/P8Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: TurkStrikeCselect/TurkStrikeCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P8select3"
+        id="TurkStrikeSelect3"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P8Cselect; secondToggleEvent: P8Cunselect"
+        clk-multi-event-handler="firstToggleEvent: TurkStrikeCselect; secondToggleEvent: TurkStrikeCunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2729,12 +2729,12 @@
       position="-1.174 0.728 0.025"
       rotation="0 90 0"
       scale="0.5 0.5 0.5">
-      <a-entity label="label: P8Iselect/P8Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: TurkStrikeIselect/TurkStrikeIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P8select4"
+        id="TurkStrikeSelect4"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P8Iselect; secondToggleEvent: P8Iunselect"
+        clk-multi-event-handler="firstToggleEvent: TurkStrikeIselect; secondToggleEvent: TurkStrikeIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2757,12 +2757,12 @@
       position="-1.623 0.056 0.025"
       rotation="0 90 0"
       scale="0.5 0.5 0.5">
-      <a-entity label="label: P8Iselect/P8Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: TurkStrikeIselect/TurkStrikeIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P8select5"
+        id="TurkStrikeSelect5"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P8Iselect; secondToggleEvent: P8Iunselect"
+        clk-multi-event-handler="firstToggleEvent: TurkStrikeIselect; secondToggleEvent: TurkStrikeIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"
@@ -2785,12 +2785,12 @@
       position="-0.456 0.872 0.025"
       rotation="0 90 0"
       scale="0.5 0.5 0.5">
-      <a-entity label="label: P8Iselect/P8Iunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: TurkStrikeIselect/TurkStrikeIunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
-        id="P8select6"
+        id="TurkStrikeSelect6"
         animation="property: rotation; dur: 200; easing: easeInOutSine; dir: alternate; loop: false; from: 0 90 0; to: 0 -90 0; startEvents: click;"
         class="interactible"
-        clk-multi-event-handler="firstToggleEvent: P8Iselect; secondToggleEvent: P8Iunselect"
+        clk-multi-event-handler="firstToggleEvent: TurkStrikeIselect; secondToggleEvent: TurkStrikeIunselect"
         material="src: #unselected; side: double; shader: flat"
         position="0 0 -0.60927"
         radius="0.15"

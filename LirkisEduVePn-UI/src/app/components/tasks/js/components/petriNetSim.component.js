@@ -17,7 +17,7 @@ AFRAME.registerComponent('petri-net-sim', {
     let data = this.data;
     let sessionID = localStorage.getItem('sessionID');
     const userData = JSON.parse(localStorage.getItem('user-profile'));
-    const finalRegex = /^(finSucc|finFail)/;
+    const finalRegex = /^(finalSucc|finalFail)/;
     let finalTransitions;
     let sessionComplete = false;
 
@@ -36,7 +36,6 @@ AFRAME.registerComponent('petri-net-sim', {
       })
     })
 
-    // TODO: make sure that session that is being restored is from logged user
     // create session or fire all transition from session data
     if (!sessionID) {
       userActivityLogger.createSession(this.data.taskId, userData.id).then(data => {

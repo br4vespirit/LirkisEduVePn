@@ -1,4 +1,3 @@
-
 const playConfirmationSuccessSound = (elementId: string) => {
   const confirmationEntity = document.getElementById(elementId);
   if (confirmationEntity !== null) {
@@ -60,7 +59,7 @@ const showFailMessage = () => {
 
 export const transitions = [
   {
-    transitionName: 'P3Cplace',
+    transitionName: 'JewelsCplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -81,7 +80,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3Iplace',
+    transitionName: 'JewelsIplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -102,7 +101,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3confirm',
+    transitionName: 'JewelsConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -118,7 +117,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3Cdisplace',
+    transitionName: 'JewelsCdisplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -135,7 +134,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P3Idisplace',
+    transitionName: 'JewelsIdisplace',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -152,7 +151,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Iselect',
+    transitionName: 'ReformsIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -169,7 +168,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Iunselect',
+    transitionName: 'ReformsIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -186,7 +185,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Cunselect',
+    transitionName: 'ReformsCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -203,7 +202,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2Cselect',
+    transitionName: 'ReformsCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -220,7 +219,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P2confirm',
+    transitionName: 'ReformsConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -236,7 +235,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Cunselect',
+    transitionName: 'MonarchCunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -253,7 +252,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Cselect',
+    transitionName: 'MonarchCselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -270,7 +269,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Iselect',
+    transitionName: 'MonarchIselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -287,7 +286,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1Iunselect',
+    transitionName: 'MonarchIunselect',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -304,7 +303,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'P1confirm',
+    transitionName: 'MonarchConfirm',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -320,7 +319,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finSucc',
+    transitionName: 'finalSucc',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -335,7 +334,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail1',
+    transitionName: 'finalFail1',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -349,7 +348,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail2',
+    transitionName: 'finalFail2',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -363,7 +362,7 @@ export const transitions = [
     }
   },
   {
-    transitionName: 'finFail3',
+    transitionName: 'finalFail3',
     ifTransitionFound: (targets: string[], replay: boolean) => {
 
     },
@@ -380,7 +379,7 @@ export const transitions = [
 
 export const places = [
   {
-    placeName: 'P1',
+    placeName: 'Monarch',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -390,7 +389,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P2',
+    placeName: 'Reforms',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
@@ -400,7 +399,7 @@ export const places = [
     }
   },
   {
-    placeName: 'P3',
+    placeName: 'Jewels',
     ifPlaceFound: (placeName: string) => showTaskPanel(placeName),
     ifPlaceNotFound: () => {
     },
