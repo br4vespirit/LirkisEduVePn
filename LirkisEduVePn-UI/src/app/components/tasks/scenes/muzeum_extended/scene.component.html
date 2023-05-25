@@ -155,8 +155,9 @@
 
 
   <!-- Middle Space ------------------------------------------------------------------------------->
-  <a-entity id="WelcomMsg" position="6.536 4.5 -1.841">
+  <a-entity position="6.536 4.5 -1.841">
     <a-text
+      id="WelcomeMsgHeading"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Osvietenstvo v Habsburskej monarchii"
@@ -165,6 +166,7 @@
       color="#333333">
     </a-text>
     <a-text
+      id="WelcomeMsg1Par"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Vitajte vo virtuálnej scéne, vytvorenej pomocou technológií webovej virtuálnej (VR) a rozšírenej (XR) reality. Scéna, v ktorej sa nachádzate je expozíciou zameranou na obdobie osvietenských reforiem v Habsburskej monarchii."
@@ -173,6 +175,7 @@
       color="#4F4F4F">
     </a-text>
     <a-text
+      id="WelcomeMsg2Par"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Táto expozícia pozostáva z troch vzájomne prepojených miestností, ktoré obsahujú 16 zaujímavých exponátov. A sú tu pre vás pripravené tri úlohy na splnenie. Kde úlohy nájdete, zistíte na informačnom paneli oproti. Prajeme vám veľa šťastia a zábavy pri ich úspešnom plnení a preskúmavaní expozície."
@@ -181,6 +184,7 @@
       color="#4F4F4F">
     </a-text>
     <a-text
+      id="WelcomeMsg3Par"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Táto scéna pozostáva z 3 vzájomne prepojených miestností, ktoré obsahujú 16 zaujímavých expozícií, v ktorých musíte splniť nejaké úlohy. Prajeme vám veľa šťastia pri ich úspešnom dokončení, neváhajte a preskúmajte tento zažitok."
@@ -204,6 +208,7 @@
     rotation="0 180 0"
     visible="false">
     <a-text
+      id="gratulationMsgHeading"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Gratulujeme"
@@ -212,6 +217,7 @@
       color="#333333">
     </a-text>
     <a-text
+      id="gratulationMsgPar"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Úspešne ste dokončili všetky úlohy v scéne."
@@ -227,6 +233,7 @@
     rotation="0 180 0"
     visible="false">
     <a-text
+      id="failedMsgHeading"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Nesprávne"
@@ -235,6 +242,7 @@
       color="#333333">
     </a-text>
     <a-text
+      id="failedMsgPar"
       font="../assets/fonts/WorkSans-VariableFont_wght-msdf.json"
       negate="false"
       value="Nesprávne ste vykonali jednotlivé úlohy"
@@ -774,7 +782,7 @@
       class="infoPanels"
       position="-0.633 0.230 0.422"
       rotation="0 0 -60">
-      <a-entity label="label: P2Cselect/P2Cunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
+      <a-entity label="label: ReformsCselect/ReformsCunselect" position="0 0.3 -0.45" rotation="0 -90 0"></a-entity>
       <a-circle
         id="ReformsSelect1"
         class="interactible"
@@ -1406,7 +1414,7 @@
     align="center"
     text="color: #e3e3e3; wrapCount: 8.12"
     scale="0.4 0.2 1"></a-text>
-  <a-entity label="label: ImportCplace/ImportIdisplace" position="-20.940 2.333 -2.509" rotation="0 90 0"></a-entity>
+  <a-entity label="label: ImportIplace/ImportIdisplace" position="-20.940 2.333 -2.509" rotation="0 90 0"></a-entity>
 
   <!-- Exposition Room 5 ------------------------------------------------------------------------------->
   <a-box

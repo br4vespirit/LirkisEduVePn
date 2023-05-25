@@ -7,7 +7,7 @@ AFRAME.registerComponent('label', {
   init: function () {
     // Create a plane to contain the label text
     const plane = document.createElement('a-plane');
-    plane.setAttribute('width', '1');
+    plane.setAttribute('width', '1.2');
     plane.setAttribute('height', '0.2');
     plane.setAttribute('material', 'color: white; side: double; shader: flat')
     plane.setAttribute('position', '0 0 0');
@@ -21,7 +21,7 @@ AFRAME.registerComponent('label', {
     text.setAttribute('align', 'center');
     text.setAttribute('color', '#6f42c1');
     text.setAttribute('position', `0 -0.02 0`);
-    text.setAttribute('text', 'width: 0.9; wrapCount: 20; alphaTest: 3');
+    text.setAttribute('text', 'width: 0.9; wrapCount: 30; alphaTest: 3');
 
     const textInfo = document.createElement('a-text');
     textInfo.setAttribute('value', this.data.type);
