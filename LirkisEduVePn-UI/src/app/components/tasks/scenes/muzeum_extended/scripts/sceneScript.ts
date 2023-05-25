@@ -127,6 +127,10 @@ export const transitions = [
       if (element !== null) { // @ts-ignore
         element.components["collision-detector"].changeBoxColorRed();
       }
+      if (replay){
+        const model = document.getElementById(targets[1]);
+        if (model != null) model.setAttribute('position', "22.582 2.456 12.098");
+      }
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {
     },
@@ -143,6 +147,10 @@ export const transitions = [
       const element = document.getElementById(targets[0]);
       if (element !== null) { // @ts-ignore
         element.components["collision-detector"].changeBoxColorRed();
+      }
+      if (replay){
+        const model = document.getElementById(targets[1]);
+        if (model != null) model.setAttribute('position', "22.582 2.456 12.098");
       }
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {
@@ -386,6 +394,10 @@ export const transitions = [
       if (element !== null) { // @ts-ignore
         element.components["collision-detector"].changeBoxColorRed();
       }
+      if (replay) {
+        const model = document.getElementById(targets[1]);
+        if (model !== null) model.setAttribute('position', '-18.407 2.133 -5.234')
+      }
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {
     },
@@ -402,6 +414,10 @@ export const transitions = [
       const element = document.getElementById(targets[0]);
       if (element !== null) { // @ts-ignore
         element.components["collision-detector"].changeBoxColorRed();
+      }
+      if (replay) {
+        const model = document.getElementById(targets[1]);
+        if (model !== null) model.setAttribute('position', '-18.407 2.133 -5.234')
       }
     },
     ifTransitionDisabled: (targets: string[], replay: boolean) => {

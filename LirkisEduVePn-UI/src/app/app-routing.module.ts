@@ -19,7 +19,7 @@ import {GroupSessionsComponent} from "./components/group-sessions/group-sessions
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'user/profile',
     pathMatch: 'full'
   },
   {
