@@ -1,0 +1,1460 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>lirkis-edu-ve-pn-ui documentation</title>
+        <meta content="" name="description">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../images/favicon.ico" rel="icon" type="image/x-icon">
+	   <link href="../styles/style.css" rel="stylesheet">
+        <link href="../styles/dark.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a class="navbar-brand" href="../">lirkis-edu-ve-pn-ui documentation</a>
+            <button class="btn btn-default btn-menu ion-ios-menu" id="btn-menu" type="button"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input placeholder="Type to search" type="text"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GroupsDashboardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab"
+                data-link="info" href="#info" id="info-tab" role="tab">Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="source" href="#source" id="source-tab" role="tab">Source</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="template" href="#templateData" id="templateData-tab" role="tab">Template</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="style" href="#styleData" id="styleData-tab" role="tab">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="dom-tree" href="#tree" id="tree-tab" role="tab">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/groups-dashboard/groups-dashboard.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that is used as a dashboard for management groups</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-groups-dashboard</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./groups-dashboard.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./groups-dashboard.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#confirmation_dialog_subscription" >confirmation_dialog_subscription</a>
+                            </li>
+                            <li>
+                                <a href="#created_group_subscription" >created_group_subscription</a>
+                            </li>
+                            <li>
+                                <a href="#dataSource" >dataSource</a>
+                            </li>
+                            <li>
+                                <a href="#delete_group_subscription" >delete_group_subscription</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumns" >displayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#groups" >groups</a>
+                            </li>
+                            <li>
+                                <a href="#groups_subscription" >groups_subscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#paginator" >paginator</a>
+                            </li>
+                            <li>
+                                <a href="#updated_group_subscription" >updated_group_subscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteGroup" >deleteGroup</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openDeleteDialog" >openDeleteDialog</a>
+                            </li>
+                            <li>
+                                <a href="#openSuccessfulDeleteBar" >openSuccessfulDeleteBar</a>
+                            </li>
+                            <li>
+                                <a href="#openUnsuccessfulDeleteBar" >openUnsuccessfulDeleteBar</a>
+                            </li>
+                            <li>
+                                <a href="#openUpdateDialog" >openUpdateDialog</a>
+                            </li>
+                            <li>
+                                <a href="#updateDataSource" >updateDataSource</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_client: <a href="../injectables/BackendService.html" target="_self">BackendService</a>, _snackBar: MatSnackBar, _dialog: MatDialog, _transfer: <a href="../injectables/TransferService.html" target="_self">TransferService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="69" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for a component</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_client</td>
+
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>BackendService instance that sends requests to a server</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_snackBar</td>
+
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Angular Material component that uses for opening snack bars</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_dialog</td>
+
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Angular Material component that uses for opening dialogs</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_transfer</td>
+
+                                                        <td>
+                                                                        <code><a href="../injectables/TransferService.html" target="_self" >TransferService</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Field to transfer data between components</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteGroup"></a>
+                    <span class="name">
+                        <span ><b>deleteGroup</b></span>
+                        <a href="#deleteGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteGroup(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="153"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to delete a group</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>id of a group to delete</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="107"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:107</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="89"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:89</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to fetch all groups, subscribe to a creation and transfer of a group from another component
+and subscribe to a modification of a group</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDeleteDialog"></a>
+                    <span class="name">
+                        <span ><b>openDeleteDialog</b></span>
+                        <a href="#openDeleteDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDeleteDialog(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="135"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens a delete dialog</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>group id to delete</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSuccessfulDeleteBar"></a>
+                    <span class="name">
+                        <span ><b>openSuccessfulDeleteBar</b></span>
+                        <a href="#openSuccessfulDeleteBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openSuccessfulDeleteBar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="180"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:180</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens successful snack bar after deleting a group</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openUnsuccessfulDeleteBar"></a>
+                    <span class="name">
+                        <span ><b>openUnsuccessfulDeleteBar</b></span>
+                        <a href="#openUnsuccessfulDeleteBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openUnsuccessfulDeleteBar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="189"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:189</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens unsuccessful snack bar after deleting a group</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openUpdateDialog"></a>
+                    <span class="name">
+                        <span ><b>openUpdateDialog</b></span>
+                        <a href="#openUpdateDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openUpdateDialog(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="118"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens a dialog to update a group</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>group id to update</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateDataSource"></a>
+                    <span class="name">
+                        <span ><b>updateDataSource</b></span>
+                        <a href="#updateDataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateDataSource()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="172"
+                            href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:172</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to update/refresh a table</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmation_dialog_subscription"></a>
+                    <span class="name">
+                        <span ><b>confirmation_dialog_subscription</b></span>
+                        <a href="#confirmation_dialog_subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="47" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription for a confirmation dialog</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="created_group_subscription"></a>
+                    <span class="name">
+                        <span ><b>created_group_subscription</b></span>
+                        <a href="#created_group_subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="57" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to create a group</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSource"></a>
+                    <span class="name">
+                        <span ><b>dataSource</b></span>
+                        <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatTableDataSource</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="27" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Field to manage groups as a table</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete_group_subscription"></a>
+                    <span class="name">
+                        <span ><b>delete_group_subscription</b></span>
+                        <a href="#delete_group_subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="52" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to delete a group</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayedColumns"></a>
+                    <span class="name">
+                        <span ><b>displayedColumns</b></span>
+                        <a href="#displayedColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&quot;name&quot;, &quot;tasks&quot;, &quot;actions&quot;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="32" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Columns for a table to display</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="groups"></a>
+                    <span class="name">
+                        <span ><b>groups</b></span>
+                        <a href="#groups"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GroupTasks[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="37" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>List of groups to display in a table</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="groups_subscription"></a>
+                    <span class="name">
+                        <span ><b>groups_subscription</b></span>
+                        <a href="#groups_subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="42" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to load all groups from a database</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginator"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>paginator</b></span>
+                        <a href="#paginator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatPaginator</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;paginator&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="69" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Paginator to a table</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updated_group_subscription"></a>
+                    <span class="name">
+                        <span ><b>updated_group_subscription</b></span>
+                        <a href="#updated_group_subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="62" href="">src/app/components/groups-dashboard/groups-dashboard.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to update a group</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnDestroy, OnInit, ViewChild} from &#x27;@angular/core&#x27;;
+import {MatTableDataSource} from &quot;@angular/material/table&quot;;
+import {Subscription} from &quot;rxjs&quot;;
+import {MatPaginator} from &quot;@angular/material/paginator&quot;;
+import {BackendService} from &quot;../../services/backend.service&quot;;
+import {MatSnackBar} from &quot;@angular/material/snack-bar&quot;;
+import {MatDialog} from &quot;@angular/material/dialog&quot;;
+import {TransferService} from &quot;../../services/transfer.service&quot;;
+import {GroupTasks} from &quot;../../models/group-tasks.model&quot;;
+import {GroupsModificationComponent} from &quot;../groups-modification/groups-modification.component&quot;;
+import {ConfirmationDialog} from &#x27;../dialogs/confirmation-dialog/confirmation-dialog.component&#x27;;
+
+/**
+ * Component that is used as a dashboard for management groups
+ */
+@Component({
+  selector: &#x27;app-groups-dashboard&#x27;,
+  templateUrl: &#x27;./groups-dashboard.component.html&#x27;,
+  styleUrls: [&#x27;./groups-dashboard.component.css&#x27;]
+})
+export class GroupsDashboardComponent implements OnInit, OnDestroy {
+
+  /**
+   * Field to manage groups as a table
+   */
+  // @ts-ignore
+  dataSource: MatTableDataSource;
+
+  /**
+   * Columns for a table to display
+   */
+  displayedColumns &#x3D; [&quot;name&quot;, &quot;tasks&quot;, &quot;actions&quot;];
+
+  /**
+   * List of groups to display in a table
+   */
+  groups: GroupTasks[] &#x3D; [];
+
+  /**
+   * Subscription to load all groups from a database
+   */
+  groups_subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * Subscription for a confirmation dialog
+   */
+  confirmation_dialog_subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * Subscription to delete a group
+   */
+  delete_group_subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * Subscription to create a group
+   */
+  created_group_subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * Subscription to update a group
+   */
+  updated_group_subscription: Subscription &#x3D; new Subscription();
+
+
+  /**
+   * Paginator to a table
+   */
+    // @ts-ignore
+  @ViewChild(&#x27;paginator&#x27;) paginator: MatPaginator;
+
+  /**
+   * Constructor for a component
+   * @param _dialog Angular Material component that uses for opening dialogs
+   * @param _client BackendService instance that sends requests to a server
+   * @param _snackBar Angular Material component that uses for opening snack bars
+   * @param _transfer Field to transfer data between components
+   */
+  constructor(private _client: BackendService,
+              private _snackBar: MatSnackBar,
+              private _dialog: MatDialog,
+              private _transfer: TransferService) {
+
+  }
+
+  /**
+   * Method to fetch all groups, subscribe to a creation and transfer of a group from another component
+   * and subscribe to a modification of a group
+   */
+  ngOnInit(): void {
+    this.groups_subscription &#x3D; this._client.fetchGroupsWithTasks().subscribe(data &#x3D;&gt; {
+        this.groups &#x3D; data as GroupTasks[];
+        this.dataSource &#x3D; new MatTableDataSource(this.groups);
+        this.dataSource.paginator &#x3D; this.paginator;
+      }
+    )
+    this.created_group_subscription &#x3D; this._transfer.createdGroupStatus$.subscribe(group &#x3D;&gt; {
+      this.groups.push(group);
+      this.updateDataSource();
+    });
+    this.updated_group_subscription &#x3D; this._transfer.updatedGroupStatus$.subscribe(group &#x3D;&gt; {
+      const index &#x3D; this.groups.findIndex(g &#x3D;&gt; g.id &#x3D;&#x3D;&#x3D; group.id);
+      this.groups.splice(index, 1, group);
+      this.updateDataSource();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.confirmation_dialog_subscription.unsubscribe();
+    this.created_group_subscription.unsubscribe();
+    this.updated_group_subscription.unsubscribe();
+    this.delete_group_subscription.unsubscribe();
+  }
+
+  /**
+   * Opens a dialog to update a group
+   * @param id group id to update
+   */
+  openUpdateDialog(id: number) {
+    let groupTasks: GroupTasks &#x3D; new GroupTasks();
+    for (const element of this.groups) {
+      if (element.id &#x3D;&#x3D;&#x3D; id) {
+        groupTasks &#x3D; element;
+        break;
+      }
+    }
+    this._dialog.open(GroupsModificationComponent, {
+      data: groupTasks
+    });
+  }
+
+  /**
+   * Opens a delete dialog
+   * @param id group id to delete
+   */
+  openDeleteDialog(id: number) {
+    const dialogRef &#x3D; this._dialog.open(ConfirmationDialog, {
+      data: {
+        message: &quot;Do you want to delete this group?&quot;
+      }
+    })
+
+    this.confirmation_dialog_subscription &#x3D; dialogRef.afterClosed().subscribe((confirmed: boolean) &#x3D;&gt; {
+      if (confirmed) {
+        this.deleteGroup(id);
+      }
+    })
+  }
+
+  /**
+   * Method to delete a group
+   * @param id id of a group to delete
+   */
+  deleteGroup(id: number) {
+    this.delete_group_subscription &#x3D; this._client.deleteGroupById(id).subscribe({
+      complete: () &#x3D;&gt; {
+        for (let i &#x3D; 0; i &lt; this.groups.length; i++) {
+          if (this.groups[i].id &#x3D;&#x3D;&#x3D; id)
+            this.groups.splice(i, 1);
+        }
+        this.updateDataSource();
+        this.openSuccessfulDeleteBar();
+      },
+      error: () &#x3D;&gt; {
+        this.openUnsuccessfulDeleteBar();
+      }
+    })
+  }
+
+  /**
+   * Method to update/refresh a table
+   */
+  updateDataSource() {
+    this.dataSource.data &#x3D; this.groups;
+    this.dataSource.paginator &#x3D; this.paginator;
+  }
+
+  /**
+   * Opens successful snack bar after deleting a group
+   */
+  openSuccessfulDeleteBar() {
+    this._snackBar.open(&#x27;Group was successfully deleted&#x27;, &quot;OK&quot;, {
+      duration: 3000
+    })
+  }
+
+  /**
+   * Opens unsuccessful snack bar after deleting a group
+   */
+  openUnsuccessfulDeleteBar() {
+    this._snackBar.open(&#x27;Error occurred when deleting group&#x27;, &quot;OK&quot;, {
+      duration: 3000
+    })
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;content&quot;&gt;
+  &lt;mat-table [dataSource]&#x3D;&quot;dataSource&quot; class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;name&quot;&gt;
+      &lt;mat-header-cell *matHeaderCellDef&gt;Firstname&lt;/mat-header-cell&gt;
+      &lt;mat-cell *matCellDef&#x3D;&quot;let row&quot;&gt; {{row.name}} &lt;/mat-cell&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef&#x3D;&quot;tasks&quot;&gt;
+      &lt;mat-header-cell *matHeaderCellDef&gt;Groups&lt;/mat-header-cell&gt;
+      &lt;mat-cell *matCellDef&#x3D;&quot;let row&quot;&gt;
+        &lt;select&gt;
+          &lt;option *ngFor&#x3D;&quot;let task of row.tasks&quot; [disabled]&#x3D;&quot;true&quot; [value]&#x3D;&quot;task.id&quot;&gt;{{task.name}}&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/mat-cell&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef&#x3D;&quot;actions&quot;&gt;
+      &lt;mat-header-cell *matHeaderCellDef&gt;Actions&lt;/mat-header-cell&gt;
+      &lt;mat-cell *matCellDef&#x3D;&quot;let row&quot;&gt;
+        &lt;mat-icon (click)&#x3D;&quot;openUpdateDialog(row.id)&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;edit&lt;/mat-icon&gt;
+        &lt;mat-icon (click)&#x3D;&quot;openDeleteDialog(row.id)&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;delete&lt;/mat-icon&gt;
+      &lt;/mat-cell&gt;
+    &lt;/ng-container&gt;
+
+    &lt;mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/mat-header-row&gt;
+    &lt;mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot;&gt;&lt;/mat-row&gt;
+  &lt;/mat-table&gt;
+  &lt;mat-paginator #paginator [pageSizeOptions]&#x3D;&quot;[5]&quot; class&#x3D;&quot;mat-elevation-z8&quot; showFirstLastButtons
+                 style&#x3D;&quot;margin-top: 1px;&quot;&gt;&lt;/mat-paginator&gt;
+&lt;/div&gt;
+
+&lt;div style&#x3D;&quot;border: groove 1px black; margin-top: 50px; padding: 20px; display: inline-block&quot;&gt;
+  &lt;app-group-settings&gt;&lt;/app-group-settings&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./groups-dashboard.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.content {
+  width: 70%;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="content">  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">    <ng-container matColumnDef="name">      <mat-header-cell *matHeaderCellDef>Firstname</mat-header-cell>      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>    </ng-container>    <ng-container matColumnDef="tasks">      <mat-header-cell *matHeaderCellDef>Groups</mat-header-cell>      <mat-cell *matCellDef="let row">        <select>          <option *ngFor="let task of row.tasks" [disabled]="true" [value]="task.id">{{task.name}}</option>        </select>      </mat-cell>    </ng-container>    <ng-container matColumnDef="actions">      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>      <mat-cell *matCellDef="let row">        <mat-icon (click)="openUpdateDialog(row.id)" style="cursor: pointer">edit</mat-icon>        <mat-icon (click)="openDeleteDialog(row.id)" style="cursor: pointer">delete</mat-icon>      </mat-cell>    </ng-container>    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  </mat-table>  <mat-paginator #paginator [pageSizeOptions]="[5]" class="mat-elevation-z8" showFirstLastButtons                 style="margin-top: 1px;"></mat-paginator></div><div style="border: groove 1px black; margin-top: 50px; padding: 20px; display: inline-block">  <app-group-settings></app-group-settings></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmationDialog', 'selector': ''},{'name': 'CreateQuizComponent', 'selector': 'app-create-quiz'},{'name': 'CreateSceneComponent', 'selector': 'app-create-scene'},{'name': 'CreateTaskComponent', 'selector': 'app-create-task'},{'name': 'DashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GroupsDashboardComponent', 'selector': 'app-groups-dashboard'},{'name': 'GroupSessionsComponent', 'selector': 'app-group-sessions'},{'name': 'GroupSettingsComponent', 'selector': 'app-group-settings'},{'name': 'GroupsModificationComponent', 'selector': 'app-groups-modification'},{'name': 'GroupsPreviewComponent', 'selector': 'app-groups-preview'},{'name': 'HistoryQuizComponent', 'selector': 'app-history-quiz'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'JoinQuizComponent', 'selector': 'app-join-quiz'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'Muzeum_habsbourgComponent', 'selector': 'app-scene'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PreviewScenariosComponent', 'selector': 'app-preview-scenarios'},{'name': 'PreviewSceneComponent', 'selector': 'app-preview-scene'},{'name': 'PreviewTasksComponent', 'selector': 'app-preview-tasks'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'SceneComponent', 'selector': 'app-scene'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryExtendedComponent', 'selector': 'app-task-history-extended'},{'name': 'TaskHistoryStatisticsComponent', 'selector': 'app-task-history-statistics'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'UsersDashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'UserSettingsComponent', 'selector': 'app-user-settings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GroupsDashboardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GroupsDashboardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script defer src="../js/menu-wc.js"></script>
+       <script defer nomodule src="../js/menu-wc_es5.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

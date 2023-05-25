@@ -1,0 +1,1592 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>lirkis-edu-ve-pn-ui documentation</title>
+        <meta content="" name="description">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../images/favicon.ico" rel="icon" type="image/x-icon">
+	   <link href="../styles/style.css" rel="stylesheet">
+        <link href="../styles/dark.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a class="navbar-brand" href="../">lirkis-edu-ve-pn-ui documentation</a>
+            <button class="btn btn-default btn-menu ion-ios-menu" id="btn-menu" type="button"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input placeholder="Type to search" type="text"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  UserSettingsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab"
+                data-link="info" href="#info" id="info-tab" role="tab">Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="source" href="#source" id="source-tab" role="tab">Source</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="template" href="#templateData" id="templateData-tab" role="tab">Template</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="style" href="#styleData" id="styleData-tab" role="tab">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="dom-tree" href="#tree" id="tree-tab" role="tab">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/user-settings/user-settings.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that defines a dialog for a user settings (For admins and teacher)</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-user-settings</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./user-settings.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./user-settings.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_groups" >_groups</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#groupsSubscription" >groupsSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#profile_update_subscription" >profile_update_subscription</a>
+                            </li>
+                            <li>
+                                <a href="#roles" >roles</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#autocompleteGroups" >autocompleteGroups</a>
+                            </li>
+                            <li>
+                                <a href="#closeDialog" >closeDialog</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openSuccessfulSnackbar" >openSuccessfulSnackbar</a>
+                            </li>
+                            <li>
+                                <a href="#openUnsuccessfulSnackbar" >openUnsuccessfulSnackbar</a>
+                            </li>
+                            <li>
+                                <a href="#updateProfile" >updateProfile</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#email" >email</a>
+                                </li>
+                                <li>
+                                    <a href="#nickname" >nickname</a>
+                                </li>
+                                <li>
+                                    <a href="#role" >role</a>
+                                </li>
+                                <li>
+                                    <a href="#firstname" >firstname</a>
+                                </li>
+                                <li>
+                                    <a href="#lastname" >lastname</a>
+                                </li>
+                                <li>
+                                    <a href="#groups" >groups</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(matDialogRef: <a href="../components/UserSettingsComponent.html" target="_self">MatDialogRef&lt;UserSettingsComponent&gt;</a>, data: <a href="../classes/UserProfile.html" target="_self">UserProfile</a>, router: Router, _transfer: <a href="../injectables/TransferService.html" target="_self">TransferService</a>, _client: <a href="../injectables/BackendService.html" target="_self">BackendService</a>, _snackBar: MatSnackBar)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="48" href="">src/app/components/user-settings/user-settings.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for a component</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>matDialogRef</td>
+
+                                                        <td>
+                                                                        <code><a href="../components/UserSettingsComponent.html" target="_self" >MatDialogRef&lt;UserSettingsComponent&gt;</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Angular Material component that uses for opening dialogs</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+
+                                                        <td>
+                                                                        <code><a href="../classes/UserProfile.html" target="_self" >UserProfile</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>data that was transfer to this component</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Router field to route between components</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_transfer</td>
+
+                                                        <td>
+                                                                        <code><a href="../injectables/TransferService.html" target="_self" >TransferService</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Field to transfer data between components</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_client</td>
+
+                                                        <td>
+                                                                        <code><a href="../injectables/BackendService.html" target="_self" >BackendService</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>BackendService instance that sends requests to a server</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_snackBar</td>
+
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <p>Angular Material component that uses for opening snack bars</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="autocompleteGroups"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>autocompleteGroups</b></span>
+                        <a href="#autocompleteGroups"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>autocompleteGroups(profile: <a href="../classes/UserProfile.html" target="_self">UserProfile</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="191"
+                            href="">src/app/components/user-settings/user-settings.component.ts:191</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to autocomplete user groups field with his current groups</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>profile</td>
+                                    <td>
+                                                <code><a href="../classes/UserProfile.html" target="_self" >UserProfile</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>profile of a current user</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeDialog"></a>
+                    <span class="name">
+                        <span ><b>closeDialog</b></span>
+                        <a href="#closeDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeDialog()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="124"
+                            href="">src/app/components/user-settings/user-settings.component.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>While this component is a dialog, this method closes this component</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="151"
+                            href="">src/app/components/user-settings/user-settings.component.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="132"
+                            href="">src/app/components/user-settings/user-settings.component.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to get user profile, init user profile modification form and fetch all
+groups from a database</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSuccessfulSnackbar"></a>
+                    <span class="name">
+                        <span ><b>openSuccessfulSnackbar</b></span>
+                        <a href="#openSuccessfulSnackbar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openSuccessfulSnackbar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="206"
+                            href="">src/app/components/user-settings/user-settings.component.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens successful snack bar</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openUnsuccessfulSnackbar"></a>
+                    <span class="name">
+                        <span ><b>openUnsuccessfulSnackbar</b></span>
+                        <a href="#openUnsuccessfulSnackbar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openUnsuccessfulSnackbar(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="217"
+                            href="">src/app/components/user-settings/user-settings.component.ts:217</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens unsuccessful snack bar</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProfile"></a>
+                    <span class="name">
+                        <span ><b>updateProfile</b></span>
+                        <a href="#updateProfile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateProfile()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="160"
+                            href="">src/app/components/user-settings/user-settings.component.ts:160</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to update user profile</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_groups"></a>
+                    <span class="name">
+                        <span ><b>_groups</b></span>
+                        <a href="#_groups"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Group.html" target="_self" >Group[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="48" href="">src/app/components/user-settings/user-settings.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>List with all groups</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/UserProfile.html" target="_self" >UserProfile</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Inject(MAT_DIALOG_DATA)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="60" href="">src/app/components/user-settings/user-settings.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">data that was transfer to this component</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Group.html" target="_self" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="28" href="">src/app/components/user-settings/user-settings.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represents a collection of form controls that are logically grouped together. It provides a convenient way to manage and validate multiple form controls as a single unit.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="groupsSubscription"></a>
+                    <span class="name">
+                        <span ><b>groupsSubscription</b></span>
+                        <a href="#groupsSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="38" href="">src/app/components/user-settings/user-settings.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to fetch all groups from a database</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profile_update_subscription"></a>
+                    <span class="name">
+                        <span ><b>profile_update_subscription</b></span>
+                        <a href="#profile_update_subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="43" href="">src/app/components/user-settings/user-settings.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription to update user profile</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roles"></a>
+                    <span class="name">
+                        <span ><b>roles</b></span>
+                        <a href="#roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;STUDENT&#x27;, &#x27;TEACHER&#x27;, &#x27;ADMIN&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="33" href="">src/app/components/user-settings/user-settings.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>List with available roles in the system</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="email"></a>
+                        <span class="name"><b>email</b><a href="#email"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>email()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="70" href="">src/app/components/user-settings/user-settings.component.ts:70</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets an email field from a form group</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nickname"></a>
+                        <span class="name"><b>nickname</b><a href="#nickname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>nickname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="79" href="">src/app/components/user-settings/user-settings.component.ts:79</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets a nickname field from a form group</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="role"></a>
+                        <span class="name"><b>role</b><a href="#role"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>role()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="88" href="">src/app/components/user-settings/user-settings.component.ts:88</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets a role field from a form group</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firstname"></a>
+                        <span class="name"><b>firstname</b><a href="#firstname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>firstname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="97" href="">src/app/components/user-settings/user-settings.component.ts:97</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets a firstname field from a form group</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastname"></a>
+                        <span class="name"><b>lastname</b><a href="#lastname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>lastname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="106" href="">src/app/components/user-settings/user-settings.component.ts:106</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets a lastname field from a form group</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="groups"></a>
+                        <span class="name"><b>groups</b><a href="#groups"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>groups()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="115" href="">src/app/components/user-settings/user-settings.component.ts:115</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets a groups field from a form group</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Inject, OnDestroy, OnInit} from &#x27;@angular/core&#x27;;
+import {FormControl, FormGroup, Validators} from &quot;@angular/forms&quot;;
+import {Subscription} from &quot;rxjs&quot;;
+import {MAT_DIALOG_DATA, MatDialogRef} from &quot;@angular/material/dialog&quot;;
+import {UserProfile} from &quot;../../models/user-profile.model&quot;;
+import {Router} from &quot;@angular/router&quot;;
+import {TransferService} from &quot;../../services/transfer.service&quot;;
+import {BackendService} from &quot;../../services/backend.service&quot;;
+import {MatSnackBar} from &quot;@angular/material/snack-bar&quot;;
+import {ProfileUpdate} from &quot;../../models/profile-update.model&quot;;
+import {HttpErrorResponse} from &quot;@angular/common/http&quot;;
+import {Group} from &#x27;src/app/models/group.model&#x27;;
+
+/**
+ * Component that defines a dialog for a user settings (For admins and teacher)
+ */
+@Component({
+  selector: &#x27;app-user-settings&#x27;,
+  templateUrl: &#x27;./user-settings.component.html&#x27;,
+  styleUrls: [&#x27;./user-settings.component.css&#x27;]
+})
+export class UserSettingsComponent implements OnInit, OnDestroy {
+
+  /**
+   * Represents a collection of form controls that are logically grouped together. It provides a convenient way to manage and validate multiple form controls as a single unit.
+   */
+  // @ts-ignore
+  form: FormGroup;
+
+  /**
+   * List with available roles in the system
+   */
+  roles: string[] &#x3D; [&#x27;STUDENT&#x27;, &#x27;TEACHER&#x27;, &#x27;ADMIN&#x27;]
+
+  /**
+   * Subscription to fetch all groups from a database
+   */
+  groupsSubscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * Subscription to update user profile
+   */
+  profile_update_subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * List with all groups
+   */
+  _groups: Group[] &#x3D; [];
+
+  /**
+   * Constructor for a component
+   * @param matDialogRef Angular Material component that uses for opening dialogs
+   * @param _client BackendService instance that sends requests to a server
+   * @param _snackBar Angular Material component that uses for opening snack bars
+   * @param data data that was transfer to this component
+   * @param router Router field to route between components
+   * @param _transfer Field to transfer data between components
+   */
+  constructor(private matDialogRef: MatDialogRef&lt;UserSettingsComponent&gt;,
+              @Inject(MAT_DIALOG_DATA) public data: UserProfile,
+              private router: Router,
+              private _transfer: TransferService,
+              private _client: BackendService,
+              private _snackBar: MatSnackBar) {
+  }
+
+  /**
+   * Gets an email field from a form group
+   */
+  get email() {
+    if (this.form)
+      return this.form.controls[&#x27;email&#x27;];
+    return null;
+  }
+
+  /**
+   * Gets a nickname field from a form group
+   */
+  get nickname() {
+    if (this.form)
+      return this.form.controls[&#x27;nickname&#x27;];
+    return null;
+  }
+
+  /**
+   * Gets a role field from a form group
+   */
+  get role() {
+    if (this.form)
+      return this.form.controls[&#x27;role&#x27;];
+    return null;
+  }
+
+  /**
+   * Gets a firstname field from a form group
+   */
+  get firstname() {
+    if (this.form)
+      return this.form.controls[&#x27;firstname&#x27;];
+    return null;
+  }
+
+  /**
+   * Gets a lastname field from a form group
+   */
+  get lastname() {
+    if (this.form)
+      return this.form.controls[&#x27;lastname&#x27;];
+    return null;
+  }
+
+  /**
+   * Gets a groups field from a form group
+   */
+  get groups() {
+    if (this.form)
+      return this.form.controls[&#x27;groups&#x27;];
+    return null;
+  }
+
+  /**
+   * While this component is a dialog, this method closes this component
+   */
+  closeDialog() {
+    this.matDialogRef.close();
+  }
+
+  /**
+   * Method to get user profile, init user profile modification form and fetch all
+   * groups from a database
+   */
+  ngOnInit(): void {
+    let profile: UserProfile &#x3D; this.data;
+    console.log(profile.groups)
+    this.form &#x3D; new FormGroup&lt;any&gt;({
+      email: new FormControl(profile.email, [Validators.required, Validators.email]),
+      nickname: new FormControl(profile.nickname, [Validators.required]),
+      firstname: new FormControl(profile.firstname, [Validators.required]),
+      lastname: new FormControl(profile.lastname, [Validators.required]),
+      role: new FormControl(profile.role, [Validators.required]),
+      groups: new FormControl(&#x27;&#x27;, [])
+    });
+    this.form.controls[&#x27;email&#x27;].disable();
+
+    this.groupsSubscription &#x3D; this._client.getGroups().subscribe(data &#x3D;&gt; {
+      this._groups &#x3D; data as Group[]
+      this.autocompleteGroups(profile);
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.matDialogRef.close();
+    this.profile_update_subscription.unsubscribe();
+    this.groupsSubscription.unsubscribe();
+  }
+
+  /**
+   * Method to update user profile
+   */
+  updateProfile() {
+    let profile: ProfileUpdate &#x3D; new ProfileUpdate({
+      id: this.data.id,
+      email: this.email?.value,
+      nickname: this.nickname?.value,
+      firstname: this.firstname?.value,
+      lastname: this.lastname?.value,
+      role: this.role?.value,
+      groups: this.groups?.value,
+    })
+
+    this.profile_update_subscription &#x3D; this._client.updateUserFromDashboard(profile).subscribe({
+      next: (profile) &#x3D;&gt; {
+        this.openSuccessfulSnackbar();
+        this._transfer.changeUpdatedUser(profile);
+      },
+      error: (err) &#x3D;&gt; {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status &#x3D;&#x3D;&#x3D; 400)
+            this.openUnsuccessfulSnackbar(err.error);
+          else
+            this.openUnsuccessfulSnackbar(&quot;An unexpected error occurred&quot;);
+        }
+      }
+    })
+  }
+
+  /**
+   * Method to autocomplete user groups field with his current groups
+   * @param profile profile of a current user
+   */
+  private autocompleteGroups(profile: UserProfile) {
+    let gr: Group[] &#x3D; [];
+    this._groups.forEach((group: Group) &#x3D;&gt; {
+      profile.groups.forEach((g: Group) &#x3D;&gt; {
+        if (g.id &#x3D;&#x3D;&#x3D; group.id) {
+          gr.push(group);
+        }
+      });
+    });
+    this.form.controls[&#x27;groups&#x27;].setValue(gr);
+  }
+
+  /**
+   * Opens successful snack bar
+   */
+  openSuccessfulSnackbar() {
+    this._snackBar.open(&#x27;Profile was successfully updated&#x27;, &#x27;&#x27;, {
+      duration: 5000,
+      panelClass: [&#x27;snackbar-success&#x27;]
+    });
+
+  }
+
+  /**
+   * Opens unsuccessful snack bar
+   */
+  openUnsuccessfulSnackbar(message: string) {
+    this._snackBar.open(message, &#x27;&#x27;, {
+      duration: 5000,
+      panelClass: [&#x27;snackbar-unsuccessful&#x27;]
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;close&quot;&gt;
+  &lt;mat-icon (click)&#x3D;&quot;closeDialog()&quot; style&#x3D;&quot;cursor:pointer;&quot;&gt;close&lt;/mat-icon&gt;
+&lt;/div&gt;
+&lt;p class&#x3D;&quot;boldText heading&quot;&gt;Profile Settings&lt;/p&gt;
+&lt;form (ngSubmit)&#x3D;&quot;updateProfile()&quot; [formGroup]&#x3D;&quot;form&quot; class&#x3D;&quot;profileSettings&quot;&gt;
+
+  &lt;div class&#x3D;&quot;input&quot;&gt;
+    &lt;div class&#x3D;&quot;label&quot;&gt;
+      &lt;p class&#x3D;&quot;smallBoldText&quot;&gt;lastname&lt;/p&gt;
+      &lt;p class&#x3D;&quot;colorText&quot;&gt;change&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;input formControlName&#x3D;&quot;lastname&quot; type&#x3D;&quot;text&quot;&gt;
+  &lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;lastname &amp;&amp; lastname.invalid &amp;&amp; lastname.touched&quot; class&#x3D;&quot;error-content&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;lastname.hasError(&#x27;required&#x27;)&quot;&gt;Lastname is required&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;input&quot;&gt;
+    &lt;div class&#x3D;&quot;label&quot;&gt;
+      &lt;p class&#x3D;&quot;smallBoldText&quot;&gt;firstname&lt;/p&gt;
+      &lt;p class&#x3D;&quot;colorText&quot;&gt;change&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;input formControlName&#x3D;&quot;firstname&quot; type&#x3D;&quot;text&quot;&gt;
+  &lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;firstname &amp;&amp; firstname.invalid &amp;&amp; firstname.touched&quot; class&#x3D;&quot;error-content&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;firstname.hasError(&#x27;required&#x27;)&quot;&gt;Firstname is required&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;input&quot;&gt;
+    &lt;div class&#x3D;&quot;label&quot;&gt;
+      &lt;p class&#x3D;&quot;smallBoldText&quot;&gt;email&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;input formControlName&#x3D;&quot;email&quot; type&#x3D;&quot;email&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;input&quot;&gt;
+      &lt;div class&#x3D;&quot;label&quot;&gt;
+          &lt;p class&#x3D;&quot;smallBoldText&quot;&gt;nickname&lt;/p&gt;
+          &lt;p class&#x3D;&quot;colorText&quot;&gt;change&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;input formControlName&#x3D;&quot;nickname&quot; type&#x3D;&quot;text&quot;&gt;
+  &lt;/div&gt;
+    &lt;div *ngIf&#x3D;&quot;nickname &amp;&amp; nickname.invalid &amp;&amp; nickname.touched&quot; class&#x3D;&quot;error-content&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;nickname.hasError(&#x27;required&#x27;)&quot;&gt;Username is required&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;input&quot;&gt;
+        &lt;div class&#x3D;&quot;label&quot;&gt;
+            &lt;p class&#x3D;&quot;smallBoldText&quot;&gt;role&lt;/p&gt;
+            &lt;p class&#x3D;&quot;colorText&quot;&gt;change&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;select class&#x3D;&quot;&quot; formControlName&#x3D;&quot;role&quot;&gt;
+            &lt;option *ngFor&#x3D;&quot;let role of roles&quot; [value]&#x3D;&quot;role&quot;&gt;{{role}}&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;input&quot;&gt;
+        &lt;div class&#x3D;&quot;label&quot;&gt;
+            &lt;p class&#x3D;&quot;smallBoldText&quot;&gt;groups&lt;/p&gt;
+            &lt;p class&#x3D;&quot;colorText&quot;&gt;change&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;mat-select formControlName&#x3D;&quot;groups&quot; multiple placeholder&#x3D;&quot;Choose groups&quot;&gt;
+            &lt;mat-option *ngFor&#x3D;&quot;let group of _groups&quot; [value]&#x3D;&quot;group&quot;&gt;
+                {{group.name}}
+            &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+    &lt;/div&gt;
+
+    &lt;button class&#x3D;&quot;mainButton secondaryButton&quot; type&#x3D;&quot;submit&quot;&gt;Save&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./user-settings.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.profileSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 20vw;
+  padding: 0 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logout {
+  color: #FF0A0A !important;
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.logout p, .logout mat-icon {
+  opacity: 0.6;
+}
+
+.error-content {
+  color: red;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="close">  <mat-icon (click)="closeDialog()" style="cursor:pointer;">close</mat-icon></div><p class="boldText heading">Profile Settings</p><form (ngSubmit)="updateProfile()" [formGroup]="form" class="profileSettings">  <div class="input">    <div class="label">      <p class="smallBoldText">lastname</p>      <p class="colorText">change</p>    </div>    <input formControlName="lastname" type="text">  </div>  <div *ngIf="lastname && lastname.invalid && lastname.touched" class="error-content">    <div *ngIf="lastname.hasError(\'required\')">Lastname is required</div>  </div>  <div class="input">    <div class="label">      <p class="smallBoldText">firstname</p>      <p class="colorText">change</p>    </div>    <input formControlName="firstname" type="text">  </div>  <div *ngIf="firstname && firstname.invalid && firstname.touched" class="error-content">    <div *ngIf="firstname.hasError(\'required\')">Firstname is required</div>  </div>  <div class="input">    <div class="label">      <p class="smallBoldText">email</p>    </div>    <input formControlName="email" type="email">  </div>  <div class="input">      <div class="label">          <p class="smallBoldText">nickname</p>          <p class="colorText">change</p>      </div>      <input formControlName="nickname" type="text">  </div>    <div *ngIf="nickname && nickname.invalid && nickname.touched" class="error-content">        <div *ngIf="nickname.hasError(\'required\')">Username is required</div>    </div>    <div class="input">        <div class="label">            <p class="smallBoldText">role</p>            <p class="colorText">change</p>        </div>        <select class="" formControlName="role">            <option *ngFor="let role of roles" [value]="role">{{role}}</option>        </select>    </div>    <div class="input">        <div class="label">            <p class="smallBoldText">groups</p>            <p class="colorText">change</p>        </div>        <mat-select formControlName="groups" multiple placeholder="Choose groups">            <mat-option *ngFor="let group of _groups" [value]="group">                {{group.name}}            </mat-option>        </mat-select>    </div>    <button class="mainButton secondaryButton" type="submit">Save</button></form></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmationDialog', 'selector': ''},{'name': 'CreateQuizComponent', 'selector': 'app-create-quiz'},{'name': 'CreateSceneComponent', 'selector': 'app-create-scene'},{'name': 'CreateTaskComponent', 'selector': 'app-create-task'},{'name': 'DashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GroupsDashboardComponent', 'selector': 'app-groups-dashboard'},{'name': 'GroupSessionsComponent', 'selector': 'app-group-sessions'},{'name': 'GroupSettingsComponent', 'selector': 'app-group-settings'},{'name': 'GroupsModificationComponent', 'selector': 'app-groups-modification'},{'name': 'GroupsPreviewComponent', 'selector': 'app-groups-preview'},{'name': 'HistoryQuizComponent', 'selector': 'app-history-quiz'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'JoinQuizComponent', 'selector': 'app-join-quiz'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'Muzeum_habsbourgComponent', 'selector': 'app-scene'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PreviewScenariosComponent', 'selector': 'app-preview-scenarios'},{'name': 'PreviewSceneComponent', 'selector': 'app-preview-scene'},{'name': 'PreviewTasksComponent', 'selector': 'app-preview-tasks'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'SceneComponent', 'selector': 'app-scene'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryExtendedComponent', 'selector': 'app-task-history-extended'},{'name': 'TaskHistoryStatisticsComponent', 'selector': 'app-task-history-statistics'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'UsersDashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'UserSettingsComponent', 'selector': 'app-user-settings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UserSettingsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserSettingsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script defer src="../js/menu-wc.js"></script>
+       <script defer nomodule src="../js/menu-wc_es5.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -6,6 +6,9 @@ import {BackendService} from "../../services/backend.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 
+/**
+ * Component that is used as a registration form
+ */
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,55 +16,91 @@ import {Router} from "@angular/router";
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
 
+  /**
+   * Represents a collection of form controls that are logically grouped together. It provides a convenient way to manage and validate multiple form controls as a single unit.
+   */
   // @ts-ignore
   form: FormGroup;
 
+  /**
+   * Field to know whether passwords match
+   */
   passwordsMatch: boolean = true;
 
   groupsSubscription: Subscription = new Subscription();
 
+  /**
+   * Subscription to register a user
+   */
   registrationUserSubscription: Subscription = new Subscription();
 
+  /**
+   * Constructor for a component
+   * @param _client BackendService instance that sends requests to a server
+   * @param _snackBar Angular Material component that uses for opening snack bars
+   * @param _router Router field to route between components
+   */
   constructor(private _client: BackendService, private _snackBar: MatSnackBar,
               private _router: Router) {
   }
 
+  /**
+   * Gets a username field from a form group
+   */
   get username() {
     if (this.form)
       return this.form.controls['username'];
     return null;
   }
 
+  /**
+   * Gets a firstname field from a form group
+   */
   get firstname() {
     if (this.form)
       return this.form.controls['firstname'];
     return null;
   }
 
+  /**
+   * Gets a lastname field from a form group
+   */
   get lastname() {
     if (this.form)
       return this.form.controls['lastname'];
     return null;
   }
 
+  /**
+   * Gets an email field from a form group
+   */
   get email() {
     if (this.form)
       return this.form.controls['email'];
     return null;
   }
 
+  /**
+   * Gets a password field from a form group
+   */
   get password() {
     if (this.form)
       return this.form.controls['password'];
     return null;
   }
 
+  /**
+   * Gets a confirmPassword field from a form group
+   */
   get confirmPassword() {
     if (this.form)
       return this.form.controls['confirmPassword'];
     return null;
   }
 
+  /**
+   * Method that inits a registration form
+   */
   ngOnInit(): void {
     this.form = new FormGroup<any>({
       username: new FormControl('', [Validators.required]),
@@ -78,6 +117,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.groupsSubscription.unsubscribe();
   }
 
+  /**
+   * Method to register a new user
+   */
   register() {
     if (this.password?.value != this.confirmPassword?.value) {
       this.passwordsMatch = false;
@@ -102,6 +144,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Opens successful snack bar
+   */
   openSuccessfulSnackbar() {
     const snackbarRef = this._snackBar.open('Registration successful. Go to your mailbox to verify mail', 'Go to login', {
       duration: 5000,
@@ -113,6 +158,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Opens unsuccessful snack bar
+   */
   openUnsuccessfulSnackbar() {
     this._snackBar.open('User with this email is already registered', '', {
       duration: 5000,

@@ -4,10 +4,13 @@ import {Observable} from 'rxjs';
 import {Router} from "@angular/router";
 import {UtilsService} from "../../services/utils.service";
 
+/**
+ * Interceptor for an HTTP requests (not used in the project)
+ */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  private API_URL: string = "http://localhost:80/api/v1/safa";
+  private API_URL: string = "http://localhost:8080/api/v1/safa";
 
   constructor(private _router: Router, private _utils: UtilsService) {
 

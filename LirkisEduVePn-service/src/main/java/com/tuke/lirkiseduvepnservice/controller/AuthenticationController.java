@@ -107,6 +107,7 @@ public class AuthenticationController {
     public void confirm(@RequestParam("token") String token, HttpServletResponse httpServletResponse) {
         authenticationService.confirmToken(token);
         httpServletResponse.setHeader("Location", "http://localhost:4200/login");
+        // httpServletResponse.setHeader("Location", "http://147.232.205.222:4200/login");
         httpServletResponse.setStatus(302);
     }
 }

@@ -1,0 +1,297 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>lirkis-edu-ve-pn-ui documentation</title>
+        <meta content="" name="description">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../images/favicon.ico" rel="icon" type="image/x-icon">
+	   <link href="../styles/style.css" rel="stylesheet">
+        <link href="../styles/dark.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a class="navbar-brand" href="../">lirkis-edu-ve-pn-ui documentation</a>
+            <button class="btn btn-default btn-menu ion-ios-menu" id="btn-menu" type="button"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input placeholder="Type to search" type="text"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FooterComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab"
+                data-link="info" href="#info" id="info-tab" role="tab">Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="source" href="#source" id="source-tab" role="tab">Source</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="template" href="#templateData" id="templateData-tab" role="tab">Template</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="style" href="#styleData" id="styleData-tab" role="tab">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="dom-tree" href="#tree" id="tree-tab" role="tab">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/footer/footer.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that is used as a footer in application</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-footer</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./footer.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./footer.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+/**
+ * Component that is used as a footer in application
+ */
+@Component({
+  selector: &#x27;app-footer&#x27;,
+  templateUrl: &#x27;./footer.component.html&#x27;,
+  styleUrls: [&#x27;./footer.component.css&#x27;]
+})
+export class FooterComponent {
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;footer class&#x3D;&quot;footer&quot;&gt;
+    &lt;p&gt;
+    Copyright © Zážitok vo virtuálnej realite - Adam Kašela &amp; Štefan Korečko, 2022
+    Tento produkt vznikol s podporou projektu KEGA č. 048TUKE-4/2022: Technológie zdieľanej virtuálnej reality vo vzdelávacom procese.
+    Laboratórium LIRKIS, KPI FEI, Technická univerzita v Košiciach
+    &lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./footer.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.footer{
+    background-color: var(--footer-color);
+    width: 100%;
+    padding:2rem 0;
+    text-align: center;
+    color: var(--purple-color);
+    font-size: 0.7rem;
+}
+
+.footer p{
+    max-width: 80%;
+    opacity: 0.6;
+    margin: 0 auto !important;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><footer class="footer">    <p>    Copyright © Zážitok vo virtuálnej realite - Adam Kašela & Štefan Korečko, 2022    Tento produkt vznikol s podporou projektu KEGA č. 048TUKE-4/2022: Technológie zdieľanej virtuálnej reality vo vzdelávacom procese.    Laboratórium LIRKIS, KPI FEI, Technická univerzita v Košiciach    </p></footer></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmationDialog', 'selector': ''},{'name': 'CreateQuizComponent', 'selector': 'app-create-quiz'},{'name': 'CreateSceneComponent', 'selector': 'app-create-scene'},{'name': 'CreateTaskComponent', 'selector': 'app-create-task'},{'name': 'DashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GroupsDashboardComponent', 'selector': 'app-groups-dashboard'},{'name': 'GroupSessionsComponent', 'selector': 'app-group-sessions'},{'name': 'GroupSettingsComponent', 'selector': 'app-group-settings'},{'name': 'GroupsModificationComponent', 'selector': 'app-groups-modification'},{'name': 'GroupsPreviewComponent', 'selector': 'app-groups-preview'},{'name': 'HistoryQuizComponent', 'selector': 'app-history-quiz'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'JoinQuizComponent', 'selector': 'app-join-quiz'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'Muzeum_habsbourgComponent', 'selector': 'app-scene'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PreviewScenariosComponent', 'selector': 'app-preview-scenarios'},{'name': 'PreviewSceneComponent', 'selector': 'app-preview-scene'},{'name': 'PreviewTasksComponent', 'selector': 'app-preview-tasks'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'SceneComponent', 'selector': 'app-scene'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryExtendedComponent', 'selector': 'app-task-history-extended'},{'name': 'TaskHistoryStatisticsComponent', 'selector': 'app-task-history-statistics'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'UsersDashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'UserSettingsComponent', 'selector': 'app-user-settings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FooterComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FooterComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script defer src="../js/menu-wc.js"></script>
+       <script defer nomodule src="../js/menu-wc_es5.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

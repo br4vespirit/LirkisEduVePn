@@ -1,0 +1,809 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>lirkis-edu-ve-pn-ui documentation</title>
+        <meta content="" name="description">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+
+        <link href="../images/favicon.ico" rel="icon" type="image/x-icon">
+	   <link href="../styles/style.css" rel="stylesheet">
+        <link href="../styles/dark.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a class="navbar-brand" href="../">lirkis-edu-ve-pn-ui documentation</a>
+            <button class="btn btn-default btn-menu ion-ios-menu" id="btn-menu" type="button"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input placeholder="Type to search" type="text"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TaskHistoryExtendedComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab"
+                data-link="info" href="#info" id="info-tab" role="tab">Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="source" href="#source" id="source-tab" role="tab">Source</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="template" href="#templateData" id="templateData-tab" role="tab">Template</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="style" href="#styleData" id="styleData-tab" role="tab">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab"
+                data-link="dom-tree" href="#tree" id="tree-tab" role="tab">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/task-his/task-history-extended/task-history-extended.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that is used as extended page with statistics of a task session</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-task-history-extended</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./task-history-extended.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./task-history-extended.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#current_attempts" >current_attempts</a>
+                            </li>
+                            <li>
+                                <a href="#items_per_page" >items_per_page</a>
+                            </li>
+                            <li>
+                                <a href="#max_pages" >max_pages</a>
+                            </li>
+                            <li>
+                                <a href="#page" >page</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#next_attempts" >next_attempts</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#prev_attempts" >prev_attempts</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#firringAttempts" >firringAttempts</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firringAttempts"></a>
+                        <b>firringAttempts</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FiringAttempt[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a class="link-to-prism" data-line="25" href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:25</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>List with a firing attempts of a task session</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="next_attempts"></a>
+                    <span class="name">
+                        <span ><b>next_attempts</b></span>
+                        <a href="#next_attempts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>next_attempts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="67"
+                            href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Moves to the next page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="73"
+                            href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="50"
+                            href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to init max_pages and current_attempts fields</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prev_attempts"></a>
+                    <span class="name">
+                        <span ><b>prev_attempts</b></span>
+                        <a href="#prev_attempts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>prev_attempts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a class="link-to-prism" data-line="58"
+                            href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Moves to the previous page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="current_attempts"></a>
+                    <span class="name">
+                        <span ><b>current_attempts</b></span>
+                        <a href="#current_attempts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FiringAttempt[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="30" href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>List with a current firing attempts on the current page</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="items_per_page"></a>
+                    <span class="name">
+                        <span ><b>items_per_page</b></span>
+                        <a href="#items_per_page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="45" href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Items per page</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="max_pages"></a>
+                    <span class="name">
+                        <span ><b>max_pages</b></span>
+                        <a href="#max_pages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="35" href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total pages of the firing attempts</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a class="link-to-prism" data-line="40" href="">src/app/components/task-his/task-history-extended/task-history-extended.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Current page</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Input, OnDestroy, OnInit} from &#x27;@angular/core&#x27;;
+
+interface FiringAttempt {
+  action: string;
+  actionFound: boolean;
+  successful: boolean;
+  actionTargets: string[];
+  firedAt: Date;
+}
+
+/**
+ * Component that is used as extended page with statistics of a task session
+ */
+@Component({
+  selector: &#x27;app-task-history-extended&#x27;,
+  templateUrl: &#x27;./task-history-extended.component.html&#x27;,
+  styleUrls: [&#x27;./task-history-extended.component.css&#x27;]
+})
+export class TaskHistoryExtendedComponent implements OnInit, OnDestroy {
+
+  /**
+   * List with a firing attempts of a task session
+   */
+  // @ts-ignore
+  @Input() firringAttempts: FiringAttempt[];
+
+  /**
+   * List with a current firing attempts on the current page
+   */
+  current_attempts: FiringAttempt[] &#x3D; [];
+
+  /**
+   * Total pages of the firing attempts
+   */
+  max_pages: number &#x3D; 0;
+
+  /**
+   * Current page
+   */
+  page: number &#x3D; 0;
+
+  /**
+   * Items per page
+   */
+  items_per_page: number &#x3D; 10;
+
+  /**
+   * Method to init max_pages and current_attempts fields
+   */
+  ngOnInit(): void {
+    this.max_pages &#x3D; Math.ceil(this.firringAttempts.length / this.items_per_page);
+    this.current_attempts &#x3D; this.firringAttempts.slice(0, Math.min(this.firringAttempts.length, this.items_per_page));
+  }
+
+  /**
+   * Moves to the previous page
+   */
+  prev_attempts() {
+    this.page--;
+    this.current_attempts &#x3D; this.firringAttempts.slice(this.page * this.items_per_page,
+      Math.min(this.firringAttempts.length, (this.page + 1) * this.items_per_page));
+  }
+
+  /**
+   * Moves to the next page
+   */
+  next_attempts() {
+    this.page++;
+    this.current_attempts &#x3D; this.firringAttempts.slice(this.page * this.items_per_page,
+      Math.min(this.firringAttempts.length, (this.page + 1) * this.items_per_page));
+  }
+
+  ngOnDestroy(): void {
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;results&quot;&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th class&#x3D;&quot;boldText&quot;&gt;&lt;/th&gt;
+      &lt;th class&#x3D;&quot;boldText&quot;&gt;TRANSITION NAME&lt;/th&gt;
+      &lt;th class&#x3D;&quot;boldText&quot;&gt;FIRED AT&lt;/th&gt;
+      &lt;th class&#x3D;&quot;boldText&quot;&gt;SUCCESSFUL&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr *ngFor&#x3D;&quot;let firringAttempt of current_attempts; let i &#x3D; index&quot;&gt;
+      &lt;td class&#x3D;&quot;colorText&quot; style&#x3D;&quot;text-align: left;&quot;&gt; #{{i + 1 + page * items_per_page}}&lt;/td&gt;
+      &lt;td class&#x3D;&quot;secondaryText&quot;&gt;{{firringAttempt.action}}&lt;/td&gt;
+      &lt;td class&#x3D;&quot;secondaryText&quot;&gt;{{firringAttempt.firedAt | date:&#x27;yyyy-MM-dd HH:mm:ss&#x27;}}&lt;/td&gt;
+      &lt;td class&#x3D;&quot;secondaryText&quot;&gt;{{firringAttempt.successful}}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;div style&#x3D;&quot;margin-top: 20px&quot;&gt;
+    &lt;button (click)&#x3D;&quot;prev_attempts()&quot; [disabled]&#x3D;&quot;page &#x3D;&#x3D;&#x3D; 0&quot; mat-icon-button&gt;
+      &lt;mat-icon&gt;navigate_before&lt;/mat-icon&gt;
+    &lt;/button&gt;
+
+    &lt;button (click)&#x3D;&quot;next_attempts()&quot; [disabled]&#x3D;&quot;page &gt;&#x3D; max_pages - 1&quot; mat-icon-button&gt;
+      &lt;mat-icon&gt;navigate_next&lt;/mat-icon&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./task-history-extended.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+table {
+  min-width: 100%;
+  table-layout: fixed;
+}
+
+td, th {
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: 0.5px solid rgba(30, 30, 30, 0.1);
+  padding: 0.5rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="results">  <table>    <tr>      <th class="boldText"></th>      <th class="boldText">TRANSITION NAME</th>      <th class="boldText">FIRED AT</th>      <th class="boldText">SUCCESSFUL</th>    </tr>    <tr *ngFor="let firringAttempt of current_attempts; let i = index">      <td class="colorText" style="text-align: left;"> #{{i + 1 + page * items_per_page}}</td>      <td class="secondaryText">{{firringAttempt.action}}</td>      <td class="secondaryText">{{firringAttempt.firedAt | date:\'yyyy-MM-dd HH:mm:ss\'}}</td>      <td class="secondaryText">{{firringAttempt.successful}}</td>    </tr>  </table>  <div style="margin-top: 20px">    <button (click)="prev_attempts()" [disabled]="page === 0" mat-icon-button>      <mat-icon>navigate_before</mat-icon>    </button>    <button (click)="next_attempts()" [disabled]="page >= max_pages - 1" mat-icon-button>      <mat-icon>navigate_next</mat-icon>    </button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmationDialog', 'selector': ''},{'name': 'CreateQuizComponent', 'selector': 'app-create-quiz'},{'name': 'CreateSceneComponent', 'selector': 'app-create-scene'},{'name': 'CreateTaskComponent', 'selector': 'app-create-task'},{'name': 'DashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GroupsDashboardComponent', 'selector': 'app-groups-dashboard'},{'name': 'GroupSessionsComponent', 'selector': 'app-group-sessions'},{'name': 'GroupSettingsComponent', 'selector': 'app-group-settings'},{'name': 'GroupsModificationComponent', 'selector': 'app-groups-modification'},{'name': 'GroupsPreviewComponent', 'selector': 'app-groups-preview'},{'name': 'HistoryQuizComponent', 'selector': 'app-history-quiz'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'JoinQuizComponent', 'selector': 'app-join-quiz'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'Muzeum_habsbourgComponent', 'selector': 'app-scene'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PreviewScenariosComponent', 'selector': 'app-preview-scenarios'},{'name': 'PreviewSceneComponent', 'selector': 'app-preview-scene'},{'name': 'PreviewTasksComponent', 'selector': 'app-preview-tasks'},{'name': 'ProfileSettingsComponent', 'selector': 'app-profile-settings'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'SceneComponent', 'selector': 'app-scene'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryComponent', 'selector': 'app-task-history'},{'name': 'TaskHistoryExtendedComponent', 'selector': 'app-task-history-extended'},{'name': 'TaskHistoryStatisticsComponent', 'selector': 'app-task-history-statistics'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'UsersDashboardComponent', 'selector': 'app-users-dashboard'},{'name': 'UserSettingsComponent', 'selector': 'app-user-settings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TaskHistoryExtendedComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TaskHistoryExtendedComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script defer src="../js/menu-wc.js"></script>
+       <script defer nomodule src="../js/menu-wc_es5.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

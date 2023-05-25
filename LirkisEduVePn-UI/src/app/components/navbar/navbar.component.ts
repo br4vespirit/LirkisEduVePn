@@ -5,6 +5,9 @@ import {BackendService} from "../../services/backend.service";
 import {TransferService} from "../../services/transfer.service";
 import {UserProfile} from "../../models/user-profile.model";
 
+/**
+ * Component that is used as navbar in the system
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,16 +16,41 @@ import {UserProfile} from "../../models/user-profile.model";
 export class NavbarComponent implements OnInit, OnDestroy {
 
   collapse: boolean = false;
+
+  /**
+   * Whether users is logged in or not
+   */
   isLogged: boolean = false;
+
+  /**
+   * Role of a user
+   */
   role: string = "";
 
+  /**
+   * Subscription to transfer isLogged value
+   */
   loggedSubscription: Subscription = new Subscription();
+
+  /**
+   * Subscription to transfer role value
+   */
   roleSubscription: Subscription = new Subscription();
 
+  /**
+   * Constructor for a component
+   * @param _client BackendService instance that sends requests to a server
+   * @param router Router field to route between components
+   * @param _transfer Field to transfer data between components
+   */
   constructor(private router: Router, private _client: BackendService,
               private _transfer: TransferService) {
   }
 
+  /**
+   * Method to retrieve JWT token from a local storage if it exists, tries to get user
+   * profile is user logged in and sends isLogged and role fields to a transfer service.
+   */
   ngOnInit(): void {
     if (localStorage.getItem("jwt-token"))
       this.isLogged = true;
@@ -46,6 +74,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.roleSubscription.unsubscribe();
   }
 
+  /**
+   * Shows or hides side menu
+   */
   showMenu() {
     this.collapse = !this.collapse
   }
@@ -54,6 +85,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     return this.router.url !== '/login' && this.router.url !== '/register'
   }
 
+  /**
+   * Logs out user
+   */
   logout() {
     this.collapse = !this.collapse
     localStorage.removeItem("jwt-token");

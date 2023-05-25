@@ -11,20 +11,43 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {GroupTasks} from "../../models/group-tasks.model";
 import {TaskNames} from "../../models/task-names.model";
 
+/**
+ * Component that is used as a form for group modification
+ */
 @Component({
   selector: 'app-groups-modification',
   templateUrl: './groups-modification.component.html',
   styleUrls: ['./groups-modification.component.css']
 })
 export class GroupsModificationComponent implements OnInit, OnDestroy {
+
+  /**
+   * Represents a collection of form controls that are logically grouped together. It provides a convenient way to manage and validate multiple form controls as a single unit.
+   */
   // @ts-ignore
   form: FormGroup;
+
   roles: string[] = ['STUDENT', 'TEACHER', 'ADMIN']
 
+  /**
+   * Subscription to fetch tasks
+   */
   tasksSubscription: Subscription = new Subscription();
 
+  /**
+   * Subscription to update a group
+   */
   profile_update_subscription: Subscription = new Subscription();
 
+  /**
+   *
+   * @param matDialogRef Angular Material component that uses for opening dialogs
+   * @param data data that was transfer to this component
+   * @param router Router field to route between components
+   * @param _transfer Field to transfer data between components
+   * @param _client BackendService instance that sends requests to a server
+   * @param _snackBar Angular Material component that uses for opening snack bars
+   */
   constructor(private matDialogRef: MatDialogRef<GroupsModificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: GroupTasks,
               private router: Router,
@@ -33,24 +56,39 @@ export class GroupsModificationComponent implements OnInit, OnDestroy {
               private _snackBar: MatSnackBar) {
   }
 
+  /**
+   * List of tasks
+   */
   _tasks: TaskNames[] = [];
 
+  /**
+   * Gets a tasks field from a form group
+   */
   get tasks() {
     if (this.form)
       return this.form.controls['tasks'];
     return null;
   }
 
+  /**
+   * Gets a name field from a form group
+   */
   get name() {
     if (this.form)
       return this.form.controls['name'];
     return null;
   }
 
+  /**
+   * While this component is a dialog, this method closes this component
+   */
   closeDialog() {
     this.matDialogRef.close();
   }
 
+  /**
+   * Method to retrieve a group to update from a data and fetch all tasks from a database
+   */
   ngOnInit(): void {
     let group: GroupTasks = this.data;
     this.form = new FormGroup<any>({
@@ -70,6 +108,9 @@ export class GroupsModificationComponent implements OnInit, OnDestroy {
     this.tasksSubscription.unsubscribe();
   }
 
+  /**
+   * Updates a group
+   */
   updateGroup() {
     let group: GroupTasks = new GroupTasks({
       id: this.data.id,
@@ -93,6 +134,9 @@ export class GroupsModificationComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Opens successful snack bar
+   */
   openSuccessfulSnackbar() {
     this._snackBar.open('Group was successfully updated', '', {
       duration: 5000,
@@ -101,6 +145,9 @@ export class GroupsModificationComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * Opens unsuccessful snack bar
+   */
   openUnsuccessfulSnackbar(message: string) {
     this._snackBar.open(message, '', {
       duration: 5000,
@@ -108,6 +155,10 @@ export class GroupsModificationComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Autocompletes form with groups tasks
+   * @param group group to autocomplete
+   */
   private autocompleteGroups(group: GroupTasks) {
     let ts: number[] = [];
     this._tasks.forEach((task: TaskNames) => {

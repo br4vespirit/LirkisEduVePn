@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
+/**
+ * Component that is used as a footer in application
+ */
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',

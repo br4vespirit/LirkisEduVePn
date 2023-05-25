@@ -8,6 +8,9 @@ import {LoginRequest} from "../../models/login-request.model";
 import {UtilsService} from "../../services/utils.service";
 import {TransferService} from "../../services/transfer.service";
 
+/**
+ * Component that is used to display a login page
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,27 +18,56 @@ import {TransferService} from "../../services/transfer.service";
 })
 export class LoginComponent {
 
+  /**
+   * Represents a collection of form controls that are logically grouped together. It provides a convenient way to manage and validate multiple form controls as a single unit.
+   */
   // @ts-ignore
   form: FormGroup;
+
+  /**
+   * Subscription to preform signing in
+   */
   loginSubscription: Subscription = new Subscription();
+
+  /**
+   * Subscription to load user profile
+   */
   profileSubscription: Subscription = new Subscription();
 
+  /**
+   * Constructor for a component
+   * @param _client BackendService instance that sends requests to a server
+   * @param _snackBar Angular Material component that uses for opening snack bars
+   * @param _router Router field to route between components
+   * @param _utils Utils field that provides some help methods
+   * @param _transfer Field to transfer data between components
+   */
   constructor(private _client: BackendService, private _snackBar: MatSnackBar,
               private _router: Router, private _utils: UtilsService, private _transfer: TransferService) {
   }
 
+  /**
+   * Gets a email field from a form group
+   */
   get email() {
     if (this.form)
       return this.form.controls['email'];
     return null;
   }
 
+  /**
+   * Gets a password field from a form group
+   */
   get password() {
     if (this.form)
       return this.form.controls['password'];
     return null;
   }
 
+  /**
+   * Method to validate whether user was redirected cause of changing profile
+   * data or not and initializes signing in form
+   */
   ngOnInit(): void {
     this.checkProfileUpdate();
     this.form = new FormGroup<any>({
@@ -49,6 +81,9 @@ export class LoginComponent {
     this.profileSubscription.unsubscribe();
   }
 
+  /**
+   * Method that performs signing in
+   */
   login() {
     let request: LoginRequest = new LoginRequest(this.email?.value,
       this.password?.value);
@@ -78,6 +113,9 @@ export class LoginComponent {
     })
   }
 
+  /**
+   * Checks whether user was redirected cause of changing profile data or not
+   */
   checkProfileUpdate() {
     if (localStorage.getItem("emailChanged") != null && localStorage.getItem("passwordChanged") != null)
       this.openUpdatedProfileBar("Your login data were changed.\nConfirm your email in your mailbox");
@@ -89,12 +127,20 @@ export class LoginComponent {
     localStorage.removeItem("passwordChanged");
   }
 
+  /**
+   * Opens unsuccessful snack bar with a provided message
+   * @param message message to show
+   */
   openUnsuccessfulSnackbar(message: string) {
     this._snackBar.open(message, '', {
       duration: 5000,
     });
   }
 
+  /**
+   * Opens successful snack bar with a provided message
+   * @param message message to show
+   */
   openUpdatedProfileBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 5000,

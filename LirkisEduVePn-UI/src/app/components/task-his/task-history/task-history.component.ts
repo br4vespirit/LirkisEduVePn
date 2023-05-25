@@ -4,8 +4,9 @@ import {Router} from "@angular/router";
 import {TaskSessionInfo} from "../../../models/task-session-info.model";
 import {Subscription} from "rxjs";
 
-// TODO: add get also time when each transition was fired
-
+/**
+ * Object that defines actions of user in tasks
+ */
 interface FiringAttempt {
   action: string;
   actionFound: boolean;
@@ -14,6 +15,9 @@ interface FiringAttempt {
   firedAt: Date;
 }
 
+/**
+ * Component that is used as a page contains history of a completed task
+ */
 @Component({
   selector: 'app-task-history',
   templateUrl: './task-history.component.html',
@@ -21,18 +25,48 @@ interface FiringAttempt {
 })
 export class TaskHistoryComponent implements OnInit, OnDestroy {
 
+  /**
+   * List of firing attempts
+   */
   // @ts-ignore
   firringAttempts: FiringAttempt[];
+
+  /**
+   * Subscription to fetch firing attempts of a current task session
+   */
   firring_attempts_subscription: Subscription = new Subscription();
   // @ts-ignore
+
+  /**
+   * Information about completed session
+   */
   sessionData: TaskSessionInfo;
+
+  /**
+   * Duration of a session
+   */
   duration: string = "";
 
+  /**
+   * Whether extended page of a session was open
+   */
   extended_open: boolean = false;
+
+  /**
+   * Whether data was already loaded
+   */
   loaded: boolean = false;
 
+  /**
+   * Contains information from which component this component was opened
+   */
   from: string = "";
 
+  /**
+   * Constructor for a component
+   * @param _client BackendService instance that sends requests to a server
+   * @param router Router field to route between components
+   */
   constructor(private router: Router, private _client: BackendService,) {
     // @ts-ignore
     this.sessionData = this.router.getCurrentNavigation().extras.state.data as TaskSessionInfo;
@@ -41,6 +75,9 @@ export class TaskHistoryComponent implements OnInit, OnDestroy {
     this.countDuration()
   }
 
+  /**
+   * Method that fetch firing attempts of a current session
+   */
   ngOnInit(): void {
     this.firring_attempts_subscription = this._client.getFiringAttempts(this.sessionData.id).subscribe(data => {
       this.firringAttempts = data as [];
@@ -48,6 +85,9 @@ export class TaskHistoryComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Method to count duration of a session from milliseconds to a "hh:MM:ss" format
+   */
   countDuration(): void {
     const startedAt = this.sessionData.startedAt;
     const finishedAt = this.sessionData.finishedAt;
@@ -70,10 +110,16 @@ export class TaskHistoryComponent implements OnInit, OnDestroy {
     this.firring_attempts_subscription.unsubscribe();
   }
 
+  /**
+   * Changes status whether extended statistics was opened or not
+   */
   change_status() {
     this.extended_open = !this.extended_open;
   }
 
+  /**
+   * Close current page and redirects to the previous one depends on "from" field
+   */
   close() {
     if (this.from === 'profile') {
       this.router.navigate(["/user/profile"]).then();

@@ -10,6 +10,9 @@ import {Subscription} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
+/**
+ * Component that defines a dialog for a profile settings
+ */
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './profile-settings.component.html',
@@ -17,11 +20,26 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ProfileSettingsComponent implements OnInit, OnDestroy {
 
+  /**
+   * Represents a collection of form controls that are logically grouped together. It provides a convenient way to manage and validate multiple form controls as a single unit.
+   */
   // @ts-ignore
   form: FormGroup;
 
+  /**
+   * Subscription to update user profile
+   */
   profile_update_subscription: Subscription = new Subscription();
 
+  /**
+   * Constructor for a component
+   * @param matDialogRef Angular Material component that uses for opening dialogs
+   * @param _client BackendService instance that sends requests to a server
+   * @param _snackBar Angular Material component that uses for opening snack bars
+   * @param data data that was transfer to this component
+   * @param router Router field to route between components
+   * @param _transfer Field to transfer data between components
+   */
   constructor(private matDialogRef: MatDialogRef<ProfileSettingsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: UserProfile,
               private router: Router,
@@ -30,22 +48,79 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
               private _snackBar: MatSnackBar) {
   }
 
+  /**
+   * Gets an email field from a form group
+   */
   get email() {
     if (this.form)
       return this.form.controls['email'];
     return null;
   }
 
+  /**
+   * Gets a nickname field from a form group
+   */
   get nickname() {
     if (this.form)
       return this.form.controls['nickname'];
     return null;
   }
 
+  /**
+   * Gets a firstname field from a form group
+   */
+  get firstname() {
+    if (this.form)
+      return this.form.controls['firstname'];
+    return null;
+  }
+
+  /**
+   * Gets a lastname field from a form group
+   */
+  get lastname() {
+    if (this.form)
+      return this.form.controls['lastname'];
+    return null;
+  }
+
+  /**
+   * Gets a currentPassword field from a form group
+   */
+  get currentPassword() {
+    if (this.form)
+      return this.form.controls['currentPassword'];
+    return null;
+  }
+
+  /**
+   * Gets a newPassword field from a form group
+   */
+  get newPassword() {
+    if (this.form)
+      return this.form.controls['newPassword'];
+    return null;
+  }
+
+  /**
+   * Gets a repeatPassword field from a form group
+   */
+  get repeatNewPassword() {
+    if (this.form)
+      return this.form.controls['repeatNewPassword'];
+    return null;
+  }
+
+  /**
+   * While this component is a dialog, this method closes this component
+   */
   closeDialog() {
     this.matDialogRef.close();
   }
 
+  /**
+   * Method to logout from a system
+   */
   logout() {
     localStorage.removeItem("jwt-token");
     localStorage.removeItem("user-profile");
@@ -54,36 +129,9 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
     this.router.navigate(["/login"]).then(r => r);
   }
 
-  get firstname() {
-    if (this.form)
-      return this.form.controls['firstname'];
-    return null;
-  }
-
-  get lastname() {
-    if (this.form)
-      return this.form.controls['lastname'];
-    return null;
-  }
-
-  get currentPassword() {
-    if (this.form)
-      return this.form.controls['currentPassword'];
-    return null;
-  }
-
-  get newPassword() {
-    if (this.form)
-      return this.form.controls['newPassword'];
-    return null;
-  }
-
-  get repeatNewPassword() {
-    if (this.form)
-      return this.form.controls['repeatNewPassword'];
-    return null;
-  }
-
+  /**
+   * Method to initialize a form for a profile settings
+   */
   ngOnInit(): void {
     let profile: UserProfile = this.data;
     this.form = new FormGroup<any>({
@@ -102,6 +150,9 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
     this.profile_update_subscription.unsubscribe();
   }
 
+  /**
+   * Method to get all data from a form and update a profile
+   */
   updateProfile() {
     let profile: ProfileUpdate = new ProfileUpdate({
       id: this.data.id,
@@ -148,6 +199,10 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Method to clear and update settings form
+   * @param profile update user profile
+   */
   updateForm(profile: UserProfile) {
     this.form.setValue({
       email: profile.email,
@@ -160,6 +215,9 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * Opens successful snack bar
+   */
   openSuccessfulSnackbar() {
     const snackbarRef = this._snackBar.open('Your profile was successfully updated', '', {
       duration: 5000,
@@ -168,6 +226,9 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * Opens unsuccessful snack bar
+   */
   openUnsuccessfulSnackbar(message: string) {
     const snackbarRef = this._snackBar.open(message, '', {
       duration: 5000,

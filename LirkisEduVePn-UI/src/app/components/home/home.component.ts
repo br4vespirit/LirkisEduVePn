@@ -7,6 +7,9 @@ import {BackendService} from "../../services/backend.service";
   styleUrls: ['./home.component.css']
 })
 
+/**
+ * Component that is used to display a home page
+ */
 export class HomeComponent {
 
  constructor(private _client: BackendService) {}

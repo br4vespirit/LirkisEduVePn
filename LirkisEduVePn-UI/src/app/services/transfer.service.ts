@@ -3,6 +3,9 @@ import {Subject} from "rxjs";
 import {UserProfile} from "../models/user-profile.model";
 import {GroupTasks} from "../models/group-tasks.model";
 
+/**
+ * Service to preform transfer data between components
+ */
 @Injectable({
   providedIn: 'root'
 })
