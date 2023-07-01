@@ -29,7 +29,10 @@ export async function createSession(taskId, userId) {
 export async function createFiringAttemt(taskSessionId, action, actionDate, successful, actionFound, actionTargets) {
   const response = await fetch(`${url}/firing-attempt`, {
     method: 'POST',
-    headers: autHeader,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " + localStorage.getItem("jwt-token")
+    },
     body: JSON.stringify({
       taskSessionId: taskSessionId,
       action: action,
@@ -48,7 +51,10 @@ export async function createFiringAttemt(taskSessionId, action, actionDate, succ
 export async function endSession(taskSessionId, finishTime, successful) {
   const response = await fetch(`${url}/task-session/finish`, {
     method: 'POST',
-    headers: autHeader,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " + localStorage.getItem("jwt-token")
+    },
     body: JSON.stringify({
       taskSessionId: taskSessionId,
       finishTime: finishTime,
