@@ -93,8 +93,8 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
         String confirmationToken = confirmationTokenService.generateConfirmationToken(user);
-        String link = "http://localhost:8080/api/v1/auth/confirm?token=" + confirmationToken;
-        // String link = "http://147.232.205.222:8080/api/v1/auth/confirm?token=" + confirmationToken;
+        // String link = "http://localhost:8080/api/v1/auth/confirm?token=" + confirmationToken;
+        String link = "http://147.232.205.222:8080/api/v1/auth/confirm?token=" + confirmationToken;
         emailSender.send(
                 request.getEmail(),
                 request.getFirstname() + " " + request.getLastname(),

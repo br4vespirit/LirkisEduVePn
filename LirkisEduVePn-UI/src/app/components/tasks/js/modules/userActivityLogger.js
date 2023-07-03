@@ -1,5 +1,5 @@
-const url = 'http://localhost:8080/api/v1'
-// const url = 'http://147.232.205.222:8080/api/v1'
+// const url = 'http://localhost:8080/api/v1'
+const url = 'http://147.232.205.222:8080/api/v1'
 const autHeader = new Headers({
   'Content-Type': 'application/json',
   'Authorization': "Bearer " + localStorage.getItem("jwt-token")

@@ -133,8 +133,8 @@ public class UserService {
         if (toChangeEmail) {
             user.setEnabled(false);
             String confirmationToken = confirmationTokenService.generateConfirmationToken(user);
-            emailService.send(reqEmail, user.getFirstname() + " " + user.getLastname(), "http://localhost:8080/api/v1/auth/confirm?token=" + confirmationToken);
-            // emailService.send(reqEmail, user.getFirstname() + " " + user.getLastname(), "http://147.232.205.222:8080/api/v1/auth/confirm?token=" + confirmationToken);
+            // emailService.send(reqEmail, user.getFirstname() + " " + user.getLastname(), "http://localhost:8080/api/v1/auth/confirm?token=" + confirmationToken);
+            emailService.send(reqEmail, user.getFirstname() + " " + user.getLastname(), "http://147.232.205.222:8080/api/v1/auth/confirm?token=" + confirmationToken);
         }
 
         userRepository.save(user);
